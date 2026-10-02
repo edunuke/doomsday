@@ -1,0 +1,1 @@
+{"run":"62","ts":"2018-08-30","config_sha":"122a941153a2984a","universe":"data/ILF_survivorship.csv+data/ILF_survivorship.csv","n_tickers":74,"start_idx":504,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}

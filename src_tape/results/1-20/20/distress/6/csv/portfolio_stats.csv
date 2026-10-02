@@ -1,0 +1,32 @@
+,0
+Start,2015-08-17 00:00:00
+End,2016-02-10 00:00:00
+Period,177 days 00:00:00
+Start Value,1000000.0
+End Value,1008105.2256801325
+Total Return [%],0.8105225680132611
+Max Gross Exposure [%],75.52343383261766
+Total Fees Paid,322.2111872096732
+Max Drawdown [%],0.7254678762059652
+Max Drawdown Duration,1 days 00:00:00
+Total Trades,6
+Total Closed Trades,6
+Total Open Trades,0
+Open Trade PnL,0.0
+Win Rate [%],50.0
+Best Trade [%],2.6147869864746847
+Worst Trade [%],-2.789256308911808
+Avg Winning Trade [%],2.2247006795201627
+Avg Losing Trade [%],-1.2715889622025587
+Avg Winning Trade Duration,7 days 16:00:00
+Avg Losing Trade Duration,3 days 08:00:00
+Profit Factor,2.347727296043825
+Expectancy,1357.079252976211
+Sharpe Ratio,0.7424201641301966
+Calmar Ratio,2.2987120210928813
+Omega Ratio,1.6342070715829693
+Sortino Ratio,0.24038036809748192
+Benchmark Return [%],0.0
+Excess Return vs SOFR [%],0.8105225680132611
+Annualised Excess [%],1.679243205997569
+Information Ratio,0.7424201641301966

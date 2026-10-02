@@ -1,11 +1,8 @@
-# Private research experiments (code, data, results, artifacts)
-experiments/
-
-# Source code (private research)
-src/
-
 # General cache
 __pycache__
 *.pyc
 .kilo
 .DS_Store
+.venv/
+__pycache__/
+*.pyc

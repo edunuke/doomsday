@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+IVZ,SELL,MOO,9996,-9996,0,179983.56,-18.0,1.212,18.01
+SPY,BUY,MOO,278,278,0,164489.92,16.45,0.001,591.69
+PYPL,BUY,MOO,852,852,0,74637.81,7.46,0.019,87.6

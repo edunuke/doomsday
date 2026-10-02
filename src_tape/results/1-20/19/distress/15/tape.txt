@@ -1,0 +1,17 @@
+{"run":"15","ts":"2023-03-01","config_sha":"16302e48cd34157d","universe":"data/distress_in/svb_2023.csv+data/distress/svb_2023.csv","n_tickers":494,"start_idx":1062,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2023-03-01","cause":"INITIAL_ENTRY","step":1,"progress_pct":1.5625,"ghost_size":2,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2023-03-01","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2023-03-01","targets":{"CCL":-0.5,"EXPE":0.46074024319782975,"HST":-0.5,"KIM":0.36577100469109214},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2023-03-01","targets":{},"v":1}
+{"type":"REBALANCE","ts":"2023-04-04","cause":"SIGNAL_ENTRY","step":25,"progress_pct":39.0625,"ghost_size":7,"promoted_size":1,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2023-04-04","targets":{"MPC":0.6,"TRGP":-0.4000043309007573,"SPY":-0.0669652211426822},"spy_overlay":-0.0669652211426822,"gross":1.066969552,"n_pairs":1,"n_long":1,"n_short":2,"v":1}
+{"type":"GHOST_BOOK","ts":"2023-04-04","targets":{"DVN":0.14285714285714285,"OXY":-0.12034914916549319,"CVX":-0.14285714285714285,"KMI":0.1456342399345486,"FRT":-0.14285714285714285,"REG":0.12703050115479306,"HST":0.14285714285714285,"KIM":-0.10467340045734658,"GDDY":0.14285714285714285,"VRSN":-0.11060446936174347,"MPC":0.14285714285714285,"TRGP":-0.09523912640494221,"MAA":0.14285714285714285,"VMRK":-0.1251359137192026},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2023-04-04","targets":{"MPC":1.0,"TRGP":-0.6666738848345956},"v":1}
+{"type":"PAIR_BOOK","ts":"2023-04-04","pair":["MPC","TRGP"],"weights":{"MPC":0.6,"TRGP":-0.4000043309007573},"sleeve":0.6,"v":1}
+{"type":"ENTRY","ts":"2023-04-04","pair":["MPC","TRGP"],"legs":["MPC","TRGP"],"beta":0.6666738848345956,"entry_z":-1.230609608632114,"alpha":1.7557944792731168,"entry_type":"BASE","sleeve_w":0.6,"w_a":0.6,"w_b":-0.4000043309007573,"px_a":117.19318389892578,"px_b":69.08821105957031,"v":1}
+{"type":"EXIT","ts":"2023-04-06","pair":["MPC","TRGP"],"reason":"REVERTED","exit_z":-0.0018097421918224182,"days_held":2,"alpha":0.0,"entry_type":"BASE","px_a":119.85706329345705,"px_b":69.31950378417969,"v":1}
+{"type":"PAIR_BOOK","ts":"2023-04-06","pair":["MPC","TRGP"],"weights":{"MPC":0.0,"TRGP":0.0},"sleeve":0.0,"v":1}
+{"type":"REBALANCE","ts":"2023-04-06","cause":"SIGNAL_EXIT","step":27,"progress_pct":42.1875,"ghost_size":6,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2023-04-06","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2023-04-06","targets":{"APA":-0.16666666666666666,"TRGP":0.0395264727635309,"DVN":-0.16666666666666666,"OXY":0.1412227922260925,"CVX":0.16666666666666666,"KMI":-0.16939243208096114,"FRT":-0.16666666666666666,"REG":0.1482484708507858,"MPC":0.16666666666666666,"MAA":0.16666666666666666,"VMRK":-0.145829525173633},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2023-04-06","targets":{},"v":1}

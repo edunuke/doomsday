@@ -1,0 +1,31 @@
+{
+  "timestamp_utc": "2026-09-24T16:27:19+00:00",
+  "python": {
+    "version": "3.11.5",
+    "executable": "/Users/edunuke/Desktop/statarb-prival/.venv/bin/python3",
+    "implementation": "CPython"
+  },
+  "packages": {
+    "numpy": "1.26.3",
+    "scipy": "1.11.4",
+    "pandas": "2.1.4",
+    "statsmodels": "0.14.0",
+    "joblib": "1.2.0",
+    "matplotlib": "3.8.0",
+    "scikit-learn": "not-installed",
+    "python-dateutil": "2.9.0.post0",
+    "pytz": "2026.4",
+    "numexpr": "not-installed",
+    "bottleneck": "not-installed",
+    "yfinance": "0.2.58"
+  },
+  "platform": {
+    "system": "Darwin",
+    "release": "25.6.0",
+    "machine": "arm64",
+    "processor": "arm",
+    "platform": "macOS-26.6.2-arm64-arm-64bit"
+  },
+  "code_tree_sha256_16": "e51532b2b9335a74",
+  "config_sha256_16": "66c8486d33dbee81"
+}

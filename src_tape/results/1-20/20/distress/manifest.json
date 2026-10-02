@@ -1,0 +1,146 @@
+[
+  {
+    "run": "1",
+    "window": "ai_geo_2026",
+    "total_return_%": 0.0,
+    "max_dd_%": 0.0,
+    "sharpe": 0.0,
+    "trades": 0
+  },
+  {
+    "run": "2",
+    "window": "ath_2026",
+    "total_return_%": 0.0,
+    "max_dd_%": 0.0,
+    "sharpe": 0.0,
+    "trades": 0
+  },
+  {
+    "run": "3",
+    "window": "aug_vol_2025",
+    "total_return_%": 4.09704154700925,
+    "max_dd_%": 0.017462043790894555,
+    "sharpe": 3.925349648415362,
+    "trades": 3
+  },
+  {
+    "run": "4",
+    "window": "bear_2022",
+    "total_return_%": -5.53526902106084,
+    "max_dd_%": 5.53526902106084,
+    "sharpe": -1.800234166857489,
+    "trades": 9
+  },
+  {
+    "run": "5",
+    "window": "calm_2024",
+    "total_return_%": 1.5065539022165453,
+    "max_dd_%": 3.483370854629131,
+    "sharpe": 0.5568083172822152,
+    "trades": 12
+  },
+  {
+    "run": "6",
+    "window": "china_2015",
+    "total_return_%": 0.8105225680132611,
+    "max_dd_%": 0.7254678762059652,
+    "sharpe": 0.7424201641301966,
+    "trades": 6
+  },
+  {
+    "run": "7",
+    "window": "covid_2020",
+    "total_return_%": 8.33876886126037,
+    "max_dd_%": 3.8621637711985457,
+    "sharpe": 1.4075931530143158,
+    "trades": 48
+  },
+  {
+    "run": "8",
+    "window": "dotcom_2001",
+    "total_return_%": -5.808112688398815,
+    "max_dd_%": 14.111365777414642,
+    "sharpe": -0.35941675141052304,
+    "trades": 39
+  },
+  {
+    "run": "9",
+    "window": "gfc_2008",
+    "total_return_%": -10.237541225465552,
+    "max_dd_%": 19.966687469165056,
+    "sharpe": -1.2255677070360442,
+    "trades": 47
+  },
+  {
+    "run": "10",
+    "window": "iran_oil_2026",
+    "total_return_%": 0.0,
+    "max_dd_%": 0.0,
+    "sharpe": 0.0,
+    "trades": 0
+  },
+  {
+    "run": "11",
+    "window": "powell_2018",
+    "total_return_%": 4.343340825943609,
+    "max_dd_%": 15.156910320202076,
+    "sharpe": 0.6088047794004852,
+    "trades": 6
+  },
+  {
+    "run": "12",
+    "window": "rally_2024",
+    "total_return_%": 0.0,
+    "max_dd_%": 0.0,
+    "sharpe": 0.0,
+    "trades": 0
+  },
+  {
+    "run": "13",
+    "window": "rates_2023",
+    "total_return_%": -0.03670554965493622,
+    "max_dd_%": 0.03670554965493622,
+    "sharpe": -2.4494897427831783,
+    "trades": 4
+  },
+  {
+    "run": "14",
+    "window": "recovery_2025",
+    "total_return_%": 4.065713269109716,
+    "max_dd_%": 0.017465851419118383,
+    "sharpe": 2.87187644143653,
+    "trades": 3
+  },
+  {
+    "run": "15",
+    "window": "svb_2023",
+    "total_return_%": 0.0,
+    "max_dd_%": 0.0,
+    "sharpe": 0.0,
+    "trades": 0
+  },
+  {
+    "run": "16",
+    "window": "tariff_2025",
+    "total_return_%": 2.971178485685466,
+    "max_dd_%": 0.017467918570568397,
+    "sharpe": 2.420735144847328,
+    "trades": 6
+  },
+  {
+    "run": "17",
+    "window": "usdowngrade_2011",
+    "total_return_%": -0.07076968755423962,
+    "max_dd_%": 1.0077614379526145,
+    "sharpe": -0.07874751698459136,
+    "trades": 6
+  },
+  {
+    "run": "18",
+    "window": "yen_carry_2024",
+    "total_return_%": 0.0,
+    "max_dd_%": 0.0,
+    "sharpe": 0.0,
+    "trades": 0
+  }
+]

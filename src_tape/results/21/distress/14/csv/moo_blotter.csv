@@ -1,0 +1,2 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+SPY,BUY,MOO,387,387,0,241999.32,24.2,0.001,625.32

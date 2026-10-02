@@ -1,0 +1,32 @@
+,0
+Start,2018-09-06 00:00:00
+End,2026-09-03 00:00:00
+Period,2919 days 00:00:00
+Start Value,1000000.0
+End Value,1174013.1646545648
+Total Return [%],17.401316465456485
+Max Gross Exposure [%],280.1261064161291
+Total Fees Paid,8682.83232897282
+Max Drawdown [%],8.829877146097209
+Max Drawdown Duration,6 days 00:00:00
+Total Trades,137
+Total Closed Trades,137
+Total Open Trades,0
+Open Trade PnL,0.0
+Win Rate [%],52.55474452554745
+Best Trade [%],32.82543147998796
+Worst Trade [%],-35.658365998964456
+Avg Winning Trade [%],6.217379006916499
+Avg Losing Trade [%],-6.410722826437576
+Avg Winning Trade Duration,12 days 18:40:00
+Avg Losing Trade Duration,10 days 18:49:50.769230769
+Profit Factor,1.229956917073094
+Expectancy,1285.8083284285785
+Sharpe Ratio,0.34347399170441617
+Calmar Ratio,0.230209370243994
+Omega Ratio,1.2234160193995594
+Sortino Ratio,0.14187144442594485
+Benchmark Return [%],24.22785410832291
+Excess Return vs SOFR [%],-6.826537642866448
+Annualised Excess [%],-0.5011809942675438
+Information Ratio,-0.0775556832498833

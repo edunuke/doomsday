@@ -1,0 +1,2 @@
+{"run":"59","ts":"2018-08-30","config_sha":"acd97dae6dbfb7e8","universe":"data/ILF_survivorship.csv+data/ILF_survivorship.csv","n_tickers":74,"start_idx":504,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2018-08-30","cause":"INITIAL_ENTRY","step":1,"progress_pct":0.0475,"ghost_size":2,"promoted_size":2,"live_size":0,"v":1}

@@ -1,0 +1,8 @@
+Metric,Value,Threshold,Status
+Annualized Alpha,0.00%,N/A,INFO
+Market Beta (β_m),0.0000,< |0.05|,PASS
+Beta p-value,nan,>= 0.05,FAIL
+Beta t-statistic,nan,< |1.96|,FAIL
+Variance Explained (R²),nan%,< 0.5%,FAIL
+Bull Market Beta (R_m > 0),0.0000,< |0.05|,PASS
+Bear Market Beta (R_m < 0),0.0000,< |0.05|,PASS

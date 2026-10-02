@@ -1,0 +1,468 @@
+=====================================================================================
+STAT-ARB v3.2 — RELAXED BETA NEUTRALITY
+Pipeline flow: DownloadDataStage → DataLoaderStage → ResidualizerStage → AlphaCubeStage → WalkForwardStage → AttributionStage → ReportingStage
+Verbose      : NO
+Results dir  : /Users/edunuke/Desktop/statarb-prival/src/results/17
+=====================================================================================
+  price_csv                           : data/distress_in/tariff_2025.csv
+  oos_price_csv                       : data/distress/tariff_2025.csv
+  constituents_path                   : data/constituents.csv
+  lookback_days                       : 1059
+  min_history_days                    : 100
+  weight_drift_threshold              : 0.04
+  screening_freq_days                 : 20
+  quarantine_days                     : 30
+  kalman_delta                        : 0.0001
+  kalman_obs_noise                    : 0.001
+  max_hurst_exponent                  : 0.43
+  max_slope_tstat                     : 1.96
+  min_correlation                     : 0.45
+  p_value_threshold                   : 0.04
+  min_half_life                       : 1.5
+  max_half_life                       : 25.0
+  tau_hl_penalty                      : 5.0
+  exit_z_spread                       : 0.2
+  stop_loss_z                         : 2.2
+  min_holding_days                    : 2
+  max_holding_days                    : 15
+  promote_top_n                       : 35
+  max_pair_spy_beta                   : 1.2
+  max_adv_participation               : 0.015
+  initial_capital                     : 250000.0
+  exec_fee                            : 0.00015
+  borrow_bps                          : 50.0
+  entry_ecdf_percentile               : 0.8
+  min_override_z                      : 0.5
+  friction_clearance_multiplier       : 8.0
+  ghost_truncation_quantile           : 0.15
+  low_density_threshold               : 3
+  max_sleeve_weight_low_density       : 0.45
+  max_sleeve_weight                   : 0.3
+  max_single_stock_gross              : 0.45
+  max_gross_exposure                  : 2.8
+  max_net_dollar_exposure             : 0.08
+  max_net_beta_exposure               : 0.05
+  max_sector_exposure                 : 0.12
+  max_spy_overlay_weight              : 0.55
+  entry_z_base                        : 0.95
+  kalman_f_smooth_window              : 21
+  kalman_f_smooth_min_periods         : 5
+  ecdf_window                         : 63
+  half_life_window                    : 126
+  half_life_fillna                    : 20.0
+  hurst_window                        : 126
+  hurst_max_lag                       : 20
+  hurst_fillna                        : 0.5
+  slope_window                        : 20
+  spy_beta_ewm_span                   : 30
+  covariance_lookback_days            : 63
+  cov_jitter                          : 1e-05
+  min_gross_floor                     : 0.3
+  min_gross_frac                      : 0.5
+  alpha_ub_clip_low                   : 0.2
+  alpha_ub_clip_high                  : 1.0
+  min_weight_cutoff                   : 0.01
+  turnover_extra_bps                  : 0.0005
+  stale_days                          : 8
+  stale_alpha                         : 0.35
+  max_holding_mult                    : 1.25
+  neutrality_max_r2                   : 0.005
+  neutrality_min_regime_obs           : 10
+  moo_min_order_usd                   : 500.0
+  adv_window_days                     : 20
+  adv_shares_mult                     : 50000
+  adv_fill_value                      : 1000000
+  download                            : False
+  verbose                             : False
+=====================================================================================
+
+=====================================================================================
+STARTING STAT-ARB ENGINE v3.2
+=====================================================================================
+
+>>> Stage: DownloadDataStage
+[DownloadDataStage] Skipped (--download not set).
+<<< Stage: DownloadDataStage complete.
+
+>>> Stage: DataLoaderStage
+[DataLoader] 'SPY' detected. Using real SPY series.
+[DataLoader] Loaded 1177 days x 498 tickers.
+<<< Stage: DataLoaderStage complete.
+
+>>> Stage: ResidualizerStage
+[Residualizer] 1692 sector-matched residual pairs.
+<<< Stage: ResidualizerStage complete.
+
+>>> Stage: AlphaCubeStage
+[AlphaCube] Built alpha cube: 1692 pairs.
+<<< Stage: AlphaCubeStage complete.
+
+>>> Stage: WalkForwardStage
+[WalkForward] Min alpha floor = 0.35%
+
+[Rebalance @ 2025-02-19 | Progress:   0.8% (1/118)] Cause: INITIAL_ENTRY
+  --> Ghost=11 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-02-21 | Progress:   2.5% (3/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=10 | Promoted=2 | Live=2
+  --> Eff Gross=1.04 | Port Vol=0.1009 | SPY Overlay=-55.0%
+      [BASE] XYZ/IVZ | W_A: 40.5% | W_B: -30.6% | Inno Z: -3.48 | ECDF: 1.00 | Alpha: 4.7373
+      [OVERRIDE] CVS/PFE | W_A: 8.6% | W_B: -2.8% | Inno Z: -0.69 | ECDF: 0.84 | Alpha: 0.9003
+------------------------------------------------------------
+
+[Rebalance @ 2025-02-24 | Progress:   3.4% (4/118)] Cause: SIGNAL_EXIT
+  --> Ghost=8 | Promoted=1 | Live=2
+  --> Eff Gross=1.09 | Port Vol=0.1202 | SPY Overlay=-55.0%
+      [OVERRIDE] FIX/PCAR | W_A: 29.5% | W_B: -25.8% | Inno Z: -0.63 | ECDF: 0.83 | Alpha: 0.7171
+      [OVERRIDE] CVS/PFE | W_A: 24.2% | W_B: -7.7% | Inno Z: -0.69 | ECDF: 0.65 | Alpha: 0.4990
+------------------------------------------------------------
+
+[Rebalance @ 2025-02-25 | Progress:   4.2% (5/118)] Cause: SIGNAL_EXIT
+  --> Ghost=10 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-02-26 | Progress:   5.1% (6/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=8 | Promoted=1 | Live=1
+  --> Eff Gross=0.66 | Port Vol=0.0837 | SPY Overlay=36.0%
+      [OVERRIDE] EME/PCAR | W_A: -30.0% | W_B: 22.9% | Inno Z: 0.95 | ECDF: 0.98 | Alpha: 0.5492
+------------------------------------------------------------
+
+[Rebalance @ 2025-02-27 | Progress:   5.9% (7/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=9 | Promoted=2 | Live=3
+  --> Eff Gross=1.18 | Port Vol=0.0349 | SPY Overlay=-55.0%
+      [BASE] FE/PPL | W_A: 28.9% | W_B: -21.4% | Inno Z: -1.87 | ECDF: 1.00 | Alpha: 3.3069
+      [BASE] FE/SO | W_A: 28.0% | W_B: -20.3% | Inno Z: -1.73 | ECDF: 1.00 | Alpha: 2.5930
+      [OVERRIDE] EME/PCAR | W_A: -5.8% | W_B: 4.4% | Inno Z: 0.95 | ECDF: 0.71 | Alpha: 0.1878
+------------------------------------------------------------
+
+[Rebalance @ 2025-02-28 | Progress:   6.8% (8/118)] Cause: SIGNAL_EXIT
+  --> Ghost=9 | Promoted=1 | Live=3
+  --> Eff Gross=0.65 | Port Vol=0.0424 | SPY Overlay=-19.6%
+      [BASE] FE/PPL | W_A: 16.5% | W_B: -12.0% | Inno Z: -1.87 | ECDF: 0.98 | Alpha: 1.4007
+      [BASE] FE/SO | W_A: 14.3% | W_B: -10.3% | Inno Z: -1.73 | ECDF: 0.98 | Alpha: 0.8495
+      [OVERRIDE] BAC/CFG | W_A: -14.2% | W_B: 9.5% | Inno Z: 0.61 | ECDF: 1.00 | Alpha: 0.4035
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-03 | Progress:   7.6% (9/118)] Cause: SIGNAL_EXIT
+  --> Ghost=10 | Promoted=1 | Live=2
+  --> Eff Gross=1.07 | Port Vol=0.0734 | SPY Overlay=-48.6%
+      [BASE] FE/SO | W_A: 29.5% | W_B: -21.2% | Inno Z: -1.73 | ECDF: 0.46 | Alpha: 0.0014
+      [OVERRIDE] ETN/PCAR | W_A: 28.6% | W_B: -20.2% | Inno Z: -0.61 | ECDF: 0.95 | Alpha: 0.7742
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-04 | Progress:   8.5% (10/118)] Cause: SIGNAL_EXIT
+  --> Ghost=14 | Promoted=1 | Live=2
+  --> Eff Gross=0.60 | Port Vol=0.0305 | SPY Overlay=-23.5%
+      [OVERRIDE] BAC/KEY | W_A: 30.0% | W_B: -17.5% | Inno Z: -0.84 | ECDF: 1.00 | Alpha: 1.3746
+      [OVERRIDE] ETN/PCAR | W_A: 6.0% | W_B: -4.2% | Inno Z: -0.61 | ECDF: 0.73 | Alpha: 0.1398
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-06 | Progress:  10.2% (12/118)] Cause: SIGNAL_EXIT
+  --> Ghost=9 | Promoted=1 | Live=2
+  --> Eff Gross=1.01 | Port Vol=0.1204 | SPY Overlay=-55.0%
+      [BASE] EME/PCAR | W_A: 31.3% | W_B: -23.1% | Inno Z: -1.17 | ECDF: 0.98 | Alpha: 1.0040
+      [OVERRIDE] ETN/PCAR | W_A: 14.6% | W_B: -10.1% | Inno Z: -0.61 | ECDF: 0.98 | Alpha: 0.5396
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-07 | Progress:  11.0% (13/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=10 | Promoted=1 | Live=3
+  --> Eff Gross=1.11 | Port Vol=0.1112 | SPY Overlay=-55.0%
+      [OVERRIDE] OKE/OXY | W_A: 19.1% | W_B: -10.8% | Inno Z: -0.53 | ECDF: 0.90 | Alpha: 0.7325
+      [OVERRIDE] ETN/PCAR | W_A: 18.5% | W_B: -12.8% | Inno Z: -0.61 | ECDF: 0.44 | Alpha: 0.3524
+      [BASE] EME/PCAR | W_A: 17.9% | W_B: -13.1% | Inno Z: -1.17 | ECDF: 0.87 | Alpha: 0.3303
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-10 | Progress:  11.9% (14/118)] Cause: SIGNAL_EXIT
+  --> Ghost=7 | Promoted=0 | Live=1
+  --> Eff Gross=0.94 | Port Vol=0.1279 | SPY Overlay=-51.3%
+      [BASE] EME/PCAR | W_A: 42.8% | W_B: -30.7% | Inno Z: -1.17 | ECDF: 0.92 | Alpha: 0.2461
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-11 | Progress:  12.7% (15/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=10 | Promoted=1 | Live=2
+  --> Eff Gross=0.59 | Port Vol=0.0603 | SPY Overlay=-13.9%
+      [OVERRIDE] FANG/OXY | W_A: -30.0% | W_B: 25.2% | Inno Z: 0.77 | ECDF: 1.00 | Alpha: 1.1157
+      [BASE] EME/PCAR | W_A: 15.0% | W_B: -10.8% | Inno Z: -1.17 | ECDF: 0.95 | Alpha: 0.6823
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-12 | Progress:  13.6% (16/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=10 | Promoted=1 | Live=3
+  --> Eff Gross=0.46 | Port Vol=0.0476 | SPY Overlay=-0.7%
+      [OVERRIDE] COP/OXY | W_A: -21.2% | W_B: 14.6% | Inno Z: 0.73 | ECDF: 0.98 | Alpha: 1.1571
+      [OVERRIDE] FANG/OXY | W_A: -18.4% | W_B: 15.5% | Inno Z: 0.77 | ECDF: 0.97 | Alpha: 0.6379
+      [BASE] EME/PCAR | W_A: 5.4% | W_B: -3.9% | Inno Z: -1.17 | ECDF: 0.94 | Alpha: 1.0410
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-14 | Progress:  15.3% (18/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=7 | Promoted=1 | Live=4
+  --> Eff Gross=0.62 | Port Vol=0.0647 | SPY Overlay=2.4%
+      [OVERRIDE] FANG/OXY | W_A: -30.0% | W_B: 25.5% | Inno Z: 0.77 | ECDF: 0.70 | Alpha: 0.6057
+      [BASE] EME/PCAR | W_A: 10.3% | W_B: -7.5% | Inno Z: -1.17 | ECDF: 0.87 | Alpha: 1.2601
+      [OVERRIDE] SCHW/HBAN | W_A: -10.2% | W_B: 6.9% | Inno Z: 0.64 | ECDF: 0.94 | Alpha: 0.6035
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-17 | Progress:  16.1% (19/118)] Cause: SIGNAL_EXIT
+  --> Ghost=7 | Promoted=0 | Live=3
+  --> Eff Gross=0.56 | Port Vol=0.0460 | SPY Overlay=10.7%
+      [OVERRIDE] FANG/OXY | W_A: -24.6% | W_B: 20.9% | Inno Z: 0.77 | ECDF: 0.51 | Alpha: 0.1235
+      [OVERRIDE] SCHW/HBAN | W_A: -16.7% | W_B: 11.4% | Inno Z: 0.64 | ECDF: 0.68 | Alpha: 0.1506
+      [BASE] EME/PCAR | W_A: 3.7% | W_B: -2.7% | Inno Z: -1.17 | ECDF: 0.49 | Alpha: 0.9993
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-18 | Progress:  16.9% (20/118)] Cause: SIGNAL_EXIT
+  --> Ghost=10 | Promoted=0 | Live=1
+  --> Eff Gross=0.99 | Port Vol=0.1423 | SPY Overlay=-54.0%
+      [BASE] EME/PCAR | W_A: 45.0% | W_B: -32.9% | Inno Z: -1.17 | ECDF: 0.49 | Alpha: 0.7324
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-20 | Progress:  18.6% (22/118)] Cause: SIGNAL_EXIT
+  --> Ghost=10 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-03 | Progress:  27.1% (32/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=8 | Promoted=3 | Live=3
+  --> Eff Gross=0.77 | Port Vol=0.0381 | SPY Overlay=-32.4%
+      [BASE] APA/FANG | W_A: 17.7% | W_B: -14.5% | Inno Z: -1.07 | ECDF: 0.98 | Alpha: 2.3968
+      [OVERRIDE] FANG/OXY | W_A: 16.2% | W_B: -13.9% | Inno Z: -0.57 | ECDF: 0.98 | Alpha: 0.8578
+      [OVERRIDE] IVZ/TROW | W_A: 11.1% | W_B: -9.3% | Inno Z: -0.82 | ECDF: 0.97 | Alpha: 1.5906
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-04 | Progress:  28.0% (33/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=11 | Promoted=4 | Live=7
+  --> Eff Gross=1.30 | Port Vol=0.0573 | SPY Overlay=-55.0%
+      [BASE] GPN/IVZ | W_A: 12.4% | W_B: -5.3% | Inno Z: -1.37 | ECDF: 1.00 | Alpha: 1.3739
+      [BASE] FANG/VLO | W_A: 11.7% | W_B: -9.2% | Inno Z: -1.06 | ECDF: 1.00 | Alpha: 0.9065
+      [BASE] FANG/MPC | W_A: 11.5% | W_B: -10.4% | Inno Z: -1.27 | ECDF: 1.00 | Alpha: 0.9824
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-08 | Progress:  29.7% (35/118)] Cause: SIGNAL_EXIT
+  --> Ghost=8 | Promoted=0 | Live=5
+  --> Eff Gross=1.32 | Port Vol=0.0759 | SPY Overlay=-55.0%
+      [OVERRIDE] IVZ/TROW | W_A: 17.7% | W_B: -14.8% | Inno Z: -0.82 | ECDF: 0.87 | Alpha: 0.7811
+      [BASE] GPN/IVZ | W_A: 17.1% | W_B: -7.3% | Inno Z: -1.37 | ECDF: 0.95 | Alpha: 0.6143
+      [BASE] FANG/VLO | W_A: 16.9% | W_B: -13.2% | Inno Z: -1.06 | ECDF: 0.95 | Alpha: 0.6492
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-09 | Progress:  30.5% (36/118)] Cause: SIGNAL_EXIT
+  --> Ghost=7 | Promoted=1 | Live=5
+  --> Eff Gross=0.88 | Port Vol=0.0673 | SPY Overlay=-12.9%
+      [OVERRIDE] L/WRB | W_A: -30.0% | W_B: 20.2% | Inno Z: 0.65 | ECDF: 0.97 | Alpha: 1.0333
+      [BASE] APA/FANG | W_A: 16.6% | W_B: -13.8% | Inno Z: -1.07 | ECDF: 0.97 | Alpha: 0.1751
+      [BASE] FANG/VLO | W_A: 14.3% | W_B: -11.4% | Inno Z: -1.06 | ECDF: 0.95 | Alpha: 0.2292
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-10 | Progress:  31.4% (37/118)] Cause: SIGNAL_EXIT
+  --> Ghost=4 | Promoted=1 | Live=5
+  --> Eff Gross=0.88 | Port Vol=0.0794 | SPY Overlay=-13.4%
+      [OVERRIDE] SCHW/HBAN | W_A: -30.0% | W_B: 20.7% | Inno Z: 0.61 | ECDF: 0.94 | Alpha: 0.7533
+      [OVERRIDE] IVZ/TROW | W_A: 19.1% | W_B: -16.0% | Inno Z: -0.82 | ECDF: 0.84 | Alpha: 0.9574
+      [BASE] FANG/MPC | W_A: 16.4% | W_B: -14.9% | Inno Z: -1.27 | ECDF: 0.67 | Alpha: 0.3102
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-11 | Progress:  32.2% (38/118)] Cause: SIGNAL_EXIT
+  --> Ghost=4 | Promoted=0 | Live=4
+  --> Eff Gross=0.66 | Port Vol=0.0654 | SPY Overlay=-6.1%
+      [OVERRIDE] SCHW/HBAN | W_A: -30.0% | W_B: 21.0% | Inno Z: 0.61 | ECDF: 0.98 | Alpha: 1.6120
+      [OVERRIDE] IVZ/TROW | W_A: 18.0% | W_B: -15.0% | Inno Z: -0.82 | ECDF: 0.81 | Alpha: 1.0138
+      [OVERRIDE] L/WRB | W_A: -6.0% | W_B: 4.0% | Inno Z: 0.65 | ECDF: 0.84 | Alpha: 0.0140
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-14 | Progress:  33.1% (39/118)] Cause: SIGNAL_EXIT
+  --> Ghost=3 | Promoted=0 | Live=3
+  --> Eff Gross=0.53 | Port Vol=0.0530 | SPY Overlay=-8.2%
+      [OVERRIDE] SCHW/HBAN | W_A: -24.6% | W_B: 17.2% | Inno Z: 0.61 | ECDF: 0.51 | Alpha: 0.3470
+      [OVERRIDE] IVZ/TROW | W_A: 14.4% | W_B: -12.0% | Inno Z: -0.82 | ECDF: 0.16 | Alpha: 0.6355
+      [BASE] FANG/VLO | W_A: 6.0% | W_B: -4.8% | Inno Z: -1.06 | ECDF: 0.10 | Alpha: 0.4044
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-15 | Progress:  33.9% (40/118)] Cause: SIGNAL_EXIT
+  --> Ghost=5 | Promoted=0 | Live=2
+  --> Eff Gross=0.94 | Port Vol=0.0961 | SPY Overlay=-31.8%
+      [BASE] FANG/VLO | W_A: 32.2% | W_B: -25.7% | Inno Z: -1.06 | ECDF: 0.59 | Alpha: 0.2255
+      [OVERRIDE] IVZ/TROW | W_A: 30.0% | W_B: -25.0% | Inno Z: -0.82 | ECDF: 0.79 | Alpha: 0.4052
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-16 | Progress:  34.7% (41/118)] Cause: SIGNAL_EXIT
+  --> Ghost=9 | Promoted=0 | Live=1
+  --> Eff Gross=0.42 | Port Vol=0.0551 | SPY Overlay=-12.3%
+      [OVERRIDE] IVZ/TROW | W_A: 30.0% | W_B: -25.0% | Inno Z: -0.82 | ECDF: 0.37 | Alpha: 0.6624
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-22 | Progress:  37.3% (44/118)] Cause: SIGNAL_EXIT
+  --> Ghost=7 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-25 | Progress:  39.8% (47/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=5 | Promoted=1 | Live=1
+  --> Eff Gross=0.30 | Port Vol=0.0253 | SPY Overlay=-0.1%
+      [OVERRIDE] DOC/ESS | W_A: 30.0% | W_B: -18.6% | Inno Z: -0.72 | ECDF: 1.00 | Alpha: 1.2601
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-29 | Progress:  41.5% (49/118)] Cause: SIGNAL_EXIT
+  --> Ghost=6 | Promoted=1 | Live=1
+  --> Eff Gross=0.34 | Port Vol=0.0554 | SPY Overlay=-3.7%
+      [OVERRIDE] CCI/DOC | W_A: -30.0% | W_B: 19.6% | Inno Z: 0.68 | ECDF: 0.94 | Alpha: 0.8556
+------------------------------------------------------------
+
+[Rebalance @ 2025-05-06 | Progress:  45.8% (54/118)] Cause: SIGNAL_EXIT
+  --> Ghost=7 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-05-08 | Progress:  47.5% (56/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=7 | Promoted=1 | Live=1
+  --> Eff Gross=0.31 | Port Vol=0.0289 | SPY Overlay=-1.4%
+      [OVERRIDE] EOG/OXY | W_A: 30.0% | W_B: -22.0% | Inno Z: -0.54 | ECDF: 0.98 | Alpha: 0.7841
+------------------------------------------------------------
+
+[Rebalance @ 2025-05-12 | Progress:  49.2% (58/118)] Cause: SIGNAL_EXIT
+  --> Ghost=4 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-05-28 | Progress:  58.5% (69/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=4 | Promoted=1 | Live=1
+  --> Eff Gross=0.36 | Port Vol=0.0826 | SPY Overlay=-5.6%
+      [OVERRIDE] CHTR/WBD | W_A: 30.0% | W_B: -10.6% | Inno Z: -0.77 | ECDF: 0.83 | Alpha: 0.7396
+------------------------------------------------------------
+
+[Rebalance @ 2025-06-06 | Progress:  64.4% (76/118)] Cause: SIGNAL_EXIT
+  --> Ghost=7 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-07-25 | Progress:  92.4% (109/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=7 | Promoted=1 | Live=1
+  --> Eff Gross=0.46 | Port Vol=0.0516 | SPY Overlay=1.2%
+      [BASE] DOC/ESS | W_A: 45.0% | W_B: -27.7% | Inno Z: -0.96 | ECDF: 1.00 | Alpha: 2.0008
+------------------------------------------------------------
+
+[Rebalance @ 2025-07-30 | Progress:  94.9% (112/118)] Cause: SIGNAL_EXIT
+  --> Ghost=4 | Promoted=1 | Live=1
+  --> Eff Gross=0.34 | Port Vol=0.0384 | SPY Overlay=-4.4%
+      [OVERRIDE] DOC/ESS | W_A: -30.0% | W_B: 18.3% | Inno Z: 0.52 | ECDF: 0.98 | Alpha: 0.9785
+------------------------------------------------------------
+
+[Rebalance @ 2025-08-01 | Progress:  96.6% (114/118)] Cause: SIGNAL_EXIT
+  --> Ghost=4 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-08-05 | Progress:  98.3% (116/118)] Cause: SIGNAL_ENTRY
+  --> Ghost=4 | Promoted=1 | Live=1
+  --> Eff Gross=0.82 | Port Vol=0.0723 | SPY Overlay=-36.9%
+      [BASE] LLY/VRTX | W_A: -45.0% | W_B: 27.2% | Inno Z: 1.91 | ECDF: 1.00 | Alpha: 4.8102
+------------------------------------------------------------
+<<< Stage: WalkForwardStage complete.
+
+>>> Stage: AttributionStage
+<<< Stage: AttributionStage complete.
+
+>>> Stage: ReportingStage
+
+=====================================================================================
+v3.2 RELAXED BETA — FUNNEL CONVERSION ATTRIBUTION
+=====================================================================================
+  Funnel Tier / Portfolio Stage          | Ann. Return [%]    | Sortino Ratio     
+-------------------------------------------------------------------------------------
+  Ghost Portfolio (Raw Universe)         |              1.53% |             0.2230
+  Promoted Portfolio (Parametric Gated)  |             28.91% |             0.7242
+  Live Portfolio (SLSQP Optimized)       |             37.06% |             3.8871
+-------------------------------------------------------------------------------------
+  --> Parametric Selection Delta         |            +27.38% |            +0.5012
+  --> Optimizer Allocation Delta         |             +8.15% |            +3.1629
+=====================================================================================
+
+=====================================================================================
+MARKET NEUTRALITY DIAGNOSTIC (RELAXED: 5% BETA CAP)
+=====================================================================================
+                    Metric   Value Threshold Status
+          Annualized Alpha  33.13%       N/A   INFO
+         Market Beta (β_m) -0.0788  < |0.05|   FAIL
+              Beta p-value  0.0611   >= 0.05   PASS
+          Beta t-statistic -1.8909  < |1.96|   PASS
+   Variance Explained (R²)   2.99%    < 0.5%   FAIL
+Bull Market Beta (R_m > 0) -0.1779  < |0.05|   FAIL
+Bear Market Beta (R_m < 0)  0.1223  < |0.05|   FAIL
+-------------------------------------------------------------------------------------
+  VERDICT: Market Neutral = FALSE | Failures: Market Beta (β_m), Variance Explained (R²), Bull Market Beta (R_m > 0), Bear Market Beta (R_m < 0)
+=====================================================================================
+
+=====================================================================================
+INVESTMENT COMMITTEE PAIR REVIEW TEARSHEET (ATTRIBUTED BY REGIME)
+=====================================================================================
+Strategy_Origin   Pair_Legs  Total_Return_[%]  Sharpe_Ratio  Sortino_Ratio  Max_DD_[%]  Win_Rate_[%]  Total_Trades
+           BASE    FE / PPL          0.513887      0.613997       0.869764    0.007967     75.000000             4
+           BASE   BKR / CVX          0.539039      0.468895       2.096972    0.003470     50.000000             2
+           BASE  LLY / VRTX          5.631939      0.461946       6.481932    0.011730     50.000000             2
+           BASE  EME / PCAR          2.401628      0.423674       0.060929    1.304480     62.500000            16
+           BASE  FANG / VLO          1.380133      0.404239       0.047824    0.688685     33.333333             6
+           BASE     FE / SO          0.061686      0.063339       0.005262    0.293256     50.000000             4
+           BASE   GPN / IVZ         -0.022324     -0.004667      -0.000371    0.816607     50.000000             2
+           BASE  FANG / MPC         -0.162834     -0.119888      -0.009726    0.350224     50.000000             6
+           BASE  APA / FANG         -1.082224     -0.420081      -0.031642    1.082224      0.000000             4
+           BASE   XYZ / IVZ         -1.410981     -0.466623      -0.019243    1.410981     50.000000             2
+       OVERRIDE SCHW / HBAN          0.955446      0.722699       0.235731    0.102297     71.428571             7
+       OVERRIDE   CVS / PFE          0.236645      0.609310       1.804647    0.001769    100.000000             2
+       OVERRIDE   BAC / CFG          0.587232      0.459882       2.058348    0.003851     50.000000             2
+       OVERRIDE   OKE / OXY          0.488269      0.458469       1.401250    0.004704    100.000000             2
+       OVERRIDE  FIX / PCAR          0.694660      0.457074       1.064785    0.008807    100.000000             2
+       OVERRIDE  CHTR / WBD          0.441965      0.386951       0.037002    0.383567     71.428571             7
+       OVERRIDE   EOG / OXY          0.304085      0.336977       0.061242    0.102789     50.000000             4
+       OVERRIDE  IVZ / TROW          1.303922      0.316936       0.065945    0.832151     41.666667            12
+       OVERRIDE  ETN / PCAR          0.830289      0.307784       0.036999    0.712044     60.000000             5
+       OVERRIDE   DOC / ESS          1.052806      0.266671       0.052284    0.601545     50.000000             8
+       OVERRIDE     L / WRB          0.169757      0.264372       0.050573    0.108898     50.000000             6
+       OVERRIDE  FANG / OXY          0.263888      0.130031       0.021378    0.970333     58.333333            12
+       OVERRIDE   BAC / KEY          0.115104      0.125353       0.009433    0.241997     50.000000             2
+       OVERRIDE   COP / OXY         -0.191176     -0.292244      -0.016580    0.268056     50.000000             6
+       OVERRIDE   CCI / DOC         -0.391428     -0.396623      -0.027637    0.639759     16.666667             6
+
+=====================================================================================
+WALK-FORWARD NET PORTFOLIO STATS (POST-FEES & EXECUTION LAG)
+=====================================================================================
+Start                               2025-02-19 00:00:00
+End                                 2025-08-07 00:00:00
+Period                                118 days 00:00:00
+Start Value                                    250000.0
+End Value                                 289905.671469
+Total Return [%]                              15.962269
+Benchmark Return [%]                           2.147135
+Max Gross Exposure [%]                       167.250775
+Total Fees Paid                             1462.402155
+Max Drawdown [%]                               3.256232
+Max Drawdown Duration                  67 days 00:00:00
+Total Trades                                        119
+Total Closed Trades                                 116
+Total Open Trades                                     3
+Open Trade PnL                             15550.450483
+Win Rate [%]                                  54.310345
+Best Trade [%]                                 8.793405
+Worst Trade [%]                               -8.688799
+Avg Winning Trade [%]                          2.511449
+Avg Losing Trade [%]                           -2.39297
+Avg Winning Trade Duration    3 days 16:45:42.857142857
+Avg Losing Trade Duration     3 days 19:55:28.301886792
+Profit Factor                                  1.538363
+Expectancy                                   209.958802
+Sharpe Ratio                                   3.318944
+Calmar Ratio                                  17.844258
+Omega Ratio                                    2.754973
+Sortino Ratio                                  9.481717
+
+=====================================================================================
+ACTIONABLE MARKET-ON-OPEN (MOO) ORDER BLOTTER FOR NEXT SESSION
+=====================================================================================
+Ticker Action Order_Type  Delta_Shares  Target_Shares  Current_Shares  Est_Order_USD  Target_Weight_%  ADV_Participation_%  Price_Ref
+   LLY   SELL        MOO           177           -177               0      112474.25           -44.99                0.000     635.45
+   SPY   SELL        MOO           147           -147               0       91922.22           -36.77                0.000     625.32
+  VRTX    BUY        MOO           181            181               0       67989.03            27.20                0.001     375.63
+
+[Reporting] Saving experiment to: 'results/17/'
+  Saved config -> results/17/config.json
+  Saved metrics -> results/17/csv/metrics.csv
+  Saved tearsheets -> results/17/csv/committee_report.csv
+  Saved blotter -> results/17/csv/moo_blotter.csv
+  Saved trade records -> results/17/csv/trade_records.csv
+  Saved portfolio stats -> results/17/csv/portfolio_stats.csv
+  Saved plot -> results/17/imgs/funnel_sizing.png
+  Saved plot -> results/17/imgs/cumulative_performance.png
+[Reporting] Runtime log -> results/17/logs.txt
+[ReportingStage] Complete.

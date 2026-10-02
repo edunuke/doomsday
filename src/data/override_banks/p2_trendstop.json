@@ -1,0 +1,20 @@
+{
+  "dir_mom252_stop": {
+    "legs": {
+      "ILF": 0.25
+    },
+    "max_weight": 0.25,
+    "min_hold_days": 1,
+    "max_hold_days": 99999,
+    "target_ret": null,
+    "stop_ret": -0.08,
+    "id": "dir_mom252_stop",
+    "trigger": {
+      "kind": "signal",
+      "source": "ret",
+      "lookback": 252,
+      "mode": "momentum",
+      "threshold": 0.0
+    }
+  }
+}

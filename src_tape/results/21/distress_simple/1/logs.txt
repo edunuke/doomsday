@@ -1,0 +1,242 @@
+=====================================================================================
+STAT-ARB v3.2 — RELAXED BETA NEUTRALITY
+Pipeline flow: DownloadDataStage → DataLoaderStage → ResidualizerStageV3 → AlphaCubeStageV5 → SelectionStage → WalkForwardStage → AttributionStage → ReportingStage
+Verbose      : NO
+Results dir  : /Users/edunuke/Desktop/statarb-prival/src_tape/results/21/distress_simple/1
+=====================================================================================
+  price_csv                           : data/distress_in/svb_2023.csv
+  oos_price_csv                       : data/distress/svb_2023.csv
+  constituents_path                   : data/constituents.csv
+  lookback_days                       : 1062
+  min_history_days                    : 100
+  weight_drift_threshold              : 0.04
+  screening_freq_days                 : 20
+  quarantine_days                     : 30
+  kalman_delta                        : 0.001
+  kalman_obs_noise                    : 0.001
+  max_hurst_exponent                  : 0.43
+  max_slope_tstat                     : 1.96
+  min_correlation                     : 0.25
+  p_value_threshold                   : 0.04
+  min_half_life                       : 4.0
+  max_half_life                       : 25.0
+  tau_hl_penalty                      : 5.0
+  exit_z_spread                       : 0.2
+  stop_loss_z                         : 2.2
+  min_holding_days                    : 2
+  max_holding_days                    : 60
+  promote_top_n                       : 35
+  max_pair_spy_beta                   : 1.2
+  max_adv_participation               : 0.015
+  initial_capital                     : 1000000.0
+  exec_fee                            : 0.00015
+  borrow_bps                          : 50.0
+  entry_ecdf_percentile               : 0.8
+  min_override_z                      : 0.5
+  friction_clearance_multiplier       : 8.0
+  ghost_truncation_quantile           : 0.15
+  low_density_threshold               : 3
+  max_sleeve_weight_low_density       : 0.6
+  max_sleeve_weight                   : 0.45
+  max_single_stock_gross              : 0.65
+  max_gross_exposure                  : 2.8
+  max_net_dollar_exposure             : 0.08
+  max_net_beta_exposure               : 0.05
+  max_sector_exposure                 : 0.12
+  max_spy_overlay_weight              : 0.55
+  entry_z_base                        : 0.75
+  kalman_f_smooth_window              : 21
+  kalman_f_smooth_min_periods         : 5
+  ecdf_window                         : 63
+  half_life_window                    : 126
+  half_life_fillna                    : 20.0
+  hurst_window                        : 126
+  hurst_max_lag                       : 20
+  hurst_fillna                        : 0.5
+  slope_window                        : 20
+  spy_beta_ewm_span                   : 30
+  covariance_lookback_days            : 63
+  cov_jitter                          : 1e-05
+  min_gross_floor                     : 0.3
+  min_gross_frac                      : 0.5
+  alpha_ub_clip_low                   : 0.2
+  alpha_ub_clip_high                  : 1.0
+  min_weight_cutoff                   : 0.01
+  turnover_extra_bps                  : 0.0005
+  stale_days                          : 8
+  stale_alpha                         : 0.35
+  neutrality_max_r2                   : 0.005
+  neutrality_min_regime_obs           : 10
+  moo_min_order_usd                   : 500.0
+  adv_window_days                     : 20
+  adv_shares_mult                     : 50000
+  adv_fill_value                      : 1000000
+  retrain_freq_days                   : 90
+  train_lookback_days                 : 504
+  screen_lookback_days                : 252
+  early_stop_enabled                  : False
+  early_stop_rebal_days               : 5
+  early_stop_min_periods              : 5
+  early_stop_max_drawdown             : 8.0
+  early_stop_max_period_loss          : 3.0
+  early_stop_max_loss_streak          : 6
+  early_stop_signal_window            : 20
+  early_stop_signal_min_periods       : 15
+  early_stop_cum_sigma_k              : 2.0
+  early_stop_min_sharpe               : -1.0
+  early_stop_min_sortino              : -1.0
+  early_stop_min_win_rate             : None
+  max_holding_buffer                  : 1.5
+  ensemble_window                     : 21
+  ensemble_weight                     : 0.5
+  vr_max                              : 0.95
+  vr_horizon                          : 5
+  components                          : {'residualizer': 'v3', 'alphacube': 'v5', 'selection': 'v1', 'walkforward': 'v1', 'allocator': 'v2', 'regime': 'v3', 'sizing': 'v1', 'screener': 'v2'}
+  download                            : False
+  verbose                             : False
+  circuit_breaker_enabled             : False
+  circuit_breaker_max_dd              : 10.0
+  circuit_breaker_max_period_loss     : 6.0
+  circuit_breaker_max_loss_streak     : 8
+  circuit_breaker_min_periods         : 1
+  enable_override                     : False
+  enable_promotion                    : True
+  factor_beta_window                  : 126
+  factor_vol_window                   : 63
+  factor_mom_window                   : 252
+  factor_mom_skip                     : 21
+  factor_beta_shrink                  : 0.2
+  regime_vol_window                   : 63
+  regime_vol_lookback                 : 252
+  regime_vol_percentile               : 75
+  regime_exposure_scale               : 0.3
+  trailing_dd_lookback                : 126
+  trailing_dd_threshold               : -0.08
+  trailing_dd_scale                   : 0.3
+  selection_enabled                   : True
+  selection_window_days               : 378
+  selection_max_pairs                 : 300
+  alpha_v5_enabled                    : True
+  alpha_v5_ou_tau                     : 5.0
+  alpha_v5_dispersion_tilt            : 0.25
+  dispersion_lookback                 : 252
+  dispersion_window                   : 21
+  sizing_target_vol                   : 0.1
+  sizing_max_leverage                 : 1.5
+  sizing_mode                         : derisk
+  sizing_vol_window                   : 126
+  run_distress                        : False
+  funnel_mode                         : simple
+  simple_max_pairs                    : 20
+  distress_out_dir                    : results/21/distress_simple
+  distress_only                       : None
+  results_dir                         : results/21/distress_simple
+=====================================================================================
+
+=====================================================================================
+STARTING STAT-ARB ENGINE v3.2
+=====================================================================================
+
+>>> Stage: DownloadDataStage
+[DownloadDataStage] Skipped (--download not set).
+<<< Stage: DownloadDataStage complete. (0.0s)
+
+>>> Stage: DataLoaderStage
+[DataLoader] 'SPY' detected. Using real SPY series.
+[DataLoader] Loaded 1126 days x 493 tickers.
+<<< Stage: DataLoaderStage complete. (0.2s)
+
+>>> Stage: ResidualizerStageV3
+[Residualizer] 3819 sector-matched residual pairs.
+[ResidualizerV3] regime-conditional VR screen (high-dispersion days=526, 5d, VR<=0.95): 3819 -> 2489 pairs
+<<< Stage: ResidualizerStageV3 complete. (0.4s)
+
+>>> Stage: AlphaCubeStageV5
+[AlphaCube] Built alpha cube: 2489 pairs.
+[AlphaV5] orthogonal sources added (dispersion tilt=0.25, ou_tau=5.0); pairs=2489
+<<< Stage: AlphaCubeStageV5 complete. (15.4s)
+
+>>> Stage: SelectionStage
+[Selection] walk-forward schedule: 0 re-selections (window=378d, grid=6)
+<<< Stage: SelectionStage complete. (0.0s)
+
+>>> Stage: WalkForwardStage
+[Screener] v2
+[Factors] factor 'growth': no fundamentals file — factor DROPPED (a true growth factor needs fundamentals; not faked with momentum)
+[Regime] v3: stressed=238/1126 days (8 transitions)
+[WalkForward] Decision tape -> results/21/distress_simple/1/tape.txt
+[WalkForward] Rolling retrain every 90d (train window 504d).
+[WalkForward] Min alpha floor = 0.35%
+[Screen] 2023-03-01: 2489 candidates -> 376 pass (v2) -> 376 live
+[GhostDBG] 2023-03-01: in=376 noalpha=0 nan=0 hurst=0 hl=0 slope=0 kept=376
+
+[Rebalance @ 2023-03-01 | Progress:   1.6% (1/64)] Cause: INITIAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.00% | DD=0.00% | win=0.0% | Sharpe=0.00 | Sortino=inf | streak=0 | conc=0.00 | periods=1
+  --> Ghost=376 | Promoted=20 | Live=12
+  --> Eff Gross=1.63 | Port Vol=0.1015 | SPY Overlay=-11.9%
+      [BASE] EOG/KMI | W_A: -14.0% | W_B: 17.8% | Inno Z: 0.29 | ECDF: 0.90 | Alpha: 0.1043
+      [BASE] MPC/KMI | W_A: -14.0% | W_B: 18.0% | Inno Z: 0.29 | ECDF: 0.86 | Alpha: 0.0888
+      [BASE] CF/FCX | W_A: 14.0% | W_B: -6.6% | Inno Z: -0.25 | ECDF: 0.84 | Alpha: 0.0626
+------------------------------------------------------------
+
+[Rebalance @ 2023-03-02 | Progress:   3.1% (2/64)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.87% | DD=0.00% | win=50.0% | Sharpe=7.10 | Sortino=inf | streak=0 | conc=1.00 | periods=2
+  --> Ghost=364 | Promoted=20 | Live=17
+  --> Eff Gross=1.49 | Port Vol=0.0725 | SPY Overlay=16.6%
+      [BASE] PEG/VST | W_A: 8.8% | W_B: -3.7% | Inno Z: -0.25 | ECDF: 0.97 | Alpha: 0.0690
+      [BASE] CNP/VST | W_A: -8.8% | W_B: 4.1% | Inno Z: 0.28 | ECDF: 1.00 | Alpha: 0.1185
+      [BASE] CFG/IVZ | W_A: 8.8% | W_B: -5.5% | Inno Z: -0.31 | ECDF: 0.95 | Alpha: 0.1056
+------------------------------------------------------------
+  [EXIT] PEG/VST | reason=REVERTED | Z=+0.16 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2023-03-03 | Progress:   4.7% (3/64)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+1.13% | DD=0.00% | win=66.7% | Sharpe=7.36 | Sortino=inf | streak=0 | conc=0.77 | periods=3
+  --> Ghost=349 | Promoted=20 | Live=7
+  --> Eff Gross=0.72 | Port Vol=0.0548 | SPY Overlay=17.8%
+      [BASE] ALB/MOS | W_A: 7.8% | W_B: -3.9% | Inno Z: -0.26 | ECDF: 0.79 | Alpha: 0.0641
+      [BASE] EXC/VST | W_A: -7.8% | W_B: 3.6% | Inno Z: 0.21 | ECDF: 0.98 | Alpha: 0.0209
+      [BASE] AAPL/GEN | W_A: -7.8% | W_B: 4.1% | Inno Z: 0.33 | ECDF: 0.97 | Alpha: 0.2019
+------------------------------------------------------------
+  [EXIT] ALB/MOS | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2023-03-06 | Progress:   6.2% (4/64)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+1.72% | DD=0.00% | win=75.0% | Sharpe=9.30 | Sortino=inf | streak=0 | conc=0.51 | periods=4
+  --> Ghost=346 | Promoted=20 | Live=13
+  --> Eff Gross=1.46 | Port Vol=0.0983 | SPY Overlay=14.2%
+      [BASE] EXC/VST | W_A: -10.8% | W_B: 4.6% | Inno Z: 0.21 | ECDF: 1.00 | Alpha: 0.3278
+      [BASE] DTE/VST | W_A: 10.8% | W_B: -4.2% | Inno Z: -0.53 | ECDF: 1.00 | Alpha: 0.5847
+      [BASE] EVRG/VST | W_A: 10.8% | W_B: -3.6% | Inno Z: -0.47 | ECDF: 1.00 | Alpha: 0.4901
+------------------------------------------------------------
+  [EXIT] MRVL/MU | reason=REVERTED | Z=-0.11 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EXC/VST | reason=MAX_HOLD | Z=+0.22 | days=3 | alpha=0.0259 | entry_type=BASE
+
+[Rebalance @ 2023-03-07 | Progress:   7.8% (5/64)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.53% | DD=2.21% | win=60.0% | Sharpe=-0.65 | Sortino=-0.32 | streak=1 | conc=0.51 | periods=5
+  --> Ghost=337 | Promoted=20 | Live=24
+  --> Eff Gross=2.26 | Port Vol=0.1111 | SPY Overlay=-55.0%
+      [BASE] DTE/VST | W_A: 9.0% | W_B: -3.2% | Inno Z: -0.53 | ECDF: 1.00 | Alpha: 0.3877
+      [BASE] EVRG/VST | W_A: 9.0% | W_B: -2.8% | Inno Z: -0.47 | ECDF: 0.98 | Alpha: 0.2836
+      [BASE] PEG/VST | W_A: 9.0% | W_B: -3.1% | Inno Z: -0.52 | ECDF: 1.00 | Alpha: 0.3985
+------------------------------------------------------------
+  [EXIT] VST/SRE | reason=REVERTED | Z=+0.13 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2023-03-08 | Progress:   9.4% (6/64)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+0.28% | DD=2.21% | win=66.7% | Sharpe=0.35 | Sortino=0.17 | streak=1 | conc=0.34 | periods=6
+  --> Ghost=318 | Promoted=20 | Live=11
+  --> Eff Gross=0.72 | Port Vol=0.0518 | SPY Overlay=-1.7%
+      [BASE] DTE/VST | W_A: 6.5% | W_B: -2.3% | Inno Z: -0.53 | ECDF: 0.54 | Alpha: 0.3952
+      [BASE] EVRG/VST | W_A: 6.5% | W_B: -2.0% | Inno Z: -0.47 | ECDF: 0.84 | Alpha: 0.3534
+      [BASE] PEG/VST | W_A: 6.5% | W_B: -2.3% | Inno Z: -0.52 | ECDF: 0.51 | Alpha: 0.3879
+------------------------------------------------------------
+
+[Rebalance @ 2023-03-09 | Progress:  10.9% (7/64)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-0.11% | DD=2.21% | win=57.1% | Sharpe=-0.07 | Sortino=-0.05 | streak=1 | conc=0.34 | periods=7
+  --> Ghost=311 | Promoted=20 | Live=23
+  --> Eff Gross=1.84 | Port Vol=0.0851 | SPY Overlay=-19.9%
+      [BASE] DTE/VST | W_A: 9.0% | W_B: -3.2% | Inno Z: -0.53 | ECDF: 0.14 | Alpha: 0.3341
+      [BASE] EVRG/VST | W_A: 9.0% | W_B: -2.8% | Inno Z: -0.47 | ECDF: 0.59 | Alpha: 0.2676
+      [BASE] PEG/VST | W_A: 9.0% | W_B: -3.1% | Inno Z: -0.52 | ECDF: 0.30 | Alpha: 0.2737
+------------------------------------------------------------
+  [EXIT] MRVL/MU | reason=MAX_HOLD | Z=-0.40 | days=2 | alpha=0.2824 | entry_type=BASE
+
+[Rebalance @ 2023-03-10 | Progress:  12.5% (8/64)] Cause: SIGNAL_EXIT

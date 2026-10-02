@@ -1,0 +1,22 @@
+[project]
+name = "statarb-prival"
+version = "0.1.0"
+description = "Statistical arbitrage research pipeline (src_tape)"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    # Pinned to the Python 3.11.5 / numpy 1.26 research stack so results
+    # reproduce the archived runs (see README §9.1). Only the components the
+    # pipeline actually imports.
+    "numpy==1.26.3",
+    "scipy==1.11.4",
+    "pandas==2.1.4",
+    "statsmodels==0.14.0",
+    "joblib==1.2.0",
+    "matplotlib==3.8.0",
+    "yfinance==0.2.58",
+]
+
+[tool.uv]
+# This is an application (scripts), not an installable package.
+package = false

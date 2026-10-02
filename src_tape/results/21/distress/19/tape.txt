@@ -1,0 +1,5 @@
+{"run":"19","ts":"2023-03-01","config_sha":"6a8a29a9fed4684b","universe":"data/distress_in/svb_2023.csv+data/distress/svb_2023.csv","n_tickers":494,"start_idx":1062,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2023-03-01","cause":"INITIAL_ENTRY","step":1,"progress_pct":1.5625,"ghost_size":1,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2023-03-01","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2023-03-01","targets":{"FAST":-1.0,"ODFL":0.5229473118072505},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2023-03-01","targets":{},"v":1}

@@ -1,0 +1,767 @@
+=====================================================================================
+STAT-ARB v3.2 — RELAXED BETA NEUTRALITY
+Pipeline flow: DownloadDataStage → DataLoaderStage → ResidualizerStage → AlphaCubeStage → WalkForwardStage → AttributionStage → ReportingStage
+Verbose      : NO
+Results dir  : /Users/edunuke/Desktop/statarb-prival/src/results/6
+=====================================================================================
+  price_csv                           : data/distress_in/calm_2024.csv
+  oos_price_csv                       : data/distress/calm_2024.csv
+  constituents_path                   : data/constituents.csv
+  lookback_days                       : 1061
+  min_history_days                    : 100
+  weight_drift_threshold              : 0.04
+  screening_freq_days                 : 20
+  quarantine_days                     : 30
+  kalman_delta                        : 0.0001
+  kalman_obs_noise                    : 0.001
+  max_hurst_exponent                  : 0.43
+  max_slope_tstat                     : 1.96
+  min_correlation                     : 0.45
+  p_value_threshold                   : 0.04
+  min_half_life                       : 1.5
+  max_half_life                       : 25.0
+  tau_hl_penalty                      : 5.0
+  exit_z_spread                       : 0.2
+  stop_loss_z                         : 2.2
+  min_holding_days                    : 2
+  max_holding_days                    : 15
+  promote_top_n                       : 35
+  max_pair_spy_beta                   : 1.2
+  max_adv_participation               : 0.015
+  initial_capital                     : 250000.0
+  exec_fee                            : 0.00015
+  borrow_bps                          : 50.0
+  entry_ecdf_percentile               : 0.8
+  min_override_z                      : 0.5
+  friction_clearance_multiplier       : 8.0
+  ghost_truncation_quantile           : 0.15
+  low_density_threshold               : 3
+  max_sleeve_weight_low_density       : 0.45
+  max_sleeve_weight                   : 0.3
+  max_single_stock_gross              : 0.45
+  max_gross_exposure                  : 2.8
+  max_net_dollar_exposure             : 0.08
+  max_net_beta_exposure               : 0.05
+  max_sector_exposure                 : 0.12
+  max_spy_overlay_weight              : 0.55
+  entry_z_base                        : 0.95
+  kalman_f_smooth_window              : 21
+  kalman_f_smooth_min_periods         : 5
+  ecdf_window                         : 63
+  half_life_window                    : 126
+  half_life_fillna                    : 20.0
+  hurst_window                        : 126
+  hurst_max_lag                       : 20
+  hurst_fillna                        : 0.5
+  slope_window                        : 20
+  spy_beta_ewm_span                   : 30
+  covariance_lookback_days            : 63
+  cov_jitter                          : 1e-05
+  min_gross_floor                     : 0.3
+  min_gross_frac                      : 0.5
+  alpha_ub_clip_low                   : 0.2
+  alpha_ub_clip_high                  : 1.0
+  min_weight_cutoff                   : 0.01
+  turnover_extra_bps                  : 0.0005
+  stale_days                          : 8
+  stale_alpha                         : 0.35
+  max_holding_mult                    : 1.25
+  neutrality_max_r2                   : 0.005
+  neutrality_min_regime_obs           : 10
+  moo_min_order_usd                   : 500.0
+  adv_window_days                     : 20
+  adv_shares_mult                     : 50000
+  adv_fill_value                      : 1000000
+  download                            : False
+  verbose                             : False
+=====================================================================================
+
+=====================================================================================
+STARTING STAT-ARB ENGINE v3.2
+=====================================================================================
+
+>>> Stage: DownloadDataStage
+[DownloadDataStage] Skipped (--download not set).
+<<< Stage: DownloadDataStage complete.
+
+>>> Stage: DataLoaderStage
+[DataLoader] 'SPY' detected. Using real SPY series.
+[DataLoader] Loaded 1185 days x 497 tickers.
+<<< Stage: DataLoaderStage complete.
+
+>>> Stage: ResidualizerStage
+[Residualizer] 1515 sector-matched residual pairs.
+<<< Stage: ResidualizerStage complete.
+
+>>> Stage: AlphaCubeStage
+[AlphaCube] Built alpha cube: 1515 pairs.
+<<< Stage: AlphaCubeStage complete.
+
+>>> Stage: WalkForwardStage
+[WalkForward] Min alpha floor = 0.35%
+
+[Rebalance @ 2024-01-02 | Progress:   0.8% (1/124)] Cause: INITIAL_ENTRY
+  --> Ghost=42 | Promoted=1 | Live=1
+  --> Eff Gross=0.36 | Port Vol=0.0376 | SPY Overlay=-5.6%
+      [OVERRIDE] C/SYF | W_A: -30.0% | W_B: 17.9% | Inno Z: 0.63 | ECDF: 1.00 | Alpha: 0.6807
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-03 | Progress:   1.6% (2/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=42 | Promoted=1 | Live=2
+  --> Eff Gross=1.02 | Port Vol=0.0763 | SPY Overlay=-46.1%
+      [OVERRIDE] AVGO/SMCI | W_A: 30.0% | W_B: -9.7% | Inno Z: -0.55 | ECDF: 0.90 | Alpha: 0.6955
+      [OVERRIDE] C/SYF | W_A: -25.7% | W_B: 15.4% | Inno Z: 0.63 | ECDF: 0.95 | Alpha: 0.5196
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-04 | Progress:   2.4% (3/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=38 | Promoted=6 | Live=8
+  --> Eff Gross=1.35 | Port Vol=0.0576 | SPY Overlay=-55.0%
+      [BASE] APA/WMB | W_A: 13.2% | W_B: -18.6% | Inno Z: -1.18 | ECDF: 1.00 | Alpha: 2.1125
+      [BASE] APA/HAL | W_A: 13.2% | W_B: -12.8% | Inno Z: -0.96 | ECDF: 1.00 | Alpha: 1.6029
+      [OVERRIDE] APA/OXY | W_A: 13.1% | W_B: -11.6% | Inno Z: -0.88 | ECDF: 0.98 | Alpha: 1.7258
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-05 | Progress:   3.2% (4/124)] Cause: SIGNAL_EXIT
+  --> Ghost=32 | Promoted=1 | Live=4
+  --> Eff Gross=1.43 | Port Vol=0.0865 | SPY Overlay=-55.0%
+      [OVERRIDE] AVGO/SMCI | W_A: 22.4% | W_B: -7.1% | Inno Z: -0.55 | ECDF: 0.62 | Alpha: 0.0895
+      [BASE] APA/HAL | W_A: 22.4% | W_B: -21.7% | Inno Z: -0.96 | ECDF: 0.79 | Alpha: 0.1284
+      [OVERRIDE] AMAT/MRVL | W_A: 22.2% | W_B: -14.9% | Inno Z: -0.56 | ECDF: 0.94 | Alpha: 0.5194
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-08 | Progress:   4.0% (5/124)] Cause: SIGNAL_EXIT
+  --> Ghost=31 | Promoted=1 | Live=2
+  --> Eff Gross=0.60 | Port Vol=0.0694 | SPY Overlay=15.0%
+      [OVERRIDE] AMAT/MRVL | W_A: 27.0% | W_B: -17.9% | Inno Z: -0.56 | ECDF: 0.97 | Alpha: 0.6176
+      [OVERRIDE] ANET/SMCI | W_A: -18.0% | W_B: 6.0% | Inno Z: 0.58 | ECDF: 0.92 | Alpha: 0.7542
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-09 | Progress:   4.8% (6/124)] Cause: SIGNAL_EXIT
+  --> Ghost=30 | Promoted=1 | Live=2
+  --> Eff Gross=0.49 | Port Vol=0.1024 | SPY Overlay=5.5%
+      [OVERRIDE] JBL/SMCI | W_A: 30.0% | W_B: -9.0% | Inno Z: -0.52 | ECDF: 0.89 | Alpha: 0.6483
+      [OVERRIDE] ANET/SMCI | W_A: -14.0% | W_B: 4.6% | Inno Z: 0.58 | ECDF: 0.70 | Alpha: 0.1966
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-11 | Progress:   6.5% (8/124)] Cause: SIGNAL_EXIT
+  --> Ghost=29 | Promoted=1 | Live=1
+  --> Eff Gross=0.57 | Port Vol=0.0972 | SPY Overlay=-26.8%
+      [BASE] PSKY/DIS | W_A: 30.0% | W_B: -25.1% | Inno Z: -0.96 | ECDF: 0.92 | Alpha: 0.8601
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-16 | Progress:   8.1% (10/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=31 | Promoted=1 | Live=2
+  --> Eff Gross=0.90 | Port Vol=0.0949 | SPY Overlay=-45.0%
+      [BASE] PSKY/DIS | W_A: 26.8% | W_B: -22.1% | Inno Z: -0.96 | ECDF: 0.81 | Alpha: 0.8256
+      [OVERRIDE] EQT/WMB | W_A: 18.2% | W_B: -15.1% | Inno Z: -0.51 | ECDF: 0.90 | Alpha: 0.3597
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-17 | Progress:   8.9% (11/124)] Cause: SIGNAL_EXIT
+  --> Ghost=29 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-18 | Progress:   9.7% (12/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=27 | Promoted=1 | Live=1
+  --> Eff Gross=0.66 | Port Vol=0.0886 | SPY Overlay=35.9%
+      [OVERRIDE] ANET/SMCI | W_A: -30.0% | W_B: 10.4% | Inno Z: 0.75 | ECDF: 0.94 | Alpha: 1.1523
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-19 | Progress:  10.5% (13/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=27 | Promoted=1 | Live=2
+  --> Eff Gross=0.54 | Port Vol=0.0904 | SPY Overlay=-8.0%
+      [OVERRIDE] ANET/SMCI | W_A: -30.0% | W_B: 9.6% | Inno Z: 0.75 | ECDF: 0.95 | Alpha: 2.2681
+      [OVERRIDE] NTRS/TFC | W_A: 15.8% | W_B: -9.2% | Inno Z: -0.55 | ECDF: 1.00 | Alpha: 0.8137
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-23 | Progress:  12.1% (15/124)] Cause: SIGNAL_EXIT
+  --> Ghost=24 | Promoted=1 | Live=1
+  --> Eff Gross=0.42 | Port Vol=0.0314 | SPY Overlay=11.9%
+      [OVERRIDE] HAL/TRGP | W_A: -30.0% | W_B: 22.2% | Inno Z: 0.52 | ECDF: 1.00 | Alpha: 0.7572
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-24 | Progress:  12.9% (16/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=23 | Promoted=2 | Live=3
+  --> Eff Gross=0.53 | Port Vol=0.0357 | SPY Overlay=7.8%
+      [OVERRIDE] HAL/TRGP | W_A: -22.7% | W_B: 16.9% | Inno Z: 0.52 | ECDF: 1.00 | Alpha: 1.2332
+      [OVERRIDE] BKR/EOG | W_A: 13.0% | W_B: -8.6% | Inno Z: -0.84 | ECDF: 1.00 | Alpha: 1.6298
+      [BASE] BKR/APA | W_A: 9.3% | W_B: -4.8% | Inno Z: -0.95 | ECDF: 1.00 | Alpha: 1.7560
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-25 | Progress:  13.7% (17/124)] Cause: SIGNAL_EXIT
+  --> Ghost=25 | Promoted=0 | Live=2
+  --> Eff Gross=0.77 | Port Vol=0.0929 | SPY Overlay=4.7%
+      [BASE] BKR/APA | W_A: 45.0% | W_B: -22.9% | Inno Z: -0.95 | ECDF: 0.92 | Alpha: 0.4051
+      [OVERRIDE] BKR/EOG | W_A: 27.2% | W_B: -18.0% | Inno Z: -0.84 | ECDF: 0.90 | Alpha: 0.3366
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-26 | Progress:  14.5% (18/124)] Cause: SIGNAL_EXIT
+  --> Ghost=28 | Promoted=1 | Live=1
+  --> Eff Gross=0.38 | Port Vol=0.0249 | SPY Overlay=-8.0%
+      [BASE] AXP/PRU | W_A: -30.0% | W_B: 25.2% | Inno Z: 1.06 | ECDF: 1.00 | Alpha: 2.3348
+------------------------------------------------------------
+
+[Rebalance @ 2024-01-30 | Progress:  16.1% (20/124)] Cause: SIGNAL_EXIT
+  --> Ghost=30 | Promoted=2 | Live=2
+  --> Eff Gross=0.59 | Port Vol=0.0689 | SPY Overlay=0.1%
+      [OVERRIDE] BKR/APA | W_A: 30.0% | W_B: -14.9% | Inno Z: -0.66 | ECDF: 0.98 | Alpha: 1.0696
+      [OVERRIDE] BKR/EOG | W_A: 28.5% | W_B: -18.6% | Inno Z: -0.57 | ECDF: 0.98 | Alpha: 0.9696
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-01 | Progress:  17.7% (22/124)] Cause: SIGNAL_EXIT
+  --> Ghost=27 | Promoted=2 | Live=2
+  --> Eff Gross=0.79 | Port Vol=0.0311 | SPY Overlay=33.8%
+      [OVERRIDE] ETN/IR | W_A: -29.8% | W_B: 23.4% | Inno Z: 0.82 | ECDF: 1.00 | Alpha: 1.6377
+      [OVERRIDE] CFG/FITB | W_A: 15.2% | W_B: -13.5% | Inno Z: -0.73 | ECDF: 1.00 | Alpha: 0.5556
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-05 | Progress:  19.4% (24/124)] Cause: SIGNAL_EXIT
+  --> Ghost=28 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-07 | Progress:  21.0% (26/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=22 | Promoted=1 | Live=1
+  --> Eff Gross=0.58 | Port Vol=0.0350 | SPY Overlay=13.4%
+      [BASE] CINF/PRU | W_A: 45.0% | W_B: -28.1% | Inno Z: -1.30 | ECDF: 1.00 | Alpha: 2.9940
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-09 | Progress:  22.6% (28/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=17 | Promoted=1 | Live=2
+  --> Eff Gross=0.56 | Port Vol=0.0573 | SPY Overlay=17.4%
+      [OVERRIDE] AMAT/NVDA | W_A: -30.0% | W_B: 16.9% | Inno Z: 0.88 | ECDF: 0.98 | Alpha: 1.6240
+      [BASE] CINF/PRU | W_A: 9.0% | W_B: -5.6% | Inno Z: -1.30 | ECDF: 0.98 | Alpha: 0.0490
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-12 | Progress:  23.4% (29/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=20 | Promoted=2 | Live=3
+  --> Eff Gross=0.99 | Port Vol=0.0347 | SPY Overlay=-33.1%
+      [BASE] FANG/OXY | W_A: -30.0% | W_B: 26.1% | Inno Z: 1.39 | ECDF: 1.00 | Alpha: 1.9049
+      [BASE] FANG/TRGP | W_A: -29.5% | W_B: 24.5% | Inno Z: 1.23 | ECDF: 1.00 | Alpha: 2.0322
+      [BASE] CINF/PRU | W_A: 6.0% | W_B: -3.8% | Inno Z: -1.30 | ECDF: 0.83 | Alpha: 0.0594
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-13 | Progress:  24.2% (30/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=20 | Promoted=1 | Live=4
+  --> Eff Gross=1.19 | Port Vol=0.0461 | SPY Overlay=-36.1%
+      [BASE] FANG/OXY | W_A: -30.0% | W_B: 26.2% | Inno Z: 1.39 | ECDF: 0.98 | Alpha: 0.4864
+      [OVERRIDE] APA/FANG | W_A: 28.2% | W_B: -24.9% | Inno Z: -0.62 | ECDF: 0.97 | Alpha: 0.6492
+      [BASE] FANG/TRGP | W_A: -18.4% | W_B: 15.3% | Inno Z: 1.23 | ECDF: 0.95 | Alpha: 0.2144
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-14 | Progress:  25.0% (31/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=21 | Promoted=1 | Live=5
+  --> Eff Gross=0.81 | Port Vol=0.0408 | SPY Overlay=-6.4%
+      [OVERRIDE] HAL/WMB | W_A: -22.4% | W_B: 27.7% | Inno Z: 0.73 | ECDF: 0.98 | Alpha: 1.0777
+      [BASE] FANG/OXY | W_A: -20.3% | W_B: 17.9% | Inno Z: 1.39 | ECDF: 0.98 | Alpha: 0.8068
+      [OVERRIDE] APA/FANG | W_A: 13.3% | W_B: -11.7% | Inno Z: -0.62 | ECDF: 0.94 | Alpha: 0.3043
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-15 | Progress:  25.8% (32/124)] Cause: SIGNAL_EXIT
+  --> Ghost=20 | Promoted=1 | Live=3
+  --> Eff Gross=0.80 | Port Vol=0.0514 | SPY Overlay=-20.4%
+      [BASE] FANG/OXY | W_A: -26.2% | W_B: 23.2% | Inno Z: 1.39 | ECDF: 0.94 | Alpha: 0.3612
+      [BASE] DELL/HPQ | W_A: 24.7% | W_B: -22.1% | Inno Z: -0.97 | ECDF: 0.98 | Alpha: 1.1084
+      [BASE] FANG/TRGP | W_A: -9.1% | W_B: 7.6% | Inno Z: 1.23 | ECDF: 0.79 | Alpha: 0.0645
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-16 | Progress:  26.6% (33/124)] Cause: SIGNAL_EXIT
+  --> Ghost=21 | Promoted=1 | Live=2
+  --> Eff Gross=0.75 | Port Vol=0.0480 | SPY Overlay=-36.0%
+      [OVERRIDE] CDNS/KLAC | W_A: 30.0% | W_B: -19.2% | Inno Z: -0.54 | ECDF: 0.95 | Alpha: 0.8335
+      [BASE] DELL/HPQ | W_A: 9.0% | W_B: -8.1% | Inno Z: -0.97 | ECDF: 0.60 | Alpha: 0.0787
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-20 | Progress:  27.4% (34/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=24 | Promoted=1 | Live=2
+  --> Eff Gross=0.59 | Port Vol=0.0534 | SPY Overlay=-13.9%
+      [BASE] DELL/HPQ | W_A: 26.5% | W_B: -23.7% | Inno Z: -0.97 | ECDF: 0.78 | Alpha: 0.1529
+      [OVERRIDE] UAL/SWK | W_A: -18.5% | W_B: 15.0% | Inno Z: 0.50 | ECDF: 0.92 | Alpha: 0.5411
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-22 | Progress:  29.0% (36/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=23 | Promoted=1 | Live=3
+  --> Eff Gross=0.45 | Port Vol=0.0314 | SPY Overlay=0.3%
+      [OVERRIDE] APA/HAL | W_A: 22.8% | W_B: -21.4% | Inno Z: -0.73 | ECDF: 0.98 | Alpha: 1.1546
+      [BASE] DELL/HPQ | W_A: 12.6% | W_B: -11.4% | Inno Z: -0.97 | ECDF: 0.98 | Alpha: 1.0208
+      [OVERRIDE] UAL/SWK | W_A: -9.6% | W_B: 7.8% | Inno Z: 0.50 | ECDF: 0.92 | Alpha: 0.9958
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-23 | Progress:  29.8% (37/124)] Cause: SIGNAL_EXIT
+  --> Ghost=26 | Promoted=1 | Live=3
+  --> Eff Gross=0.57 | Port Vol=0.0315 | SPY Overlay=-11.7%
+      [OVERRIDE] APA/HAL | W_A: 16.5% | W_B: -15.5% | Inno Z: -0.73 | ECDF: 0.89 | Alpha: 0.2542
+      [BASE] DELL/HPQ | W_A: 14.6% | W_B: -13.3% | Inno Z: -0.97 | ECDF: 0.92 | Alpha: 0.6541
+      [OVERRIDE] EOG/TRGP | W_A: 13.9% | W_B: -8.2% | Inno Z: -0.51 | ECDF: 1.00 | Alpha: 0.4610
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-26 | Progress:  30.6% (38/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=28 | Promoted=1 | Live=3
+  --> Eff Gross=1.08 | Port Vol=0.1040 | SPY Overlay=-48.4%
+      [BASE] DELL/HPQ | W_A: 30.0% | W_B: -27.7% | Inno Z: -0.97 | ECDF: 0.97 | Alpha: 1.0123
+      [BASE] PANW/SNPS | W_A: -24.0% | W_B: 17.3% | Inno Z: 1.02 | ECDF: 0.97 | Alpha: 2.1853
+      [OVERRIDE] APA/HAL | W_A: 6.0% | W_B: -5.6% | Inno Z: -0.73 | ECDF: 0.65 | Alpha: 0.0616
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-27 | Progress:  31.5% (39/124)] Cause: SIGNAL_EXIT
+  --> Ghost=27 | Promoted=0 | Live=1
+  --> Eff Gross=0.78 | Port Vol=0.1727 | SPY Overlay=-33.3%
+      [BASE] PANW/SNPS | W_A: -45.0% | W_B: 32.7% | Inno Z: 1.02 | ECDF: 0.95 | Alpha: 1.3134
+------------------------------------------------------------
+
+[Rebalance @ 2024-02-29 | Progress:  33.1% (41/124)] Cause: SIGNAL_EXIT
+  --> Ghost=29 | Promoted=1 | Live=1
+  --> Eff Gross=0.39 | Port Vol=0.0144 | SPY Overlay=9.0%
+      [BASE] PPL/XEL | W_A: -30.0% | W_B: 24.8% | Inno Z: 1.40 | ECDF: 1.00 | Alpha: 1.8021
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-01 | Progress:  33.9% (42/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=26 | Promoted=1 | Live=2
+  --> Eff Gross=0.75 | Port Vol=0.0295 | SPY Overlay=29.8%
+      [BASE] PPL/XEL | W_A: -25.0% | W_B: 20.4% | Inno Z: 1.40 | ECDF: 0.98 | Alpha: 0.5426
+      [OVERRIDE] VTR/VICI | W_A: -20.0% | W_B: 17.6% | Inno Z: 0.81 | ECDF: 1.00 | Alpha: 1.4088
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-04 | Progress:  34.7% (43/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=23 | Promoted=1 | Live=3
+  --> Eff Gross=0.68 | Port Vol=0.0340 | SPY Overlay=22.9%
+      [BASE] PPL/XEL | W_A: -25.1% | W_B: 20.5% | Inno Z: 1.40 | ECDF: 0.97 | Alpha: 0.9875
+      [OVERRIDE] FANG/OKE | W_A: 13.6% | W_B: -14.6% | Inno Z: -0.56 | ECDF: 0.97 | Alpha: 0.5988
+      [OVERRIDE] VTR/VICI | W_A: -6.4% | W_B: 5.6% | Inno Z: 0.81 | ECDF: 0.71 | Alpha: 0.1267
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-05 | Progress:  35.5% (44/124)] Cause: SIGNAL_EXIT
+  --> Ghost=27 | Promoted=1 | Live=2
+  --> Eff Gross=0.69 | Port Vol=0.0583 | SPY Overlay=-31.3%
+      [OVERRIDE] URI/GWW | W_A: 30.0% | W_B: -29.5% | Inno Z: -0.54 | ECDF: 0.97 | Alpha: 0.8189
+      [OVERRIDE] FANG/OKE | W_A: 7.5% | W_B: -8.0% | Inno Z: -0.56 | ECDF: 0.78 | Alpha: 0.1166
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-06 | Progress:  36.3% (45/124)] Cause: SIGNAL_EXIT
+  --> Ghost=24 | Promoted=2 | Live=2
+  --> Eff Gross=0.82 | Port Vol=0.1098 | SPY Overlay=25.4%
+      [OVERRIDE] NTRS/TFC | W_A: 30.0% | W_B: -17.5% | Inno Z: -0.94 | ECDF: 1.00 | Alpha: 1.7505
+      [OVERRIDE] PANW/SNPS | W_A: 26.7% | W_B: -18.9% | Inno Z: -0.72 | ECDF: 0.95 | Alpha: 1.2277
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-08 | Progress:  37.9% (47/124)] Cause: SIGNAL_EXIT
+  --> Ghost=24 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-13 | Progress:  40.3% (50/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=28 | Promoted=1 | Live=1
+  --> Eff Gross=0.51 | Port Vol=0.0343 | SPY Overlay=-21.4%
+      [OVERRIDE] APA/HAL | W_A: -30.0% | W_B: 28.3% | Inno Z: 0.78 | ECDF: 0.98 | Alpha: 1.2764
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-14 | Progress:  41.1% (51/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=26 | Promoted=2 | Live=3
+  --> Eff Gross=0.97 | Port Vol=0.1889 | SPY Overlay=-34.2%
+      [OVERRIDE] LEN/PHM | W_A: 28.5% | W_B: -25.4% | Inno Z: -0.77 | ECDF: 1.00 | Alpha: 1.1029
+      [BASE] ECHO/DIS | W_A: 28.5% | W_B: -10.9% | Inno Z: -1.31 | ECDF: 0.90 | Alpha: 2.2195
+      [OVERRIDE] APA/HAL | W_A: -6.0% | W_B: 5.6% | Inno Z: 0.78 | ECDF: 0.79 | Alpha: 0.2175
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-15 | Progress:  41.9% (52/124)] Cause: SIGNAL_EXIT
+  --> Ghost=25 | Promoted=1 | Live=2
+  --> Eff Gross=0.70 | Port Vol=0.1125 | SPY Overlay=-25.2%
+      [OVERRIDE] UAL/SWK | W_A: -30.0% | W_B: 24.1% | Inno Z: 0.59 | ECDF: 0.92 | Alpha: 0.7061
+      [BASE] ECHO/DIS | W_A: 15.0% | W_B: -5.6% | Inno Z: -1.31 | ECDF: 0.79 | Alpha: 1.4996
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-19 | Progress:  43.5% (54/124)] Cause: SIGNAL_EXIT
+  --> Ghost=26 | Promoted=0 | Live=1
+  --> Eff Gross=0.73 | Port Vol=0.2925 | SPY Overlay=-28.4%
+      [BASE] ECHO/DIS | W_A: 45.0% | W_B: -15.9% | Inno Z: -1.31 | ECDF: 0.43 | Alpha: 2.3540
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-25 | Progress:  46.8% (58/124)] Cause: SIGNAL_EXIT
+  --> Ghost=26 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-26 | Progress:  47.6% (59/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=29 | Promoted=4 | Live=4
+  --> Eff Gross=1.45 | Port Vol=0.1081 | SPY Overlay=-30.0%
+      [OVERRIDE] APA/TRGP | W_A: 29.1% | W_B: -23.7% | Inno Z: -0.60 | ECDF: 0.97 | Alpha: 0.9810
+      [OVERRIDE] APA/COP | W_A: 28.8% | W_B: -35.3% | Inno Z: -0.76 | ECDF: 1.00 | Alpha: 1.4067
+      [OVERRIDE] APA/WMB | W_A: 28.7% | W_B: -39.2% | Inno Z: -0.66 | ECDF: 0.94 | Alpha: 0.9136
+------------------------------------------------------------
+
+[Rebalance @ 2024-03-28 | Progress:  49.2% (61/124)] Cause: SIGNAL_EXIT
+  --> Ghost=34 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-01 | Progress:  50.0% (62/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=32 | Promoted=1 | Live=1
+  --> Eff Gross=0.31 | Port Vol=0.0357 | SPY Overlay=1.0%
+      [OVERRIDE] APA/WMB | W_A: -30.0% | W_B: 41.1% | Inno Z: 0.63 | ECDF: 0.92 | Alpha: 0.8254
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-03 | Progress:  51.6% (64/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=34 | Promoted=1 | Live=2
+  --> Eff Gross=0.99 | Port Vol=0.1122 | SPY Overlay=-48.9%
+      [BASE] INTC/WDC | W_A: 44.0% | W_B: -17.2% | Inno Z: -1.79 | ECDF: 0.98 | Alpha: 3.7170
+      [OVERRIDE] APA/WMB | W_A: -6.0% | W_B: 8.2% | Inno Z: 0.63 | ECDF: 0.33 | Alpha: 0.0243
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-04 | Progress:  52.4% (65/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=35 | Promoted=1 | Live=3
+  --> Eff Gross=1.10 | Port Vol=0.1122 | SPY Overlay=-46.2%
+      [BASE] INTC/WDC | W_A: 30.0% | W_B: -11.5% | Inno Z: -1.79 | ECDF: 0.92 | Alpha: 1.1347
+      [OVERRIDE] UAL/SWK | W_A: 28.2% | W_B: -22.4% | Inno Z: -0.53 | ECDF: 0.89 | Alpha: 0.6734
+      [OVERRIDE] APA/WMB | W_A: -6.0% | W_B: 8.2% | Inno Z: 0.63 | ECDF: 0.62 | Alpha: 0.0496
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-05 | Progress:  53.2% (66/124)] Cause: SIGNAL_EXIT
+  --> Ghost=35 | Promoted=0 | Live=1
+  --> Eff Gross=0.47 | Port Vol=0.0615 | SPY Overlay=-17.0%
+      [OVERRIDE] UAL/SWK | W_A: 30.0% | W_B: -23.7% | Inno Z: -0.53 | ECDF: 0.44 | Alpha: 0.0254
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-08 | Progress:  54.0% (67/124)] Cause: SIGNAL_EXIT
+  --> Ghost=35 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-10 | Progress:  55.6% (69/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=33 | Promoted=1 | Live=1
+  --> Eff Gross=0.60 | Port Vol=0.0357 | SPY Overlay=-30.2%
+      [OVERRIDE] BLDR/HUBB | W_A: 30.0% | W_B: -33.1% | Inno Z: -0.74 | ECDF: 1.00 | Alpha: 1.5111
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-11 | Progress:  56.5% (70/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=34 | Promoted=1 | Live=1
+  --> Eff Gross=0.99 | Port Vol=0.0524 | SPY Overlay=54.0%
+      [BASE] GL/WRB | W_A: 45.0% | W_B: -28.8% | Inno Z: -5.00 | ECDF: 1.00 | Alpha: 9.2418
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-15 | Progress:  58.1% (72/124)] Cause: SIGNAL_EXIT
+  --> Ghost=33 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-17 | Progress:  59.7% (74/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=34 | Promoted=1 | Live=1
+  --> Eff Gross=0.45 | Port Vol=0.0515 | SPY Overlay=-14.9%
+      [BASE] UAL/SWK | W_A: -30.0% | W_B: 24.4% | Inno Z: 2.78 | ECDF: 1.00 | Alpha: 4.3719
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-19 | Progress:  61.3% (76/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=38 | Promoted=1 | Live=2
+  --> Eff Gross=0.59 | Port Vol=0.0720 | SPY Overlay=-14.2%
+      [BASE] UAL/SWK | W_A: -27.3% | W_B: 22.8% | Inno Z: 2.78 | ECDF: 0.79 | Alpha: 2.8681
+      [OVERRIDE] FITB/KEY | W_A: -17.7% | W_B: 14.2% | Inno Z: 0.92 | ECDF: 1.00 | Alpha: 1.4354
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-22 | Progress:  62.1% (77/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=41 | Promoted=1 | Live=2
+  --> Eff Gross=0.44 | Port Vol=0.0578 | SPY Overlay=0.0%
+      [OVERRIDE] FITB/KEY | W_A: -22.5% | W_B: 18.2% | Inno Z: 0.92 | ECDF: 0.97 | Alpha: 0.7265
+      [BASE] UAL/SWK | W_A: -21.8% | W_B: 18.3% | Inno Z: 2.78 | ECDF: 0.95 | Alpha: 1.5734
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-23 | Progress:  62.9% (78/124)] Cause: SIGNAL_EXIT
+  --> Ghost=43 | Promoted=2 | Live=3
+  --> Eff Gross=1.08 | Port Vol=0.0404 | SPY Overlay=45.3%
+      [OVERRIDE] BEN/IVZ | W_A: -30.0% | W_B: 21.2% | Inno Z: 0.83 | ECDF: 1.00 | Alpha: 0.8863
+      [OVERRIDE] KMB/PG | W_A: -26.3% | W_B: 20.7% | Inno Z: 0.76 | ECDF: 1.00 | Alpha: 1.0799
+      [BASE] UAL/SWK | W_A: -6.0% | W_B: 5.1% | Inno Z: 2.78 | ECDF: 0.08 | Alpha: 0.0058
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-24 | Progress:  63.7% (79/124)] Cause: SIGNAL_EXIT
+  --> Ghost=34 | Promoted=1 | Live=3
+  --> Eff Gross=0.61 | Port Vol=0.0295 | SPY Overlay=15.5%
+      [OVERRIDE] BEN/IVZ | W_A: -19.5% | W_B: 13.8% | Inno Z: 0.83 | ECDF: 0.98 | Alpha: 0.3224
+      [OVERRIDE] IR/WAB | W_A: 17.1% | W_B: -13.5% | Inno Z: -0.83 | ECDF: 1.00 | Alpha: 1.8048
+      [OVERRIDE] KMB/PG | W_A: -8.4% | W_B: 6.7% | Inno Z: 0.76 | ECDF: 0.97 | Alpha: 0.1824
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-25 | Progress:  64.5% (80/124)] Cause: SIGNAL_EXIT
+  --> Ghost=34 | Promoted=1 | Live=2
+  --> Eff Gross=0.48 | Port Vol=0.0542 | SPY Overlay=9.8%
+      [OVERRIDE] EQT/WMB | W_A: -30.0% | W_B: 24.8% | Inno Z: 0.55 | ECDF: 0.94 | Alpha: 0.7042
+      [OVERRIDE] IR/WAB | W_A: 8.3% | W_B: -6.5% | Inno Z: -0.83 | ECDF: 0.86 | Alpha: 0.1127
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-26 | Progress:  65.3% (81/124)] Cause: SIGNAL_EXIT
+  --> Ghost=28 | Promoted=0 | Live=1
+  --> Eff Gross=0.44 | Port Vol=0.0535 | SPY Overlay=13.7%
+      [OVERRIDE] EQT/WMB | W_A: -30.0% | W_B: 24.9% | Inno Z: 0.55 | ECDF: 0.79 | Alpha: 0.2830
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-29 | Progress:  66.1% (82/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=31 | Promoted=1 | Live=2
+  --> Eff Gross=0.71 | Port Vol=0.0445 | SPY Overlay=-17.2%
+      [BASE] BEN/IVZ | W_A: 45.0% | W_B: -31.4% | Inno Z: -1.26 | ECDF: 1.00 | Alpha: 1.6788
+      [OVERRIDE] EQT/WMB | W_A: -9.2% | W_B: 7.7% | Inno Z: 0.55 | ECDF: 0.76 | Alpha: 0.3057
+------------------------------------------------------------
+
+[Rebalance @ 2024-04-30 | Progress:  66.9% (83/124)] Cause: SIGNAL_EXIT
+  --> Ghost=31 | Promoted=1 | Live=2
+  --> Eff Gross=1.07 | Port Vol=0.0984 | SPY Overlay=-35.8%
+      [BASE] BEN/IVZ | W_A: 40.9% | W_B: -28.4% | Inno Z: -1.26 | ECDF: 0.97 | Alpha: 0.8353
+      [OVERRIDE] MRVL/NVDA | W_A: 30.0% | W_B: -17.5% | Inno Z: -0.58 | ECDF: 0.81 | Alpha: 1.0030
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-02 | Progress:  68.5% (85/124)] Cause: SIGNAL_EXIT
+  --> Ghost=36 | Promoted=3 | Live=4
+  --> Eff Gross=0.67 | Port Vol=0.0427 | SPY Overlay=7.1%
+      [BASE] APA/EOG | W_A: 26.3% | W_B: -30.1% | Inno Z: -0.98 | ECDF: 1.00 | Alpha: 2.1996
+      [BASE] BEN/IVZ | W_A: 17.6% | W_B: -12.0% | Inno Z: -1.26 | ECDF: 0.68 | Alpha: 0.9364
+      [BASE] CAT/HWM | W_A: 9.1% | W_B: -4.8% | Inno Z: -1.20 | ECDF: 0.98 | Alpha: 1.3016
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-03 | Progress:  69.4% (86/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=31 | Promoted=1 | Live=4
+  --> Eff Gross=1.04 | Port Vol=0.0426 | SPY Overlay=29.0%
+      [BASE] ETN/IR | W_A: -30.0% | W_B: 24.3% | Inno Z: 1.22 | ECDF: 1.00 | Alpha: 2.7650
+      [BASE] BEN/IVZ | W_A: 24.1% | W_B: -16.5% | Inno Z: -1.26 | ECDF: 0.11 | Alpha: 0.1179
+      [BASE] APA/HAL | W_A: 17.7% | W_B: -16.3% | Inno Z: -0.99 | ECDF: 0.76 | Alpha: 0.2175
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-06 | Progress:  70.2% (87/124)] Cause: SIGNAL_EXIT
+  --> Ghost=28 | Promoted=1 | Live=2
+  --> Eff Gross=0.98 | Port Vol=0.0572 | SPY Overlay=52.7%
+      [OVERRIDE] FIX/GWW | W_A: -25.1% | W_B: 23.7% | Inno Z: 0.71 | ECDF: 0.98 | Alpha: 1.7989
+      [BASE] ETN/IR | W_A: -19.9% | W_B: 16.2% | Inno Z: 1.22 | ECDF: 0.97 | Alpha: 0.5105
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-07 | Progress:  71.0% (88/124)] Cause: SIGNAL_EXIT
+  --> Ghost=26 | Promoted=0 | Live=1
+  --> Eff Gross=0.64 | Port Vol=0.0591 | SPY Overlay=34.4%
+      [OVERRIDE] FIX/GWW | W_A: -30.0% | W_B: 28.4% | Inno Z: 0.71 | ECDF: 0.83 | Alpha: 0.4531
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-08 | Progress:  71.8% (89/124)] Cause: SIGNAL_EXIT
+  --> Ghost=29 | Promoted=1 | Live=1
+  --> Eff Gross=0.95 | Port Vol=0.1970 | SPY Overlay=-50.1%
+      [BASE] ECHO/DIS | W_A: 45.0% | W_B: -18.1% | Inno Z: -1.70 | ECDF: 1.00 | Alpha: 2.8541
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-10 | Progress:  73.4% (91/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=33 | Promoted=1 | Live=2
+  --> Eff Gross=1.18 | Port Vol=0.1768 | SPY Overlay=-55.0%
+      [BASE] ECHO/DIS | W_A: 35.8% | W_B: -14.2% | Inno Z: -1.70 | ECDF: 0.52 | Alpha: 0.6092
+      [OVERRIDE] BEN/IVZ | W_A: 27.6% | W_B: -18.8% | Inno Z: -0.54 | ECDF: 0.94 | Alpha: 0.6133
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-15 | Progress:  75.8% (94/124)] Cause: SIGNAL_EXIT
+  --> Ghost=32 | Promoted=0 | Live=1
+  --> Eff Gross=0.99 | Port Vol=0.2097 | SPY Overlay=-54.0%
+      [BASE] ECHO/DIS | W_A: 45.0% | W_B: -18.7% | Inno Z: -1.70 | ECDF: 0.87 | Alpha: 2.3267
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-16 | Progress:  76.6% (95/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=33 | Promoted=1 | Live=2
+  --> Eff Gross=0.41 | Port Vol=0.0899 | SPY Overlay=2.5%
+      [OVERRIDE] MRVL/NVDA | W_A: -30.0% | W_B: 17.7% | Inno Z: 0.71 | ECDF: 0.89 | Alpha: 1.3158
+      [BASE] ECHO/DIS | W_A: 9.0% | W_B: -3.7% | Inno Z: -1.70 | ECDF: 0.11 | Alpha: 0.1028
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-20 | Progress:  78.2% (97/124)] Cause: SIGNAL_EXIT
+  --> Ghost=31 | Promoted=0 | Live=1
+  --> Eff Gross=0.99 | Port Vol=0.2070 | SPY Overlay=-54.0%
+      [BASE] ECHO/DIS | W_A: 45.0% | W_B: -19.3% | Inno Z: -1.70 | ECDF: 0.87 | Alpha: 1.7997
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-21 | Progress:  79.0% (98/124)] Cause: SIGNAL_EXIT
+  --> Ghost=33 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-23 | Progress:  80.6% (100/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=39 | Promoted=1 | Live=1
+  --> Eff Gross=0.99 | Port Vol=0.0979 | SPY Overlay=-54.0%
+      [BASE] MPWR/NVDA | W_A: 45.0% | W_B: -27.1% | Inno Z: -1.15 | ECDF: 1.00 | Alpha: 1.7362
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-28 | Progress:  82.3% (102/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=44 | Promoted=1 | Live=2
+  --> Eff Gross=1.01 | Port Vol=0.0884 | SPY Overlay=-55.0%
+      [BASE] MPWR/NVDA | W_A: 30.6% | W_B: -18.1% | Inno Z: -1.15 | ECDF: 0.90 | Alpha: 1.1340
+      [OVERRIDE] AMAT/NVDA | W_A: 15.2% | W_B: -8.2% | Inno Z: -0.61 | ECDF: 0.97 | Alpha: 0.6705
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-30 | Progress:  83.9% (104/124)] Cause: SIGNAL_EXIT
+  --> Ghost=40 | Promoted=0 | Live=1
+  --> Eff Gross=0.61 | Port Vol=0.0509 | SPY Overlay=-31.0%
+      [OVERRIDE] AMAT/NVDA | W_A: 30.0% | W_B: -16.1% | Inno Z: -0.61 | ECDF: 0.17 | Alpha: 0.0547
+------------------------------------------------------------
+
+[Rebalance @ 2024-05-31 | Progress:  84.7% (105/124)] Cause: SIGNAL_EXIT
+  --> Ghost=42 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-06-03 | Progress:  85.5% (106/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=33 | Promoted=1 | Live=1
+  --> Eff Gross=0.34 | Port Vol=0.0229 | SPY Overlay=-3.5%
+      [OVERRIDE] FANG/TRGP | W_A: 30.0% | W_B: -24.5% | Inno Z: -0.51 | ECDF: 1.00 | Alpha: 0.8439
+------------------------------------------------------------
+
+[Rebalance @ 2024-06-05 | Progress:  87.1% (108/124)] Cause: SIGNAL_EXIT
+  --> Ghost=34 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2024-06-10 | Progress:  89.5% (111/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=31 | Promoted=1 | Live=1
+  --> Eff Gross=0.99 | Port Vol=0.1888 | SPY Overlay=-54.0%
+      [BASE] ECHO/WBD | W_A: 45.0% | W_B: -19.4% | Inno Z: -1.32 | ECDF: 0.89 | Alpha: 1.7478
+------------------------------------------------------------
+
+[Rebalance @ 2024-06-14 | Progress:  92.7% (115/124)] Cause: SIGNAL_EXIT
+  --> Ghost=30 | Promoted=1 | Live=1
+  --> Eff Gross=0.66 | Port Vol=0.1253 | SPY Overlay=-36.0%
+      [OVERRIDE] ECHO/DIS | W_A: 30.0% | W_B: -12.7% | Inno Z: -0.73 | ECDF: 0.81 | Alpha: 0.7119
+------------------------------------------------------------
+
+[Rebalance @ 2024-06-25 | Progress:  97.6% (121/124)] Cause: SIGNAL_ENTRY
+  --> Ghost=24 | Promoted=1 | Live=2
+  --> Eff Gross=0.79 | Port Vol=0.1244 | SPY Overlay=-25.0%
+      [OVERRIDE] ECHO/DIS | W_A: 30.0% | W_B: -12.5% | Inno Z: -0.73 | ECDF: 0.49 | Alpha: 0.6097
+      [OVERRIDE] BKR/APA | W_A: -24.3% | W_B: 13.5% | Inno Z: 0.52 | ECDF: 1.00 | Alpha: 0.4139
+------------------------------------------------------------
+
+[Rebalance @ 2024-06-27 | Progress:  99.2% (123/124)] Cause: SIGNAL_EXIT
+  --> Ghost=26 | Promoted=0 | Live=1
+  --> Eff Gross=0.65 | Port Vol=0.1138 | SPY Overlay=-34.7%
+      [OVERRIDE] ECHO/DIS | W_A: 30.0% | W_B: -12.6% | Inno Z: -0.73 | ECDF: 0.46 | Alpha: 0.5117
+------------------------------------------------------------
+
+[Rebalance @ 2024-06-28 | Progress: 100.0% (124/124)] Cause: SIGNAL_EXIT
+  --> Ghost=27 | Promoted=0 | Live=0
+------------------------------------------------------------
+<<< Stage: WalkForwardStage complete.
+
+>>> Stage: AttributionStage
+<<< Stage: AttributionStage complete.
+
+>>> Stage: ReportingStage
+
+=====================================================================================
+v3.2 RELAXED BETA — FUNNEL CONVERSION ATTRIBUTION
+=====================================================================================
+  Funnel Tier / Portfolio Stage          | Ann. Return [%]    | Sortino Ratio     
+-------------------------------------------------------------------------------------
+  Ghost Portfolio (Raw Universe)         |              6.62% |             0.8705
+  Promoted Portfolio (Parametric Gated)  |            609.77% |             3.0319
+  Live Portfolio (SLSQP Optimized)       |              0.01% |             0.0703
+-------------------------------------------------------------------------------------
+  --> Parametric Selection Delta         |           +603.15% |            +2.1614
+  --> Optimizer Allocation Delta         |           -609.76% |            -2.9615
+=====================================================================================
+
+=====================================================================================
+MARKET NEUTRALITY DIAGNOSTIC (RELAXED: 5% BETA CAP)
+=====================================================================================
+                    Metric  Value Threshold Status
+          Annualized Alpha -0.71%       N/A   INFO
+         Market Beta (β_m) 0.0591  < |0.05|   FAIL
+              Beta p-value 0.6247   >= 0.05   PASS
+          Beta t-statistic 0.4905  < |1.96|   PASS
+   Variance Explained (R²)  0.20%    < 0.5%   PASS
+Bull Market Beta (R_m > 0) 0.0520  < |0.05|   FAIL
+Bear Market Beta (R_m < 0) 0.3501  < |0.05|   FAIL
+-------------------------------------------------------------------------------------
+  VERDICT: Market Neutral = FALSE | Failures: Market Beta (β_m), Bull Market Beta (R_m > 0), Bear Market Beta (R_m < 0)
+=====================================================================================
+
+=====================================================================================
+INVESTMENT COMMITTEE PAIR REVIEW TEARSHEET (ATTRIBUTED BY REGIME)
+=====================================================================================
+Strategy_Origin   Pair_Legs  Total_Return_[%]  Sharpe_Ratio  Sortino_Ratio  Max_DD_[%]  Win_Rate_[%]  Total_Trades
+           BASE   APA / EOG          1.000775      0.738044       1.397346    0.010062     50.000000             6
+           BASE   CAT / HWM          0.097295      0.607894       0.599726    0.002175     50.000000             4
+           BASE  DELL / HPQ          2.496295      0.572263       0.111548    0.628713     37.500000             8
+           BASE  CINF / PRU          1.575471      0.539932       1.382963    0.028971     80.000000            10
+           BASE   APA / HAL          0.691848      0.498939       0.149391    0.217725     71.428571            14
+           BASE  ECHO / WBD          1.496293      0.219705       0.016242    1.794157     75.000000             4
+           BASE    GL / WRB          0.761635      0.094564       0.006529    2.457846    100.000000             3
+           BASE    ETN / IR          0.053011      0.061541       0.008481    0.277696     33.333333             6
+           BASE   AXP / PRU         -0.159471     -0.284536      -0.012500    0.250273     50.000000             4
+           BASE  PSKY / DIS         -1.014566     -0.455465      -0.023420    1.014566      0.000000             6
+           BASE   PPL / XEL         -1.114266     -0.514690      -0.025944    1.159982     20.000000             5
+           BASE MPWR / NVDA         -2.160808     -0.519358      -0.031646    2.522258     16.666667             6
+           BASE   UAL / SWK         -2.288851     -0.527706      -0.054389    2.850323     35.000000            20
+           BASE  INTC / WDC         -2.305422     -0.579999      -0.029188    2.305422      0.000000             4
+           BASE  FANG / OXY         -1.323573     -0.636812      -0.037006    1.323573     40.000000             5
+       OVERRIDE   APA / COP          0.951661      0.665174       1.667312    0.010322     60.000000             5
+       OVERRIDE  NXPI / TER          0.105208      0.636216       0.530742    0.002657     50.000000             2
+       OVERRIDE  FANG / OKE          0.145246      0.630709       0.431364    0.004513     75.000000             4
+       OVERRIDE  APA / FANG          0.165102      0.612428       0.261496    0.008462     50.000000             4
+       OVERRIDE PANW / SNPS          3.243151      0.604848       0.288962    0.231722     75.000000             4
+       OVERRIDE  APA / TRGP          1.154285      0.582291       0.603116    0.055482     50.000000             6
+       OVERRIDE    IR / WAB          0.201299      0.526041       0.555632    0.004856     50.000000             4
+       OVERRIDE    KMB / PG          0.258649      0.482309       0.458114    0.007569     50.000000             4
+       OVERRIDE  EOG / TRGP          0.267934      0.455395       1.033824    0.003475    100.000000             2
+       OVERRIDE BLDR / HUBB          0.378109      0.449152       0.500822    0.010123    100.000000             2
+       OVERRIDE   LEN / PHM          0.155276      0.436563       0.242585    0.008583     50.000000             2
+       OVERRIDE   HAL / WMB          0.100656      0.426409       0.169771    0.007950    100.000000             2
+       OVERRIDE   BKR / EOG          0.629146      0.364753       0.042388    0.352651     80.000000             5
+       OVERRIDE MRVL / NVDA          0.905668      0.362220       0.033827    0.631149     50.000000             8
+       OVERRIDE     C / SYF          0.237668      0.358358       0.056797    0.086791     33.333333             6
+       OVERRIDE ANET / SMCI          0.622830      0.272016       0.058110    0.565009     36.363636            11
+       OVERRIDE  HAL / TRGP          0.211222      0.229816       0.023666    0.169563     50.000000             4
+       OVERRIDE   APA / WMB          0.519320      0.214704       0.032182    0.474277     25.000000            12
+       OVERRIDE  ECHO / DIS          2.265550      0.199943       0.030486    5.111500     41.935484            31
+       OVERRIDE   BKR / APA          0.374736      0.170444       0.017306    0.554949     75.000000             8
+       OVERRIDE   FIX / GWW          0.000102      0.000668       0.000040    0.122447     50.000000             2
+       OVERRIDE AMAT / NVDA         -0.031922     -0.009107      -0.000711    0.958206     25.000000             4
+       OVERRIDE  FITB / KEY         -0.024773     -0.049662      -0.002728    0.175458     50.000000             2
+       OVERRIDE   BEN / IVZ         -0.162969     -0.096572      -0.010764    0.666814     50.000000            18
+       OVERRIDE FANG / TRGP         -0.499223     -0.232220      -0.017390    0.884327     33.333333            12
+       OVERRIDE  VTR / VICI         -0.040141     -0.245411      -0.011245    0.067379     50.000000             4
+       OVERRIDE   EQT / WMB         -0.306575     -0.252995      -0.017016    0.692627     42.857143             7
+       OVERRIDE AMAT / MRVL         -0.149953     -0.307374      -0.013291    0.213645     50.000000             2
+       OVERRIDE  NTRS / TFC         -0.399247     -0.446468      -0.027673    0.552900     16.666667             6
+       OVERRIDE   APA / OXY         -0.107694     -0.478496      -0.019665    0.107694     50.000000             2
+       OVERRIDE CDNS / KLAC         -0.154128     -0.485169      -0.019939    0.154128      0.000000             2
+       OVERRIDE   URI / GWW         -0.102674     -0.505889      -0.020790    0.102674     50.000000             2
+       OVERRIDE  CFG / FITB         -0.105392     -0.617318      -0.031063    0.105392     50.000000             2
+       OVERRIDE AVGO / SMCI         -0.529394     -0.636930      -0.037007    0.529394     25.000000             4
+       OVERRIDE  JBL / SMCI         -0.257874     -0.647717      -0.032591    0.257874     33.333333             3
+
+=====================================================================================
+WALK-FORWARD NET PORTFOLIO STATS (POST-FEES & EXECUTION LAG)
+=====================================================================================
+Start                               2024-01-02 00:00:00
+End                                 2024-06-28 00:00:00
+Period                                124 days 00:00:00
+Start Value                                    250000.0
+End Value                                 250313.171499
+Total Return [%]                               0.125269
+Benchmark Return [%]                            9.71498
+Max Gross Exposure [%]                       263.286313
+Total Fees Paid                             3525.820096
+Max Drawdown [%]                               8.685459
+Max Drawdown Duration                  81 days 00:00:00
+Total Trades                                        280
+Total Closed Trades                                 277
+Total Open Trades                                     3
+Open Trade PnL                              -586.827699
+Win Rate [%]                                  45.487365
+Best Trade [%]                                11.029855
+Worst Trade [%]                              -11.346152
+Avg Winning Trade [%]                          2.116934
+Avg Losing Trade [%]                          -1.814444
+Avg Winning Trade Duration    2 days 09:54:17.142857142
+Avg Losing Trade Duration     2 days 13:59:12.317880794
+Profit Factor                                   1.00783
+Expectancy                                     3.249095
+Sharpe Ratio                                   0.106626
+Calmar Ratio                                   0.042506
+Omega Ratio                                    1.016838
+Sortino Ratio                                  0.147877
+
+=====================================================================================
+ACTIONABLE MARKET-ON-OPEN (MOO) ORDER BLOTTER FOR NEXT SESSION
+=====================================================================================
+Empty DataFrame
+Columns: [Ticker, Action, Order_Type, Delta_Shares, Target_Shares, Current_Shares, Est_Order_USD, Target_Weight_%, ADV_Participation_%, Price_Ref]
+Index: []
+
+[Reporting] Saving experiment to: 'results/6/'
+  Saved config -> results/6/config.json
+  Saved metrics -> results/6/csv/metrics.csv
+  Saved tearsheets -> results/6/csv/committee_report.csv
+  Saved blotter -> results/6/csv/moo_blotter.csv
+  Saved trade records -> results/6/csv/trade_records.csv
+  Saved portfolio stats -> results/6/csv/portfolio_stats.csv
+  Saved plot -> results/6/imgs/funnel_sizing.png
+  Saved plot -> results/6/imgs/cumulative_performance.png
+[Reporting] Runtime log -> results/6/logs.txt
+[ReportingStage] Complete.

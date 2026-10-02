@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+CHRW,BUY,MOO,4078,4078,0,599855.59,59.99,0.043,147.1
+EXPD,SELL,MOO,3058,-3058,0,513407.62,-51.34,0.035,167.89
+SPY,SELL,MOO,296,-296,0,221120.89,-22.11,0.001,747.03

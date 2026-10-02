@@ -1,0 +1,5 @@
+{"run":"1","ts":"2026-01-27","config_sha":"8d7e2f872e48c513","universe":"data/distress_in/ai_geo_2026.csv+data/distress/ai_geo_2026.csv","n_tickers":500,"start_idx":1057,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2026-01-27","cause":"INITIAL_ENTRY","step":1,"progress_pct":2.2222,"ghost_size":1,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2026-01-27","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2026-01-27","targets":{"COF":1.0,"HBAN":-0.906291085281149},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2026-01-27","targets":{},"v":1}

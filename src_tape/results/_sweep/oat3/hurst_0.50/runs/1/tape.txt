@@ -1,0 +1,1 @@
+{"run":"1","ts":"2018-09-06","config_sha":"fdb6f0d761b08789","universe":"data/universe_daily_10y.csv+data/universe_daily_10y.csv","n_tickers":502,"start_idx":504,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}

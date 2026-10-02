@@ -1,0 +1,17 @@
+{"run":"10","ts":"2026-06-01","config_sha":"c020d25f3a6ce8a3","universe":"data/distress_in/iran_oil_2026.csv+data/distress/iran_oil_2026.csv","n_tickers":502,"start_idx":1057,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2026-06-01","cause":"INITIAL_ENTRY","step":1,"progress_pct":2.3256,"ghost_size":3,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2026-06-01","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2026-06-01","targets":{"ALL":-0.3333333333333333,"PGR":0.2610521841723893,"DTE":0.3333333333333333,"NI":-0.259634404260519,"CRWD":-0.3333333333333333,"PANW":0.29222129205755215},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2026-06-01","targets":{},"v":1}
+{"type":"REBALANCE","ts":"2026-06-23","cause":"SIGNAL_ENTRY","step":16,"progress_pct":37.2093,"ghost_size":3,"promoted_size":1,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2026-06-23","targets":{"CCL":0.18,"NCLH":-0.16106802840453951,"SPY":-0.0715931818734607},"spy_overlay":-0.0715931818734607,"gross":0.4126612103,"n_pairs":1,"n_long":1,"n_short":2,"v":1}
+{"type":"GHOST_BOOK","ts":"2026-06-23","targets":{"BIIB":-0.3333333333333333,"PFE":0.21563577722201224,"DTE":-0.3333333333333333,"NI":0.26214450148825136,"CCL":0.3333333333333333,"NCLH":-0.29827412667507314},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2026-06-23","targets":{"CCL":1.0,"NCLH":-0.8948223800252195},"v":1}
+{"type":"PAIR_BOOK","ts":"2026-06-23","pair":["CCL","NCLH"],"weights":{"CCL":0.18,"NCLH":-0.16106802840453951},"sleeve":0.18,"v":1}
+{"type":"ENTRY","ts":"2026-06-23","pair":["CCL","NCLH"],"legs":["CCL","NCLH"],"beta":0.8948223800252195,"entry_z":-1.3151907674695607,"alpha":0.8644621719891705,"entry_type":"BASE","sleeve_w":0.18,"w_a":0.18,"w_b":-0.16106802840453951,"px_a":28.57036399841309,"px_b":20.38999938964844,"v":1}
+{"type":"EXIT","ts":"2026-07-06","pair":["CCL","NCLH"],"reason":"STALE","exit_z":-0.34246140734501274,"days_held":8,"alpha":0.08536727351477445,"entry_type":"BASE","px_a":27.366668701171875,"px_b":19.260000228881836,"v":1}
+{"type":"PAIR_BOOK","ts":"2026-07-06","pair":["CCL","NCLH"],"weights":{"CCL":0.0,"NCLH":0.0},"sleeve":0.0,"v":1}
+{"type":"REBALANCE","ts":"2026-07-06","cause":"SIGNAL_EXIT","step":24,"progress_pct":55.814,"ghost_size":1,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2026-07-06","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2026-07-06","targets":{"CCL":-1.0,"NCLH":0.8778453396507739},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2026-07-06","targets":{},"v":1}

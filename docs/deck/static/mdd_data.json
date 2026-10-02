@@ -1,0 +1,318 @@
+{
+  "generated_at": "2026-09-21T15:19:29.462470",
+  "general_info": {
+    "fund_name": "StatArb v3.2 Market Neutral Quantitative Fund",
+    "fund_class": "Class Q",
+    "as_of_date": "September 2026",
+    "document_type": "Minimum Disclosure Document (Algorithmic Quant Strategy)",
+    "unit_price": "11609.13 cpu",
+    "fund_size": "R0.3m (\u2248 $290,228 USD equivalent)",
+    "benchmark": "S&P 500 Total Return",
+    "strategy": "Statistical Arbitrage \u2014 Sector-Neutral Pairs Trading",
+    "risk_profile": "Moderate (Conservative allocation within market-neutral mandate)",
+    "inception_date": "09 September 2024",
+    "total_trades": "202",
+    "win_rate": "46.2%",
+    "profit_factor": "1.39",
+    "max_drawdown": "3.45%",
+    "total_fees": "$3,203.28",
+    "management_fee": "N/A (Internal/Proprietary Capital)",
+    "performance_fee": "N/A (Internal/Proprietary Capital)",
+    "liquidity": "T+1 (Market-On-Open)",
+    "contact": "Quantitative Research Desk",
+    "model_version": "v3.2 (model_B_relaxed_beta_neutral)"
+  },
+  "monthly_returns": [
+    {
+      "year": 2024,
+      "month": 9,
+      "return_pct": 0.1
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "return_pct": 0.2
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "return_pct": -2.3
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "return_pct": 0.2
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "return_pct": 2.5
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "return_pct": 0.9
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "return_pct": 0.6
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "return_pct": 0.1
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "return_pct": 0.0
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "return_pct": 0.0
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "return_pct": -0.0
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "return_pct": 0.2
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "return_pct": 0.0
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "return_pct": 0.0
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "return_pct": 1.6
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "return_pct": -0.9
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "return_pct": -2.2
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "return_pct": 2.0
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "return_pct": 1.4
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "return_pct": 3.2
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "return_pct": 2.3
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "return_pct": 3.4
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "return_pct": -0.7
+    },
+    {
+      "year": 2026,
+      "month": 8,
+      "return_pct": 2.4
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "return_pct": -0.0
+    }
+  ],
+  "fund_performance": [
+    {
+      "metric": "1 Year",
+      "benchmark": "25.8%",
+      "fund": "7.8%"
+    },
+    {
+      "metric": "Annualised return since inception",
+      "benchmark": "25.8%",
+      "fund": "7.8%"
+    },
+    {
+      "metric": "Cumulative return since inception",
+      "benchmark": "57.6%",
+      "fund": "16.1%"
+    },
+    {
+      "metric": "Highest rolling 1-year return",
+      "benchmark": "\u2014",
+      "fund": "13.0%"
+    },
+    {
+      "metric": "Lowest rolling 1-year return",
+      "benchmark": "\u2014",
+      "fund": "0.3%"
+    },
+    {
+      "metric": "Standard deviation",
+      "benchmark": "\u2014",
+      "fund": "5.1%"
+    },
+    {
+      "metric": "Maximum drawdown",
+      "benchmark": "\u2014",
+      "fund": "-3.5%"
+    }
+  ],
+  "sector_allocation": [
+    {
+      "sector": "Consumer Discretionary",
+      "net": 0.2,
+      "long": 0.0,
+      "short": 0.2,
+      "trades": 1
+    },
+    {
+      "sector": "Energy",
+      "net": -0.7,
+      "long": -1.0,
+      "short": 0.3,
+      "trades": 4
+    },
+    {
+      "sector": "Financials",
+      "net": 9.6,
+      "long": 6.8,
+      "short": 2.7,
+      "trades": 25
+    },
+    {
+      "sector": "Health Care",
+      "net": -0.1,
+      "long": -0.0,
+      "short": -0.1,
+      "trades": 15
+    },
+    {
+      "sector": "Industrials",
+      "net": 4.4,
+      "long": 5.1,
+      "short": -0.7,
+      "trades": 33
+    },
+    {
+      "sector": "Real Estate",
+      "net": -0.3,
+      "long": -0.3,
+      "short": 0.0,
+      "trades": 1
+    },
+    {
+      "sector": "Technology",
+      "net": 7.2,
+      "long": 4.0,
+      "short": 3.2,
+      "trades": 29
+    },
+    {
+      "sector": "Unknown",
+      "net": -4.5,
+      "long": 0.6,
+      "short": -5.2,
+      "trades": 74
+    },
+    {
+      "sector": "Utilities",
+      "net": 0.3,
+      "long": 0.5,
+      "short": -0.2,
+      "trades": 20
+    },
+    {
+      "sector": "Total",
+      "net": 16.1,
+      "long": 15.8,
+      "short": 0.2,
+      "trades": 202
+    }
+  ],
+  "asset_allocation": [
+    {
+      "asset": "Equity (StatArb Pairs)",
+      "foreign": 0.0,
+      "domestic": 16.1,
+      "total": 16.1
+    },
+    {
+      "asset": "Equity (SPY Overlay Hedge)",
+      "foreign": -9.7,
+      "domestic": 0.0,
+      "total": -9.7
+    },
+    {
+      "asset": "Cash & Margin",
+      "foreign": 0.0,
+      "domestic": 83.9,
+      "total": 83.9
+    },
+    {
+      "asset": "Total",
+      "foreign": -9.7,
+      "domestic": 100.0,
+      "total": 90.3
+    }
+  ],
+  "scatter_data": [
+    {
+      "label": "StatArb",
+      "vol": 15.0,
+      "cagr": 7.8,
+      "marker": "diamond",
+      "color": "#9E1B32"
+    },
+    {
+      "label": "S&P 500",
+      "vol": 15.5,
+      "cagr": 25.8,
+      "marker": "triangle",
+      "color": "#222222"
+    },
+    {
+      "label": "Cash (STeFi)",
+      "vol": 0.4,
+      "cagr": 6.6,
+      "marker": "circle",
+      "color": "#222222"
+    }
+  ],
+  "fund_stats_summary": {
+    "total_return_pct": 16.091265747670878,
+    "benchmark_return_pct": 57.59645233726054,
+    "max_drawdown_pct": 3.4511156058003047,
+    "total_trades": 202,
+    "profit_factor": 1.3913011593003102,
+    "expectancy_usd": 202.3536266590321
+  }
+}

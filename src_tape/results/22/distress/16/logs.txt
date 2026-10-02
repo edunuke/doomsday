@@ -1,0 +1,767 @@
+=====================================================================================
+STAT-ARB v3.2 — RELAXED BETA NEUTRALITY
+Pipeline flow: DownloadDataStage → DataLoaderStage → ResidualizerStageV3 → AlphaCubeStageV5 → SelectionStage → WalkForwardStage → AttributionStage → ReportingStage
+Verbose      : NO
+Results dir  : /Users/edunuke/Desktop/statarb-prival/src_tape/results/22/distress/16
+=====================================================================================
+  price_csv                           : data/distress_in/tariff_2025.csv
+  oos_price_csv                       : data/distress/tariff_2025.csv
+  constituents_path                   : data/constituents.csv
+  lookback_days                       : 1059
+  min_history_days                    : 100
+  weight_drift_threshold              : 0.04
+  screening_freq_days                 : 20
+  quarantine_days                     : 30
+  kalman_delta                        : 0.001
+  kalman_obs_noise                    : 0.001
+  max_hurst_exponent                  : 0.43
+  max_slope_tstat                     : 1.96
+  min_correlation                     : 0.25
+  p_value_threshold                   : 0.04
+  min_half_life                       : 4.0
+  max_half_life                       : 25.0
+  tau_hl_penalty                      : 5.0
+  exit_z_spread                       : 0.2
+  stop_loss_z                         : 2.2
+  min_holding_days                    : 2
+  max_holding_days                    : 60
+  promote_top_n                       : 35
+  max_pair_spy_beta                   : 1.2
+  max_adv_participation               : 0.015
+  initial_capital                     : 1000000.0
+  exec_fee                            : 0.00015
+  borrow_bps                          : 50.0
+  entry_ecdf_percentile               : 0.8
+  min_override_z                      : 0.5
+  friction_clearance_multiplier       : 8.0
+  ghost_truncation_quantile           : 0.15
+  low_density_threshold               : 3
+  max_sleeve_weight_low_density       : 0.6
+  max_sleeve_weight                   : 0.45
+  max_single_stock_gross              : 0.65
+  max_gross_exposure                  : 2.8
+  max_net_dollar_exposure             : 0.08
+  max_net_beta_exposure               : 0.05
+  max_sector_exposure                 : 0.12
+  max_spy_overlay_weight              : 0.55
+  entry_z_base                        : 0.75
+  kalman_f_smooth_window              : 21
+  kalman_f_smooth_min_periods         : 5
+  ecdf_window                         : 63
+  half_life_window                    : 126
+  half_life_fillna                    : 20.0
+  hurst_window                        : 126
+  hurst_max_lag                       : 20
+  hurst_fillna                        : 0.5
+  slope_window                        : 20
+  spy_beta_ewm_span                   : 30
+  covariance_lookback_days            : 63
+  cov_jitter                          : 1e-05
+  min_gross_floor                     : 0.3
+  min_gross_frac                      : 0.5
+  alpha_ub_clip_low                   : 0.2
+  alpha_ub_clip_high                  : 1.0
+  min_weight_cutoff                   : 0.01
+  turnover_extra_bps                  : 0.0005
+  stale_days                          : 8
+  stale_alpha                         : 0.35
+  neutrality_max_r2                   : 0.005
+  neutrality_min_regime_obs           : 10
+  moo_min_order_usd                   : 500.0
+  adv_window_days                     : 20
+  adv_shares_mult                     : 50000
+  adv_fill_value                      : 1000000
+  retrain_freq_days                   : 90
+  train_lookback_days                 : 504
+  screen_lookback_days                : 252
+  early_stop_enabled                  : False
+  early_stop_rebal_days               : 5
+  early_stop_min_periods              : 5
+  early_stop_max_drawdown             : 8.0
+  early_stop_max_period_loss          : 3.0
+  early_stop_max_loss_streak          : 6
+  early_stop_signal_window            : 20
+  early_stop_signal_min_periods       : 15
+  early_stop_cum_sigma_k              : 2.0
+  early_stop_min_sharpe               : -1.0
+  early_stop_min_sortino              : -1.0
+  early_stop_min_win_rate             : None
+  max_holding_buffer                  : 1.5
+  ensemble_window                     : 21
+  ensemble_weight                     : 0.5
+  vr_max                              : 0.95
+  vr_horizon                          : 5
+  components                          : {'residualizer': 'v3', 'alphacube': 'v5', 'selection': 'v1', 'walkforward': 'v1', 'allocator': 'v2', 'regime': 'v3', 'sizing': 'v1', 'screener': 'v2'}
+  download                            : False
+  verbose                             : False
+  circuit_breaker_enabled             : False
+  circuit_breaker_max_dd              : 10.0
+  circuit_breaker_max_period_loss     : 6.0
+  circuit_breaker_max_loss_streak     : 8
+  circuit_breaker_min_periods         : 1
+  enable_override                     : False
+  enable_promotion                    : True
+  factor_beta_window                  : 126
+  factor_vol_window                   : 63
+  factor_mom_window                   : 252
+  factor_mom_skip                     : 21
+  factor_beta_shrink                  : 0.2
+  regime_vol_window                   : 63
+  regime_vol_lookback                 : 252
+  regime_vol_percentile               : 75
+  regime_exposure_scale               : 0.3
+  trailing_dd_lookback                : 126
+  trailing_dd_threshold               : -0.08
+  trailing_dd_scale                   : 0.3
+  selection_enabled                   : True
+  selection_window_days               : 378
+  selection_max_pairs                 : 300
+  alpha_v5_enabled                    : True
+  alpha_v5_ou_tau                     : 5.0
+  alpha_v5_dispersion_tilt            : 0.25
+  dispersion_lookback                 : 252
+  dispersion_window                   : 21
+  sizing_target_vol                   : 0.1
+  sizing_max_leverage                 : 1.5
+  sizing_mode                         : derisk
+  sizing_vol_window                   : 126
+  run_distress                        : False
+  screen_min_pairs                    : 8
+  distress_out_dir                    : results/22/distress
+  results_dir                         : results/22/distress
+  distress_only                       : None
+=====================================================================================
+
+=====================================================================================
+STARTING STAT-ARB ENGINE v3.2
+=====================================================================================
+
+>>> Stage: DownloadDataStage
+[DownloadDataStage] Skipped (--download not set).
+<<< Stage: DownloadDataStage complete. (0.0s)
+
+>>> Stage: DataLoaderStage
+[DataLoader] 'SPY' detected. Using real SPY series.
+[DataLoader] Loaded 1177 days x 498 tickers.
+<<< Stage: DataLoaderStage complete. (0.1s)
+
+>>> Stage: ResidualizerStageV3
+[Residualizer] 4460 sector-matched residual pairs.
+[ResidualizerV3] regime-conditional VR screen (high-dispersion days=525, 5d, VR<=0.95): 4460 -> 3154 pairs
+<<< Stage: ResidualizerStageV3 complete. (0.3s)
+
+>>> Stage: AlphaCubeStageV5
+[AlphaCube] Built alpha cube: 3154 pairs.
+[AlphaV5] orthogonal sources added (dispersion tilt=0.25, ou_tau=5.0); pairs=3154
+<<< Stage: AlphaCubeStageV5 complete. (10.3s)
+
+>>> Stage: SelectionStage
+[Selection] walk-forward schedule: 0 re-selections (window=378d, grid=6)
+<<< Stage: SelectionStage complete. (0.0s)
+
+>>> Stage: WalkForwardStage
+[Screener] v2
+[Factors] factor 'growth': no fundamentals file — factor DROPPED (a true growth factor needs fundamentals; not faked with momentum)
+[Regime] v3: stressed=348/1177 days (16 transitions)
+[WalkForward] Decision tape -> results/22/distress/16/tape.txt
+[WalkForward] Rolling retrain every 90d (train window 504d).
+[WalkForward] Min alpha floor = 0.35%
+[Screen] 2025-02-19: 3154 candidates -> 230 pass (v2) -> 230 live
+[GhostDBG] 2025-02-19: in=230 noalpha=0 nan=0 hurst=0 hl=0 slope=0 kept=230
+
+[Rebalance @ 2025-02-19 | Progress:   0.8% (1/118)] Cause: INITIAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.00% | DD=0.00% | win=0.0% | Sharpe=0.00 | Sortino=inf | streak=0 | conc=0.00 | periods=1
+  --> Ghost=230 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-02-25 | Progress:   4.2% (5/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.00% | DD=0.00% | win=0.0% | Sharpe=0.00 | Sortino=inf | streak=0 | conc=0.00 | periods=2
+  --> Ghost=230 | Promoted=1 | Live=1
+  --> Eff Gross=0.65 | Port Vol=0.0705 | SPY Overlay=5.3%
+      [BASE] PEG/SRE | W_A: -60.0% | W_B: 46.2% | Inno Z: 1.09 | ECDF: 1.00 | Alpha: 1.6526
+------------------------------------------------------------
+  [EXIT] PEG/SRE | reason=REVERTED | Z=-0.19 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-02-28 | Progress:   6.8% (8/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+2.13% | DD=0.00% | win=33.3% | Sharpe=5.02 | Sortino=inf | streak=0 | conc=1.00 | periods=3
+  --> Ghost=230 | Promoted=1 | Live=1
+  --> Eff Gross=1.15 | Port Vol=0.1806 | SPY Overlay=55.0%
+      [BASE] ANET/NTAP | W_A: -60.0% | W_B: 47.7% | Inno Z: 0.96 | ECDF: 0.98 | Alpha: 5.1519
+------------------------------------------------------------
+  [EXIT] ANET/NTAP | reason=REVERTED | Z=-0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-03-04 | Progress:   8.5% (10/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+2.35% | DD=0.00% | win=50.0% | Sharpe=4.64 | Sortino=inf | streak=0 | conc=0.91 | periods=4
+  --> Ghost=230 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-06 | Progress:  10.2% (12/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+2.35% | DD=0.00% | win=40.0% | Sharpe=3.99 | Sortino=inf | streak=0 | conc=0.91 | periods=5
+  --> Ghost=230 | Promoted=2 | Live=2
+  --> Eff Gross=1.45 | Port Vol=0.3572 | SPY Overlay=-16.5%
+      [BASE] MRVL/TEL | W_A: 18.0% | W_B: -18.1% | Inno Z: -1.18 | ECDF: 0.98 | Alpha: 4.5003
+      [BASE] MRVL/MPWR | W_A: 9.0% | W_B: -6.4% | Inno Z: -0.77 | ECDF: 0.98 | Alpha: 1.5044
+------------------------------------------------------------
+
+[Rebalance @ 2025-03-07 | Progress:  11.0% (13/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.90% | DD=1.41% | win=33.3% | Sharpe=1.06 | Sortino=0.78 | streak=1 | conc=0.91 | periods=6
+  --> Ghost=228 | Promoted=1 | Live=3
+  --> Eff Gross=1.64 | Port Vol=0.3201 | SPY Overlay=-16.5%
+      [BASE] HPE/WDC | W_A: 13.5% | W_B: -5.9% | Inno Z: -0.98 | ECDF: 1.00 | Alpha: 2.0548
+      [BASE] MRVL/TEL | W_A: 13.4% | W_B: -13.3% | Inno Z: -1.18 | ECDF: 0.84 | Alpha: 0.4494
+      [BASE] MRVL/MPWR | W_A: 5.8% | W_B: -4.1% | Inno Z: -0.77 | ECDF: 0.87 | Alpha: 0.1947
+------------------------------------------------------------
+  [EXIT] MRVL/TEL | reason=REVERTED | Z=-0.02 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MRVL/MPWR | reason=REVERTED | Z=-0.05 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-03-11 | Progress:  12.7% (15/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+0.83% | DD=1.49% | win=28.6% | Sharpe=0.90 | Sortino=0.87 | streak=2 | conc=0.91 | periods=7
+  --> Ghost=229 | Promoted=0 | Live=1
+  --> Eff Gross=1.12 | Port Vol=0.1857 | SPY Overlay=-15.5%
+      [BASE] HPE/WDC | W_A: 18.0% | W_B: -7.7% | Inno Z: -0.98 | ECDF: 0.05 | Alpha: 0.2026
+------------------------------------------------------------
+  [EXIT] HPE/WDC | reason=REVERTED | Z=-0.17 | days=5 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-03-14 | Progress:  15.3% (18/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+0.48% | DD=1.83% | win=25.0% | Sharpe=0.50 | Sortino=0.54 | streak=3 | conc=0.91 | periods=8
+  --> Ghost=230 | Promoted=0 | Live=0
+------------------------------------------------------------
+[Screen] 2025-03-19: 3154 candidates -> 268 pass (v2) -> 268 live
+
+[Rebalance @ 2025-04-03 | Progress:  27.1% (32/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.48% | DD=1.83% | win=22.2% | Sharpe=0.47 | Sortino=0.48 | streak=3 | conc=0.91 | periods=9
+  --> Ghost=268 | Promoted=9 | Live=9
+  --> Eff Gross=2.74 | Port Vol=0.3535 | SPY Overlay=-16.5%
+      [BASE] DLTR/DG | W_A: 9.3% | W_B: -5.6% | Inno Z: -1.16 | ECDF: 1.00 | Alpha: 4.2699
+      [BASE] HAS/LVS | W_A: 9.3% | W_B: -2.9% | Inno Z: -0.84 | ECDF: 0.98 | Alpha: 2.7583
+      [BASE] EL/SYY | W_A: 9.3% | W_B: -5.6% | Inno Z: -1.15 | ECDF: 1.00 | Alpha: 2.7118
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-04 | Progress:  28.0% (33/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-0.46% | DD=2.74% | win=20.0% | Sharpe=-0.35 | Sortino=-0.35 | streak=3 | conc=0.91 | periods=10
+  --> Ghost=259 | Promoted=2 | Live=5
+  --> Eff Gross=1.80 | Port Vol=0.3399 | SPY Overlay=-16.5%
+      [BASE] EL/TSN | W_A: 7.6% | W_B: -3.6% | Inno Z: -1.24 | ECDF: 0.97 | Alpha: 0.6501
+      [BASE] ALB/NEM | W_A: 7.6% | W_B: -2.2% | Inno Z: -0.80 | ECDF: 1.00 | Alpha: 1.9605
+      [BASE] ALB/MOS | W_A: 7.6% | W_B: -3.5% | Inno Z: -0.76 | ECDF: 1.00 | Alpha: 0.7645
+------------------------------------------------------------
+  [EXIT] EL/SJM | reason=REVERTED | Z=-0.16 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-04-07 | Progress:  28.8% (34/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.30% | DD=2.74% | win=27.3% | Sharpe=-0.20 | Sortino=-0.19 | streak=3 | conc=0.85 | periods=11
+  --> Ghost=258 | Promoted=0 | Live=2
+  --> Eff Gross=1.39 | Port Vol=0.3112 | SPY Overlay=-16.5%
+      [BASE] EL/TSN | W_A: 12.8% | W_B: -6.1% | Inno Z: -1.24 | ECDF: 0.32 | Alpha: 0.4327
+      [BASE] EL/SYY | W_A: 12.3% | W_B: -7.3% | Inno Z: -1.15 | ECDF: 0.43 | Alpha: 0.2107
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-08 | Progress:  29.7% (35/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-1.19% | DD=3.46% | win=25.0% | Sharpe=-0.82 | Sortino=-0.78 | streak=3 | conc=0.85 | periods=12
+  --> Ghost=258 | Promoted=1 | Live=3
+  --> Eff Gross=1.82 | Port Vol=0.3576 | SPY Overlay=-16.5%
+      [BASE] EL/TSN | W_A: 13.5% | W_B: -6.3% | Inno Z: -1.24 | ECDF: 0.90 | Alpha: 1.1328
+      [BASE] EL/SYY | W_A: 13.2% | W_B: -7.8% | Inno Z: -1.15 | ECDF: 0.87 | Alpha: 1.1170
+      [BASE] CRL/CVS | W_A: 11.4% | W_B: -4.8% | Inno Z: -0.77 | ECDF: 1.00 | Alpha: 0.9395
+------------------------------------------------------------
+  [EXIT] EL/SYY | reason=REVERTED | Z=+0.17 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EL/TSN | reason=REVERTED | Z=+0.17 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-04-09 | Progress:  30.5% (36/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+0.97% | DD=3.46% | win=30.8% | Sharpe=0.56 | Sortino=0.64 | streak=3 | conc=0.47 | periods=13
+  --> Ghost=259 | Promoted=2 | Live=3
+  --> Eff Gross=1.53 | Port Vol=0.2368 | SPY Overlay=10.7%
+      [BASE] EXPE/NCLH | W_A: -13.5% | W_B: 6.8% | Inno Z: 0.86 | ECDF: 0.98 | Alpha: 0.8667
+      [BASE] MCHP/TEL | W_A: -11.0% | W_B: 9.7% | Inno Z: 0.98 | ECDF: 1.00 | Alpha: 1.5718
+      [BASE] CRL/CVS | W_A: 10.7% | W_B: -4.8% | Inno Z: -0.77 | ECDF: 0.98 | Alpha: 0.6859
+------------------------------------------------------------
+  [EXIT] CRL/CVS | reason=STOP_LOSS | Z=-2.47 | days=2 | alpha=3.2280 | entry_type=BASE
+
+[Rebalance @ 2025-04-10 | Progress:  31.4% (37/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-1.04% | DD=3.46% | win=28.6% | Sharpe=-0.44 | Sortino=-0.43 | streak=3 | conc=0.47 | periods=14
+  --> Ghost=257 | Promoted=3 | Live=5
+  --> Eff Gross=1.98 | Port Vol=0.3153 | SPY Overlay=-16.5%
+      [BASE] CRL/HSIC | W_A: 13.5% | W_B: -8.9% | Inno Z: -2.07 | ECDF: 1.00 | Alpha: 3.3154
+      [BASE] CRL/RVTY | W_A: 12.6% | W_B: -9.9% | Inno Z: -1.66 | ECDF: 1.00 | Alpha: 2.8161
+      [BASE] CRL/WST | W_A: 11.0% | W_B: -5.2% | Inno Z: -1.83 | ECDF: 1.00 | Alpha: 3.5904
+------------------------------------------------------------
+  [EXIT] EXPE/NCLH | reason=REVERTED | Z=-0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-04-11 | Progress:  32.2% (38/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-1.93% | DD=4.18% | win=26.7% | Sharpe=-0.81 | Sortino=-0.80 | streak=3 | conc=0.47 | periods=15
+  --> Ghost=255 | Promoted=0 | Live=1
+  --> Eff Gross=0.90 | Port Vol=0.1516 | SPY Overlay=13.9%
+      [BASE] MCHP/TEL | W_A: -13.1% | W_B: 11.5% | Inno Z: 0.98 | ECDF: 0.38 | Alpha: 0.2738
+------------------------------------------------------------
+[Screen] 2025-04-16: 3154 candidates -> 284 pass (v2) -> 284 live
+  [EXIT] MCHP/TEL | reason=STALE | Z=-0.29 | days=8 | alpha=0.1441 | entry_type=BASE
+
+[Rebalance @ 2025-04-22 | Progress:  37.3% (44/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-2.13% | DD=4.38% | win=25.0% | Sharpe=-0.87 | Sortino=-0.88 | streak=3 | conc=0.47 | periods=16
+  --> Ghost=278 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-23 | Progress:  38.1% (45/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-2.13% | DD=4.38% | win=23.5% | Sharpe=-0.84 | Sortino=-0.83 | streak=3 | conc=0.47 | periods=17
+  --> Ghost=278 | Promoted=1 | Live=1
+  --> Eff Gross=0.61 | Port Vol=0.1185 | SPY Overlay=0.2%
+      [BASE] LII/WAB | W_A: 18.0% | W_B: -15.7% | Inno Z: -0.85 | ECDF: 1.00 | Alpha: 1.3720
+------------------------------------------------------------
+  [EXIT] LII/WAB | reason=REVERTED | Z=+0.12 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-04-25 | Progress:  39.8% (47/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-1.66% | DD=4.38% | win=27.8% | Sharpe=-0.62 | Sortino=-0.60 | streak=3 | conc=0.42 | periods=18
+  --> Ghost=278 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-04-30 | Progress:  42.4% (50/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-1.66% | DD=4.38% | win=26.3% | Sharpe=-0.61 | Sortino=-0.57 | streak=3 | conc=0.42 | periods=19
+  --> Ghost=278 | Promoted=2 | Live=2
+  --> Eff Gross=1.52 | Port Vol=0.1849 | SPY Overlay=-12.7%
+      [BASE] CSGP/UDR | W_A: 18.0% | W_B: -12.8% | Inno Z: -0.93 | ECDF: 1.00 | Alpha: 2.5695
+      [BASE] CSGP/VMRK | W_A: 14.9% | W_B: -11.0% | Inno Z: -0.82 | ECDF: 1.00 | Alpha: 1.8090
+------------------------------------------------------------
+  [EXIT] CSGP/UDR | reason=REVERTED | Z=+0.08 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-05-02 | Progress:  44.1% (52/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-1.10% | DD=4.38% | win=30.0% | Sharpe=-0.37 | Sortino=-0.35 | streak=3 | conc=0.38 | periods=20
+  --> Ghost=277 | Promoted=0 | Live=1
+  --> Eff Gross=0.82 | Port Vol=0.1274 | SPY Overlay=-6.6%
+      [BASE] CSGP/VMRK | W_A: 18.0% | W_B: -13.4% | Inno Z: -0.82 | ECDF: 0.38 | Alpha: 0.0099
+------------------------------------------------------------
+  [EXIT] CSGP/VMRK | reason=REVERTED | Z=-0.02 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-05-05 | Progress:  44.9% (53/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-1.10% | DD=4.38% | win=33.3% | Sharpe=-0.36 | Sortino=-0.33 | streak=3 | conc=0.38 | periods=21
+  --> Ghost=278 | Promoted=1 | Live=1
+  --> Eff Gross=0.84 | Port Vol=0.0891 | SPY Overlay=7.1%
+      [BASE] SYK/ZBH | W_A: -18.0% | W_B: 17.8% | Inno Z: 0.85 | ECDF: 1.00 | Alpha: 1.2165
+------------------------------------------------------------
+  [EXIT] SYK/ZBH | reason=REVERTED | Z=-0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-05-07 | Progress:  46.6% (55/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.55% | DD=4.38% | win=36.4% | Sharpe=-0.16 | Sortino=-0.14 | streak=3 | conc=0.35 | periods=22
+  --> Ghost=278 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-05-09 | Progress:  48.3% (57/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-0.55% | DD=4.38% | win=34.8% | Sharpe=-0.16 | Sortino=-0.14 | streak=3 | conc=0.35 | periods=23
+  --> Ghost=278 | Promoted=1 | Live=1
+  --> Eff Gross=0.81 | Port Vol=0.1326 | SPY Overlay=6.3%
+      [BASE] PODD/RMD | W_A: -18.0% | W_B: 13.8% | Inno Z: 1.02 | ECDF: 1.00 | Alpha: 1.5186
+------------------------------------------------------------
+  [EXIT] PODD/RMD | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-05-13 | Progress:  50.0% (59/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.38% | DD=4.38% | win=37.5% | Sharpe=-0.09 | Sortino=-0.08 | streak=3 | conc=0.34 | periods=24
+  --> Ghost=278 | Promoted=0 | Live=0
+------------------------------------------------------------
+[Screen] 2025-05-15: 3154 candidates -> 282 pass (v2) -> 282 live
+
+[Rebalance @ 2025-05-23 | Progress:  56.8% (67/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-0.38% | DD=4.38% | win=36.0% | Sharpe=-0.09 | Sortino=-0.08 | streak=3 | conc=0.34 | periods=25
+  --> Ghost=282 | Promoted=1 | Live=1
+  --> Eff Gross=0.93 | Port Vol=0.1490 | SPY Overlay=-10.0%
+      [BASE] DECK/HLT | W_A: 18.0% | W_B: -13.6% | Inno Z: -1.18 | ECDF: 1.00 | Alpha: 1.7555
+------------------------------------------------------------
+  [EXIT] DECK/HLT | reason=REVERTED | Z=+0.04 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-05-28 | Progress:  58.5% (69/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.23% | DD=4.38% | win=38.5% | Sharpe=-0.04 | Sortino=-0.03 | streak=3 | conc=0.33 | periods=26
+  --> Ghost=282 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-06-03 | Progress:  61.9% (73/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-0.23% | DD=4.38% | win=37.0% | Sharpe=-0.04 | Sortino=-0.03 | streak=3 | conc=0.33 | periods=27
+  --> Ghost=282 | Promoted=3 | Live=3
+  --> Eff Gross=1.42 | Port Vol=0.2955 | SPY Overlay=-4.2%
+      [BASE] DG/HRL | W_A: -13.5% | W_B: 8.6% | Inno Z: 1.24 | ECDF: 1.00 | Alpha: 1.1626
+      [BASE] DG/TSN | W_A: -13.4% | W_B: 7.7% | Inno Z: 1.10 | ECDF: 1.00 | Alpha: 1.1643
+      [BASE] DG/SJM | W_A: -11.6% | W_B: 8.2% | Inno Z: 0.92 | ECDF: 1.00 | Alpha: 2.6095
+------------------------------------------------------------
+  [EXIT] DG/SJM | reason=REVERTED | Z=+0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DG/TSN | reason=REVERTED | Z=+0.18 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-06-05 | Progress:  63.6% (75/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.87% | DD=4.38% | win=35.7% | Sharpe=-0.24 | Sortino=-0.20 | streak=3 | conc=0.33 | periods=28
+  --> Ghost=281 | Promoted=0 | Live=1
+  --> Eff Gross=0.63 | Port Vol=0.1762 | SPY Overlay=-1.0%
+      [BASE] DG/HRL | W_A: -18.0% | W_B: 11.6% | Inno Z: 1.24 | ECDF: 0.65 | Alpha: 0.0067
+------------------------------------------------------------
+  [EXIT] DG/HRL | reason=REVERTED | Z=+0.01 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-06-06 | Progress:  64.4% (76/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.84% | DD=4.38% | win=37.9% | Sharpe=-0.22 | Sortino=-0.18 | streak=3 | conc=0.33 | periods=29
+  --> Ghost=282 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-06-10 | Progress:  66.1% (78/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-0.84% | DD=4.38% | win=36.7% | Sharpe=-0.22 | Sortino=-0.18 | streak=3 | conc=0.33 | periods=30
+  --> Ghost=282 | Promoted=7 | Live=7
+  --> Eff Gross=3.05 | Port Vol=0.1636 | SPY Overlay=10.2%
+      [BASE] SJM/TSN | W_A: 12.0% | W_B: -6.8% | Inno Z: -1.27 | ECDF: 1.00 | Alpha: 2.1153
+      [BASE] EL/SJM | W_A: -11.7% | W_B: 6.6% | Inno Z: 0.77 | ECDF: 0.98 | Alpha: 1.6919
+      [BASE] HSY/SJM | W_A: -11.7% | W_B: 9.1% | Inno Z: 0.94 | ECDF: 1.00 | Alpha: 1.0650
+------------------------------------------------------------
+  [EXIT] SJM/TSN | reason=REVERTED | Z=+0.16 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EL/SJM | reason=REVERTED | Z=-0.12 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] HSY/SJM | reason=REVERTED | Z=+0.02 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] PG/SJM | reason=REVERTED | Z=-0.10 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KMB/SJM | reason=REVERTED | Z=-0.07 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MDLZ/SJM | reason=REVERTED | Z=-0.02 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KO/SJM | reason=REVERTED | Z=-0.11 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-06-12 | Progress:  67.8% (80/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+0.62% | DD=4.38% | win=38.7% | Sharpe=0.20 | Sortino=0.17 | streak=3 | conc=0.27 | periods=31
+  --> Ghost=282 | Promoted=0 | Live=0
+------------------------------------------------------------
+[Screen] 2025-06-13: 3154 candidates -> 255 pass (v2) -> 255 live
+
+[Rebalance @ 2025-06-17 | Progress:  70.3% (83/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.62% | DD=4.38% | win=37.5% | Sharpe=0.20 | Sortino=0.16 | streak=3 | conc=0.27 | periods=32
+  --> Ghost=255 | Promoted=1 | Live=1
+  --> Eff Gross=0.82 | Port Vol=0.2931 | SPY Overlay=-6.5%
+      [BASE] FSLR/FLEX | W_A: 18.0% | W_B: -7.9% | Inno Z: -1.63 | ECDF: 1.00 | Alpha: 3.4045
+------------------------------------------------------------
+  [EXIT] FSLR/FLEX | reason=REVERTED | Z=-0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-06-20 | Progress:  72.0% (85/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+0.64% | DD=4.38% | win=39.4% | Sharpe=0.20 | Sortino=0.16 | streak=3 | conc=0.27 | periods=33
+  --> Ghost=255 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-06-26 | Progress:  75.4% (89/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.64% | DD=4.38% | win=38.2% | Sharpe=0.20 | Sortino=0.16 | streak=3 | conc=0.27 | periods=34
+  --> Ghost=255 | Promoted=1 | Live=1
+  --> Eff Gross=0.31 | Port Vol=0.0348 | SPY Overlay=-0.4%
+      [BASE] EQIX/VMRK | W_A: 9.0% | W_B: -9.1% | Inno Z: -0.93 | ECDF: 1.00 | Alpha: 0.8809
+------------------------------------------------------------
+[Retrain @ 2025-06-30 | Progress:  77.1%] Universe refreshed → 4440 candidates, +2319 new pairs (5473 total).
+[Screen] 2025-06-30: 4440 candidates -> 353 pass (v2) -> 353 live
+  [EXIT] EQIX/VMRK | reason=STALE | Z=+0.23 | days=8 | alpha=0.0437 | entry_type=BASE
+
+[Rebalance @ 2025-07-09 | Progress:  82.2% (97/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+1.01% | DD=4.38% | win=40.0% | Sharpe=0.29 | Sortino=0.22 | streak=3 | conc=0.26 | periods=35
+  --> Ghost=353 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-07-18 | Progress:  88.1% (104/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+1.01% | DD=4.38% | win=38.9% | Sharpe=0.28 | Sortino=0.22 | streak=3 | conc=0.26 | periods=36
+  --> Ghost=353 | Promoted=1 | Live=1
+  --> Eff Gross=0.97 | Port Vol=0.0798 | SPY Overlay=36.7%
+      [BASE] IVZ/TFC | W_A: -60.0% | W_B: 44.1% | Inno Z: 1.20 | ECDF: 1.00 | Alpha: 1.2921
+------------------------------------------------------------
+
+[Rebalance @ 2025-07-23 | Progress:  90.7% (107/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-1.59% | DD=4.38% | win=37.8% | Sharpe=-0.32 | Sortino=-0.22 | streak=3 | conc=0.26 | periods=37
+  --> Ghost=352 | Promoted=1 | Live=2
+  --> Eff Gross=1.34 | Port Vol=0.1096 | SPY Overlay=51.7%
+      [BASE] MU/TXN | W_A: -50.8% | W_B: 46.4% | Inno Z: 0.77 | ECDF: 1.00 | Alpha: 0.8714
+      [BASE] IVZ/TFC | W_A: -31.6% | W_B: 23.7% | Inno Z: 1.20 | ECDF: 0.14 | Alpha: 0.3115
+------------------------------------------------------------
+  [EXIT] IVZ/TFC | reason=REVERTED | Z=+0.02 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-07-24 | Progress:  91.5% (108/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-2.73% | DD=4.96% | win=36.8% | Sharpe=-0.56 | Sortino=-0.39 | streak=3 | conc=0.26 | periods=38
+  --> Ghost=352 | Promoted=0 | Live=0
+------------------------------------------------------------
+
+[Rebalance @ 2025-07-25 | Progress:  92.4% (109/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-2.73% | DD=4.96% | win=35.9% | Sharpe=-0.55 | Sortino=-0.38 | streak=3 | conc=0.26 | periods=39
+  --> Ghost=352 | Promoted=13 | Live=13
+  --> Eff Gross=2.69 | Port Vol=0.2380 | SPY Overlay=55.0%
+      [BASE] FIX/PNR | W_A: -21.5% | W_B: 23.7% | Inno Z: 1.28 | ECDF: 1.00 | Alpha: 2.5843
+      [BASE] FIX/LDOS | W_A: -20.0% | W_B: 18.8% | Inno Z: 1.20 | ECDF: 1.00 | Alpha: 3.5149
+      [BASE] CHTR/WBD | W_A: 19.4% | W_B: -3.7% | Inno Z: -2.20 | ECDF: 1.00 | Alpha: 2.3296
+------------------------------------------------------------
+  [EXIT] FIX/TT | reason=REVERTED | Z=+0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/LDOS | reason=REVERTED | Z=+0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/PH | reason=REVERTED | Z=+0.04 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/WAB | reason=REVERTED | Z=+0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/RSG | reason=REVERTED | Z=+0.00 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/PNR | reason=REVERTED | Z=+0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/GE | reason=REVERTED | Z=+0.04 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/RTX | reason=REVERTED | Z=+0.02 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DOC/WY | reason=REVERTED | Z=-0.07 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/GWW | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FIX/TDG | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+[Screen] 2025-07-29: 4440 candidates -> 384 pass (v2) -> 384 live
+
+[Rebalance @ 2025-07-29 | Progress:  94.1% (111/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.76% | DD=8.90% | win=35.0% | Sharpe=-1.12 | Sortino=-0.71 | streak=3 | conc=0.26 | periods=40
+  --> Ghost=383 | Promoted=0 | Live=2
+  --> Eff Gross=1.71 | Port Vol=0.4299 | SPY Overlay=-55.0%
+      [BASE] CHTR/WBD | W_A: 60.0% | W_B: -9.6% | Inno Z: -2.20 | ECDF: 0.97 | Alpha: 1.1924
+      [BASE] CHTR/PSKY | W_A: 56.2% | W_B: -11.9% | Inno Z: -2.11 | ECDF: 0.98 | Alpha: 1.0494
+------------------------------------------------------------
+  [EXIT] CHTR/PSKY | reason=REVERTED | Z=-0.14 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-07-30 | Progress:  94.9% (112/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.14% | DD=9.27% | win=34.1% | Sharpe=-1.18 | Sortino=-0.76 | streak=3 | conc=0.26 | periods=41
+  --> Ghost=383 | Promoted=6 | Live=7
+  --> Eff Gross=2.30 | Port Vol=0.4572 | SPY Overlay=3.4%
+      [BASE] HUM/MRNA | W_A: -40.0% | W_B: 4.7% | Inno Z: 0.97 | ECDF: 1.00 | Alpha: 1.0428
+      [BASE] HUM/MRK | W_A: -37.1% | W_B: 27.1% | Inno Z: 0.84 | ECDF: 1.00 | Alpha: 0.9556
+      [BASE] HUM/ZBH | W_A: -35.9% | W_B: 24.7% | Inno Z: 0.84 | ECDF: 1.00 | Alpha: 0.9801
+------------------------------------------------------------
+
+[Rebalance @ 2025-07-31 | Progress:  95.8% (113/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-5.35% | DD=9.27% | win=35.7% | Sharpe=-0.81 | Sortino=-0.55 | streak=3 | conc=0.21 | periods=42
+  --> Ghost=377 | Promoted=9 | Live=12
+  --> Eff Gross=2.11 | Port Vol=0.1486 | SPY Overlay=-55.0%
+      [BASE] BIIB/BAX | W_A: -17.5% | W_B: 7.0% | Inno Z: 1.17 | ECDF: 1.00 | Alpha: 3.6630
+      [BASE] BAX/PFE | W_A: 17.5% | W_B: -7.3% | Inno Z: -2.17 | ECDF: 1.00 | Alpha: 2.2318
+      [BASE] ALGN/HSIC | W_A: 17.2% | W_B: -14.0% | Inno Z: -2.96 | ECDF: 1.00 | Alpha: 10.2313
+------------------------------------------------------------
+  [EXIT] QCOM/TER | reason=REVERTED | Z=+0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] HUM/MRNA | reason=REVERTED | Z=-0.19 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-08-01 | Progress:  96.6% (114/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.06% | DD=9.27% | win=37.2% | Sharpe=-0.41 | Sortino=-0.29 | streak=3 | conc=0.19 | periods=43
+  --> Ghost=370 | Promoted=0 | Live=3
+  --> Eff Gross=1.08 | Port Vol=0.1475 | SPY Overlay=-25.0%
+      [BASE] CHTR/WBD | W_A: 28.0% | W_B: -3.9% | Inno Z: -2.20 | ECDF: 0.65 | Alpha: 0.3691
+      [BASE] BIIB/BAX | W_A: -28.0% | W_B: 11.4% | Inno Z: 1.17 | ECDF: 0.92 | Alpha: 0.2564
+      [BASE] ALGN/HSIC | W_A: 26.8% | W_B: -22.1% | Inno Z: -2.96 | ECDF: 0.92 | Alpha: 0.0716
+------------------------------------------------------------
+  [EXIT] ALGN/HSIC | reason=REVERTED | Z=-0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BIIB/BAX | reason=REVERTED | Z=+0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-08-04 | Progress:  97.5% (115/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.92% | DD=9.27% | win=36.4% | Sharpe=-0.53 | Sortino=-0.38 | streak=3 | conc=0.19 | periods=44
+  --> Ghost=372 | Promoted=0 | Live=1
+  --> Eff Gross=1.00 | Port Vol=0.2364 | SPY Overlay=-39.8%
+      [BASE] CHTR/WBD | W_A: 60.0% | W_B: -8.2% | Inno Z: -2.20 | ECDF: 0.46 | Alpha: 0.3788
+------------------------------------------------------------
+
+[Rebalance @ 2025-08-05 | Progress:  98.3% (116/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-2.74% | DD=9.27% | win=37.8% | Sharpe=-0.34 | Sortino=-0.25 | streak=3 | conc=0.17 | periods=45
+  --> Ghost=372 | Promoted=3 | Live=4
+  --> Eff Gross=1.30 | Port Vol=0.1889 | SPY Overlay=-9.2%
+      [BASE] FIS/HBAN | W_A: 45.0% | W_B: -18.5% | Inno Z: -0.84 | ECDF: 1.00 | Alpha: 2.5966
+      [BASE] AXON/VRT | W_A: -34.6% | W_B: 15.5% | Inno Z: 0.96 | ECDF: 1.00 | Alpha: 2.4207
+      [BASE] AXON/WAB | W_A: -32.1% | W_B: 32.3% | Inno Z: 0.80 | ECDF: 1.00 | Alpha: 2.4641
+------------------------------------------------------------
+
+[Rebalance @ 2025-08-06 | Progress:  99.2% (117/118)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-3.90% | DD=9.27% | win=37.0% | Sharpe=-0.50 | Sortino=-0.36 | streak=3 | conc=0.17 | periods=46
+  --> Ghost=369 | Promoted=4 | Live=6
+  --> Eff Gross=1.89 | Port Vol=0.2458 | SPY Overlay=-12.3%
+      [BASE] CRL/MRNA | W_A: 35.0% | W_B: -12.6% | Inno Z: -0.80 | ECDF: 0.98 | Alpha: 0.7310
+      [BASE] ANET/FLEX | W_A: -35.0% | W_B: 26.2% | Inno Z: 1.25 | ECDF: 1.00 | Alpha: 1.4314
+      [BASE] FIS/HBAN | W_A: 30.5% | W_B: -12.3% | Inno Z: -0.84 | ECDF: 0.98 | Alpha: 0.5637
+------------------------------------------------------------
+  [EXIT] CHTR/WBD | reason=STALE | Z=-0.44 | days=9 | alpha=0.2816 | entry_type=BASE
+  [EXIT] FIS/HBAN | reason=REVERTED | Z=-0.06 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-08-07 | Progress: 100.0% (118/118)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.53% | DD=9.27% | win=36.2% | Sharpe=-0.70 | Sortino=-0.52 | streak=3 | conc=0.17 | periods=47
+  --> Ghost=366 | Promoted=1 | Live=2
+  --> Eff Gross=0.89 | Port Vol=0.1608 | SPY Overlay=6.8%
+      [BASE] ANET/CRWD | W_A: -42.8% | W_B: 27.2% | Inno Z: 0.92 | ECDF: 0.95 | Alpha: 0.1576
+      [BASE] FTNT/PANW | W_A: 39.3% | W_B: -25.1% | Inno Z: -1.32 | ECDF: 1.00 | Alpha: 2.2826
+------------------------------------------------------------
+<<< Stage: WalkForwardStage complete. (14.7s)
+
+>>> Stage: AttributionStage
+[Attribution] Replaying decision tape: results/22/distress/16/tape.txt
+
+====================================================================================================
+PROGRESSIVE (PER-REBALANCE) DIAGNOSTICS — PAIRWISE ENGINE
+====================================================================================================
+ per        date   perRet%   cumRet%   win%  Sharpe  maxDD%    PF  conc  excSOFR%     IR
+----------------------------------------------------------------------------------------------------
+   5  2025-03-07     -0.01     -2.01   20.0   -4.65    2.43  0.18  1.00     -2.21  -5.77
+  10  2025-04-07      1.62      0.18   40.0    0.27    2.48  1.09  0.60     -0.39  -0.46
+  15  2025-04-22      1.45     -3.89   40.0   -1.98    5.68  0.56  0.33     -4.63  -2.47
+  20  2025-05-05      0.07     -3.66   45.0   -1.61    5.68  0.60  0.30     -4.56  -2.08
+  25  2025-05-28     -0.59     -4.60   44.0   -1.82    5.68  0.56  0.27     -5.77  -2.35
+  30  2025-06-12      0.21     -4.35   50.0   -1.54    5.68  0.62  0.23     -5.72  -2.07
+  35  2025-07-18     -0.15     -4.21   48.6   -1.37    5.68  0.65  0.21     -5.99  -1.99
+  40  2025-07-30     -4.34    -11.53   42.5   -2.87   11.92  0.39  0.21    -13.46  -3.39
+  45  2025-08-06     -1.28    -11.19   44.4   -2.11   15.02  0.53  0.21    -13.21  -2.52
+  46  2025-08-07     -0.44    -11.59   43.5   -2.17   15.02  0.52  0.21    -13.62  -2.57
+----------------------------------------------------------------------------------------------------
+  EARLY-STOP: KILL after 46 periods | win_rate 43.5% < 50.0%, sharpe -2.17 < 0.0
+====================================================================================================
+<<< Stage: AttributionStage complete. (3.3s)
+
+>>> Stage: ReportingStage
+
+=====================================================================================
+v3.2 RELAXED BETA — FUNNEL CONVERSION ATTRIBUTION
+=====================================================================================
+  Funnel Tier / Portfolio Stage          | Ann. Return [%]    | Sortino Ratio     
+-------------------------------------------------------------------------------------
+  Ghost Portfolio (Raw Universe)         |             -9.20% |            -1.6688
+  Promoted Portfolio (Parametric Gated)  |            -70.55% |            -1.3890
+  Live Portfolio (SLSQP Optimized)       |            -23.13% |            -1.3152
+-------------------------------------------------------------------------------------
+  --> Parametric Selection Delta         |            -61.35% |            +0.2797
+  --> Optimizer Allocation Delta         |            +47.43% |            +0.0738
+=====================================================================================
+
+=====================================================================================
+MARKET NEUTRALITY DIAGNOSTIC (RELAXED: 5% BETA CAP)
+=====================================================================================
+                    Metric   Value Threshold Status
+          Annualized Alpha -26.64%       N/A   INFO
+         Market Beta (β_m)  0.1121  < |0.05|   FAIL
+              Beta p-value  0.0225   >= 0.05   FAIL
+          Beta t-statistic  2.3132  < |1.96|   FAIL
+   Variance Explained (R²)   4.41%    < 0.5%   FAIL
+Bull Market Beta (R_m > 0)  0.0859  < |0.05|   FAIL
+Bear Market Beta (R_m < 0)  0.1362  < |0.05|   FAIL
+-------------------------------------------------------------------------------------
+  VERDICT: Market Neutral = FALSE | Failures: Market Beta (β_m), Beta p-value, Beta t-statistic, Variance Explained (R²), Bull Market Beta (R_m > 0), Bear Market Beta (R_m < 0)
+=====================================================================================
+
+=====================================================================================
+RISK-FREE (SOFR) BENCHMARK — MARKET-NEUTRAL INTERPRETATION
+=====================================================================================
+  Metric                                  Value
+-------------------------------------------------------------------------------------
+  Benchmark Return [%]                    2.047
+  Excess Return vs SOFR [%]             -13.634
+  Annualised Excess [%]                 -29.667
+  Information Ratio                      -2.160
+=====================================================================================
+
+=====================================================================================
+INVESTMENT COMMITTEE PAIR REVIEW TEARSHEET (ATTRIBUTED BY REGIME)
+=====================================================================================
+Strategy_Origin   Pair_Legs  Total_Return_[%]  Sharpe_Ratio  Sortino_Ratio  Max_DD_[%]  Win_Rate_[%]  Total_Trades
+           BASE   LII / WAB          0.415564      0.644722       1.045446    0.005360         100.0             2
+           BASE    PG / SJM          0.113405      0.635874       0.463983    0.003298          50.0             2
+           BASE  BIIB / BAX          0.163860      0.594909       0.550055    0.004020          50.0             2
+           BASE   KMB / SJM          0.157991      0.578825       0.649280    0.003284          50.0             2
+           BASE   SYK / ZBH          0.295407      0.527858       0.696288    0.005725          50.0             2
+           BASE   DLTR / DG          0.762585      0.461482       4.373893    0.002354         100.0             2
+           BASE   CRL / WST          0.702716      0.461237       3.730917    0.002543          50.0             2
+           BASE  CRL / HSIC          0.761442      0.460765       2.908086    0.003535          50.0             2
+           BASE  CRL / RVTY          0.567797      0.460008       2.148540    0.003567          50.0             2
+           BASE  BAX / DXCM          0.456004      0.459944       2.101544    0.002929         100.0             2
+           BASE  LITE / TEL          0.239476      0.459805       2.007459    0.001610          50.0             2
+           BASE  COHR / TEL          0.164318      0.458447       1.394393    0.001591          50.0             2
+           BASE   BAX / CRL          0.286607      0.458072       1.285914    0.003009          50.0             2
+           BASE   BAX / PFE          0.362523      0.458007       1.268549    0.003858          50.0             2
+           BASE   HUM / MRK          0.772926      0.456743       1.007165    0.010360         100.0             2
+           BASE   HUM / ZTS          0.573515      0.455708       0.861459    0.008988         100.0             2
+           BASE  KEY / JKHY          0.055379      0.453848       0.683194    0.001094         100.0             2
+           BASE  HUM / RVTY          0.423886      0.453407       0.651167    0.008788         100.0             2
+           BASE   BAX / MTD          0.107023      0.452841       0.614146    0.002352          50.0             2
+           BASE    DOC / WY          0.060019      0.447688       0.263550    0.003074          50.0             2
+           BASE  BAX / HSIC          0.117107      0.447403       0.396194    0.003990          50.0             2
+           BASE  FIS / HBAN          0.286248      0.447183       0.390564    0.009894         100.0             2
+           BASE EBAY / TSCO          0.110269      0.446987       0.385671    0.003860          50.0             2
+           BASE    CCL / GM          0.024930      0.441956       0.291259    0.001155          50.0             2
+           BASE CHRW / EXPD          0.089816      0.439529       0.260220    0.004659          50.0             2
+           BASE  QCOM / TER          0.980904      0.424348       0.241901    0.076905         100.0             2
+           BASE  HUM / MRNA          0.092350      0.421229       0.231443    0.007498          50.0             2
+           BASE   HUM / ZBH          0.078888      0.409177       0.108547    0.009811          50.0             2
+           BASE ALGN / HSIC          1.720040      0.396457       0.123650    0.271283         100.0             2
+           BASE    KO / SJM          0.067850      0.358463       0.082645    0.015396          50.0             2
+           BASE    EL / SJM          0.208713      0.210752       0.016818    0.294272          50.0             4
+           BASE FSLR / FLEX          0.088172      0.188945       0.016913    0.099660          50.0             2
+           BASE    EL / SYY          0.471427      0.166611       0.018217    0.524853         100.0             2
+           BASE   HPE / WDC          0.230349      0.142610       0.012364    0.598262          50.0             2
+           BASE    MU / TXN          0.008660      0.139035       0.007501    0.015591          50.0             2
+           BASE   SJM / TSN          0.046668      0.119442       0.008853    0.100917          50.0             2
+           BASE    EL / TSN          0.332330      0.101096       0.009772    0.729322          50.0             2
+           BASE  MRVL / TEL          0.273815      0.097924       0.005475    0.990274          50.0             2
+           BASE ANET / FLEX          0.000000      0.000000       0.000000    0.000000           0.0             0
+           BASE ANET / FFIV          0.000000      0.000000       0.000000    0.000000           0.0             0
+           BASE ANET / CRWD          0.000000      0.000000       0.000000    0.000000           0.0             0
+           BASE  CRL / MRNA          0.000000      0.000000       0.000000    0.000000           0.0             0
+           BASE FTNT / PANW          0.000000      0.000000       0.000000    0.000000           0.0             0
+           BASE    DG / HRL         -0.001319     -0.001055      -0.000059    0.250750          50.0             2
+           BASE  DECK / HLT         -0.012205     -0.004119      -0.000240    0.648600          50.0             2
+           BASE   FIX / RTX         -0.005650     -0.009018      -0.000525    0.192144          50.0             2
+           BASE   PEG / SRE         -0.113852     -0.038427      -0.003184    1.095593          50.0             2
+           BASE  MDLZ / SJM         -0.016246     -0.071767      -0.003859    0.083136           0.0             2
+           BASE MRVL / MPWR         -0.146331     -0.120196      -0.005575    0.498554          50.0             2
+           BASE  FIX / LDOS         -0.223146     -0.176686      -0.008398    0.503913          50.0             2
+           BASE    FIX / GE         -0.101201     -0.187024      -0.008850    0.217667          50.0             2
+           BASE  CSGP / UDR         -0.019677     -0.193881      -0.009417    0.044443          50.0             2
+           BASE   FIX / TDG         -0.086160     -0.204839      -0.009527    0.172302          50.0             2
+           BASE   FIX / GWW         -0.240575     -0.259052      -0.011530    0.397249           0.0             2
+           BASE   FIX / RSG         -1.068955     -0.296044      -0.012860    1.574703           0.0             2
+           BASE   HSY / SJM         -0.098438     -0.304479      -0.013228    0.145292           0.0             2
+           BASE  PODD / RMD         -0.320543     -0.324127      -0.013897    0.439563           0.0             2
+           BASE  MCHP / TEL         -0.381748     -0.361879      -0.019307    0.518871          50.0             2
+           BASE    DG / TSN         -0.255355     -0.387722      -0.016202    0.304113           0.0             2
+           BASE CSGP / VMRK         -0.472420     -0.400670      -0.020568    0.564888          50.0             2
+           BASE EXPE / NCLH         -0.226766     -0.427675      -0.017703    0.247763           0.0             2
+           BASE    FIX / PH         -0.385655     -0.429092      -0.017756    0.414480           0.0             2
+           BASE    DG / SJM         -0.269888     -0.431443      -0.017845    0.291843           0.0             2
+           BASE    FIX / TT         -1.786274     -0.446075      -0.018410    1.850975           0.0             2
+           BASE   ALB / NEM         -0.972547     -0.463636      -0.019120    0.972547           0.0             2
+           BASE   ALB / MOS         -0.846389     -0.463867      -0.019130    0.846389          50.0             2
+           BASE   CRL / CVS         -3.173893     -0.472342      -0.023856    3.173893          50.0             2
+           BASE  AXON / VRT         -0.348716     -0.473930      -0.019544    0.348716           0.0             2
+           BASE EQIX / VMRK         -0.273882     -0.474187      -0.038711    0.476751          50.0             2
+           BASE  AXON / WAB         -0.367194     -0.476072      -0.019632    0.367194           0.0             2
+           BASE   HAS / LVS         -0.030090     -0.492889      -0.020325    0.030090          50.0             2
+           BASE   FIX / PNR         -0.798143     -0.505373      -0.025523    0.798143           0.0             2
+           BASE   IVZ / TFC         -3.373535     -0.580149      -0.033834    3.373535          50.0             2
+           BASE   FIX / WAB         -0.976013     -0.618735      -0.031240    0.976013           0.0             2
+           BASE ANET / NTAP         -1.712997     -0.656000      -0.033119    1.712997           0.0             2
+           BASE CHTR / PSKY         -2.500914     -0.659557      -0.038449    2.500914          50.0             2
+           BASE  CHTR / WBD         -3.923474     -0.696360      -0.058343    3.923474          50.0             2
+
+=====================================================================================
+WALK-FORWARD NET PORTFOLIO STATS (POST-FEES & EXECUTION LAG)
+=====================================================================================
+Start                               2025-02-19 00:00:00
+End                                 2025-08-07 00:00:00
+Period                                169 days 00:00:00
+Start Value                                   1000000.0
+End Value                                 884133.469013
+Total Return [%]                             -11.586653
+Max Gross Exposure [%]                       280.224806
+Total Fees Paid                             7737.067057
+Max Drawdown [%]                              15.412065
+Max Drawdown Duration                 154 days 00:00:00
+Total Trades                                        134
+Total Closed Trades                                 123
+Total Open Trades                                    11
+Open Trade PnL                            -62625.812637
+Win Rate [%]                                   47.96748
+Best Trade [%]                                 7.800051
+Worst Trade [%]                              -12.661484
+Avg Winning Trade [%]                          1.944172
+Avg Losing Trade [%]                          -1.893339
+Avg Winning Trade Duration    3 days 12:36:36.610169491
+Avg Losing Trade Duration               3 days 13:52:30
+Profit Factor                                  0.761792
+Expectancy                                  -428.866795
+Sharpe Ratio                                  -1.845034
+Calmar Ratio                                  -1.500463
+Omega Ratio                                    0.575336
+Sortino Ratio                                 -1.315236
+Benchmark Return [%]                           2.047489
+Excess Return vs SOFR [%]                    -13.634142
+Annualised Excess [%]                        -29.667486
+Information Ratio                             -2.160204
+
+=====================================================================================
+ACTIONABLE MARKET-ON-OPEN (MOO) ORDER BLOTTER FOR NEXT SESSION
+=====================================================================================
+Ticker Action Order_Type  Delta_Shares  Target_Shares  Current_Shares  Est_Order_USD  Target_Weight_%  ADV_Participation_%  Price_Ref
+  ANET   SELL        MOO          3074          -3074               0      428146.72           -42.81                0.053     139.28
+  FTNT    BUY        MOO          5214           5214               0      392614.22            39.26                0.103      75.30
+  CRWD    BUY        MOO          2563           2563               0      272318.75            27.23                0.044     106.25
+  PANW   SELL        MOO          1490          -1490               0      250469.01           -25.05                0.016     168.10
+   SPY    BUY        MOO           109            109               0       68160.01             6.82                0.000     625.32
+
+[Reporting] Saving experiment to: 'results/22/distress/16/'
+  Saved config -> results/22/distress/16/config.json
+  Saved metrics -> results/22/distress/16/csv/metrics.csv
+  Saved tearsheets -> results/22/distress/16/csv/committee_report.csv
+  Saved blotter -> results/22/distress/16/csv/moo_blotter.csv
+  Saved progressive metrics -> results/22/distress/16/csv/progressive_metrics.csv
+  Saved trade records -> results/22/distress/16/csv/trade_records.csv
+  Saved portfolio stats -> results/22/distress/16/csv/portfolio_stats.csv
+  Saved plot -> results/22/distress/16/imgs/funnel_sizing.png
+  Saved plot -> results/22/distress/16/imgs/cumulative_performance.png
+[Reporting] Runtime log -> results/22/distress/16/logs.txt
+[ReportingStage] Complete.

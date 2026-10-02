@@ -1,0 +1,130 @@
+================================================================================
+StatArb v3.2 — MDD Data Generator
+Results source: experiments/results/65/
+Output: docs/deck/static/mdd_data.json
+================================================================================
+================================================================================
+[1/7] Loading portfolio stats from v32_portfolio_stats.csv
+================================================================================
+  Start: 2024-09-09 00:00:00
+  End: 2026-09-04 00:00:00
+  Period: 500
+  Start Value: 250000.0
+  End Value: 290228.1643691772
+  Total Return [%]: 16.091265747670878
+  Benchmark Return [%]: 57.59645233726054
+  Max Gross Exposure [%]: 150.8657185344176
+  Total Fees Paid: 3203.2779393378037
+  Max Drawdown [%]: 3.4511156058003047
+  Max Drawdown Duration: 78.0
+  Total Trades: 202
+  Total Closed Trades: 199
+  Total Open Trades: 3
+  Open Trade PnL: -40.20733597022884
+  Win Rate [%]: 46.231155778894475
+  Best Trade [%]: 14.187685472832277
+  Worst Trade [%]: -8.596564784717451
+  Avg Winning Trade [%]: 2.6466786855810547
+  Avg Losing Trade [%]: -2.0243361389395016
+  Avg Winning Trade Duration: 3.25
+  Avg Losing Trade Duration: 3.3271028037383177
+  Profit Factor: 1.3913011593003102
+  Expectancy: 202.3536266590321
+
+================================================================================
+[2/7] Computing monthly net returns from metrics CSV
+================================================================================
+  2024-09: +0.1%
+  2024-10: +0.2%
+  2024-11: -2.3%
+  2024-12: +0.2%
+  2025-01: +2.5%
+  2025-02: +0.9%
+  2025-03: +0.6%
+  2025-04: +0.1%
+  2025-05: +0.0%
+  2025-06: +0.0%
+  2025-07: -0.0%
+  2025-08: +0.2%
+  2025-09: +0.0%
+  2025-10: +0.0%
+  2025-11: +1.6%
+  2025-12: -0.9%
+  2026-01: -2.2%
+  2026-02: +2.0%
+  2026-03: +1.4%
+  2026-04: +3.2%
+  2026-05: +2.3%
+  2026-06: +3.4%
+  2026-07: -0.7%
+  2026-08: +2.4%
+  2026-09: -0.0%
+
+================================================================================
+[3/7] Computing fund performance metrics
+================================================================================
+  1 Year: Fund=7.8%, Bench=25.8%
+  Annualised return since inception: Fund=7.8%, Bench=25.8%
+  Cumulative return since inception: Fund=16.1%, Bench=57.6%
+  Highest rolling 1-year return: Fund=13.0%, Bench=—
+  Lowest rolling 1-year return: Fund=0.3%, Bench=—
+  Standard deviation: Fund=5.1%, Bench=—
+  Maximum drawdown: Fund=-3.5%, Bench=—
+
+================================================================================
+[4/7] Computing sector allocation from committee report
+================================================================================
+  Consumer Discretionary: Net=+0.2%, Long=+0.0%, Short=+0.2%, Trades=1
+  Energy: Net=-0.7%, Long=-1.0%, Short=+0.3%, Trades=4
+  Financials: Net=+9.6%, Long=+6.8%, Short=+2.7%, Trades=25
+  Health Care: Net=-0.1%, Long=-0.0%, Short=-0.1%, Trades=15
+  Industrials: Net=+4.4%, Long=+5.1%, Short=-0.7%, Trades=33
+  Real Estate: Net=-0.3%, Long=-0.3%, Short=+0.0%, Trades=1
+  Technology: Net=+7.2%, Long=+4.0%, Short=+3.2%, Trades=29
+  Unknown: Net=-4.5%, Long=+0.6%, Short=-5.2%, Trades=74
+  Utilities: Net=+0.3%, Long=+0.5%, Short=-0.2%, Trades=20
+  TOTAL: Net=+16.1%, Long=+15.8%, Short=+0.2%
+
+================================================================================
+[5/7] Computing asset allocation net exposure
+================================================================================
+  Equity (StatArb Pairs): Foreign=+0.0%, Domestic=+16.1%, Total=+16.1%
+  Equity (SPY Overlay Hedge): Foreign=-9.7%, Domestic=+0.0%, Total=-9.7%
+  Cash & Margin: Foreign=+0.0%, Domestic=+83.9%, Total=+83.9%
+  Total: Foreign=-9.7%, Domestic=+100.0%, Total=+90.3%
+
+================================================================================
+[6/7] Computing risk-return scatter plot data points
+================================================================================
+  StatArb: Vol=15.0%, CAGR=7.8%
+  S&P 500: Vol=15.5%, CAGR=25.8%
+  Cash (STeFi): Vol=0.4%, CAGR=6.6%
+
+================================================================================
+[7/7] Building general information block
+================================================================================
+  fund_name: StatArb v3.2 Market Neutral Quantitative Fund
+  fund_class: Class Q
+  as_of_date: 2026
+  document_type: Minimum Disclosure Document (Algorithmic Quant Strategy)
+  unit_price: 11609.13 cpu
+  fund_size: R0.3m (≈ $290,228 USD equivalent)
+  benchmark: S&P 500 Total Return
+  strategy: Statistical Arbitrage — Sector-Neutral Pairs Trading
+  risk_profile: Moderate (Conservative allocation within market-neutral mandate)
+  inception_date: 09 September 2024
+  total_trades: 202
+  win_rate: 46.2%
+  profit_factor: 1.39
+  max_drawdown: 3.45%
+  total_fees: $3,203.28
+  management_fee: N/A (Internal/Proprietary Capital)
+  performance_fee: N/A (Internal/Proprietary Capital)
+  liquidity: T+1 (Market-On-Open)
+  contact: Quantitative Research Desk
+  model_version: v3.2 (model_B_relaxed_beta_neutral)
+
+================================================================================
+MDD data written to: docs/deck/static/mdd_data.json
+File size: 6,130 bytes
+================================================================================

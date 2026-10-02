@@ -1,60 +1,51 @@
-# Stat-Arb Presentation Deck — FastAPI microservice
+# Stat-Arb Presentation Deck — Zero-Dependency Node.js server
 
-A slim FastAPI microservice that serves a **single-file, self-contained Bespoke.js
-presentation deck** summarising the `statarb_1.0.ipynb` pipeline: the Ghost →
-Eligible → Live architecture, a Mermaid diagram of the full pipeline, the live
-rebalance log, the diagnostic tearsheet image and the OOS walk-forward results
-(2026-02-25 → 2026-08-25).
+A minimal Node.js static file server (built-in `http`/`fs` modules only, **no npm packages**).
+It serves self-contained HTML decks, reports, and factsheets. All libraries (Bootstrap,
+KaTeX, Mermaid) are loaded via CDN directly in the HTML — no local assets needed.
 
 ## Layout
 
 ```
 docs/
-├── imgs/results.png            # Diagnostic tearsheet rendered by the notebook
 └── deck/
-    ├── main.py                 # FastAPI app (root route serves the deck)
-    ├── static/presentation.html# Bespoke.js deck (Mermaid via CDN)
-    ├── requirements.txt
-    ├── Dockerfile
+    ├── server.js              # Zero-dependency Node.js static server
+    ├── package.json           # Metadata only (no dependencies)
+    ├── static/                # All HTML decks, reports, and data
+    │   ├── presentation_v1.html
+    │   ├── presentation_v2.html
+    │   ├── presentation_v3.html
+    │   ├── distress_report.html
+    │   ├── report_v3.html
+    │   ├── report_v3.2.html
+    │   ├── statarb_checklist.html
+    │   ├── mdd_report.html
+    │   ├── mdd_data.json
+    │   └── ...
     └── README.md
-docker-compose.yml           # Compose file: build + run the deck service
 ```
 
-The deck HTML is a single file: Bespoke.js and Mermaid are loaded from
-jsDelivr, and the tearsheet PNG is **base64-inlined** by `main.py` at request
-time, so the served page has no extra image requests.
+## Run
 
-## Run locally
+No install required — Node.js only:
 
-```
-cd dev/docs
-pip install -r deck/requirements.txt
-uvicorn deck.main:app --port 8000
+```bash
+node server.js
 ```
 
-Open http://localhost:8000 — navigate with arrow keys / swipe. The progress
-bar and slide counter are built in.
-
-## Run with Docker Compose
-
-Build and start the deck server with a single command (run from the repo root or
-from `docs/` — the compose file sets the repo root as the build context so the
-image picks up `results/7/` chart PNGs):
-
-```
-# from docs/
-docker compose up --build -d
-```
-
-Open http://localhost:8080. The container publishes port 8080, restarts
-automatically, and serves the deck on `/` with a `/health` liveness probe.
-
-Stop and remove the container with `docker compose down`.
+Open http://localhost:8080.
 
 ## Endpoints
 
-| Route        | Response                                            |
-|--------------|-----------------------------------------------------|
-| `/`          | The presentation deck (single HTML file)            |
-| `/api/info`  | JSON metadata used by the deck (run window, trades) |
-| `/health`    | Liveness probe                                      |
+| Route          | Content                                      |
+|----------------|----------------------------------------------|
+| `/`            | v3 presentation deck (default)               |
+| `/v1`          | v1 presentation deck                         |
+| `/v2`          | v2 presentation deck                         |
+| `/v3`          | v3 presentation deck                         |
+| `/checklist`   | Risk & deployment audit                      |
+| `/report/v3`   | v3.1 backtest run report                     |
+| `/report/v3.2` | v3.2 backtest run report                     |
+| `/distress/v3` | 18-window stress test results                |
+| `/mdd/v3`      | Minimum Disclosure Document factsheet        |
+| `/health`      | Liveness probe                               |

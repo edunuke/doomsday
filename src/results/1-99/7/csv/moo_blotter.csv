@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+AWK,SELL,MOO,1385,-1385,0,74995.91,-30.0,0.054,54.15
+CMS,BUY,MOO,1982,1982,0,57265.76,22.91,0.144,28.89
+SPY,BUY,MOO,101,101,0,15775.53,6.31,0.001,156.19

@@ -1,0 +1,5 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+VALE,BUY,MOO,11163,11163,0,154272.66,15.43,1.5,13.82
+SPY,SELL,MOO,3831,-3831,0,135962.2,-13.6,0.215,35.49
+SQM,SELL,MOO,696,-696,0,48079.68,-4.81,0.019,69.08
+GMEXICOB,SELL,MOO,50,-50,0,11061.0,-1.11,0.0,221.22

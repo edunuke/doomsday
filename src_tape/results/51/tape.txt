@@ -1,0 +1,2 @@
+{"run":"51","ts":"2024-09-09","config_sha":"7bf16ef23129aaa3","universe":"data/universe_daily_train.csv+data/universe_daily_val.csv","n_tickers":502,"start_idx":504,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2024-09-09","cause":"INITIAL_ENTRY","step":1,"progress_pct":0.2,"ghost_size":2,"promoted_size":0,"live_size":0,"v":1}

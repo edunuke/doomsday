@@ -1,0 +1,3 @@
+Cohort,Days,Total_Ret_%,Ann_Ret_%,Ann_Vol_%,Sharpe,Sortino,Max_DD_%
+start → 2021-12-31,872,1.89,0.54,0.63,0.867,0.66,-0.15
+2022-01-01 → end,1233,1.47,0.3,0.57,0.529,0.131,-0.46

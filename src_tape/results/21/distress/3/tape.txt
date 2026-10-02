@@ -1,0 +1,15 @@
+{"run":"3","ts":"2025-07-28","config_sha":"e5c81f313baa6d6b","universe":"data/distress_in/aug_vol_2025.csv+data/distress/aug_vol_2025.csv","n_tickers":499,"start_idx":1058,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2025-07-28","cause":"INITIAL_ENTRY","step":1,"progress_pct":2.1739,"ghost_size":0,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2025-07-28","targets":{},"spy_overlay":NaN,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"carry":true,"v":1}
+{"type":"REBALANCE","ts":"2025-07-31","cause":"SIGNAL_ENTRY","step":4,"progress_pct":8.6957,"ghost_size":2,"promoted_size":1,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2025-07-31","targets":{"BIIB":-0.6,"BAX":0.24929199543491284,"SPY":0.2354791779258894},"spy_overlay":0.2354791779258894,"gross":1.0847711734,"n_pairs":1,"n_long":2,"n_short":1,"v":1}
+{"type":"GHOST_BOOK","ts":"2025-07-31","targets":{"BIIB":-0.5,"BAX":0.20774332952909405,"CPT":-0.5,"EXR":0.3664519966925704},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2025-07-31","targets":{"BIIB":-1.0,"BAX":0.4154866590581881},"v":1}
+{"type":"PAIR_BOOK","ts":"2025-07-31","pair":["BIIB","BAX"],"weights":{"BIIB":-0.6,"BAX":0.24929199543491284},"sleeve":0.6,"v":1}
+{"type":"ENTRY","ts":"2025-07-31","pair":["BIIB","BAX"],"legs":["BIIB","BAX"],"beta":0.4154866590581881,"entry_z":1.2080454057194732,"alpha":4.230511373999518,"entry_type":"BASE","sleeve_w":0.6,"w_a":-0.6,"w_b":0.24929199543491284,"px_a":128.0,"px_b":21.56682586669922,"v":1}
+{"type":"EXIT","ts":"2025-08-06","pair":["BIIB","BAX"],"reason":"REVERTED","exit_z":0.04509182942423045,"days_held":4,"alpha":0.0,"entry_type":"BASE","px_a":129.33999633789062,"px_b":22.30025863647461,"v":1}
+{"type":"PAIR_BOOK","ts":"2025-08-06","pair":["BIIB","BAX"],"weights":{"BIIB":0.0,"BAX":0.0},"sleeve":0.0,"v":1}
+{"type":"REBALANCE","ts":"2025-08-06","cause":"SIGNAL_EXIT","step":8,"progress_pct":17.3913,"ghost_size":1,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2025-08-06","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2025-08-06","targets":{"BMY":1.0,"HSIC":-0.5304343956615725},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2025-08-06","targets":{},"v":1}

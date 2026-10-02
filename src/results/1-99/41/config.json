@@ -1,0 +1,19 @@
+{
+  "price_csv": "data/universe_daily_long.csv",
+  "lookback_days": 1260,
+  "reb": 3,
+  "retrain_days": 90,
+  "ks": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "ls_frac": 0.2,
+  "gross": 2.0,
+  "exec_fee": 0.00015,
+  "borrow_bps": 50.0,
+  "initial_capital": 250000.0,
+  "max_spy_overlay": 0.55,
+  "oos_start": "2021-09-03"
+}

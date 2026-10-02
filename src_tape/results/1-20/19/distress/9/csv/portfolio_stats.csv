@@ -1,0 +1,32 @@
+,0
+Start,2008-09-15 00:00:00
+End,2009-03-06 00:00:00
+Period,172 days 00:00:00
+Start Value,1000000.0
+End Value,963417.7892279017
+Total Return [%],-3.6582210772098223
+Max Gross Exposure [%],208.1730015652422
+Total Fees Paid,4609.926482399502
+Max Drawdown [%],12.667391036803588
+Max Drawdown Duration,21 days 00:00:00
+Total Trades,80
+Total Closed Trades,79
+Total Open Trades,1
+Open Trade PnL,9602.99248711495
+Win Rate [%],49.36708860759494
+Best Trade [%],27.81994100217544
+Worst Trade [%],-30.356020941264443
+Avg Winning Trade [%],6.711538669343804
+Avg Losing Trade [%],-6.432072015884077
+Avg Winning Trade Duration,5 days 22:46:09.230769230
+Avg Losing Trade Duration,6 days 10:48:00
+Profit Factor,0.9185547197309191
+Expectancy,-578.1610648520611
+Sharpe Ratio,-0.4740612259124931
+Calmar Ratio,-0.5942727654161426
+Omega Ratio,0.8919383468173654
+Sortino Ratio,-0.4070695967744139
+Benchmark Return [%],0.0
+Excess Return vs SOFR [%],-3.6582210772098334
+Annualised Excess [%],-6.79465150069003
+Information Ratio,-0.47406122591249306

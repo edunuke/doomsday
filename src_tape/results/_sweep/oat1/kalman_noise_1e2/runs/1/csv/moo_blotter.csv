@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+GDDY,BUY,MOO,5789,5789,0,599914.05,59.99,0.12,103.63
+MSFT,SELL,MOO,692,-692,0,353003.04,-35.3,0.003,510.12
+SPY,BUY,MOO,313,313,0,241402.76,24.14,0.001,771.25

@@ -1,0 +1,9 @@
+{"run":"44","ts":"2018-08-30","config_sha":"399f0c372a8aac20","universe":"data/ILF_survivorship.csv+data/ILF_survivorship.csv","n_tickers":74,"start_idx":504,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2018-08-30","cause":"INITIAL_ENTRY","step":1,"progress_pct":0.0475,"ghost_size":2,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2018-08-30","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2018-08-30","targets":{"ITUB":0.5,"B3SA3":-0.36559809175239394,"BBD":0.5,"ITSA4":-0.46300288022572883},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2018-08-30","targets":{},"v":1}
+{"type":"REBALANCE","ts":"2020-06-08","cause":"SIGNAL_ENTRY","step":463,"progress_pct":21.9952,"ghost_size":1,"promoted_size":1,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2020-06-08","targets":{},"spy_overlay":-0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2020-06-08","targets":{"BAP":-1.0,"CIB":0.4776607183369629},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2020-06-08","targets":{"BAP":-1.0,"CIB":0.4776607183369629},"v":1}

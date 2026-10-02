@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+PSKY,BUY,MOO,7890,7890,0,79225.55,7.92,1.5,10.04
+WBD,SELL,MOO,5744,-5744,0,42735.36,-4.27,1.5,7.44
+SPY,BUY,MOO,22,22,0,11695.95,1.17,0.0,531.63

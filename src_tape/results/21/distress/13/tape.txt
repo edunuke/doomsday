@@ -1,0 +1,11 @@
+{"run":"13","ts":"2023-09-01","config_sha":"747e4f6395d61cc6","universe":"data/distress_in/rates_2023.csv+data/distress/rates_2023.csv","n_tickers":495,"start_idx":1064,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2023-09-01","cause":"INITIAL_ENTRY","step":1,"progress_pct":2.381,"ghost_size":0,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2023-09-01","targets":{},"spy_overlay":NaN,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"carry":true,"v":1}
+{"type":"REBALANCE","ts":"2023-10-30","cause":"SIGNAL_ENTRY","step":41,"progress_pct":97.619,"ghost_size":5,"promoted_size":2,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2023-10-30","targets":{"MPWR":-0.6,"ON":0.6038619965007664,"CRWD":-0.5421028425868465,"SPY":0.55},"spy_overlay":0.55,"gross":2.2959648391,"n_pairs":2,"n_long":2,"n_short":2,"v":1}
+{"type":"GHOST_BOOK","ts":"2023-10-30","targets":{"AEE":0.2,"WEC":-0.17871064130329783,"ADI":-0.2,"ON":0.3824193093287819,"CRWD":-0.2,"FTNT":-0.2,"MPWR":-0.2},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2023-10-30","targets":{"MPWR":-0.5,"ON":0.5234662718755307,"CRWD":-0.5},"v":1}
+{"type":"PAIR_BOOK","ts":"2023-10-30","pair":["MPWR","ON"],"weights":{"MPWR":-0.6,"ON":0.3763592911218174},"sleeve":0.6,"v":1}
+{"type":"PAIR_BOOK","ts":"2023-10-30","pair":["CRWD","ON"],"weights":{"CRWD":-0.5421028425868465,"ON":0.22750270537894904},"sleeve":0.5421028425868465,"v":1}
+{"type":"ENTRY","ts":"2023-10-30","pair":["MPWR","ON"],"legs":["MPWR","ON"],"beta":0.6272654852030289,"entry_z":1.0134267993080603,"alpha":3.494727437833421,"entry_type":"BASE","sleeve_w":0.6,"w_a":-0.6,"w_b":0.3763592911218174,"px_a":395.9187316894531,"px_b":65.33999633789062,"v":1}
+{"type":"ENTRY","ts":"2023-10-30","pair":["CRWD","ON"],"legs":["CRWD","ON"],"beta":0.41966705854803266,"entry_z":0.770431500251083,"alpha":2.8796319557982435,"entry_type":"BASE","sleeve_w":0.5421028425868465,"w_a":-0.5421028425868465,"w_b":0.22750270537894904,"px_a":43.65250015258789,"px_b":65.33999633789062,"v":1}

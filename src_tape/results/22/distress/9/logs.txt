@@ -1,0 +1,2270 @@
+=====================================================================================
+STAT-ARB v3.2 — RELAXED BETA NEUTRALITY
+Pipeline flow: DownloadDataStage → DataLoaderStage → ResidualizerStageV3 → AlphaCubeStageV5 → SelectionStage → WalkForwardStage → AttributionStage → ReportingStage
+Verbose      : NO
+Results dir  : /Users/edunuke/Desktop/statarb-prival/src_tape/results/22/distress/9
+=====================================================================================
+  price_csv                           : data/distress_in/gfc_2008.csv
+  oos_price_csv                       : data/distress/gfc_2008.csv
+  constituents_path                   : data/constituents.csv
+  lookback_days                       : 1062
+  min_history_days                    : 100
+  weight_drift_threshold              : 0.04
+  screening_freq_days                 : 20
+  quarantine_days                     : 30
+  kalman_delta                        : 0.001
+  kalman_obs_noise                    : 0.001
+  max_hurst_exponent                  : 0.43
+  max_slope_tstat                     : 1.96
+  min_correlation                     : 0.25
+  p_value_threshold                   : 0.04
+  min_half_life                       : 4.0
+  max_half_life                       : 25.0
+  tau_hl_penalty                      : 5.0
+  exit_z_spread                       : 0.2
+  stop_loss_z                         : 2.2
+  min_holding_days                    : 2
+  max_holding_days                    : 60
+  promote_top_n                       : 35
+  max_pair_spy_beta                   : 1.2
+  max_adv_participation               : 0.015
+  initial_capital                     : 1000000.0
+  exec_fee                            : 0.00015
+  borrow_bps                          : 50.0
+  entry_ecdf_percentile               : 0.8
+  min_override_z                      : 0.5
+  friction_clearance_multiplier       : 8.0
+  ghost_truncation_quantile           : 0.15
+  low_density_threshold               : 3
+  max_sleeve_weight_low_density       : 0.6
+  max_sleeve_weight                   : 0.45
+  max_single_stock_gross              : 0.65
+  max_gross_exposure                  : 2.8
+  max_net_dollar_exposure             : 0.08
+  max_net_beta_exposure               : 0.05
+  max_sector_exposure                 : 0.12
+  max_spy_overlay_weight              : 0.55
+  entry_z_base                        : 0.75
+  kalman_f_smooth_window              : 21
+  kalman_f_smooth_min_periods         : 5
+  ecdf_window                         : 63
+  half_life_window                    : 126
+  half_life_fillna                    : 20.0
+  hurst_window                        : 126
+  hurst_max_lag                       : 20
+  hurst_fillna                        : 0.5
+  slope_window                        : 20
+  spy_beta_ewm_span                   : 30
+  covariance_lookback_days            : 63
+  cov_jitter                          : 1e-05
+  min_gross_floor                     : 0.3
+  min_gross_frac                      : 0.5
+  alpha_ub_clip_low                   : 0.2
+  alpha_ub_clip_high                  : 1.0
+  min_weight_cutoff                   : 0.01
+  turnover_extra_bps                  : 0.0005
+  stale_days                          : 8
+  stale_alpha                         : 0.35
+  neutrality_max_r2                   : 0.005
+  neutrality_min_regime_obs           : 10
+  moo_min_order_usd                   : 500.0
+  adv_window_days                     : 20
+  adv_shares_mult                     : 50000
+  adv_fill_value                      : 1000000
+  retrain_freq_days                   : 90
+  train_lookback_days                 : 504
+  screen_lookback_days                : 252
+  early_stop_enabled                  : False
+  early_stop_rebal_days               : 5
+  early_stop_min_periods              : 5
+  early_stop_max_drawdown             : 8.0
+  early_stop_max_period_loss          : 3.0
+  early_stop_max_loss_streak          : 6
+  early_stop_signal_window            : 20
+  early_stop_signal_min_periods       : 15
+  early_stop_cum_sigma_k              : 2.0
+  early_stop_min_sharpe               : -1.0
+  early_stop_min_sortino              : -1.0
+  early_stop_min_win_rate             : None
+  max_holding_buffer                  : 1.5
+  ensemble_window                     : 21
+  ensemble_weight                     : 0.5
+  vr_max                              : 0.95
+  vr_horizon                          : 5
+  components                          : {'residualizer': 'v3', 'alphacube': 'v5', 'selection': 'v1', 'walkforward': 'v1', 'allocator': 'v2', 'regime': 'v3', 'sizing': 'v1', 'screener': 'v2'}
+  download                            : False
+  verbose                             : False
+  circuit_breaker_enabled             : False
+  circuit_breaker_max_dd              : 10.0
+  circuit_breaker_max_period_loss     : 6.0
+  circuit_breaker_max_loss_streak     : 8
+  circuit_breaker_min_periods         : 1
+  enable_override                     : False
+  enable_promotion                    : True
+  factor_beta_window                  : 126
+  factor_vol_window                   : 63
+  factor_mom_window                   : 252
+  factor_mom_skip                     : 21
+  factor_beta_shrink                  : 0.2
+  regime_vol_window                   : 63
+  regime_vol_lookback                 : 252
+  regime_vol_percentile               : 75
+  regime_exposure_scale               : 0.3
+  trailing_dd_lookback                : 126
+  trailing_dd_threshold               : -0.08
+  trailing_dd_scale                   : 0.3
+  selection_enabled                   : True
+  selection_window_days               : 378
+  selection_max_pairs                 : 300
+  alpha_v5_enabled                    : True
+  alpha_v5_ou_tau                     : 5.0
+  alpha_v5_dispersion_tilt            : 0.25
+  dispersion_lookback                 : 252
+  dispersion_window                   : 21
+  sizing_target_vol                   : 0.1
+  sizing_max_leverage                 : 1.5
+  sizing_mode                         : derisk
+  sizing_vol_window                   : 126
+  run_distress                        : False
+  screen_min_pairs                    : 8
+  distress_out_dir                    : results/22/distress
+  results_dir                         : results/22/distress
+  distress_only                       : None
+=====================================================================================
+
+=====================================================================================
+STARTING STAT-ARB ENGINE v3.2
+=====================================================================================
+
+>>> Stage: DownloadDataStage
+[DownloadDataStage] Skipped (--download not set).
+<<< Stage: DownloadDataStage complete. (0.0s)
+
+>>> Stage: DataLoaderStage
+[DataLoader] 'SPY' detected. Using real SPY series.
+[DataLoader] Loaded 1182 days x 413 tickers.
+<<< Stage: DataLoaderStage complete. (0.1s)
+
+>>> Stage: ResidualizerStageV3
+[Residualizer] 2379 sector-matched residual pairs.
+[ResidualizerV3] regime-conditional VR screen (high-dispersion days=526, 5d, VR<=0.95): 2379 -> 1807 pairs
+<<< Stage: ResidualizerStageV3 complete. (0.2s)
+
+>>> Stage: AlphaCubeStageV5
+[AlphaCube] Built alpha cube: 1807 pairs.
+[AlphaV5] orthogonal sources added (dispersion tilt=0.25, ou_tau=5.0); pairs=1807
+<<< Stage: AlphaCubeStageV5 complete. (7.1s)
+
+>>> Stage: SelectionStage
+[Selection] walk-forward schedule: 0 re-selections (window=378d, grid=6)
+<<< Stage: SelectionStage complete. (0.0s)
+
+>>> Stage: WalkForwardStage
+[Screener] v2
+[Factors] factor 'growth': no fundamentals file — factor DROPPED (a true growth factor needs fundamentals; not faked with momentum)
+[Regime] v3: stressed=440/1182 days (26 transitions)
+[WalkForward] Decision tape -> results/22/distress/9/tape.txt
+[WalkForward] Rolling retrain every 90d (train window 504d).
+[WalkForward] Min alpha floor = 0.35%
+[Screen] 2008-09-15: 1807 candidates -> 147 pass (v2) -> 147 live
+[GhostDBG] 2008-09-15: in=147 noalpha=0 nan=0 hurst=0 hl=0 slope=0 kept=147
+
+[Rebalance @ 2008-09-15 | Progress:   0.8% (1/120)] Cause: INITIAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.00% | DD=0.00% | win=0.0% | Sharpe=0.00 | Sortino=inf | streak=0 | conc=0.00 | periods=1
+  --> Ghost=147 | Promoted=4 | Live=4
+  --> Eff Gross=2.00 | Port Vol=0.2920 | SPY Overlay=-16.5%
+      [BASE] DHI/F | W_A: 13.5% | W_B: -10.0% | Inno Z: -1.39 | ECDF: 0.95 | Alpha: 2.3139
+      [BASE] NVDA/STX | W_A: 13.4% | W_B: -6.5% | Inno Z: -0.92 | ECDF: 0.95 | Alpha: 1.8065
+      [BASE] BXP/VMRK | W_A: 10.4% | W_B: -8.5% | Inno Z: -0.86 | ECDF: 1.00 | Alpha: 1.3689
+------------------------------------------------------------
+
+[Rebalance @ 2008-09-16 | Progress:   1.7% (2/120)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.63% | DD=0.00% | win=50.0% | Sharpe=7.10 | Sortino=inf | streak=0 | conc=1.00 | periods=2
+  --> Ghost=143 | Promoted=4 | Live=6
+  --> Eff Gross=1.73 | Port Vol=0.3099 | SPY Overlay=0.1%
+      [BASE] DHI/F | W_A: 10.5% | W_B: -7.3% | Inno Z: -1.39 | ECDF: 0.83 | Alpha: 1.2169
+      [BASE] NVDA/STX | W_A: 10.5% | W_B: -4.8% | Inno Z: -0.92 | ECDF: 0.90 | Alpha: 1.2752
+      [BASE] HPQ/STX | W_A: -8.5% | W_B: 2.3% | Inno Z: 1.06 | ECDF: 1.00 | Alpha: 0.8210
+------------------------------------------------------------
+
+[Rebalance @ 2008-09-17 | Progress:   2.5% (3/120)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.82% | DD=0.00% | win=66.7% | Sharpe=7.43 | Sortino=inf | streak=0 | conc=0.76 | periods=3
+  --> Ghost=139 | Promoted=10 | Live=15
+  --> Eff Gross=2.65 | Port Vol=0.3965 | SPY Overlay=-16.5%
+      [BASE] DHI/F | W_A: 5.2% | W_B: -3.6% | Inno Z: -1.39 | ECDF: 0.79 | Alpha: 0.8669
+      [BASE] PHM/TSCO | W_A: 5.2% | W_B: -3.9% | Inno Z: -1.56 | ECDF: 0.95 | Alpha: 2.7057
+      [BASE] LRCX/NVDA | W_A: 5.2% | W_B: -1.4% | Inno Z: -0.81 | ECDF: 0.90 | Alpha: 1.0652
+------------------------------------------------------------
+  [EXIT] NVDA/STX | reason=STOP_LOSS | Z=+2.97 | days=3 | alpha=6.6931 | entry_type=BASE
+  [EXIT] COF/MS | reason=STOP_LOSS | Z=+4.90 | days=2 | alpha=5.4935 | entry_type=BASE
+  [EXIT] HPQ/STX | reason=REVERTED | Z=-0.14 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] HPQ/NVDA | reason=REVERTED | Z=-0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-09-18 | Progress:   3.3% (4/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+3.95% | DD=0.00% | win=75.0% | Sharpe=5.59 | Sortino=inf | streak=0 | conc=0.79 | periods=4
+  --> Ghost=131 | Promoted=3 | Live=11
+  --> Eff Gross=2.18 | Port Vol=0.3764 | SPY Overlay=-16.5%
+      [BASE] PHM/TSCO | W_A: 6.0% | W_B: -4.7% | Inno Z: -1.56 | ECDF: 0.49 | Alpha: 0.7858
+      [BASE] LEN/WSM | W_A: 6.0% | W_B: -5.5% | Inno Z: -1.13 | ECDF: 0.94 | Alpha: 0.8853
+      [BASE] KEY/RF | W_A: 5.9% | W_B: -3.3% | Inno Z: -1.22 | ECDF: 1.00 | Alpha: 2.5992
+------------------------------------------------------------
+  [EXIT] MET/NDAQ | reason=STOP_LOSS | Z=-2.65 | days=2 | alpha=2.1094 | entry_type=BASE
+  [EXIT] RF/PNC | reason=STOP_LOSS | Z=+2.20 | days=1 | alpha=2.6416 | entry_type=BASE
+
+[Rebalance @ 2008-09-19 | Progress:   4.2% (5/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+3.24% | DD=0.68% | win=60.0% | Sharpe=3.55 | Sortino=6.77 | streak=1 | conc=0.79 | periods=5
+  --> Ghost=128 | Promoted=8 | Live=17
+  --> Eff Gross=2.40 | Port Vol=0.3882 | SPY Overlay=-8.4%
+      [BASE] DHI/F | W_A: 4.9% | W_B: -3.9% | Inno Z: -1.39 | ECDF: 1.00 | Alpha: 2.3737
+      [BASE] PHM/TSCO | W_A: 4.9% | W_B: -4.1% | Inno Z: -1.56 | ECDF: 0.92 | Alpha: 1.7002
+      [BASE] LRCX/NVDA | W_A: 4.9% | W_B: -1.3% | Inno Z: -0.81 | ECDF: 0.63 | Alpha: 1.2088
+------------------------------------------------------------
+  [EXIT] LRCX/NVDA | reason=REVERTED | Z=+0.05 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DOC/WELL | reason=REVERTED | Z=-0.16 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-09-22 | Progress:   5.0% (6/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+2.67% | DD=1.23% | win=50.0% | Sharpe=2.52 | Sortino=5.15 | streak=2 | conc=0.79 | periods=6
+  --> Ghost=122 | Promoted=0 | Live=14
+  --> Eff Gross=2.35 | Port Vol=0.4044 | SPY Overlay=-16.5%
+      [BASE] DHI/F | W_A: 5.6% | W_B: -4.5% | Inno Z: -1.39 | ECDF: 0.97 | Alpha: 2.6602
+      [BASE] PHM/TSCO | W_A: 5.6% | W_B: -4.7% | Inno Z: -1.56 | ECDF: 0.89 | Alpha: 1.0261
+      [BASE] LEN/WSM | W_A: 5.6% | W_B: -5.5% | Inno Z: -1.13 | ECDF: 0.94 | Alpha: 1.2981
+------------------------------------------------------------
+  [EXIT] LEN/WSM | reason=STOP_LOSS | Z=-2.70 | days=4 | alpha=1.9487 | entry_type=BASE
+  [EXIT] ACN/NVDA | reason=REVERTED | Z=-0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-09-23 | Progress:   5.8% (7/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+2.68% | DD=1.23% | win=57.1% | Sharpe=2.32 | Sortino=4.43 | streak=2 | conc=0.79 | periods=7
+  --> Ghost=123 | Promoted=0 | Live=12
+  --> Eff Gross=2.68 | Port Vol=0.4379 | SPY Overlay=-16.5%
+      [BASE] DHI/F | W_A: 7.0% | W_B: -5.6% | Inno Z: -1.39 | ECDF: 0.41 | Alpha: 3.0309
+      [BASE] PHM/TSCO | W_A: 7.0% | W_B: -5.7% | Inno Z: -1.56 | ECDF: 0.92 | Alpha: 2.9059
+      [BASE] KEY/RF | W_A: 7.0% | W_B: -3.7% | Inno Z: -1.22 | ECDF: 0.83 | Alpha: 1.4763
+------------------------------------------------------------
+  [EXIT] CBRE/PLD | reason=REVERTED | Z=+0.00 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MAS/ODFL | reason=REVERTED | Z=+0.02 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-09-24 | Progress:   6.7% (8/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+3.41% | DD=1.23% | win=62.5% | Sharpe=2.73 | Sortino=4.89 | streak=2 | conc=0.67 | periods=8
+  --> Ghost=125 | Promoted=0 | Live=10
+  --> Eff Gross=2.58 | Port Vol=0.4473 | SPY Overlay=-16.5%
+      [BASE] DHI/F | W_A: 8.4% | W_B: -6.9% | Inno Z: -1.39 | ECDF: 0.46 | Alpha: 2.0190
+      [BASE] PHM/TSCO | W_A: 8.4% | W_B: -6.9% | Inno Z: -1.56 | ECDF: 0.08 | Alpha: 1.5232
+      [BASE] KEY/RF | W_A: 8.4% | W_B: -4.5% | Inno Z: -1.22 | ECDF: 0.84 | Alpha: 1.6337
+------------------------------------------------------------
+  [EXIT] JPM/TFC | reason=REVERTED | Z=-0.11 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CCI/VTR | reason=REVERTED | Z=-0.13 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CB/TRV | reason=REVERTED | Z=+0.11 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-09-25 | Progress:   7.5% (9/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+3.78% | DD=1.23% | win=66.7% | Sharpe=2.84 | Sortino=4.81 | streak=2 | conc=0.62 | periods=9
+  --> Ghost=128 | Promoted=2 | Live=9
+  --> Eff Gross=2.34 | Port Vol=0.3685 | SPY Overlay=-16.5%
+      [BASE] PHM/TSCO | W_A: 9.3% | W_B: -7.7% | Inno Z: -1.56 | ECDF: 0.17 | Alpha: 1.2814
+      [BASE] KEY/RF | W_A: 9.3% | W_B: -5.1% | Inno Z: -1.22 | ECDF: 0.67 | Alpha: 1.4725
+      [BASE] CMI/WAB | W_A: 6.8% | W_B: -3.9% | Inno Z: -0.91 | ECDF: 1.00 | Alpha: 1.0234
+------------------------------------------------------------
+  [EXIT] IT/NVDA | reason=REVERTED | Z=-0.06 | days=5 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-09-26 | Progress:   8.3% (10/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+3.64% | DD=1.23% | win=60.0% | Sharpe=2.56 | Sortino=5.05 | streak=2 | conc=0.62 | periods=10
+  --> Ghost=127 | Promoted=2 | Live=10
+  --> Eff Gross=2.47 | Port Vol=0.3741 | SPY Overlay=-16.5%
+      [BASE] AAPL/STX | W_A: 8.4% | W_B: -3.7% | Inno Z: -0.90 | ECDF: 0.67 | Alpha: 0.7681
+      [BASE] KEY/RF | W_A: 8.4% | W_B: -4.8% | Inno Z: -1.22 | ECDF: 0.87 | Alpha: 1.5378
+      [BASE] ACN/NVDA | W_A: -8.4% | W_B: 1.0% | Inno Z: 0.90 | ECDF: 0.98 | Alpha: 2.0663
+------------------------------------------------------------
+  [EXIT] PHM/TSCO | reason=STOP_LOSS | Z=-2.96 | days=8 | alpha=4.8981 | entry_type=BASE
+  [EXIT] AAPL/STX | reason=STOP_LOSS | Z=-3.02 | days=8 | alpha=2.5821 | entry_type=BASE
+  [EXIT] KEY/RF | reason=REVERTED | Z=+0.07 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CMI/TXT | reason=REVERTED | Z=+0.10 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-09-29 | Progress:   9.2% (11/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+1.51% | DD=2.35% | win=54.5% | Sharpe=0.86 | Sortino=0.91 | streak=2 | conc=0.62 | periods=11
+  --> Ghost=127 | Promoted=11 | Live=16
+  --> Eff Gross=2.67 | Port Vol=0.3339 | SPY Overlay=-16.5%
+      [BASE] KEY/RF | W_A: 4.9% | W_B: -3.0% | Inno Z: -1.18 | ECDF: 1.00 | Alpha: 2.8358
+      [BASE] IT/NVDA | W_A: 4.9% | W_B: -0.6% | Inno Z: -0.94 | ECDF: 0.95 | Alpha: 1.6150
+      [BASE] F/WSM | W_A: 4.9% | W_B: -2.8% | Inno Z: -1.32 | ECDF: 0.97 | Alpha: 1.0896
+------------------------------------------------------------
+  [EXIT] DHI/F | reason=STOP_LOSS | Z=-2.60 | days=11 | alpha=4.4846 | entry_type=BASE
+  [EXIT] F/WSM | reason=STOP_LOSS | Z=+2.29 | days=1 | alpha=1.6255 | entry_type=BASE
+
+[Rebalance @ 2008-09-30 | Progress:  10.0% (12/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+3.42% | DD=2.35% | win=58.3% | Sharpe=1.66 | Sortino=1.83 | streak=2 | conc=0.45 | periods=12
+  --> Ghost=116 | Promoted=4 | Live=14
+  --> Eff Gross=1.86 | Port Vol=0.2197 | SPY Overlay=-11.5%
+      [BASE] KEY/RF | W_A: 4.7% | W_B: -3.1% | Inno Z: -1.18 | ECDF: 0.97 | Alpha: 2.0500
+      [BASE] NVR/WSM | W_A: 4.7% | W_B: -3.1% | Inno Z: -1.01 | ECDF: 0.97 | Alpha: 0.7875
+      [BASE] JPM/TFC | W_A: -4.3% | W_B: 3.3% | Inno Z: 0.81 | ECDF: 0.57 | Alpha: 0.5585
+------------------------------------------------------------
+  [EXIT] NVDA/ROP | reason=REVERTED | Z=-0.19 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AMT/KIM | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] HPQ/NVDA | reason=REVERTED | Z=-0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-01 | Progress:  10.8% (13/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+3.87% | DD=2.35% | win=61.5% | Sharpe=1.80 | Sortino=1.90 | streak=2 | conc=0.42 | periods=13
+  --> Ghost=115 | Promoted=0 | Live=10
+  --> Eff Gross=2.31 | Port Vol=0.3283 | SPY Overlay=-13.2%
+      [BASE] JPM/TFC | W_A: -7.6% | W_B: 5.9% | Inno Z: 0.81 | ECDF: 0.76 | Alpha: 1.2193
+      [BASE] KEY/RF | W_A: 7.6% | W_B: -5.4% | Inno Z: -1.18 | ECDF: 0.98 | Alpha: 2.2918
+      [BASE] CMI/WAB | W_A: 7.2% | W_B: -4.0% | Inno Z: -0.91 | ECDF: 0.60 | Alpha: 0.6210
+------------------------------------------------------------
+  [EXIT] HIG/GL | reason=STOP_LOSS | Z=-3.10 | days=2 | alpha=3.2791 | entry_type=BASE
+
+[Rebalance @ 2008-10-02 | Progress:  11.7% (14/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.26% | DD=4.04% | win=57.1% | Sharpe=-0.03 | Sortino=-0.02 | streak=2 | conc=0.42 | periods=14
+  --> Ghost=115 | Promoted=4 | Live=13
+  --> Eff Gross=2.62 | Port Vol=0.3031 | SPY Overlay=-16.5%
+      [BASE] KEY/RF | W_A: 6.5% | W_B: -4.2% | Inno Z: -1.18 | ECDF: 1.00 | Alpha: 2.7836
+      [BASE] APH/AAPL | W_A: 6.5% | W_B: -2.5% | Inno Z: -1.10 | ECDF: 0.98 | Alpha: 2.7216
+      [BASE] JPM/TFC | W_A: -6.3% | W_B: 5.0% | Inno Z: 0.81 | ECDF: 0.87 | Alpha: 1.3848
+------------------------------------------------------------
+  [EXIT] CBRE/PLD | reason=STOP_LOSS | Z=-2.58 | days=4 | alpha=2.7764 | entry_type=BASE
+
+[Rebalance @ 2008-10-03 | Progress:  12.5% (15/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.75% | DD=4.52% | win=53.3% | Sharpe=-0.18 | Sortino=-0.15 | streak=2 | conc=0.42 | periods=15
+  --> Ghost=111 | Promoted=4 | Live=14
+  --> Eff Gross=2.33 | Port Vol=0.3461 | SPY Overlay=-16.5%
+      [BASE] KEY/RF | W_A: 5.2% | W_B: -3.0% | Inno Z: -1.18 | ECDF: 1.00 | Alpha: 3.3782
+      [BASE] LRCX/NVDA | W_A: 5.2% | W_B: -2.0% | Inno Z: -1.12 | ECDF: 0.98 | Alpha: 2.2473
+      [BASE] LRCX/MCHP | W_A: 5.2% | W_B: -3.2% | Inno Z: -0.88 | ECDF: 1.00 | Alpha: 0.7447
+------------------------------------------------------------
+  [EXIT] IVZ/L | reason=REVERTED | Z=-0.18 | days=11 | alpha=0.0000 | entry_type=BASE
+  [EXIT] NVR/WSM | reason=REVERTED | Z=+0.19 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MTB/PNC | reason=REVERTED | Z=-0.12 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MTB/USB | reason=REVERTED | Z=+0.00 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-06 | Progress:  13.3% (16/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.42% | DD=4.52% | win=56.2% | Sharpe=-0.07 | Sortino=-0.06 | streak=2 | conc=0.41 | periods=16
+  --> Ghost=111 | Promoted=4 | Live=12
+  --> Eff Gross=2.17 | Port Vol=0.2512 | SPY Overlay=-16.5%
+      [BASE] AME/PCAR | W_A: 6.0% | W_B: -2.6% | Inno Z: -0.81 | ECDF: 1.00 | Alpha: 0.7675
+      [BASE] TPL/VLO | W_A: 5.9% | W_B: -1.0% | Inno Z: -1.56 | ECDF: 1.00 | Alpha: 2.1072
+      [BASE] MCK/RMD | W_A: 5.7% | W_B: -1.4% | Inno Z: -0.78 | ECDF: 1.00 | Alpha: 0.7804
+------------------------------------------------------------
+  [EXIT] KEY/RF | reason=REVERTED | Z=-0.03 | days=6 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-07 | Progress:  14.2% (17/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.52% | DD=4.52% | win=52.9% | Sharpe=-0.10 | Sortino=-0.08 | streak=2 | conc=0.41 | periods=17
+  --> Ghost=108 | Promoted=5 | Live=15
+  --> Eff Gross=2.57 | Port Vol=0.3605 | SPY Overlay=-16.5%
+      [BASE] LRCX/NVDA | W_A: 5.2% | W_B: -2.2% | Inno Z: -1.12 | ECDF: 1.00 | Alpha: 2.4786
+      [BASE] LRCX/CRM | W_A: 5.2% | W_B: -1.4% | Inno Z: -0.76 | ECDF: 1.00 | Alpha: 0.9607
+      [BASE] LRCX/WDC | W_A: 5.2% | W_B: -1.7% | Inno Z: -1.07 | ECDF: 1.00 | Alpha: 1.0673
+------------------------------------------------------------
+  [EXIT] LRCX/NVDA | reason=REVERTED | Z=+0.15 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AME/PCAR | reason=REVERTED | Z=-0.04 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-08 | Progress:  15.0% (18/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.60% | DD=4.52% | win=50.0% | Sharpe=-0.12 | Sortino=-0.10 | streak=2 | conc=0.41 | periods=18
+  --> Ghost=105 | Promoted=8 | Live=21
+  --> Eff Gross=2.44 | Port Vol=0.2448 | SPY Overlay=-16.5%
+      [BASE] LRCX/CRM | W_A: 4.0% | W_B: -1.1% | Inno Z: -0.76 | ECDF: 0.06 | Alpha: 1.3980
+      [BASE] TPL/VLO | W_A: 4.0% | W_B: -0.6% | Inno Z: -1.56 | ECDF: 0.98 | Alpha: 2.0735
+      [BASE] KEY/RF | W_A: 4.0% | W_B: -2.2% | Inno Z: -1.42 | ECDF: 0.98 | Alpha: 3.7424
+------------------------------------------------------------
+  [EXIT] HST/PLD | reason=STOP_LOSS | Z=-2.98 | days=16 | alpha=3.2425 | entry_type=BASE
+  [EXIT] ALL/GL | reason=STOP_LOSS | Z=-3.22 | days=2 | alpha=9.6554 | entry_type=BASE
+  [EXIT] LRCX/TER | reason=REVERTED | Z=+0.16 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KEY/RF | reason=STOP_LOSS | Z=-2.63 | days=1 | alpha=5.8678 | entry_type=BASE
+
+[Rebalance @ 2008-10-09 | Progress:  15.8% (19/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-2.41% | DD=6.11% | win=47.4% | Sharpe=-0.59 | Sortino=-0.51 | streak=3 | conc=0.41 | periods=19
+  --> Ghost=98 | Promoted=4 | Live=20
+  --> Eff Gross=2.54 | Port Vol=0.2829 | SPY Overlay=-16.5%
+      [BASE] LRCX/CRM | W_A: 4.0% | W_B: -1.1% | Inno Z: -0.76 | ECDF: 0.54 | Alpha: 1.6176
+      [BASE] TPL/VLO | W_A: 4.0% | W_B: -0.6% | Inno Z: -1.56 | ECDF: 0.78 | Alpha: 1.3034
+      [BASE] KO/HRL | W_A: 4.0% | W_B: -1.3% | Inno Z: -1.12 | ECDF: 1.00 | Alpha: 0.8953
+------------------------------------------------------------
+  [EXIT] CCI/VTR | reason=STOP_LOSS | Z=-2.62 | days=9 | alpha=2.7586 | entry_type=BASE
+  [EXIT] MAS/ODFL | reason=STOP_LOSS | Z=-2.64 | days=2 | alpha=1.7199 | entry_type=BASE
+
+[Rebalance @ 2008-10-10 | Progress:  16.7% (20/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.34% | DD=7.97% | win=45.0% | Sharpe=-1.03 | Sortino=-0.89 | streak=4 | conc=0.41 | periods=20
+  --> Ghost=94 | Promoted=9 | Live=26
+  --> Eff Gross=2.71 | Port Vol=0.2952 | SPY Overlay=-16.5%
+      [BASE] LRCX/CRM | W_A: 3.1% | W_B: -0.8% | Inno Z: -0.76 | ECDF: 0.79 | Alpha: 1.2153
+      [BASE] TPL/VLO | W_A: 3.1% | W_B: -0.5% | Inno Z: -1.56 | ECDF: 0.84 | Alpha: 1.9306
+      [BASE] CTAS/ODFL | W_A: 3.1% | W_B: -0.5% | Inno Z: -0.88 | ECDF: 0.97 | Alpha: 1.3145
+------------------------------------------------------------
+  [EXIT] ALL/TRV | reason=REVERTED | Z=+0.20 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EIX/PPL | reason=REVERTED | Z=-0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+[Screen] 2008-10-13: 1807 candidates -> 292 pass (v2) -> 292 live
+
+[Rebalance @ 2008-10-13 | Progress:  17.5% (21/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-0.69% | DD=7.97% | win=47.6% | Sharpe=-0.08 | Sortino=-0.08 | streak=4 | conc=0.33 | periods=21
+  --> Ghost=272 | Promoted=29 | Live=53
+  --> Eff Gross=2.51 | Port Vol=0.3969 | SPY Overlay=16.5%
+      [BASE] AES/SRE | W_A: -1.6% | W_B: 0.9% | Inno Z: 1.57 | ECDF: 1.00 | Alpha: 4.4219
+      [BASE] BSX/COO | W_A: -1.6% | W_B: 0.7% | Inno Z: 2.31 | ECDF: 1.00 | Alpha: 2.2816
+      [BASE] CSX/PCAR | W_A: -1.6% | W_B: 1.0% | Inno Z: 0.81 | ECDF: 0.98 | Alpha: 2.1909
+------------------------------------------------------------
+  [EXIT] JPM/TFC | reason=REVERTED | Z=+0.14 | days=12 | alpha=0.0000 | entry_type=BASE
+  [EXIT] GL/MET | reason=STOP_LOSS | Z=+2.65 | days=10 | alpha=2.9657 | entry_type=BASE
+  [EXIT] LRCX/CRM | reason=STOP_LOSS | Z=-2.79 | days=7 | alpha=2.5186 | entry_type=BASE
+  [EXIT] TPL/VLO | reason=STOP_LOSS | Z=-5.91 | days=6 | alpha=5.9627 | entry_type=BASE
+  [EXIT] BSX/ZBH | reason=STOP_LOSS | Z=-2.85 | days=4 | alpha=3.6691 | entry_type=BASE
+  [EXIT] KO/HRL | reason=STOP_LOSS | Z=-2.71 | days=3 | alpha=1.9453 | entry_type=BASE
+  [EXIT] AMT/SPG | reason=REVERTED | Z=+0.08 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AMT/KIM | reason=REVERTED | Z=-0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CNP/EVRG | reason=REVERTED | Z=-0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BKR/VLO | reason=STOP_LOSS | Z=-2.39 | days=2 | alpha=2.2374 | entry_type=BASE
+  [EXIT] GD/PCAR | reason=REVERTED | Z=-0.04 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] HIG/TRV | reason=STOP_LOSS | Z=+2.41 | days=1 | alpha=8.7837 | entry_type=BASE
+  [EXIT] HIG/PNC | reason=STOP_LOSS | Z=+2.59 | days=1 | alpha=5.5485 | entry_type=BASE
+  [EXIT] HIG/USB | reason=STOP_LOSS | Z=+2.82 | days=1 | alpha=3.0178 | entry_type=BASE
+
+[Rebalance @ 2008-10-14 | Progress:  18.3% (22/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.07% | DD=7.97% | win=45.5% | Sharpe=-0.54 | Sortino=-0.51 | streak=4 | conc=0.33 | periods=22
+  --> Ghost=245 | Promoted=20 | Live=47
+  --> Eff Gross=1.83 | Port Vol=0.3921 | SPY Overlay=-2.3%
+      [BASE] CTAS/ODFL | W_A: 1.4% | W_B: -0.3% | Inno Z: -0.88 | ECDF: 0.81 | Alpha: 1.0317
+      [BASE] LNT/EVRG | W_A: 1.4% | W_B: -0.9% | Inno Z: -1.00 | ECDF: 0.95 | Alpha: 0.8389
+      [BASE] BA/PCAR | W_A: 1.4% | W_B: -0.5% | Inno Z: -0.77 | ECDF: 0.70 | Alpha: 0.9136
+------------------------------------------------------------
+  [EXIT] CMI/WAB | reason=STOP_LOSS | Z=-2.22 | days=14 | alpha=2.3319 | entry_type=BASE
+  [EXIT] NVDA/ROP | reason=STOP_LOSS | Z=-2.71 | days=7 | alpha=3.4141 | entry_type=BASE
+  [EXIT] IVZ/L | reason=REVERTED | Z=+0.06 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] JPM/MS | reason=REVERTED | Z=-0.00 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BSX/COO | reason=REVERTED | Z=-0.14 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] F/LEN | reason=REVERTED | Z=-0.16 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BAC/AJG | reason=REVERTED | Z=-0.02 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-15 | Progress:  19.2% (23/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.01% | DD=7.97% | win=47.8% | Sharpe=-0.51 | Sortino=-0.48 | streak=4 | conc=0.33 | periods=23
+  --> Ghost=229 | Promoted=27 | Live=58
+  --> Eff Gross=2.56 | Port Vol=0.3898 | SPY Overlay=-16.5%
+      [BASE] CTAS/ODFL | W_A: 1.3% | W_B: -0.3% | Inno Z: -0.88 | ECDF: 0.94 | Alpha: 1.3790
+      [BASE] BA/PCAR | W_A: 1.3% | W_B: -0.4% | Inno Z: -0.77 | ECDF: 0.76 | Alpha: 1.0949
+      [BASE] SCHW/BEN | W_A: 1.3% | W_B: -1.1% | Inno Z: -0.80 | ECDF: 0.92 | Alpha: 1.0779
+------------------------------------------------------------
+  [EXIT] CTAS/ODFL | reason=STOP_LOSS | Z=-2.27 | days=7 | alpha=1.4688 | entry_type=BASE
+  [EXIT] COF/PNC | reason=REVERTED | Z=-0.20 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ALL/HIG | reason=REVERTED | Z=+0.18 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BNY/TFC | reason=REVERTED | Z=-0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-16 | Progress:  20.0% (24/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-2.88% | DD=7.97% | win=50.0% | Sharpe=-0.48 | Sortino=-0.44 | streak=4 | conc=0.33 | periods=24
+  --> Ghost=205 | Promoted=3 | Live=38
+  --> Eff Gross=1.87 | Port Vol=0.3563 | SPY Overlay=-8.8%
+      [BASE] LRCX/WDC | W_A: 1.5% | W_B: -0.5% | Inno Z: -1.07 | ECDF: 0.13 | Alpha: 0.7923
+      [BASE] AEP/EVRG | W_A: 1.5% | W_B: -1.1% | Inno Z: -0.92 | ECDF: 0.90 | Alpha: 0.4760
+      [BASE] BA/PCAR | W_A: 1.5% | W_B: -0.5% | Inno Z: -0.77 | ECDF: 0.76 | Alpha: 0.9365
+------------------------------------------------------------
+  [EXIT] CI/WST | reason=REVERTED | Z=-0.08 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BNY/WFC | reason=REVERTED | Z=-0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AIZ/MET | reason=REVERTED | Z=+0.12 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-17 | Progress:  20.8% (25/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-2.94% | DD=7.97% | win=48.0% | Sharpe=-0.48 | Sortino=-0.45 | streak=4 | conc=0.33 | periods=25
+  --> Ghost=205 | Promoted=2 | Live=35
+  --> Eff Gross=2.35 | Port Vol=0.4244 | SPY Overlay=-14.5%
+      [BASE] LRCX/WDC | W_A: 2.3% | W_B: -0.8% | Inno Z: -1.07 | ECDF: 0.48 | Alpha: 1.0065
+      [BASE] BA/PCAR | W_A: 2.3% | W_B: -0.8% | Inno Z: -0.77 | ECDF: 0.03 | Alpha: 1.3908
+      [BASE] C/HBAN | W_A: -2.3% | W_B: 0.8% | Inno Z: 2.03 | ECDF: 0.83 | Alpha: 1.1550
+------------------------------------------------------------
+  [EXIT] ERIE/TFC | reason=STALE | Z=-0.27 | days=8 | alpha=0.0804 | entry_type=BASE
+  [EXIT] LNT/EVRG | reason=REVERTED | Z=-0.01 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KLAC/ZBRA | reason=REVERTED | Z=+0.05 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-20 | Progress:  21.7% (26/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.54% | DD=7.97% | win=46.2% | Sharpe=-0.58 | Sortino=-0.55 | streak=4 | conc=0.33 | periods=26
+  --> Ghost=205 | Promoted=3 | Live=34
+  --> Eff Gross=2.61 | Port Vol=0.4576 | SPY Overlay=-15.2%
+      [BASE] BA/PCAR | W_A: 2.4% | W_B: -0.9% | Inno Z: -0.77 | ECDF: 0.83 | Alpha: 1.0407
+      [BASE] CCL/F | W_A: 2.4% | W_B: -0.7% | Inno Z: -1.19 | ECDF: 0.70 | Alpha: 0.7327
+      [BASE] BG/CHD | W_A: 2.4% | W_B: -0.5% | Inno Z: -1.50 | ECDF: 0.83 | Alpha: 0.7513
+------------------------------------------------------------
+  [EXIT] MS/USB | reason=REVERTED | Z=-0.06 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AIG/HIG | reason=REVERTED | Z=-0.04 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BG/MNST | reason=REVERTED | Z=+0.10 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] PGR/WFC | reason=REVERTED | Z=-0.05 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-21 | Progress:  22.5% (27/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.80% | DD=7.97% | win=44.4% | Sharpe=-0.61 | Sortino=-0.60 | streak=4 | conc=0.33 | periods=27
+  --> Ghost=206 | Promoted=10 | Live=40
+  --> Eff Gross=2.36 | Port Vol=0.3834 | SPY Overlay=-8.8%
+      [BASE] LRCX/WDC | W_A: 2.1% | W_B: -0.8% | Inno Z: -1.07 | ECDF: 0.81 | Alpha: 1.5247
+      [BASE] BA/PCAR | W_A: 2.1% | W_B: -0.7% | Inno Z: -0.77 | ECDF: 0.86 | Alpha: 1.1115
+      [BASE] C/HBAN | W_A: -2.1% | W_B: 0.7% | Inno Z: 2.03 | ECDF: 0.86 | Alpha: 1.4231
+------------------------------------------------------------
+  [EXIT] LRCX/WDC | reason=STOP_LOSS | Z=-2.24 | days=11 | alpha=2.0037 | entry_type=BASE
+  [EXIT] ALL/AXP | reason=STOP_LOSS | Z=-2.53 | days=10 | alpha=2.7557 | entry_type=BASE
+  [EXIT] AIZ/TRV | reason=STOP_LOSS | Z=-2.93 | days=9 | alpha=5.2669 | entry_type=BASE
+  [EXIT] FCX/MLM | reason=STOP_LOSS | Z=-2.75 | days=7 | alpha=3.8305 | entry_type=BASE
+  [EXIT] PLD/SBAC | reason=STOP_LOSS | Z=-2.36 | days=6 | alpha=2.4120 | entry_type=BASE
+  [EXIT] LII/LMT | reason=REVERTED | Z=-0.13 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] GL/PFG | reason=REVERTED | Z=+0.06 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BG/MNST | reason=STOP_LOSS | Z=-2.96 | days=1 | alpha=1.4527 | entry_type=BASE
+
+[Rebalance @ 2008-10-22 | Progress:  23.3% (28/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.75% | DD=9.33% | win=42.9% | Sharpe=-0.92 | Sortino=-0.88 | streak=4 | conc=0.33 | periods=28
+  --> Ghost=198 | Promoted=9 | Live=40
+  --> Eff Gross=2.34 | Port Vol=0.3621 | SPY Overlay=-13.6%
+      [BASE] BA/PCAR | W_A: 2.0% | W_B: -0.7% | Inno Z: -0.77 | ECDF: 0.90 | Alpha: 1.3886
+      [BASE] C/HBAN | W_A: -2.0% | W_B: 0.6% | Inno Z: 2.03 | ECDF: 0.78 | Alpha: 1.2727
+      [BASE] SCHW/BEN | W_A: 2.0% | W_B: -1.7% | Inno Z: -0.80 | ECDF: 0.73 | Alpha: 1.9706
+------------------------------------------------------------
+  [EXIT] ALL/USB | reason=STOP_LOSS | Z=-2.25 | days=11 | alpha=2.2543 | entry_type=BASE
+  [EXIT] AEP/EVRG | reason=STALE | Z=-0.21 | days=9 | alpha=0.0097 | entry_type=BASE
+  [EXIT] SCHW/RJF | reason=REVERTED | Z=+0.15 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CCL/F | reason=REVERTED | Z=-0.03 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BG/CHD | reason=REVERTED | Z=+0.03 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] NVR/WSM | reason=REVERTED | Z=+0.19 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CSX/TXT | reason=STOP_LOSS | Z=+2.66 | days=2 | alpha=2.8053 | entry_type=BASE
+
+[Rebalance @ 2008-10-23 | Progress:  24.2% (29/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.92% | DD=9.50% | win=41.4% | Sharpe=-0.93 | Sortino=-0.91 | streak=5 | conc=0.33 | periods=29
+  --> Ghost=193 | Promoted=15 | Live=46
+  --> Eff Gross=2.19 | Port Vol=0.4190 | SPY Overlay=-1.4%
+      [BASE] PWR/PCAR | W_A: -1.7% | W_B: 1.4% | Inno Z: 1.47 | ECDF: 0.84 | Alpha: 1.1240
+      [BASE] SCHW/BEN | W_A: 1.7% | W_B: -1.4% | Inno Z: -0.80 | ECDF: 0.83 | Alpha: 1.9497
+      [BASE] ATO/WEC | W_A: -1.7% | W_B: 1.3% | Inno Z: 0.78 | ECDF: 0.46 | Alpha: 1.0106
+------------------------------------------------------------
+  [EXIT] C/HBAN | reason=STOP_LOSS | Z=-2.22 | days=9 | alpha=1.5244 | entry_type=BASE
+  [EXIT] LRCX/KLAC | reason=REVERTED | Z=+0.04 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BLK/BEN | reason=REVERTED | Z=+0.07 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EME/GD | reason=REVERTED | Z=-0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KIM/WELL | reason=REVERTED | Z=+0.00 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-24 | Progress:  25.0% (30/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.98% | DD=9.55% | win=40.0% | Sharpe=-0.93 | Sortino=-0.91 | streak=6 | conc=0.33 | periods=30
+  --> Ghost=182 | Promoted=8 | Live=43
+  --> Eff Gross=2.38 | Port Vol=0.4429 | SPY Overlay=-16.5%
+      [BASE] BA/PCAR | W_A: 1.7% | W_B: -0.6% | Inno Z: -0.77 | ECDF: 0.24 | Alpha: 1.1466
+      [BASE] PWR/PCAR | W_A: -1.7% | W_B: 1.3% | Inno Z: 1.47 | ECDF: 0.35 | Alpha: 0.9734
+      [BASE] SCHW/BEN | W_A: 1.7% | W_B: -1.4% | Inno Z: -0.80 | ECDF: 0.86 | Alpha: 1.7468
+------------------------------------------------------------
+  [EXIT] PLD/VTR | reason=STOP_LOSS | Z=-3.18 | days=9 | alpha=3.3925 | entry_type=BASE
+  [EXIT] SPG/SBAC | reason=STOP_LOSS | Z=-2.23 | days=9 | alpha=2.2677 | entry_type=BASE
+  [EXIT] BXP/PLD | reason=STOP_LOSS | Z=+2.54 | days=4 | alpha=2.5757 | entry_type=BASE
+  [EXIT] PLD/VMRK | reason=STOP_LOSS | Z=-2.47 | days=4 | alpha=2.4002 | entry_type=BASE
+  [EXIT] BA/NOC | reason=REVERTED | Z=+0.15 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] PHM/NVR | reason=REVERTED | Z=+0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FLEX/ZBRA | reason=REVERTED | Z=+0.10 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AIG/AJG | reason=STOP_LOSS | Z=-2.40 | days=1 | alpha=2.2603 | entry_type=BASE
+
+[Rebalance @ 2008-10-27 | Progress:  25.8% (31/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.79% | DD=10.33% | win=38.7% | Sharpe=-1.04 | Sortino=-1.04 | streak=7 | conc=0.33 | periods=31
+  --> Ghost=177 | Promoted=7 | Live=40
+  --> Eff Gross=2.51 | Port Vol=0.4065 | SPY Overlay=-14.4%
+      [BASE] BA/PCAR | W_A: 2.0% | W_B: -0.7% | Inno Z: -0.77 | ECDF: 0.92 | Alpha: 1.6380
+      [BASE] PWR/PCAR | W_A: -2.0% | W_B: 1.5% | Inno Z: 1.47 | ECDF: 0.62 | Alpha: 1.2713
+      [BASE] SCHW/BEN | W_A: 2.0% | W_B: -1.6% | Inno Z: -0.80 | ECDF: 0.70 | Alpha: 1.8065
+------------------------------------------------------------
+  [EXIT] ESS/SBAC | reason=STALE | Z=-0.31 | days=10 | alpha=0.1274 | entry_type=BASE
+  [EXIT] BXP/SBAC | reason=STALE | Z=+0.21 | days=10 | alpha=0.0085 | entry_type=BASE
+  [EXIT] FCX/NUE | reason=STALE | Z=-0.29 | days=8 | alpha=0.1068 | entry_type=BASE
+  [EXIT] CBRE/FRT | reason=REVERTED | Z=+0.13 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EME/TXT | reason=STOP_LOSS | Z=+2.98 | days=5 | alpha=3.1711 | entry_type=BASE
+  [EXIT] AME/TXT | reason=STOP_LOSS | Z=+3.52 | days=5 | alpha=3.7830 | entry_type=BASE
+  [EXIT] DE/NOC | reason=REVERTED | Z=+0.00 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] GD/TXT | reason=STOP_LOSS | Z=+2.46 | days=4 | alpha=2.5588 | entry_type=BASE
+  [EXIT] FRT/O | reason=REVERTED | Z=+0.06 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AEP/LNT | reason=REVERTED | Z=+0.16 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-28 | Progress:  26.7% (32/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.82% | DD=10.33% | win=40.6% | Sharpe=-0.86 | Sortino=-0.85 | streak=7 | conc=0.30 | periods=32
+  --> Ghost=179 | Promoted=27 | Live=36
+  --> Eff Gross=1.41 | Port Vol=0.1972 | SPY Overlay=1.4%
+      [BASE] SCHW/BEN | W_A: 1.5% | W_B: -1.2% | Inno Z: -0.80 | ECDF: 0.38 | Alpha: 2.3201
+      [BASE] CB/HIG | W_A: 1.5% | W_B: -0.6% | Inno Z: -0.86 | ECDF: 0.97 | Alpha: 2.1073
+      [BASE] TXT/UNP | W_A: 1.5% | W_B: -0.6% | Inno Z: -1.44 | ECDF: 0.90 | Alpha: 1.0046
+------------------------------------------------------------
+  [EXIT] BA/PCAR | reason=STOP_LOSS | Z=-2.54 | days=13 | alpha=2.3261 | entry_type=BASE
+  [EXIT] KIM/SBAC | reason=STOP_LOSS | Z=-2.95 | days=11 | alpha=3.0715 | entry_type=BASE
+  [EXIT] CB/HIG | reason=STOP_LOSS | Z=+2.45 | days=10 | alpha=2.7211 | entry_type=BASE
+  [EXIT] BSX/COO | reason=REVERTED | Z=+0.09 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] TRV/WRB | reason=REVERTED | Z=-0.17 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AIG/HIG | reason=STOP_LOSS | Z=-2.21 | days=3 | alpha=3.8452 | entry_type=BASE
+  [EXIT] KIM/PLD | reason=STOP_LOSS | Z=-2.61 | days=2 | alpha=2.5609 | entry_type=BASE
+
+[Rebalance @ 2008-10-29 | Progress:  27.5% (33/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.92% | DD=10.33% | win=42.4% | Sharpe=-0.69 | Sortino=-0.68 | streak=7 | conc=0.28 | periods=33
+  --> Ghost=165 | Promoted=12 | Live=32
+  --> Eff Gross=1.42 | Port Vol=0.1810 | SPY Overlay=0.7%
+      [BASE] SCHW/BEN | W_A: 2.0% | W_B: -1.6% | Inno Z: -0.80 | ECDF: 0.14 | Alpha: 1.8460
+      [BASE] ALL/TRV | W_A: 2.0% | W_B: -1.0% | Inno Z: -1.15 | ECDF: 0.63 | Alpha: 1.5195
+      [BASE] NSC/TXT | W_A: -2.0% | W_B: 0.9% | Inno Z: 1.33 | ECDF: 0.67 | Alpha: 1.7850
+------------------------------------------------------------
+  [EXIT] BG/CHD | reason=REVERTED | Z=-0.18 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BXP/VMRK | reason=REVERTED | Z=+0.12 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BXP/DOC | reason=REVERTED | Z=-0.13 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BA/PH | reason=REVERTED | Z=+0.08 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] PSA/VTR | reason=REVERTED | Z=-0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KO/KR | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-30 | Progress:  28.3% (34/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.90% | DD=10.33% | win=44.1% | Sharpe=-0.68 | Sortino=-0.66 | streak=7 | conc=0.28 | periods=34
+  --> Ghost=161 | Promoted=4 | Live=24
+  --> Eff Gross=1.67 | Port Vol=0.2431 | SPY Overlay=0.1%
+      [BASE] SCHW/BEN | W_A: 2.8% | W_B: -2.3% | Inno Z: -0.80 | ECDF: 0.63 | Alpha: 2.3794
+      [BASE] ATO/WEC | W_A: -2.8% | W_B: 2.0% | Inno Z: 0.78 | ECDF: 0.16 | Alpha: 1.0640
+      [BASE] CCL/F | W_A: 2.8% | W_B: -1.0% | Inno Z: -1.36 | ECDF: 0.22 | Alpha: 1.3522
+------------------------------------------------------------
+  [EXIT] CMI/PWR | reason=STOP_LOSS | Z=-3.82 | days=13 | alpha=4.1696 | entry_type=BASE
+  [EXIT] KIM/WELL | reason=REVERTED | Z=+0.10 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BXP/VTR | reason=REVERTED | Z=+0.20 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BLK/BEN | reason=REVERTED | Z=-0.17 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] NVR/WSM | reason=REVERTED | Z=+0.08 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MAA/PLD | reason=REVERTED | Z=+0.06 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-10-31 | Progress:  29.2% (35/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.20% | DD=10.33% | win=42.9% | Sharpe=-0.72 | Sortino=-0.70 | streak=7 | conc=0.28 | periods=35
+  --> Ghost=162 | Promoted=13 | Live=30
+  --> Eff Gross=2.02 | Port Vol=0.2622 | SPY Overlay=1.7%
+      [BASE] SCHW/BEN | W_A: 2.7% | W_B: -2.2% | Inno Z: -0.80 | ECDF: 0.27 | Alpha: 1.6385
+      [BASE] ATO/WEC | W_A: -2.7% | W_B: 2.0% | Inno Z: 0.78 | ECDF: 0.79 | Alpha: 0.8863
+      [BASE] CCL/F | W_A: 2.7% | W_B: -1.0% | Inno Z: -1.36 | ECDF: 1.00 | Alpha: 0.8818
+------------------------------------------------------------
+  [EXIT] KIM/REG | reason=REVERTED | Z=+0.09 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BA/EMR | reason=REVERTED | Z=+0.18 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FRT/KIM | reason=REVERTED | Z=-0.08 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-03 | Progress:  30.0% (36/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.16% | DD=10.33% | win=44.4% | Sharpe=-0.55 | Sortino=-0.53 | streak=7 | conc=0.26 | periods=36
+  --> Ghost=153 | Promoted=6 | Live=24
+  --> Eff Gross=1.75 | Port Vol=0.2487 | SPY Overlay=-3.1%
+      [BASE] SCHW/BEN | W_A: 2.5% | W_B: -2.0% | Inno Z: -0.80 | ECDF: 0.13 | Alpha: 1.8071
+      [BASE] ATO/WEC | W_A: -2.5% | W_B: 1.9% | Inno Z: 0.78 | ECDF: 0.32 | Alpha: 1.0996
+      [BASE] CCL/F | W_A: 2.5% | W_B: -1.0% | Inno Z: -1.36 | ECDF: 0.98 | Alpha: 2.0711
+------------------------------------------------------------
+  [EXIT] TXT/UNP | reason=REVERTED | Z=-0.18 | days=10 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KIM/PSA | reason=REVERTED | Z=+0.13 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CB/PFG | reason=REVERTED | Z=-0.02 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AON/PFG | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-04 | Progress:  30.8% (37/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.19% | DD=10.33% | win=43.2% | Sharpe=-0.54 | Sortino=-0.54 | streak=7 | conc=0.26 | periods=37
+  --> Ghost=151 | Promoted=6 | Live=25
+  --> Eff Gross=2.08 | Port Vol=0.2943 | SPY Overlay=5.5%
+      [BASE] SCHW/BEN | W_A: 3.2% | W_B: -2.6% | Inno Z: -0.80 | ECDF: 0.65 | Alpha: 2.3034
+      [BASE] ATO/WEC | W_A: -3.2% | W_B: 2.4% | Inno Z: 0.78 | ECDF: 0.24 | Alpha: 1.1052
+      [BASE] CCL/F | W_A: 3.2% | W_B: -1.3% | Inno Z: -1.36 | ECDF: 0.06 | Alpha: 1.3010
+------------------------------------------------------------
+  [EXIT] BSX/COO | reason=REVERTED | Z=+0.14 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] COF/MCO | reason=REVERTED | Z=-0.09 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FRT/O | reason=REVERTED | Z=+0.13 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] GL/PFG | reason=REVERTED | Z=+0.11 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] F/LEN | reason=REVERTED | Z=-0.05 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ESS/SPG | reason=REVERTED | Z=+0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CCL/RCL | reason=REVERTED | Z=+0.12 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BG/CHD | reason=REVERTED | Z=-0.13 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ACGL/PFG | reason=REVERTED | Z=-0.10 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-05 | Progress:  31.7% (38/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.15% | DD=10.33% | win=44.7% | Sharpe=-0.53 | Sortino=-0.52 | streak=7 | conc=0.26 | periods=38
+  --> Ghost=154 | Promoted=2 | Live=17
+  --> Eff Gross=1.99 | Port Vol=0.2754 | SPY Overlay=1.3%
+      [BASE] CCL/F | W_A: 4.7% | W_B: -1.9% | Inno Z: -1.36 | ECDF: 0.89 | Alpha: 2.5904
+      [BASE] J/PCAR | W_A: -4.7% | W_B: 3.7% | Inno Z: 1.07 | ECDF: 0.97 | Alpha: 0.8425
+      [BASE] ATO/WEC | W_A: -4.6% | W_B: 3.4% | Inno Z: 0.78 | ECDF: 0.44 | Alpha: 1.0035
+------------------------------------------------------------
+  [EXIT] CCL/F | reason=STOP_LOSS | Z=-2.75 | days=8 | alpha=3.6332 | entry_type=BASE
+  [EXIT] ESS/MAA | reason=REVERTED | Z=-0.09 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CB/PFG | reason=REVERTED | Z=+0.00 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-06 | Progress:  32.5% (39/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.30% | DD=10.33% | win=43.6% | Sharpe=-0.54 | Sortino=-0.53 | streak=7 | conc=0.26 | periods=39
+  --> Ghost=154 | Promoted=4 | Live=17
+  --> Eff Gross=1.42 | Port Vol=0.1641 | SPY Overlay=0.6%
+      [BASE] LMT/RTX | W_A: 4.7% | W_B: -3.0% | Inno Z: -0.75 | ECDF: 0.94 | Alpha: 1.0496
+      [BASE] NSC/TXT | W_A: -4.7% | W_B: 2.0% | Inno Z: 1.33 | ECDF: 0.73 | Alpha: 1.3243
+      [BASE] ETR/PPL | W_A: -4.7% | W_B: 3.5% | Inno Z: 1.03 | ECDF: 0.90 | Alpha: 0.6585
+------------------------------------------------------------
+  [EXIT] PSA/VMRK | reason=REVERTED | Z=-0.03 | days=8 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ETR/PPL | reason=REVERTED | Z=-0.04 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] J/PCAR | reason=REVERTED | Z=+0.06 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-07 | Progress:  33.3% (40/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.19% | DD=10.33% | win=45.0% | Sharpe=-0.52 | Sortino=-0.51 | streak=7 | conc=0.26 | periods=40
+  --> Ghost=154 | Promoted=1 | Live=14
+  --> Eff Gross=2.04 | Port Vol=0.3146 | SPY Overlay=3.0%
+      [BASE] SCHW/BEN | W_A: 5.6% | W_B: -4.6% | Inno Z: -0.80 | ECDF: 0.02 | Alpha: 1.4057
+      [BASE] ATO/WEC | W_A: -5.6% | W_B: 3.9% | Inno Z: 0.78 | ECDF: 0.87 | Alpha: 1.1448
+      [BASE] LEN/WSM | W_A: -5.6% | W_B: 3.1% | Inno Z: 1.55 | ECDF: 0.79 | Alpha: 1.0498
+------------------------------------------------------------
+  [EXIT] SCHW/BEN | reason=STALE | Z=+0.31 | days=19 | alpha=0.2104 | entry_type=BASE
+  [EXIT] ATO/WEC | reason=STALE | Z=-0.24 | days=19 | alpha=0.0394 | entry_type=BASE
+[Screen] 2008-11-10: 1807 candidates -> 163 pass (v2) -> 163 live
+
+[Rebalance @ 2008-11-10 | Progress:  34.2% (41/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.40% | DD=10.33% | win=43.9% | Sharpe=-0.67 | Sortino=-0.66 | streak=7 | conc=0.26 | periods=41
+  --> Ghost=123 | Promoted=4 | Live=16
+  --> Eff Gross=2.33 | Port Vol=0.3892 | SPY Overlay=-12.7%
+      [BASE] NVR/WSM | W_A: 5.2% | W_B: -1.8% | Inno Z: -0.78 | ECDF: 0.95 | Alpha: 1.2954
+      [BASE] MU/TXN | W_A: 5.2% | W_B: -3.2% | Inno Z: -1.09 | ECDF: 0.84 | Alpha: 1.0519
+      [BASE] GS/PFG | W_A: 5.0% | W_B: -1.4% | Inno Z: -0.86 | ECDF: 0.83 | Alpha: 0.7994
+------------------------------------------------------------
+  [EXIT] NVR/WSM | reason=STOP_LOSS | Z=-2.96 | days=4 | alpha=1.8838 | entry_type=BASE
+  [EXIT] CCI/ESS | reason=REVERTED | Z=-0.13 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-11 | Progress:  35.0% (42/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.85% | DD=10.33% | win=42.9% | Sharpe=-0.73 | Sortino=-0.71 | streak=7 | conc=0.26 | periods=42
+  --> Ghost=121 | Promoted=7 | Live=21
+  --> Eff Gross=2.59 | Port Vol=0.5523 | SPY Overlay=-14.4%
+      [BASE] CINF/PFG | W_A: -4.0% | W_B: 2.0% | Inno Z: 0.96 | ECDF: 0.90 | Alpha: 1.3008
+      [BASE] PRU/WRB | W_A: 4.0% | W_B: -3.2% | Inno Z: -1.64 | ECDF: 0.86 | Alpha: 1.3247
+      [BASE] BEN/IVZ | W_A: 4.0% | W_B: -2.6% | Inno Z: -1.04 | ECDF: 0.98 | Alpha: 0.8660
+------------------------------------------------------------
+  [EXIT] GS/PFG | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-12 | Progress:  35.8% (43/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.90% | DD=10.43% | win=41.9% | Sharpe=-0.85 | Sortino=-0.84 | streak=7 | conc=0.26 | periods=43
+  --> Ghost=115 | Promoted=11 | Live=30
+  --> Eff Gross=2.51 | Port Vol=0.6011 | SPY Overlay=-16.5%
+      [BASE] LEN/WSM | W_A: -2.7% | W_B: 1.6% | Inno Z: 1.55 | ECDF: 0.81 | Alpha: 2.6012
+      [BASE] DHI/WSM | W_A: 2.7% | W_B: -1.0% | Inno Z: -1.54 | ECDF: 0.87 | Alpha: 2.5257
+      [BASE] BSX/COO | W_A: 2.7% | W_B: -1.2% | Inno Z: -1.40 | ECDF: 0.94 | Alpha: 1.0733
+------------------------------------------------------------
+  [EXIT] CINF/PFG | reason=STOP_LOSS | Z=+2.89 | days=9 | alpha=2.6284 | entry_type=BASE
+  [EXIT] FLEX/ZBRA | reason=REVERTED | Z=-0.03 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CMI/WM | reason=REVERTED | Z=+0.19 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] PRU/WRB | reason=STOP_LOSS | Z=-2.56 | days=2 | alpha=1.7436 | entry_type=BASE
+  [EXIT] BEN/IVZ | reason=REVERTED | Z=+0.10 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CPT/REG | reason=REVERTED | Z=+0.12 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-13 | Progress:  36.7% (44/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.28% | DD=10.43% | win=43.2% | Sharpe=-0.76 | Sortino=-0.74 | streak=7 | conc=0.24 | periods=44
+  --> Ghost=107 | Promoted=14 | Live=25
+  --> Eff Gross=1.40 | Port Vol=0.2907 | SPY Overlay=0.6%
+      [BASE] LMT/RTX | W_A: 2.2% | W_B: -1.4% | Inno Z: -0.75 | ECDF: 0.29 | Alpha: 1.1252
+      [BASE] ALL/TRV | W_A: 2.2% | W_B: -1.2% | Inno Z: -1.15 | ECDF: 0.98 | Alpha: 4.0659
+      [BASE] FIX/UNP | W_A: 2.2% | W_B: -0.8% | Inno Z: -0.79 | ECDF: 0.27 | Alpha: 0.7808
+------------------------------------------------------------
+  [EXIT] KIM/UDR | reason=REVERTED | Z=+0.14 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-14 | Progress:  37.5% (45/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.22% | DD=10.43% | win=44.4% | Sharpe=-0.74 | Sortino=-0.72 | streak=7 | conc=0.24 | periods=45
+  --> Ghost=99 | Promoted=4 | Live=24
+  --> Eff Gross=2.10 | Port Vol=0.4138 | SPY Overlay=-10.7%
+      [BASE] LEN/WSM | W_A: -3.0% | W_B: 1.7% | Inno Z: 1.55 | ECDF: 0.41 | Alpha: 1.7125
+      [BASE] DHI/WSM | W_A: 3.0% | W_B: -1.1% | Inno Z: -1.54 | ECDF: 0.38 | Alpha: 0.4527
+      [BASE] ON/STX | W_A: 3.0% | W_B: -1.8% | Inno Z: -1.71 | ECDF: 0.89 | Alpha: 0.8203
+------------------------------------------------------------
+  [EXIT] TRV/WRB | reason=REVERTED | Z=-0.00 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] J/PCAR | reason=REVERTED | Z=-0.11 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BXP/VTR | reason=REVERTED | Z=+0.10 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EME/GD | reason=REVERTED | Z=-0.11 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AFL/PRU | reason=REVERTED | Z=+0.06 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AMAT/LRCX | reason=REVERTED | Z=+0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-17 | Progress:  38.3% (46/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.38% | DD=10.43% | win=43.5% | Sharpe=-0.75 | Sortino=-0.73 | streak=7 | conc=0.24 | periods=46
+  --> Ghost=102 | Promoted=4 | Live=19
+  --> Eff Gross=2.42 | Port Vol=0.4791 | SPY Overlay=-16.5%
+      [BASE] LEN/WSM | W_A: -3.8% | W_B: 2.2% | Inno Z: 1.55 | ECDF: 0.08 | Alpha: 1.6483
+      [BASE] DHI/WSM | W_A: 3.8% | W_B: -1.4% | Inno Z: -1.54 | ECDF: 0.37 | Alpha: 1.0029
+      [BASE] ON/STX | W_A: 3.8% | W_B: -2.2% | Inno Z: -1.71 | ECDF: 0.86 | Alpha: 1.2669
+------------------------------------------------------------
+  [EXIT] AIZ/NDAQ | reason=STOP_LOSS | Z=-2.28 | days=4 | alpha=1.7677 | entry_type=BASE
+  [EXIT] GLW/ON | reason=REVERTED | Z=-0.06 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EMR/J | reason=REVERTED | Z=-0.13 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-18 | Progress:  39.2% (47/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.85% | DD=10.43% | win=42.6% | Sharpe=-0.80 | Sortino=-0.79 | streak=7 | conc=0.24 | periods=47
+  --> Ghost=100 | Promoted=4 | Live=18
+  --> Eff Gross=1.90 | Port Vol=0.4667 | SPY Overlay=-2.4%
+      [BASE] LEN/WSM | W_A: -4.2% | W_B: 2.4% | Inno Z: 1.55 | ECDF: 0.29 | Alpha: 1.9477
+      [BASE] ON/STX | W_A: 4.2% | W_B: -2.3% | Inno Z: -1.71 | ECDF: 0.73 | Alpha: 0.5428
+      [BASE] HPQ/STX | W_A: -4.2% | W_B: 1.2% | Inno Z: 2.52 | ECDF: 1.00 | Alpha: 3.5372
+------------------------------------------------------------
+  [EXIT] LEN/WSM | reason=STOP_LOSS | Z=-3.42 | days=11 | alpha=4.7985 | entry_type=BASE
+
+[Rebalance @ 2008-11-19 | Progress:  40.0% (48/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.61% | DD=11.12% | win=41.7% | Sharpe=-0.89 | Sortino=-0.88 | streak=7 | conc=0.24 | periods=48
+  --> Ghost=99 | Promoted=10 | Live=27
+  --> Eff Gross=2.49 | Port Vol=0.4418 | SPY Overlay=-14.2%
+      [BASE] DHI/WSM | W_A: 3.1% | W_B: -1.5% | Inno Z: -1.54 | ECDF: 0.89 | Alpha: 0.9905
+      [BASE] BSX/COO | W_A: 3.1% | W_B: -1.5% | Inno Z: -1.40 | ECDF: 0.87 | Alpha: 1.0554
+      [BASE] HPQ/LRCX | W_A: -3.1% | W_B: 1.3% | Inno Z: 2.60 | ECDF: 0.98 | Alpha: 1.0819
+------------------------------------------------------------
+  [EXIT] ALL/TRV | reason=STOP_LOSS | Z=-2.36 | days=21 | alpha=2.5196 | entry_type=BASE
+  [EXIT] BSX/COO | reason=STOP_LOSS | Z=-2.55 | days=6 | alpha=1.6938 | entry_type=BASE
+  [EXIT] ON/STX | reason=STOP_LOSS | Z=-3.79 | days=5 | alpha=2.4259 | entry_type=BASE
+  [EXIT] LOW/WSM | reason=REVERTED | Z=+0.10 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] GLW/ON | reason=REVERTED | Z=+0.02 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-20 | Progress:  40.8% (49/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.17% | DD=11.12% | win=42.9% | Sharpe=-0.82 | Sortino=-0.80 | streak=7 | conc=0.24 | periods=49
+  --> Ghost=91 | Promoted=11 | Live=32
+  --> Eff Gross=2.43 | Port Vol=0.4373 | SPY Overlay=-12.8%
+      [BASE] DHI/WSM | W_A: 2.5% | W_B: -1.3% | Inno Z: -1.54 | ECDF: 0.44 | Alpha: 2.3868
+      [BASE] ATO/NI | W_A: -2.5% | W_B: 1.7% | Inno Z: 0.82 | ECDF: 0.94 | Alpha: 1.0559
+      [BASE] HPQ/STX | W_A: -2.5% | W_B: 0.6% | Inno Z: 2.52 | ECDF: 0.41 | Alpha: 0.9296
+------------------------------------------------------------
+  [EXIT] CMI/RSG | reason=REVERTED | Z=-0.18 | days=9 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DHI/WSM | reason=STOP_LOSS | Z=-2.90 | days=7 | alpha=3.9195 | entry_type=BASE
+  [EXIT] F/WSM | reason=STOP_LOSS | Z=+2.24 | days=2 | alpha=1.3016 | entry_type=BASE
+  [EXIT] KIM/UDR | reason=STOP_LOSS | Z=-2.35 | days=2 | alpha=2.3013 | entry_type=BASE
+  [EXIT] AXP/C | reason=STOP_LOSS | Z=+2.80 | days=2 | alpha=3.9278 | entry_type=BASE
+  [EXIT] AMAT/LRCX | reason=STOP_LOSS | Z=-2.93 | days=2 | alpha=1.5156 | entry_type=BASE
+
+[Rebalance @ 2008-11-21 | Progress:  41.7% (50/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.73% | DD=11.23% | win=42.0% | Sharpe=-0.88 | Sortino=-0.87 | streak=7 | conc=0.24 | periods=50
+  --> Ghost=81 | Promoted=11 | Live=28
+  --> Eff Gross=1.40 | Port Vol=0.2297 | SPY Overlay=0.0%
+      [BASE] ALL/GL | W_A: 2.3% | W_B: -1.9% | Inno Z: -1.46 | ECDF: 0.94 | Alpha: 1.4489
+      [BASE] SCHW/BEN | W_A: -2.3% | W_B: 1.9% | Inno Z: 1.03 | ECDF: 0.98 | Alpha: 1.5681
+      [BASE] LRCX/TXN | W_A: -2.3% | W_B: 1.9% | Inno Z: 1.22 | ECDF: 1.00 | Alpha: 1.1865
+------------------------------------------------------------
+  [EXIT] AIZ/PRU | reason=REVERTED | Z=-0.10 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] APH/LRCX | reason=REVERTED | Z=-0.13 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BLK/PFG | reason=REVERTED | Z=-0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-24 | Progress:  42.5% (51/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.53% | DD=11.23% | win=43.1% | Sharpe=-0.72 | Sortino=-0.71 | streak=7 | conc=0.22 | periods=51
+  --> Ghost=80 | Promoted=10 | Live=32
+  --> Eff Gross=2.18 | Port Vol=0.3894 | SPY Overlay=11.9%
+      [BASE] ATO/NI | W_A: -2.4% | W_B: 1.6% | Inno Z: 0.82 | ECDF: 0.51 | Alpha: 1.4624
+      [BASE] HPQ/STX | W_A: -2.4% | W_B: 0.8% | Inno Z: 2.52 | ECDF: 0.75 | Alpha: 1.3379
+      [BASE] HPQ/LRCX | W_A: -2.4% | W_B: 1.0% | Inno Z: 2.60 | ECDF: 0.03 | Alpha: 0.7756
+------------------------------------------------------------
+  [EXIT] HPQ/STX | reason=REVERTED | Z=+0.10 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] HPQ/LRCX | reason=REVERTED | Z=+0.13 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AAPL/LRCX | reason=REVERTED | Z=-0.02 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CMI/RSG | reason=REVERTED | Z=-0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] LRCX/TXN | reason=REVERTED | Z=+0.02 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] NOC/UNP | reason=REVERTED | Z=+0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-25 | Progress:  43.3% (52/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.11% | DD=11.23% | win=42.3% | Sharpe=-0.78 | Sortino=-0.77 | streak=7 | conc=0.22 | periods=52
+  --> Ghost=77 | Promoted=3 | Live=28
+  --> Eff Gross=2.08 | Port Vol=0.3882 | SPY Overlay=6.3%
+      [BASE] ATO/NI | W_A: -2.9% | W_B: 1.8% | Inno Z: 0.82 | ECDF: 0.92 | Alpha: 0.5433
+      [BASE] ROP/CRM | W_A: -2.9% | W_B: 1.4% | Inno Z: 1.03 | ECDF: 0.92 | Alpha: 0.7446
+      [BASE] HPQ/LRCX | W_A: 2.9% | W_B: -1.2% | Inno Z: -0.98 | ECDF: 0.86 | Alpha: 0.7705
+------------------------------------------------------------
+  [EXIT] FIX/UNP | reason=STALE | Z=-0.45 | days=24 | alpha=0.2796 | entry_type=BASE
+  [EXIT] PHM/WSM | reason=STALE | Z=-0.23 | days=8 | alpha=0.0177 | entry_type=BASE
+  [EXIT] GLW/LRCX | reason=REVERTED | Z=+0.12 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MTB/WFC | reason=REVERTED | Z=+0.20 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] HST/PLD | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] COF/MCO | reason=REVERTED | Z=-0.14 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-26 | Progress:  44.2% (53/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.26% | DD=11.23% | win=41.5% | Sharpe=-0.79 | Sortino=-0.79 | streak=7 | conc=0.22 | periods=53
+  --> Ghost=81 | Promoted=1 | Live=20
+  --> Eff Gross=1.77 | Port Vol=0.4204 | SPY Overlay=3.0%
+      [BASE] ATO/NI | W_A: -3.7% | W_B: 2.3% | Inno Z: 0.82 | ECDF: 0.49 | Alpha: 1.4493
+      [BASE] ROP/CRM | W_A: -3.7% | W_B: 1.9% | Inno Z: 1.03 | ECDF: 0.90 | Alpha: 0.7931
+      [BASE] CPT/KIM | W_A: -3.7% | W_B: 2.7% | Inno Z: 0.89 | ECDF: 0.90 | Alpha: 1.7325
+------------------------------------------------------------
+  [EXIT] CSCO/LRCX | reason=REVERTED | Z=+0.03 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EME/GD | reason=REVERTED | Z=+0.15 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BXP/VTR | reason=REVERTED | Z=-0.20 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] COF/MS | reason=REVERTED | Z=-0.16 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-11-28 | Progress:  45.0% (54/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.61% | DD=11.23% | win=40.7% | Sharpe=-0.82 | Sortino=-0.83 | streak=7 | conc=0.22 | periods=54
+  --> Ghost=88 | Promoted=0 | Live=16
+  --> Eff Gross=1.93 | Port Vol=0.4673 | SPY Overlay=-0.5%
+      [BASE] ATO/NI | W_A: -5.2% | W_B: 3.4% | Inno Z: 0.82 | ECDF: 0.38 | Alpha: 1.4726
+      [BASE] CPT/KIM | W_A: -5.2% | W_B: 3.9% | Inno Z: 0.89 | ECDF: 0.76 | Alpha: 1.1658
+      [BASE] KEY/RF | W_A: 5.2% | W_B: -4.2% | Inno Z: -1.80 | ECDF: 0.44 | Alpha: 0.5340
+------------------------------------------------------------
+  [EXIT] EME/RSG | reason=STOP_LOSS | Z=-2.27 | days=12 | alpha=2.1279 | entry_type=BASE
+  [EXIT] CPT/KIM | reason=REVERTED | Z=+0.17 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KEY/RF | reason=STOP_LOSS | Z=-2.55 | days=7 | alpha=1.8706 | entry_type=BASE
+  [EXIT] HON/UNP | reason=REVERTED | Z=-0.11 | days=5 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-01 | Progress:  45.8% (55/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.69% | DD=11.23% | win=40.0% | Sharpe=-0.82 | Sortino=-0.83 | streak=7 | conc=0.22 | periods=55
+  --> Ghost=91 | Promoted=15 | Live=27
+  --> Eff Gross=2.72 | Port Vol=0.5040 | SPY Overlay=-16.5%
+      [BASE] ATO/NI | W_A: -3.1% | W_B: 2.0% | Inno Z: 0.82 | ECDF: 0.79 | Alpha: 0.9163
+      [BASE] GS/PFG | W_A: -3.1% | W_B: 1.6% | Inno Z: 1.83 | ECDF: 0.86 | Alpha: 0.9122
+      [BASE] COF/MS | W_A: 3.1% | W_B: -1.2% | Inno Z: -1.54 | ECDF: 0.94 | Alpha: 1.4940
+------------------------------------------------------------
+  [EXIT] ROP/CRM | reason=STALE | Z=-0.53 | days=9 | alpha=0.2672 | entry_type=BASE
+  [EXIT] KIM/REG | reason=STALE | Z=-0.22 | days=8 | alpha=0.0171 | entry_type=BASE
+  [EXIT] TGT/WMT | reason=STALE | Z=-0.42 | days=8 | alpha=0.2104 | entry_type=BASE
+  [EXIT] HIG/PNC | reason=STOP_LOSS | Z=-2.37 | days=5 | alpha=2.7622 | entry_type=BASE
+
+[Rebalance @ 2008-12-02 | Progress:  46.7% (56/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.01% | DD=11.23% | win=41.1% | Sharpe=-0.61 | Sortino=-0.62 | streak=7 | conc=0.20 | periods=56
+  --> Ghost=79 | Promoted=1 | Live=18
+  --> Eff Gross=1.93 | Port Vol=0.4085 | SPY Overlay=-10.9%
+      [BASE] ATO/NI | W_A: -3.5% | W_B: 2.3% | Inno Z: 0.82 | ECDF: 0.16 | Alpha: 0.8493
+      [BASE] GLW/ON | W_A: -3.5% | W_B: 1.2% | Inno Z: 1.55 | ECDF: 0.30 | Alpha: 0.5385
+      [BASE] PHM/WSM | W_A: 3.5% | W_B: -2.0% | Inno Z: -1.51 | ECDF: 0.89 | Alpha: 1.0047
+------------------------------------------------------------
+  [EXIT] ALL/GL | reason=STOP_LOSS | Z=-2.42 | days=9 | alpha=6.0942 | entry_type=BASE
+  [EXIT] CMI/WM | reason=STALE | Z=-0.23 | days=8 | alpha=0.0368 | entry_type=BASE
+  [EXIT] GS/PFG | reason=REVERTED | Z=-0.15 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AIZ/PRU | reason=REVERTED | Z=+0.19 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-03 | Progress:  47.5% (57/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.56% | DD=11.23% | win=42.1% | Sharpe=-0.55 | Sortino=-0.56 | streak=7 | conc=0.19 | periods=57
+  --> Ghost=82 | Promoted=2 | Live=16
+  --> Eff Gross=1.92 | Port Vol=0.4196 | SPY Overlay=-5.3%
+      [BASE] ATO/NI | W_A: -5.2% | W_B: 3.5% | Inno Z: 0.82 | ECDF: 0.32 | Alpha: 0.9998
+      [BASE] GLW/ON | W_A: -5.2% | W_B: 1.6% | Inno Z: 1.55 | ECDF: 0.62 | Alpha: 0.7321
+      [BASE] PHM/WSM | W_A: 5.2% | W_B: -3.3% | Inno Z: -1.51 | ECDF: 0.89 | Alpha: 0.8244
+------------------------------------------------------------
+  [EXIT] BLK/MET | reason=REVERTED | Z=-0.07 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BLK/PFG | reason=REVERTED | Z=-0.19 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MTB/MS | reason=REVERTED | Z=-0.18 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-04 | Progress:  48.3% (58/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.62% | DD=11.23% | win=41.4% | Sharpe=-0.55 | Sortino=-0.57 | streak=7 | conc=0.19 | periods=58
+  --> Ghost=84 | Promoted=1 | Live=12
+  --> Eff Gross=2.27 | Port Vol=0.4846 | SPY Overlay=-13.1%
+      [BASE] ATO/NI | W_A: -6.0% | W_B: 3.9% | Inno Z: 0.82 | ECDF: 0.43 | Alpha: 1.1024
+      [BASE] PHM/WSM | W_A: 6.0% | W_B: -3.8% | Inno Z: -1.51 | ECDF: 0.33 | Alpha: 0.3655
+      [BASE] APH/LRCX | W_A: 5.8% | W_B: -3.4% | Inno Z: -1.34 | ECDF: 0.86 | Alpha: 0.3306
+------------------------------------------------------------
+  [EXIT] GLW/ON | reason=STALE | Z=-0.23 | days=8 | alpha=0.0227 | entry_type=BASE
+  [EXIT] J/PCAR | reason=STALE | Z=-0.45 | days=8 | alpha=0.2285 | entry_type=BASE
+  [EXIT] IVZ/MET | reason=REVERTED | Z=+0.01 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EME/GD | reason=REVERTED | Z=+0.16 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-05 | Progress:  49.2% (59/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.28% | DD=11.23% | win=40.7% | Sharpe=-0.62 | Sortino=-0.64 | streak=7 | conc=0.19 | periods=59
+  --> Ghost=87 | Promoted=2 | Live=9
+  --> Eff Gross=2.13 | Port Vol=0.5844 | SPY Overlay=-11.5%
+      [BASE] ATO/NI | W_A: -8.4% | W_B: 5.6% | Inno Z: 0.82 | ECDF: 0.73 | Alpha: 1.5123
+      [BASE] GS/PFG | W_A: 7.7% | W_B: -3.0% | Inno Z: -1.26 | ECDF: 0.89 | Alpha: 1.1687
+      [BASE] GL/MET | W_A: 6.8% | W_B: -3.0% | Inno Z: -0.79 | ECDF: 0.67 | Alpha: 0.6748
+------------------------------------------------------------
+
+[Rebalance @ 2008-12-08 | Progress:  50.0% (60/120)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-4.11% | DD=11.23% | win=41.7% | Sharpe=-0.37 | Sortino=-0.39 | streak=7 | conc=0.17 | periods=60
+  --> Ghost=87 | Promoted=13 | Live=22
+  --> Eff Gross=2.32 | Port Vol=0.4747 | SPY Overlay=9.6%
+      [BASE] GS/PFG | W_A: 3.8% | W_B: -1.6% | Inno Z: -1.26 | ECDF: 0.84 | Alpha: 0.8675
+      [BASE] BLK/PFG | W_A: -3.8% | W_B: 1.6% | Inno Z: 1.11 | ECDF: 0.89 | Alpha: 0.9985
+      [BASE] DE/PCAR | W_A: -3.7% | W_B: 2.4% | Inno Z: 1.03 | ECDF: 0.95 | Alpha: 0.9415
+------------------------------------------------------------
+  [EXIT] COF/MS | reason=REVERTED | Z=-0.01 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] GL/MET | reason=REVERTED | Z=+0.11 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] PHM/WSM | reason=REVERTED | Z=+0.04 | days=5 | alpha=0.0000 | entry_type=BASE
+[Screen] 2008-12-09: 1807 candidates -> 158 pass (v2) -> 158 live
+
+[Rebalance @ 2008-12-09 | Progress:  50.8% (61/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.43% | DD=11.23% | win=41.0% | Sharpe=-0.39 | Sortino=-0.42 | streak=7 | conc=0.17 | periods=61
+  --> Ghost=110 | Promoted=2 | Live=15
+  --> Eff Gross=1.97 | Port Vol=0.4803 | SPY Overlay=7.6%
+      [BASE] ATO/NI | W_A: -4.0% | W_B: 2.5% | Inno Z: 0.82 | ECDF: 0.86 | Alpha: 0.3591
+      [BASE] APH/LRCX | W_A: 4.0% | W_B: -2.2% | Inno Z: -1.34 | ECDF: 0.83 | Alpha: 0.4952
+      [BASE] RCL/SBUX | W_A: -4.0% | W_B: 3.3% | Inno Z: 1.51 | ECDF: 0.86 | Alpha: 1.0620
+------------------------------------------------------------
+  [EXIT] GS/PFG | reason=REVERTED | Z=-0.16 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DE/EMR | reason=REVERTED | Z=+0.16 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BLK/MET | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-10 | Progress:  51.7% (62/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.77% | DD=11.23% | win=40.3% | Sharpe=-0.43 | Sortino=-0.45 | streak=7 | conc=0.17 | periods=62
+  --> Ghost=110 | Promoted=5 | Live=15
+  --> Eff Gross=1.89 | Port Vol=0.6668 | SPY Overlay=5.0%
+      [BASE] ATO/NI | W_A: -4.9% | W_B: 3.1% | Inno Z: 0.82 | ECDF: 0.56 | Alpha: 0.4948
+      [BASE] CBRE/KIM | W_A: 4.9% | W_B: -4.5% | Inno Z: -1.53 | ECDF: 0.81 | Alpha: 1.3555
+      [BASE] OXY/TPL | W_A: -4.9% | W_B: 2.8% | Inno Z: 2.04 | ECDF: 0.90 | Alpha: 1.3453
+------------------------------------------------------------
+  [EXIT] APH/LRCX | reason=STALE | Z=-0.37 | days=8 | alpha=0.0941 | entry_type=BASE
+  [EXIT] DE/LMT | reason=REVERTED | Z=-0.14 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-11 | Progress:  52.5% (63/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.21% | DD=11.23% | win=39.7% | Sharpe=-0.47 | Sortino=-0.50 | streak=7 | conc=0.17 | periods=63
+  --> Ghost=108 | Promoted=4 | Live=16
+  --> Eff Gross=1.78 | Port Vol=0.5590 | SPY Overlay=-0.0%
+      [BASE] ATO/NI | W_A: -4.9% | W_B: 3.1% | Inno Z: 0.82 | ECDF: 0.02 | Alpha: 0.7148
+      [BASE] MOS/STLD | W_A: 4.9% | W_B: -3.3% | Inno Z: -0.96 | ECDF: 0.83 | Alpha: 1.9287
+      [BASE] BLK/IVZ | W_A: 4.9% | W_B: -2.9% | Inno Z: -0.98 | ECDF: 0.92 | Alpha: 1.5061
+------------------------------------------------------------
+  [EXIT] DE/RTX | reason=REVERTED | Z=-0.18 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-12 | Progress:  53.3% (64/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.09% | DD=11.23% | win=40.6% | Sharpe=-0.35 | Sortino=-0.37 | streak=7 | conc=0.16 | periods=64
+  --> Ghost=105 | Promoted=1 | Live=14
+  --> Eff Gross=1.66 | Port Vol=0.5523 | SPY Overlay=1.7%
+      [BASE] ATO/NI | W_A: -5.2% | W_B: 3.4% | Inno Z: 0.82 | ECDF: 0.59 | Alpha: 1.0837
+      [BASE] GLW/LRCX | W_A: -5.2% | W_B: 2.3% | Inno Z: 0.94 | ECDF: 0.70 | Alpha: 0.7578
+      [BASE] FLEX/KLAC | W_A: 5.2% | W_B: -5.7% | Inno Z: -3.15 | ECDF: 0.98 | Alpha: 1.9085
+------------------------------------------------------------
+  [EXIT] DE/PCAR | reason=REVERTED | Z=+0.14 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] OXY/TPL | reason=REVERTED | Z=+0.05 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FLEX/KLAC | reason=STOP_LOSS | Z=-2.36 | days=1 | alpha=1.1246 | entry_type=BASE
+
+[Rebalance @ 2008-12-15 | Progress:  54.2% (65/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.48% | DD=11.23% | win=40.0% | Sharpe=-0.47 | Sortino=-0.50 | streak=7 | conc=0.16 | periods=65
+  --> Ghost=106 | Promoted=1 | Live=12
+  --> Eff Gross=2.16 | Port Vol=0.7257 | SPY Overlay=-9.1%
+      [BASE] ATO/NI | W_A: -7.0% | W_B: 4.5% | Inno Z: 0.82 | ECDF: 0.16 | Alpha: 0.8102
+      [BASE] DHI/F | W_A: 7.0% | W_B: -2.7% | Inno Z: -2.23 | ECDF: 0.86 | Alpha: 4.8419
+      [BASE] CBRE/VTR | W_A: 5.9% | W_B: -6.0% | Inno Z: -1.61 | ECDF: 0.56 | Alpha: 1.0586
+------------------------------------------------------------
+  [EXIT] HIG/USB | reason=STOP_LOSS | Z=+2.78 | days=7 | alpha=2.6422 | entry_type=BASE
+  [EXIT] BLK/PFG | reason=REVERTED | Z=+0.03 | days=6 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-16 | Progress:  55.0% (66/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.83% | DD=11.23% | win=39.4% | Sharpe=-0.50 | Sortino=-0.54 | streak=7 | conc=0.16 | periods=66
+  --> Ghost=106 | Promoted=4 | Live=14
+  --> Eff Gross=2.13 | Port Vol=0.6124 | SPY Overlay=4.0%
+      [BASE] DHI/F | W_A: 6.0% | W_B: -2.4% | Inno Z: -2.23 | ECDF: 0.56 | Alpha: 1.9646
+      [BASE] HPQ/STX | W_A: -6.0% | W_B: 1.6% | Inno Z: 1.03 | ECDF: 0.92 | Alpha: 1.1755
+      [BASE] APH/STX | W_A: -6.0% | W_B: 2.2% | Inno Z: 1.64 | ECDF: 0.94 | Alpha: 1.0709
+------------------------------------------------------------
+  [EXIT] DE/NOC | reason=STALE | Z=-0.29 | days=12 | alpha=0.1105 | entry_type=BASE
+  [EXIT] GLW/LRCX | reason=REVERTED | Z=+0.09 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CBRE/VTR | reason=REVERTED | Z=-0.20 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DHI/F | reason=STOP_LOSS | Z=+2.43 | days=2 | alpha=4.2859 | entry_type=BASE
+
+[Rebalance @ 2008-12-17 | Progress:  55.8% (67/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.22% | DD=11.23% | win=40.3% | Sharpe=-0.44 | Sortino=-0.47 | streak=7 | conc=0.16 | periods=67
+  --> Ghost=105 | Promoted=0 | Live=8
+  --> Eff Gross=1.68 | Port Vol=0.4614 | SPY Overlay=4.4%
+      [BASE] ATO/NI | W_A: -8.4% | W_B: 5.3% | Inno Z: 0.82 | ECDF: 0.52 | Alpha: 1.1181
+      [BASE] PHM/WSM | W_A: -8.4% | W_B: 5.4% | Inno Z: 1.60 | ECDF: 0.35 | Alpha: 0.1714
+      [BASE] JPM/MS | W_A: 7.3% | W_B: -2.6% | Inno Z: -1.04 | ECDF: 0.10 | Alpha: 0.2701
+------------------------------------------------------------
+  [EXIT] LMT/RTX | reason=MAX_HOLD | Z=-1.49 | days=41 | alpha=2.4004 | entry_type=BASE
+  [EXIT] APH/STX | reason=REVERTED | Z=-0.15 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-18 | Progress:  56.7% (68/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.22% | DD=11.23% | win=39.7% | Sharpe=-0.44 | Sortino=-0.47 | streak=7 | conc=0.16 | periods=68
+  --> Ghost=106 | Promoted=2 | Live=8
+  --> Eff Gross=2.51 | Port Vol=0.7674 | SPY Overlay=-16.5%
+      [BASE] ATO/NI | W_A: -10.5% | W_B: 6.6% | Inno Z: 0.82 | ECDF: 0.46 | Alpha: 1.3048
+      [BASE] SLB/TPL | W_A: 10.5% | W_B: -2.5% | Inno Z: -1.49 | ECDF: 0.86 | Alpha: 0.9366
+      [BASE] CBRE/KIM | W_A: 9.9% | W_B: -9.1% | Inno Z: -1.53 | ECDF: 0.41 | Alpha: 0.5401
+------------------------------------------------------------
+  [EXIT] FCX/MLM | reason=REVERTED | Z=+0.12 | days=7 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-19 | Progress:  57.5% (69/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.29% | DD=11.23% | win=39.1% | Sharpe=-0.44 | Sortino=-0.47 | streak=7 | conc=0.16 | periods=69
+  --> Ghost=105 | Promoted=1 | Live=8
+  --> Eff Gross=2.31 | Port Vol=0.6091 | SPY Overlay=-11.8%
+      [BASE] ATO/NI | W_A: -10.5% | W_B: 6.6% | Inno Z: 0.82 | ECDF: 0.49 | Alpha: 1.4920
+      [BASE] PHM/WSM | W_A: -10.5% | W_B: 6.6% | Inno Z: 1.60 | ECDF: 0.51 | Alpha: 0.2998
+      [BASE] MOS/STLD | W_A: 10.0% | W_B: -6.9% | Inno Z: -0.96 | ECDF: 0.24 | Alpha: 0.2891
+------------------------------------------------------------
+  [EXIT] CBRE/KIM | reason=STALE | Z=-0.44 | days=8 | alpha=0.1927 | entry_type=BASE
+  [EXIT] MOS/STLD | reason=REVERTED | Z=-0.08 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] PHM/WSM | reason=REVERTED | Z=-0.12 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-22 | Progress:  58.3% (70/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.39% | DD=11.23% | win=38.6% | Sharpe=-0.45 | Sortino=-0.48 | streak=7 | conc=0.16 | periods=70
+  --> Ghost=107 | Promoted=0 | Live=4
+  --> Eff Gross=1.96 | Port Vol=0.5277 | SPY Overlay=-16.5%
+      [BASE] ATO/NI | W_A: -13.5% | W_B: 8.6% | Inno Z: 0.82 | ECDF: 0.78 | Alpha: 1.8904
+      [BASE] SLB/TPL | W_A: 13.5% | W_B: -2.4% | Inno Z: -1.49 | ECDF: 0.63 | Alpha: 0.4370
+      [BASE] BKR/VLO | W_A: 11.5% | W_B: -6.8% | Inno Z: -1.03 | ECDF: 0.79 | Alpha: 0.3553
+------------------------------------------------------------
+  [EXIT] JPM/MS | reason=STALE | Z=-0.58 | days=8 | alpha=0.3317 | entry_type=BASE
+
+[Rebalance @ 2008-12-23 | Progress:  59.2% (71/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-5.71% | DD=11.23% | win=38.0% | Sharpe=-0.47 | Sortino=-0.51 | streak=7 | conc=0.16 | periods=71
+  --> Ghost=108 | Promoted=5 | Live=8
+  --> Eff Gross=1.97 | Port Vol=0.5832 | SPY Overlay=-0.7%
+      [BASE] ATO/NI | W_A: -10.5% | W_B: 6.6% | Inno Z: 0.82 | ECDF: 0.37 | Alpha: 1.9047
+      [BASE] F/LEN | W_A: 10.3% | W_B: -4.3% | Inno Z: -2.02 | ECDF: 0.87 | Alpha: 1.8400
+      [BASE] CHRW/TXT | W_A: -8.5% | W_B: 3.6% | Inno Z: 1.00 | ECDF: 0.98 | Alpha: 0.9821
+------------------------------------------------------------
+  [EXIT] CHRW/TXT | reason=REVERTED | Z=-0.06 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AME/TXT | reason=REVERTED | Z=-0.02 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] RTX/TXT | reason=REVERTED | Z=-0.06 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] TYL/CRM | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-26 | Progress:  60.8% (73/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-4.66% | DD=11.23% | win=38.9% | Sharpe=-0.37 | Sortino=-0.40 | streak=7 | conc=0.15 | periods=72
+  --> Ghost=109 | Promoted=0 | Live=4
+  --> Eff Gross=1.93 | Port Vol=0.5596 | SPY Overlay=-16.5%
+      [BASE] ATO/NI | W_A: -13.5% | W_B: 8.6% | Inno Z: 0.82 | ECDF: 0.13 | Alpha: 1.9400
+      [BASE] BKR/VLO | W_A: 10.4% | W_B: -6.1% | Inno Z: -1.03 | ECDF: 0.06 | Alpha: 0.1728
+      [BASE] SLB/TPL | W_A: 10.2% | W_B: -1.8% | Inno Z: -1.49 | ECDF: 0.48 | Alpha: 0.1051
+------------------------------------------------------------
+  [EXIT] F/LEN | reason=REVERTED | Z=-0.02 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2008-12-30 | Progress:  62.5% (75/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.72% | DD=11.23% | win=39.7% | Sharpe=-0.28 | Sortino=-0.31 | streak=7 | conc=0.15 | periods=73
+  --> Ghost=116 | Promoted=0 | Live=3
+  --> Eff Gross=1.75 | Port Vol=0.4751 | SPY Overlay=-15.7%
+      [BASE] ATO/NI | W_A: -13.5% | W_B: 8.5% | Inno Z: 0.82 | ECDF: 0.05 | Alpha: 1.7989
+      [BASE] SLB/TPL | W_A: 13.5% | W_B: -2.5% | Inno Z: -1.49 | ECDF: 0.49 | Alpha: 0.7828
+      [BASE] BKR/VLO | W_A: 9.8% | W_B: -6.0% | Inno Z: -1.03 | ECDF: 0.13 | Alpha: 0.6393
+------------------------------------------------------------
+  [EXIT] BKR/VLO | reason=STALE | Z=+0.40 | days=8 | alpha=0.1841 | entry_type=BASE
+
+[Rebalance @ 2008-12-31 | Progress:  63.3% (76/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.77% | DD=11.23% | win=39.2% | Sharpe=-0.28 | Sortino=-0.31 | streak=7 | conc=0.15 | periods=74
+  --> Ghost=119 | Promoted=1 | Live=3
+  --> Eff Gross=1.47 | Port Vol=0.4065 | SPY Overlay=-6.4%
+      [BASE] ATO/NI | W_A: -13.2% | W_B: 8.3% | Inno Z: 0.82 | ECDF: 0.16 | Alpha: 1.7935
+      [BASE] SLB/TPL | W_A: 13.2% | W_B: -2.5% | Inno Z: -1.49 | ECDF: 0.22 | Alpha: 0.8287
+      [BASE] GLW/LRCX | W_A: -11.1% | W_B: 5.5% | Inno Z: 1.26 | ECDF: 0.90 | Alpha: 0.6824
+------------------------------------------------------------
+  [EXIT] ATO/NI | reason=STOP_LOSS | Z=+2.21 | days=31 | alpha=1.9494 | entry_type=BASE
+  [EXIT] SLB/TPL | reason=STOP_LOSS | Z=+2.62 | days=9 | alpha=1.4178 | entry_type=BASE
+
+[Rebalance @ 2009-01-02 | Progress:  64.2% (77/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-3.65% | DD=11.23% | win=40.0% | Sharpe=-0.27 | Sortino=-0.29 | streak=7 | conc=0.15 | periods=75
+  --> Ghost=120 | Promoted=1 | Live=2
+  --> Eff Gross=1.38 | Port Vol=0.3333 | SPY Overlay=14.3%
+      [BASE] GLW/LRCX | W_A: -14.4% | W_B: 7.7% | Inno Z: 1.26 | ECDF: 0.87 | Alpha: 0.4779
+      [BASE] CMI/RSG | W_A: -12.6% | W_B: 10.2% | Inno Z: 0.80 | ECDF: 0.84 | Alpha: 0.7137
+------------------------------------------------------------
+
+[Rebalance @ 2009-01-05 | Progress:  65.0% (78/120)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-4.53% | DD=11.23% | win=39.5% | Sharpe=-0.35 | Sortino=-0.37 | streak=7 | conc=0.15 | periods=76
+  --> Ghost=120 | Promoted=6 | Live=7
+  --> Eff Gross=2.66 | Port Vol=0.9227 | SPY Overlay=16.5%
+      [BASE] AMD/KLAC | W_A: -10.5% | W_B: 10.0% | Inno Z: 2.72 | ECDF: 0.95 | Alpha: 1.7029
+      [BASE] PHM/WSM | W_A: -10.1% | W_B: 6.6% | Inno Z: 1.37 | ECDF: 0.83 | Alpha: 0.8197
+      [BASE] GLW/LRCX | W_A: -9.6% | W_B: 5.4% | Inno Z: 1.26 | ECDF: 0.90 | Alpha: 0.7818
+------------------------------------------------------------
+  [EXIT] GLW/LRCX | reason=STOP_LOSS | Z=+2.28 | days=3 | alpha=1.1523 | entry_type=BASE
+
+[Rebalance @ 2009-01-06 | Progress:  65.8% (79/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.76% | DD=11.23% | win=39.0% | Sharpe=-0.52 | Sortino=-0.55 | streak=7 | conc=0.15 | periods=77
+  --> Ghost=119 | Promoted=4 | Live=10
+  --> Eff Gross=2.23 | Port Vol=0.7759 | SPY Overlay=16.5%
+      [BASE] PRU/WRB | W_A: -8.4% | W_B: 8.3% | Inno Z: 2.47 | ECDF: 0.92 | Alpha: 2.0329
+      [BASE] APD/STLD | W_A: -7.5% | W_B: 2.9% | Inno Z: 0.81 | ECDF: 0.95 | Alpha: 0.5754
+      [BASE] MS/USB | W_A: -6.8% | W_B: 8.0% | Inno Z: 0.97 | ECDF: 0.87 | Alpha: 1.0749
+------------------------------------------------------------
+  [EXIT] MU/TXN | reason=REVERTED | Z=-0.20 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MS/USB | reason=REVERTED | Z=-0.15 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-07 | Progress:  66.7% (80/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-6.50% | DD=11.23% | win=39.7% | Sharpe=-0.50 | Sortino=-0.52 | streak=7 | conc=0.14 | periods=78
+  --> Ghost=118 | Promoted=3 | Live=10
+  --> Eff Gross=1.65 | Port Vol=0.5047 | SPY Overlay=0.5%
+      [BASE] AMD/KLAC | W_A: -7.6% | W_B: 7.4% | Inno Z: 2.72 | ECDF: 0.48 | Alpha: 0.3090
+      [BASE] PHM/WSM | W_A: -7.6% | W_B: 5.0% | Inno Z: 1.37 | ECDF: 0.63 | Alpha: 0.3403
+      [BASE] AMAT/LRCX | W_A: 7.6% | W_B: -5.4% | Inno Z: -0.95 | ECDF: 0.90 | Alpha: 0.4604
+------------------------------------------------------------
+  [EXIT] PHM/WSM | reason=REVERTED | Z=+0.15 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] APD/STLD | reason=REVERTED | Z=-0.13 | days=2 | alpha=0.0000 | entry_type=BASE
+[Screen] 2009-01-08: 1807 candidates -> 229 pass (v2) -> 229 live
+
+[Rebalance @ 2009-01-08 | Progress:  67.5% (81/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.13% | DD=11.23% | win=39.2% | Sharpe=-0.55 | Sortino=-0.57 | streak=7 | conc=0.14 | periods=79
+  --> Ghost=197 | Promoted=1 | Live=9
+  --> Eff Gross=2.09 | Port Vol=0.6719 | SPY Overlay=7.3%
+      [BASE] AMD/KLAC | W_A: -9.3% | W_B: 9.0% | Inno Z: 2.72 | ECDF: 0.51 | Alpha: 0.5699
+      [BASE] PHM/RCL | W_A: -8.6% | W_B: 5.9% | Inno Z: 0.90 | ECDF: 0.87 | Alpha: 0.6828
+      [BASE] JPM/MS | W_A: 8.5% | W_B: -2.4% | Inno Z: -0.91 | ECDF: 0.60 | Alpha: 0.3742
+------------------------------------------------------------
+  [EXIT] CMI/GWW | reason=REVERTED | Z=-0.19 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-09 | Progress:  68.3% (82/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.84% | DD=11.34% | win=38.8% | Sharpe=-0.60 | Sortino=-0.63 | streak=7 | conc=0.14 | periods=80
+  --> Ghost=197 | Promoted=5 | Live=13
+  --> Eff Gross=2.01 | Port Vol=0.5456 | SPY Overlay=-4.4%
+      [BASE] AMD/KLAC | W_A: -6.5% | W_B: 6.2% | Inno Z: 2.72 | ECDF: 0.30 | Alpha: 0.6615
+      [BASE] LEN/WSM | W_A: 6.5% | W_B: -6.6% | Inno Z: -3.10 | ECDF: 0.95 | Alpha: 5.1908
+      [BASE] LEN/PHM | W_A: 6.1% | W_B: -6.4% | Inno Z: -1.81 | ECDF: 0.97 | Alpha: 1.5192
+------------------------------------------------------------
+
+[Rebalance @ 2009-01-12 | Progress:  69.2% (83/120)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-8.37% | DD=11.85% | win=38.3% | Sharpe=-0.64 | Sortino=-0.68 | streak=7 | conc=0.14 | periods=81
+  --> Ghost=194 | Promoted=11 | Live=23
+  --> Eff Gross=2.39 | Port Vol=0.5929 | SPY Overlay=-14.6%
+      [BASE] PRU/WRB | W_A: -3.5% | W_B: 3.3% | Inno Z: 2.47 | ECDF: 0.76 | Alpha: 1.2804
+      [BASE] LEN/WSM | W_A: 3.5% | W_B: -3.5% | Inno Z: -3.10 | ECDF: 0.83 | Alpha: 2.8147
+      [BASE] STX/WDC | W_A: 3.5% | W_B: -1.9% | Inno Z: -1.72 | ECDF: 1.00 | Alpha: 1.3393
+------------------------------------------------------------
+  [EXIT] CMI/WM | reason=REVERTED | Z=-0.13 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AMAT/LRCX | reason=REVERTED | Z=-0.07 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KIM/PLD | reason=REVERTED | Z=-0.07 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-13 | Progress:  70.0% (84/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-7.86% | DD=11.85% | win=39.0% | Sharpe=-0.59 | Sortino=-0.62 | streak=7 | conc=0.14 | periods=82
+  --> Ghost=186 | Promoted=2 | Live=17
+  --> Eff Gross=1.87 | Port Vol=0.5532 | SPY Overlay=-4.7%
+      [BASE] PRU/WRB | W_A: -3.8% | W_B: 3.6% | Inno Z: 2.47 | ECDF: 0.16 | Alpha: 0.5771
+      [BASE] LEN/WSM | W_A: 3.8% | W_B: -3.8% | Inno Z: -3.10 | ECDF: 0.13 | Alpha: 1.0173
+      [BASE] STX/WDC | W_A: 3.8% | W_B: -2.1% | Inno Z: -1.72 | ECDF: 0.57 | Alpha: 0.2837
+------------------------------------------------------------
+  [EXIT] MS/WFC | reason=REVERTED | Z=+0.19 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] JPM/MS | reason=REVERTED | Z=-0.02 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CVS/LH | reason=REVERTED | Z=-0.19 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BSX/COO | reason=REVERTED | Z=+0.07 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DE/PCAR | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-14 | Progress:  70.8% (85/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-8.17% | DD=11.85% | win=38.6% | Sharpe=-0.62 | Sortino=-0.65 | streak=7 | conc=0.14 | periods=83
+  --> Ghost=189 | Promoted=2 | Live=14
+  --> Eff Gross=2.35 | Port Vol=0.6244 | SPY Overlay=-8.8%
+      [BASE] AMD/KLAC | W_A: -6.0% | W_B: 6.2% | Inno Z: 2.72 | ECDF: 0.79 | Alpha: 0.6277
+      [BASE] LEN/WSM | W_A: 6.0% | W_B: -6.0% | Inno Z: -3.10 | ECDF: 0.03 | Alpha: 1.2010
+      [BASE] HD/F | W_A: 6.0% | W_B: -1.3% | Inno Z: -0.89 | ECDF: 0.29 | Alpha: 0.5477
+------------------------------------------------------------
+  [EXIT] AMD/KLAC | reason=STALE | Z=-0.84 | days=8 | alpha=0.3344 | entry_type=BASE
+  [EXIT] CVS/ISRG | reason=REVERTED | Z=-0.14 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] HD/F | reason=REVERTED | Z=+0.08 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] GLW/HPQ | reason=REVERTED | Z=+0.09 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] GLW/CRM | reason=REVERTED | Z=+0.17 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KEY/HBAN | reason=STOP_LOSS | Z=+2.94 | days=2 | alpha=1.9081 | entry_type=BASE
+
+[Rebalance @ 2009-01-15 | Progress:  71.7% (86/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-8.69% | DD=12.16% | win=38.1% | Sharpe=-0.65 | Sortino=-0.69 | streak=7 | conc=0.14 | periods=84
+  --> Ghost=197 | Promoted=8 | Live=16
+  --> Eff Gross=2.77 | Port Vol=0.6135 | SPY Overlay=16.5%
+      [BASE] PRU/WRB | W_A: -5.2% | W_B: 4.9% | Inno Z: 2.47 | ECDF: 0.10 | Alpha: 0.7433
+      [BASE] LEN/WSM | W_A: 5.2% | W_B: -5.1% | Inno Z: -3.10 | ECDF: 0.65 | Alpha: 3.1624
+      [BASE] APH/STX | W_A: -5.2% | W_B: 2.3% | Inno Z: 2.10 | ECDF: 0.98 | Alpha: 1.1984
+------------------------------------------------------------
+  [EXIT] CBRE/VTR | reason=STALE | Z=-0.23 | days=8 | alpha=0.0354 | entry_type=BASE
+
+[Rebalance @ 2009-01-16 | Progress:  72.5% (87/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-9.08% | DD=12.53% | win=37.6% | Sharpe=-0.68 | Sortino=-0.72 | streak=7 | conc=0.14 | periods=85
+  --> Ghost=190 | Promoted=2 | Live=16
+  --> Eff Gross=2.30 | Port Vol=0.5585 | SPY Overlay=7.1%
+      [BASE] LEN/WSM | W_A: 4.9% | W_B: -4.8% | Inno Z: -3.10 | ECDF: 0.30 | Alpha: 1.4090
+      [BASE] COF/FITB | W_A: -4.9% | W_B: 2.5% | Inno Z: 1.02 | ECDF: 0.67 | Alpha: 0.5376
+      [BASE] AME/CSX | W_A: -4.9% | W_B: 3.1% | Inno Z: 1.25 | ECDF: 0.90 | Alpha: 0.4002
+------------------------------------------------------------
+  [EXIT] PRU/WRB | reason=STOP_LOSS | Z=-2.94 | days=9 | alpha=2.1587 | entry_type=BASE
+  [EXIT] F/LEN | reason=REVERTED | Z=-0.10 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] F/PHM | reason=REVERTED | Z=-0.08 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ACN/TRMB | reason=REVERTED | Z=+0.08 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-20 | Progress:  73.3% (88/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-9.79% | DD=13.21% | win=37.2% | Sharpe=-0.74 | Sortino=-0.78 | streak=7 | conc=0.14 | periods=86
+  --> Ghost=192 | Promoted=13 | Live=21
+  --> Eff Gross=1.42 | Port Vol=0.3392 | SPY Overlay=0.6%
+      [BASE] LEN/WSM | W_A: 3.4% | W_B: -3.3% | Inno Z: -3.10 | ECDF: 0.16 | Alpha: 2.0220
+      [BASE] BNY/STT | W_A: -3.4% | W_B: 1.4% | Inno Z: 4.20 | ECDF: 1.00 | Alpha: 7.0692
+      [BASE] GL/PNC | W_A: -3.4% | W_B: 1.4% | Inno Z: 1.20 | ECDF: 1.00 | Alpha: 1.4639
+------------------------------------------------------------
+  [EXIT] PHM/RCL | reason=STALE | Z=+0.22 | days=8 | alpha=0.0187 | entry_type=BASE
+  [EXIT] NTRS/WFC | reason=STOP_LOSS | Z=+3.37 | days=3 | alpha=3.3366 | entry_type=BASE
+  [EXIT] AKAM/LRCX | reason=REVERTED | Z=-0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-21 | Progress:  74.2% (89/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-10.02% | DD=13.44% | win=36.8% | Sharpe=-0.75 | Sortino=-0.80 | streak=7 | conc=0.14 | periods=87
+  --> Ghost=184 | Promoted=6 | Live=21
+  --> Eff Gross=2.21 | Port Vol=0.4631 | SPY Overlay=16.5%
+      [BASE] LEN/WSM | W_A: 3.5% | W_B: -3.5% | Inno Z: -3.10 | ECDF: 0.05 | Alpha: 1.9879
+      [BASE] COF/FITB | W_A: -3.5% | W_B: 1.5% | Inno Z: 1.02 | ECDF: 0.63 | Alpha: 2.4320
+      [BASE] AMD/KLAC | W_A: -3.5% | W_B: 3.7% | Inno Z: 1.89 | ECDF: 0.86 | Alpha: 0.9198
+------------------------------------------------------------
+  [EXIT] LEN/WSM | reason=STOP_LOSS | Z=-3.79 | days=8 | alpha=6.1782 | entry_type=BASE
+  [EXIT] STX/WDC | reason=STOP_LOSS | Z=-4.14 | days=7 | alpha=3.2872 | entry_type=BASE
+  [EXIT] MGM/MAR | reason=REVERTED | Z=-0.02 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] APH/STX | reason=STOP_LOSS | Z=+2.49 | days=4 | alpha=1.4898 | entry_type=BASE
+  [EXIT] COF/FITB | reason=STOP_LOSS | Z=+3.44 | days=4 | alpha=4.4234 | entry_type=BASE
+  [EXIT] AFL/TRV | reason=STOP_LOSS | Z=-3.66 | days=2 | alpha=4.1129 | entry_type=BASE
+  [EXIT] CCL/PHM | reason=REVERTED | Z=-0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BKR/VLO | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BXP/O | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MS/USB | reason=STOP_LOSS | Z=+2.55 | days=1 | alpha=2.3089 | entry_type=BASE
+  [EXIT] JPM/USB | reason=STOP_LOSS | Z=+2.25 | days=1 | alpha=2.0151 | entry_type=BASE
+
+[Rebalance @ 2009-01-22 | Progress:  75.0% (90/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-12.75% | DD=16.06% | win=36.4% | Sharpe=-0.93 | Sortino=-0.96 | streak=7 | conc=0.14 | periods=88
+  --> Ghost=182 | Promoted=8 | Live=17
+  --> Eff Gross=2.03 | Port Vol=0.5353 | SPY Overlay=-0.6%
+      [BASE] F/WSM | W_A: 4.7% | W_B: -1.8% | Inno Z: -1.92 | ECDF: 0.89 | Alpha: 2.1341
+      [BASE] DHI/WSM | W_A: 4.7% | W_B: -3.0% | Inno Z: -1.46 | ECDF: 0.83 | Alpha: 1.4109
+      [BASE] BNY/MS | W_A: 4.3% | W_B: -1.7% | Inno Z: -1.37 | ECDF: 0.75 | Alpha: 0.8373
+------------------------------------------------------------
+  [EXIT] GL/PNC | reason=REVERTED | Z=+0.15 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BNY/MS | reason=REVERTED | Z=-0.03 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] F/WSM | reason=STOP_LOSS | Z=-2.30 | days=1 | alpha=2.2483 | entry_type=BASE
+[Retrain @ 2009-01-23 | Progress:  75.8%] Universe refreshed → 2351 candidates, +1485 new pairs (3292 total).
+[Screen] 2009-01-23: 2351 candidates -> 203 pass (v2) -> 203 live
+
+[Rebalance @ 2009-01-23 | Progress:  75.8% (91/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-13.46% | DD=16.75% | win=36.0% | Sharpe=-0.99 | Sortino=-1.02 | streak=7 | conc=0.14 | periods=89
+  --> Ghost=185 | Promoted=7 | Live=17
+  --> Eff Gross=2.40 | Port Vol=0.5796 | SPY Overlay=16.5%
+      [BASE] CDNS/STX | W_A: -4.0% | W_B: 1.6% | Inno Z: 2.06 | ECDF: 0.87 | Alpha: 1.1148
+      [BASE] BAC/HBAN | W_A: -4.0% | W_B: 2.6% | Inno Z: 1.57 | ECDF: 0.86 | Alpha: 0.9251
+      [BASE] ON/STX | W_A: -4.0% | W_B: 1.7% | Inno Z: 1.50 | ECDF: 0.89 | Alpha: 0.8602
+------------------------------------------------------------
+  [EXIT] ALL/USB | reason=STOP_LOSS | Z=+2.92 | days=6 | alpha=2.7129 | entry_type=BASE
+  [EXIT] JPM/MS | reason=REVERTED | Z=+0.03 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DHI/WSM | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-26 | Progress:  76.7% (92/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-13.04% | DD=16.75% | win=36.7% | Sharpe=-0.94 | Sortino=-0.97 | streak=7 | conc=0.14 | periods=90
+  --> Ghost=180 | Promoted=6 | Live=19
+  --> Eff Gross=1.93 | Port Vol=0.4947 | SPY Overlay=6.2%
+      [BASE] AME/CSX | W_A: -4.2% | W_B: 2.5% | Inno Z: 1.25 | ECDF: 0.05 | Alpha: 0.4132
+      [BASE] KEY/RF | W_A: -4.2% | W_B: 2.8% | Inno Z: 1.28 | ECDF: 0.89 | Alpha: 0.8228
+      [BASE] CAT/URI | W_A: 4.1% | W_B: -1.2% | Inno Z: -1.26 | ECDF: 0.98 | Alpha: 0.8741
+------------------------------------------------------------
+  [EXIT] MS/TFC | reason=REVERTED | Z=+0.15 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] USB/WFC | reason=REVERTED | Z=-0.10 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ON/STX | reason=REVERTED | Z=-0.16 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CB/NDAQ | reason=REVERTED | Z=+0.13 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-27 | Progress:  77.5% (93/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-12.80% | DD=16.75% | win=37.4% | Sharpe=-0.92 | Sortino=-0.94 | streak=7 | conc=0.14 | periods=91
+  --> Ghost=176 | Promoted=3 | Live=18
+  --> Eff Gross=2.29 | Port Vol=0.4817 | SPY Overlay=16.5%
+      [BASE] BAC/HBAN | W_A: -4.7% | W_B: 3.1% | Inno Z: 1.57 | ECDF: 0.79 | Alpha: 0.9053
+      [BASE] CDNS/FLEX | W_A: -4.7% | W_B: 2.8% | Inno Z: 1.61 | ECDF: 0.63 | Alpha: 0.4844
+      [BASE] KEY/RF | W_A: -4.7% | W_B: 3.2% | Inno Z: 1.28 | ECDF: 0.81 | Alpha: 0.6149
+------------------------------------------------------------
+  [EXIT] AME/CSX | reason=STALE | Z=+0.73 | days=8 | alpha=0.3240 | entry_type=BASE
+  [EXIT] F/PHM | reason=REVERTED | Z=+0.14 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CDNS/STX | reason=REVERTED | Z=+0.14 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CAT/URI | reason=REVERTED | Z=-0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DD/URI | reason=REVERTED | Z=+0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-28 | Progress:  78.3% (94/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-11.79% | DD=16.75% | win=38.0% | Sharpe=-0.83 | Sortino=-0.85 | streak=7 | conc=0.13 | periods=92
+  --> Ghost=177 | Promoted=14 | Live=25
+  --> Eff Gross=2.60 | Port Vol=0.6244 | SPY Overlay=16.5%
+      [BASE] BAC/HBAN | W_A: -3.1% | W_B: 2.2% | Inno Z: 1.57 | ECDF: 0.63 | Alpha: 0.9934
+      [BASE] KEY/RF | W_A: -3.1% | W_B: 2.3% | Inno Z: 1.28 | ECDF: 0.63 | Alpha: 0.7769
+      [BASE] RCL/SBUX | W_A: 3.1% | W_B: -2.3% | Inno Z: -2.66 | ECDF: 0.98 | Alpha: 1.8171
+------------------------------------------------------------
+  [EXIT] PGR/USB | reason=STALE | Z=+0.43 | days=9 | alpha=0.2322 | entry_type=BASE
+  [EXIT] MS/WFC | reason=STOP_LOSS | Z=+2.22 | days=6 | alpha=2.0913 | entry_type=BASE
+  [EXIT] KEY/RF | reason=REVERTED | Z=+0.13 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] RCL/SBUX | reason=STOP_LOSS | Z=-2.76 | days=1 | alpha=1.6917 | entry_type=BASE
+
+[Rebalance @ 2009-01-29 | Progress:  79.2% (95/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-11.96% | DD=16.75% | win=37.6% | Sharpe=-0.84 | Sortino=-0.86 | streak=7 | conc=0.13 | periods=93
+  --> Ghost=164 | Promoted=20 | Live=29
+  --> Eff Gross=1.38 | Port Vol=0.3470 | SPY Overlay=0.3%
+      [BASE] NSC/ODFL | W_A: -6.8% | W_B: 2.4% | Inno Z: 1.04 | ECDF: 1.00 | Alpha: 0.8419
+      [BASE] PRU/WTW | W_A: -6.8% | W_B: 6.4% | Inno Z: 1.30 | ECDF: 0.84 | Alpha: 1.0790
+      [BASE] ODFL/WAB | W_A: -6.8% | W_B: 4.5% | Inno Z: 0.77 | ECDF: 1.00 | Alpha: 1.2885
+------------------------------------------------------------
+  [EXIT] USB/STT | reason=REVERTED | Z=-0.15 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] RCL/TPR | reason=STOP_LOSS | Z=-2.69 | days=2 | alpha=2.3449 | entry_type=BASE
+  [EXIT] BNY/NDAQ | reason=REVERTED | Z=-0.11 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-01-30 | Progress:  80.0% (96/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-12.84% | DD=16.75% | win=37.2% | Sharpe=-0.90 | Sortino=-0.92 | streak=7 | conc=0.13 | periods=94
+  --> Ghost=152 | Promoted=3 | Live=24
+  --> Eff Gross=1.81 | Port Vol=0.4244 | SPY Overlay=14.5%
+      [BASE] BAC/HBAN | W_A: -9.7% | W_B: 6.3% | Inno Z: 1.57 | ECDF: 0.81 | Alpha: 1.2748
+      [BASE] MSI/STX | W_A: -9.7% | W_B: 2.4% | Inno Z: 1.17 | ECDF: 0.67 | Alpha: 0.5136
+      [BASE] CB/WRB | W_A: -9.7% | W_B: 7.8% | Inno Z: 0.83 | ECDF: 0.67 | Alpha: 0.3605
+------------------------------------------------------------
+  [EXIT] BAC/HBAN | reason=STOP_LOSS | Z=+4.55 | days=6 | alpha=2.9283 | entry_type=BASE
+  [EXIT] PRU/WTW | reason=REVERTED | Z=-0.13 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FICO/NTAP | reason=REVERTED | Z=+0.13 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ALL/L | reason=REVERTED | Z=-0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-02 | Progress:  80.8% (97/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-16.58% | DD=19.75% | win=36.8% | Sharpe=-1.10 | Sortino=-1.08 | streak=7 | conc=0.13 | periods=95
+  --> Ghost=152 | Promoted=3 | Live=23
+  --> Eff Gross=1.96 | Port Vol=0.4751 | SPY Overlay=13.9%
+      [BASE] CDNS/FLEX | W_A: -12.2% | W_B: 6.8% | Inno Z: 1.61 | ECDF: 0.81 | Alpha: 0.6880
+      [BASE] LRCX/MU | W_A: 12.2% | W_B: -2.5% | Inno Z: -1.18 | ECDF: 0.57 | Alpha: 0.3900
+      [BASE] CDNS/KLAC | W_A: 12.2% | W_B: -10.4% | Inno Z: -1.86 | ECDF: 0.76 | Alpha: 0.5437
+------------------------------------------------------------
+  [EXIT] MSI/STX | reason=STOP_LOSS | Z=-2.57 | days=7 | alpha=1.4231 | entry_type=BASE
+  [EXIT] PGR/WRB | reason=REVERTED | Z=-0.03 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] LRCX/MCHP | reason=REVERTED | Z=-0.06 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CSX/ODFL | reason=REVERTED | Z=+0.17 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] LRCX/TXN | reason=REVERTED | Z=+0.04 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] MAS/URI | reason=REVERTED | Z=-0.10 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-03 | Progress:  81.7% (98/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-14.73% | DD=19.75% | win=37.5% | Sharpe=-0.94 | Sortino=-0.93 | streak=7 | conc=0.12 | periods=96
+  --> Ghost=154 | Promoted=10 | Live=26
+  --> Eff Gross=1.74 | Port Vol=0.3981 | SPY Overlay=15.2%
+      [BASE] JPM/WRB | W_A: -10.4% | W_B: 6.3% | Inno Z: 1.22 | ECDF: 0.62 | Alpha: 1.0191
+      [BASE] DHI/F | W_A: -10.4% | W_B: 5.7% | Inno Z: 3.38 | ECDF: 0.97 | Alpha: 6.6207
+      [BASE] DHI/WSM | W_A: -10.4% | W_B: 7.6% | Inno Z: 2.63 | ECDF: 0.98 | Alpha: 3.0463
+------------------------------------------------------------
+  [EXIT] JPM/WRB | reason=REVERTED | Z=-0.14 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ALL/GL | reason=REVERTED | Z=+0.08 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] EME/ODFL | reason=REVERTED | Z=-0.02 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] BNY/NDAQ | reason=REVERTED | Z=-0.17 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-04 | Progress:  82.5% (99/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-15.58% | DD=19.75% | win=37.1% | Sharpe=-0.99 | Sortino=-0.99 | streak=7 | conc=0.12 | periods=97
+  --> Ghost=148 | Promoted=7 | Live=29
+  --> Eff Gross=2.28 | Port Vol=0.4178 | SPY Overlay=34.9%
+      [BASE] DD/URI | W_A: 9.7% | W_B: -1.3% | Inno Z: -0.89 | ECDF: 0.86 | Alpha: 1.0478
+      [BASE] KEY/RF | W_A: -9.7% | W_B: 5.3% | Inno Z: 1.59 | ECDF: 0.75 | Alpha: 0.9174
+      [BASE] DHI/F | W_A: -9.7% | W_B: 5.3% | Inno Z: 3.38 | ECDF: 0.73 | Alpha: 2.5015
+------------------------------------------------------------
+  [EXIT] BNY/STT | reason=REVERTED | Z=+0.17 | days=12 | alpha=0.0000 | entry_type=BASE
+  [EXIT] JCI/TXT | reason=STOP_LOSS | Z=+2.21 | days=5 | alpha=1.9897 | entry_type=BASE
+  [EXIT] DHI/F | reason=STOP_LOSS | Z=+3.05 | days=2 | alpha=5.1536 | entry_type=BASE
+  [EXIT] TECH/BAX | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] TECH/DVA | reason=REVERTED | Z=+0.04 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] TECH/ABT | reason=REVERTED | Z=+0.13 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-05 | Progress:  83.3% (100/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-17.78% | DD=20.90% | win=36.7% | Sharpe=-1.12 | Sortino=-1.10 | streak=7 | conc=0.12 | periods=98
+  --> Ghost=146 | Promoted=13 | Live=32
+  --> Eff Gross=2.14 | Port Vol=0.4187 | SPY Overlay=34.2%
+      [BASE] CDNS/FLEX | W_A: -7.8% | W_B: 4.4% | Inno Z: 1.61 | ECDF: 0.94 | Alpha: 0.8203
+      [BASE] CDNS/KLAC | W_A: 7.8% | W_B: -7.0% | Inno Z: -1.86 | ECDF: 0.94 | Alpha: 0.8130
+      [BASE] DHI/WSM | W_A: -7.8% | W_B: 6.1% | Inno Z: 2.63 | ECDF: 0.63 | Alpha: 1.0393
+------------------------------------------------------------
+  [EXIT] CB/WRB | reason=REVERTED | Z=-0.18 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AIG/MCO | reason=REVERTED | Z=+0.10 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] STX/ZBRA | reason=REVERTED | Z=-0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-06 | Progress:  84.2% (101/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-18.98% | DD=22.06% | win=36.4% | Sharpe=-1.20 | Sortino=-1.17 | streak=7 | conc=0.12 | periods=99
+  --> Ghost=136 | Promoted=3 | Live=28
+  --> Eff Gross=2.23 | Port Vol=0.5298 | SPY Overlay=44.3%
+      [BASE] CDNS/FLEX | W_A: -8.8% | W_B: 5.4% | Inno Z: 1.61 | ECDF: 0.89 | Alpha: 1.0331
+      [BASE] NSC/ODFL | W_A: -8.8% | W_B: 3.3% | Inno Z: 1.04 | ECDF: 0.79 | Alpha: 0.7196
+      [BASE] DD/URI | W_A: 8.8% | W_B: -1.1% | Inno Z: -0.89 | ECDF: 0.27 | Alpha: 0.7753
+------------------------------------------------------------
+  [EXIT] ODFL/WAB | reason=REVERTED | Z=+0.10 | days=8 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DHI/WYNN | reason=REVERTED | Z=+0.08 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] DHI/HD | reason=REVERTED | Z=-0.06 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CBRE/REG | reason=REVERTED | Z=-0.09 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] IT/TDY | reason=REVERTED | Z=+0.01 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] AKAM/NTAP | reason=REVERTED | Z=-0.03 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CPT/CBRE | reason=REVERTED | Z=+0.05 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-09 | Progress:  85.0% (102/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-18.05% | DD=22.06% | win=37.0% | Sharpe=-1.12 | Sortino=-1.09 | streak=7 | conc=0.12 | periods=100
+  --> Ghost=140 | Promoted=0 | Live=20
+  --> Eff Gross=2.19 | Port Vol=0.5527 | SPY Overlay=42.7%
+      [BASE] CDNS/FLEX | W_A: -13.3% | W_B: 8.2% | Inno Z: 1.61 | ECDF: 0.78 | Alpha: 1.0842
+      [BASE] NSC/ODFL | W_A: -13.3% | W_B: 5.1% | Inno Z: 1.04 | ECDF: 0.51 | Alpha: 0.6046
+      [BASE] CDNS/KLAC | W_A: 13.3% | W_B: -13.0% | Inno Z: -1.86 | ECDF: 0.44 | Alpha: 1.1824
+------------------------------------------------------------
+  [EXIT] NSC/ODFL | reason=REVERTED | Z=+0.13 | days=10 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ARE/KIM | reason=REVERTED | Z=+0.15 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CDNS/MU | reason=REVERTED | Z=-0.19 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CDNS/TER | reason=REVERTED | Z=+0.16 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CDNS/LRCX | reason=REVERTED | Z=+0.13 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-10 | Progress:  85.8% (103/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-17.20% | DD=22.06% | win=37.6% | Sharpe=-1.05 | Sortino=-1.02 | streak=7 | conc=0.11 | periods=101
+  --> Ghost=145 | Promoted=9 | Live=24
+  --> Eff Gross=2.28 | Port Vol=0.5000 | SPY Overlay=-47.4%
+      [BASE] CDNS/KLAC | W_A: 11.7% | W_B: -11.4% | Inno Z: -1.86 | ECDF: 0.06 | Alpha: 0.9852
+      [BASE] DHI/WSM | W_A: -11.7% | W_B: 9.6% | Inno Z: 2.63 | ECDF: 0.86 | Alpha: 0.8221
+      [BASE] SBUX/WSM | W_A: 11.7% | W_B: -4.4% | Inno Z: -1.08 | ECDF: 0.97 | Alpha: 1.4625
+------------------------------------------------------------
+  [EXIT] LRCX/MU | reason=STALE | Z=-0.51 | days=8 | alpha=0.3285 | entry_type=BASE
+  [EXIT] CBRE/KIM | reason=STOP_LOSS | Z=+2.36 | days=5 | alpha=1.7657 | entry_type=BASE
+
+[Rebalance @ 2009-02-11 | Progress:  86.7% (104/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-17.65% | DD=22.06% | win=37.3% | Sharpe=-1.07 | Sortino=-1.05 | streak=7 | conc=0.11 | periods=102
+  --> Ghost=137 | Promoted=2 | Live=19
+  --> Eff Gross=1.79 | Port Vol=0.4523 | SPY Overlay=14.5%
+      [BASE] CDNS/FLEX | W_A: -11.7% | W_B: 7.2% | Inno Z: 1.61 | ECDF: 0.24 | Alpha: 0.8813
+      [BASE] CDNS/KLAC | W_A: 11.7% | W_B: -11.3% | Inno Z: -1.86 | ECDF: 0.27 | Alpha: 1.2648
+      [BASE] KEY/RF | W_A: -11.7% | W_B: 5.8% | Inno Z: 1.59 | ECDF: 0.41 | Alpha: 0.2274
+------------------------------------------------------------
+  [EXIT] KEY/RF | reason=STALE | Z=+0.38 | days=8 | alpha=0.1203 | entry_type=BASE
+  [EXIT] DHI/WSM | reason=REVERTED | Z=+0.09 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CDNS/STX | reason=REVERTED | Z=+0.19 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] JPM/WRB | reason=REVERTED | Z=-0.20 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] JBL/LRCX | reason=REVERTED | Z=+0.00 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-12 | Progress:  87.5% (105/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-18.48% | DD=22.06% | win=36.9% | Sharpe=-1.12 | Sortino=-1.10 | streak=7 | conc=0.11 | periods=103
+  --> Ghost=140 | Promoted=7 | Live=20
+  --> Eff Gross=2.10 | Port Vol=0.4771 | SPY Overlay=-12.6%
+      [BASE] DD/URI | W_A: 13.3% | W_B: -1.3% | Inno Z: -0.89 | ECDF: 0.22 | Alpha: 0.9751
+      [BASE] CDNS/KLAC | W_A: 13.3% | W_B: -12.9% | Inno Z: -1.86 | ECDF: 0.11 | Alpha: 1.2912
+      [BASE] ON/STX | W_A: -13.3% | W_B: 5.8% | Inno Z: 1.61 | ECDF: 0.60 | Alpha: 1.0615
+------------------------------------------------------------
+  [EXIT] NSC/ODFL | reason=REVERTED | Z=+0.03 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-13 | Progress:  88.3% (106/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-21.94% | DD=24.90% | win=36.5% | Sharpe=-1.29 | Sortino=-1.22 | streak=7 | conc=0.11 | periods=104
+  --> Ghost=134 | Promoted=4 | Live=20
+  --> Eff Gross=1.99 | Port Vol=0.4164 | SPY Overlay=-15.3%
+      [BASE] DD/URI | W_A: 12.2% | W_B: -1.1% | Inno Z: -0.89 | ECDF: 0.84 | Alpha: 1.3741
+      [BASE] CDNS/KLAC | W_A: 12.2% | W_B: -11.8% | Inno Z: -1.86 | ECDF: 0.38 | Alpha: 0.9152
+      [BASE] MAS/URI | W_A: 12.2% | W_B: -3.1% | Inno Z: -1.18 | ECDF: 0.92 | Alpha: 0.5581
+------------------------------------------------------------
+  [EXIT] DD/URI | reason=STOP_LOSS | Z=-2.86 | days=12 | alpha=2.1672 | entry_type=BASE
+  [EXIT] MGM/MAR | reason=STOP_LOSS | Z=-2.67 | days=9 | alpha=2.4648 | entry_type=BASE
+  [EXIT] ON/STX | reason=STOP_LOSS | Z=-3.15 | days=7 | alpha=2.5242 | entry_type=BASE
+  [EXIT] MCHP/NVDA | reason=REVERTED | Z=-0.01 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-17 | Progress:  89.2% (107/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-24.72% | DD=27.58% | win=36.2% | Sharpe=-1.43 | Sortino=-1.33 | streak=7 | conc=0.11 | periods=105
+  --> Ghost=131 | Promoted=6 | Live=17
+  --> Eff Gross=1.42 | Port Vol=0.2857 | SPY Overlay=-2.0%
+      [BASE] ODFL/UPS | W_A: -12.7% | W_B: 12.1% | Inno Z: 0.77 | ECDF: 0.24 | Alpha: 1.4805
+      [BASE] DHI/PHM | W_A: -12.7% | W_B: 13.3% | Inno Z: 1.56 | ECDF: 0.95 | Alpha: 1.2211
+      [BASE] AES/AEE | W_A: -12.7% | W_B: 12.0% | Inno Z: 1.12 | ECDF: 1.00 | Alpha: 0.9707
+------------------------------------------------------------
+  [EXIT] CDNS/FLEX | reason=STALE | Z=+0.62 | days=17 | alpha=0.2706 | entry_type=BASE
+
+[Rebalance @ 2009-02-18 | Progress:  90.0% (108/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-24.53% | DD=27.58% | win=36.8% | Sharpe=-1.41 | Sortino=-1.31 | streak=7 | conc=0.11 | periods=106
+  --> Ghost=129 | Promoted=1 | Live=13
+  --> Eff Gross=1.42 | Port Vol=0.3147 | SPY Overlay=-2.0%
+      [BASE] ODFL/UPS | W_A: -16.5% | W_B: 15.7% | Inno Z: 0.77 | ECDF: 0.08 | Alpha: 1.5377
+      [BASE] DHI/PHM | W_A: -16.5% | W_B: 17.2% | Inno Z: 1.56 | ECDF: 0.03 | Alpha: 0.8586
+      [BASE] AMZN/HAS | W_A: -16.5% | W_B: 11.0% | Inno Z: 1.93 | ECDF: 0.33 | Alpha: 1.5788
+------------------------------------------------------------
+  [EXIT] CDNS/KLAC | reason=STOP_LOSS | Z=+3.00 | days=13 | alpha=2.0559 | entry_type=BASE
+  [EXIT] AIG/MCO | reason=STOP_LOSS | Z=-2.57 | days=6 | alpha=2.5287 | entry_type=BASE
+
+[Rebalance @ 2009-02-19 | Progress:  90.8% (109/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-22.93% | DD=27.58% | win=37.4% | Sharpe=-1.27 | Sortino=-1.20 | streak=7 | conc=0.11 | periods=107
+  --> Ghost=129 | Promoted=2 | Live=11
+  --> Eff Gross=1.42 | Port Vol=0.3560 | SPY Overlay=2.0%
+      [BASE] FLEX/STX | W_A: 21.5% | W_B: -9.2% | Inno Z: -1.40 | ECDF: 0.78 | Alpha: 0.8175
+      [BASE] ODFL/UPS | W_A: -19.3% | W_B: 18.3% | Inno Z: 0.77 | ECDF: 0.40 | Alpha: 1.3105
+      [BASE] AMZN/HAS | W_A: -19.1% | W_B: 12.7% | Inno Z: 1.93 | ECDF: 0.05 | Alpha: 1.4762
+------------------------------------------------------------
+  [EXIT] SBUX/WSM | reason=REVERTED | Z=+0.15 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] FLEX/STX | reason=REVERTED | Z=+0.12 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-20 | Progress:  91.7% (110/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-22.76% | DD=27.58% | win=38.0% | Sharpe=-1.25 | Sortino=-1.17 | streak=7 | conc=0.11 | periods=108
+  --> Ghost=129 | Promoted=9 | Live=17
+  --> Eff Gross=2.10 | Port Vol=0.4850 | SPY Overlay=-25.4%
+      [BASE] CPT/CSGP | W_A: -15.6% | W_B: 12.7% | Inno Z: 1.80 | ECDF: 0.94 | Alpha: 1.0106
+      [BASE] GLW/LRCX | W_A: 15.6% | W_B: -10.6% | Inno Z: -1.20 | ECDF: 0.92 | Alpha: 0.8316
+      [BASE] CSGP/KIM | W_A: 15.3% | W_B: -4.1% | Inno Z: -1.38 | ECDF: 1.00 | Alpha: 1.4457
+------------------------------------------------------------
+[Screen] 2009-02-23: 2351 candidates -> 154 pass (v2) -> 154 live
+
+[Rebalance @ 2009-02-23 | Progress:  92.5% (111/120)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-21.66% | DD=27.58% | win=38.5% | Sharpe=-1.17 | Sortino=-1.10 | streak=7 | conc=0.10 | periods=109
+  --> Ghost=122 | Promoted=4 | Live=13
+  --> Eff Gross=1.42 | Port Vol=0.3745 | SPY Overlay=-2.0%
+      [BASE] ODFL/UPS | W_A: -13.3% | W_B: 12.6% | Inno Z: 0.77 | ECDF: 0.08 | Alpha: 1.5673
+      [BASE] AMZN/HAS | W_A: -13.3% | W_B: 9.0% | Inno Z: 1.93 | ECDF: 0.27 | Alpha: 1.3901
+      [BASE] EG/GL | W_A: -13.3% | W_B: 8.2% | Inno Z: 1.09 | ECDF: 0.83 | Alpha: 1.5160
+------------------------------------------------------------
+  [EXIT] GLW/LRCX | reason=REVERTED | Z=+0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-24 | Progress:  93.3% (112/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-20.52% | DD=27.58% | win=39.1% | Sharpe=-1.08 | Sortino=-1.02 | streak=7 | conc=0.10 | periods=110
+  --> Ghost=120 | Promoted=8 | Live=19
+  --> Eff Gross=2.50 | Port Vol=0.5865 | SPY Overlay=55.0%
+      [BASE] DHI/WSM | W_A: -14.0% | W_B: 12.0% | Inno Z: 1.33 | ECDF: 0.68 | Alpha: 1.4288
+      [BASE] MU/STX | W_A: -14.0% | W_B: 5.2% | Inno Z: 2.39 | ECDF: 0.89 | Alpha: 1.4541
+      [BASE] DHI/DECK | W_A: -14.0% | W_B: 13.2% | Inno Z: 1.46 | ECDF: 0.87 | Alpha: 1.1818
+------------------------------------------------------------
+  [EXIT] EG/GL | reason=STOP_LOSS | Z=+2.21 | days=8 | alpha=1.9346 | entry_type=BASE
+  [EXIT] CB/WRB | reason=REVERTED | Z=+0.04 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-25 | Progress:  94.2% (113/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-20.69% | DD=27.58% | win=38.7% | Sharpe=-1.09 | Sortino=-1.03 | streak=7 | conc=0.10 | periods=111
+  --> Ghost=113 | Promoted=6 | Live=17
+  --> Eff Gross=1.41 | Port Vol=0.3578 | SPY Overlay=1.2%
+      [BASE] ODFL/UPS | W_A: -12.2% | W_B: 11.4% | Inno Z: 0.77 | ECDF: 0.79 | Alpha: 1.0524
+      [BASE] DHI/PHM | W_A: -12.2% | W_B: 12.8% | Inno Z: 1.56 | ECDF: 0.13 | Alpha: 0.9059
+      [BASE] FLEX/LRCX | W_A: 12.2% | W_B: -8.6% | Inno Z: -1.79 | ECDF: 0.95 | Alpha: 0.8821
+------------------------------------------------------------
+  [EXIT] DHI/WSM | reason=REVERTED | Z=+0.17 | days=8 | alpha=0.0000 | entry_type=BASE
+  [EXIT] KIM/UDR | reason=REVERTED | Z=-0.15 | days=8 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-26 | Progress:  95.0% (114/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-21.31% | DD=27.58% | win=38.4% | Sharpe=-1.12 | Sortino=-1.06 | streak=7 | conc=0.10 | periods=112
+  --> Ghost=109 | Promoted=3 | Live=15
+  --> Eff Gross=1.42 | Port Vol=0.3296 | SPY Overlay=1.7%
+      [BASE] AMZN/HAS | W_A: -15.6% | W_B: 10.6% | Inno Z: 1.93 | ECDF: 0.33 | Alpha: 1.2888
+      [BASE] FLEX/LRCX | W_A: 15.6% | W_B: -10.5% | Inno Z: -1.79 | ECDF: 0.84 | Alpha: 0.7600
+      [BASE] DHI/PHM | W_A: -15.2% | W_B: 15.8% | Inno Z: 1.56 | ECDF: 0.35 | Alpha: 0.6992
+------------------------------------------------------------
+  [EXIT] DHI/WYNN | reason=STOP_LOSS | Z=+2.29 | days=6 | alpha=2.2174 | entry_type=BASE
+  [EXIT] C/COF | reason=STOP_LOSS | Z=-4.48 | days=5 | alpha=4.0523 | entry_type=BASE
+  [EXIT] BAC/STT | reason=STOP_LOSS | Z=-2.42 | days=3 | alpha=2.3333 | entry_type=BASE
+  [EXIT] AMAT/AMD | reason=REVERTED | Z=+0.02 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-02-27 | Progress:  95.8% (115/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-20.82% | DD=27.58% | win=38.9% | Sharpe=-1.08 | Sortino=-1.02 | streak=7 | conc=0.10 | periods=113
+  --> Ghost=108 | Promoted=8 | Live=19
+  --> Eff Gross=2.55 | Port Vol=0.4820 | SPY Overlay=-46.1%
+      [BASE] FLEX/STX | W_A: 14.7% | W_B: -4.8% | Inno Z: -1.56 | ECDF: 0.70 | Alpha: 0.9745
+      [BASE] ADSK/MCHP | W_A: 14.7% | W_B: -8.0% | Inno Z: -1.38 | ECDF: 0.97 | Alpha: 0.9158
+      [BASE] ADSK/MRVL | W_A: 14.3% | W_B: -3.2% | Inno Z: -1.32 | ECDF: 0.97 | Alpha: 0.8943
+------------------------------------------------------------
+
+[Rebalance @ 2009-03-02 | Progress:  96.7% (116/120)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=-21.14% | DD=27.58% | win=38.6% | Sharpe=-1.10 | Sortino=-1.04 | streak=7 | conc=0.10 | periods=114
+  --> Ghost=100 | Promoted=3 | Live=22
+  --> Eff Gross=2.65 | Port Vol=0.4874 | SPY Overlay=-55.0%
+      [BASE] CPT/CSGP | W_A: -12.7% | W_B: 10.6% | Inno Z: 1.80 | ECDF: 0.75 | Alpha: 1.2433
+      [BASE] FLEX/LRCX | W_A: 12.7% | W_B: -8.9% | Inno Z: -1.79 | ECDF: 0.48 | Alpha: 0.8774
+      [BASE] FLEX/STX | W_A: 12.7% | W_B: -4.4% | Inno Z: -1.56 | ECDF: 0.44 | Alpha: 0.7462
+------------------------------------------------------------
+  [EXIT] AMAT/MSI | reason=REVERTED | Z=-0.04 | days=4 | alpha=0.0000 | entry_type=BASE
+  [EXIT] STT/WFC | reason=REVERTED | Z=-0.12 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-03-03 | Progress:  97.5% (117/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-19.70% | DD=27.58% | win=39.1% | Sharpe=-0.99 | Sortino=-0.95 | streak=7 | conc=0.09 | periods=115
+  --> Ghost=99 | Promoted=3 | Live=22
+  --> Eff Gross=2.56 | Port Vol=0.4403 | SPY Overlay=-48.8%
+      [BASE] CPT/CSGP | W_A: -12.2% | W_B: 10.1% | Inno Z: 1.80 | ECDF: 0.03 | Alpha: 1.0483
+      [BASE] ADSK/TER | W_A: 12.2% | W_B: -4.7% | Inno Z: -1.38 | ECDF: 0.38 | Alpha: 0.5117
+      [BASE] DHI/WSM | W_A: 12.2% | W_B: -9.7% | Inno Z: -1.51 | ECDF: 0.94 | Alpha: 1.7405
+------------------------------------------------------------
+  [EXIT] ADSK/MCHP | reason=REVERTED | Z=-0.20 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ADSK/MRVL | reason=REVERTED | Z=+0.01 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ADSK/AKAM | reason=REVERTED | Z=+0.14 | days=3 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ADSK/ADI | reason=REVERTED | Z=-0.02 | days=3 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-03-04 | Progress:  98.3% (118/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-18.08% | DD=27.58% | win=39.7% | Sharpe=-0.88 | Sortino=-0.85 | streak=7 | conc=0.09 | periods=116
+  --> Ghost=100 | Promoted=12 | Live=28
+  --> Eff Gross=1.89 | Port Vol=0.3380 | SPY Overlay=8.0%
+      [BASE] CPT/CSGP | W_A: -9.3% | W_B: 7.8% | Inno Z: 1.80 | ECDF: 0.21 | Alpha: 0.9440
+      [BASE] CAT/MAS | W_A: 9.3% | W_B: -5.1% | Inno Z: -0.98 | ECDF: 1.00 | Alpha: 1.2836
+      [BASE] GE/TXT | W_A: 9.3% | W_B: -2.2% | Inno Z: -0.76 | ECDF: 0.94 | Alpha: 1.3612
+------------------------------------------------------------
+  [EXIT] DHI/PHM | reason=STALE | Z=+0.51 | days=21 | alpha=0.2769 | entry_type=BASE
+  [EXIT] FLEX/STX | reason=REVERTED | Z=+0.01 | days=6 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ESS/MAA | reason=REVERTED | Z=-0.00 | days=2 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2009-03-05 | Progress:  99.2% (119/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-18.68% | DD=27.58% | win=39.3% | Sharpe=-0.91 | Sortino=-0.88 | streak=7 | conc=0.09 | periods=117
+  --> Ghost=90 | Promoted=4 | Live=26
+  --> Eff Gross=1.95 | Port Vol=0.3377 | SPY Overlay=-21.3%
+      [BASE] CPT/CSGP | W_A: -9.7% | W_B: 8.1% | Inno Z: 1.80 | ECDF: 0.33 | Alpha: 1.1935
+      [BASE] FLEX/LRCX | W_A: 9.7% | W_B: -7.5% | Inno Z: -1.79 | ECDF: 0.51 | Alpha: 0.7394
+      [BASE] ADSK/TER | W_A: 9.7% | W_B: -3.9% | Inno Z: -1.38 | ECDF: 0.29 | Alpha: 0.5698
+------------------------------------------------------------
+  [EXIT] CPT/CSGP | reason=STOP_LOSS | Z=-2.29 | days=10 | alpha=1.3153 | entry_type=BASE
+  [EXIT] FLEX/LRCX | reason=STOP_LOSS | Z=-3.23 | days=7 | alpha=1.6747 | entry_type=BASE
+  [EXIT] AFL/HBAN | reason=REVERTED | Z=-0.19 | days=7 | alpha=0.0000 | entry_type=BASE
+  [EXIT] ADSK/ZBRA | reason=REVERTED | Z=-0.15 | days=5 | alpha=0.0000 | entry_type=BASE
+  [EXIT] CAT/PCAR | reason=REVERTED | Z=-0.09 | days=2 | alpha=0.0000 | entry_type=BASE
+  [EXIT] JPM/WRB | reason=STOP_LOSS | Z=-2.52 | days=2 | alpha=1.6784 | entry_type=BASE
+
+[Rebalance @ 2009-03-06 | Progress: 100.0% (120/120)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=-17.52% | DD=27.58% | win=39.8% | Sharpe=-0.84 | Sortino=-0.81 | streak=7 | conc=0.09 | periods=118
+  --> Ghost=89 | Promoted=6 | Live=25
+  --> Eff Gross=1.92 | Port Vol=0.3115 | SPY Overlay=-6.3%
+      [BASE] CAT/MAS | W_A: 10.8% | W_B: -5.3% | Inno Z: -0.98 | ECDF: 0.25 | Alpha: 1.4084
+      [BASE] DD/TXT | W_A: 10.8% | W_B: -1.4% | Inno Z: -0.85 | ECDF: 0.97 | Alpha: 1.0961
+      [BASE] LRCX/KLAC | W_A: -10.8% | W_B: 9.6% | Inno Z: 0.80 | ECDF: 0.94 | Alpha: 0.9906
+------------------------------------------------------------
+<<< Stage: WalkForwardStage complete. (33.1s)
+
+>>> Stage: AttributionStage
+[Attribution] Replaying decision tape: results/22/distress/9/tape.txt
+
+====================================================================================================
+PROGRESSIVE (PER-REBALANCE) DIAGNOSTICS — PAIRWISE ENGINE
+====================================================================================================
+ per        date   perRet%   cumRet%   win%  Sharpe  maxDD%    PF  conc  excSOFR%     IR
+----------------------------------------------------------------------------------------------------
+   5  2008-09-22     -1.18      1.09   60.0    3.40    1.18  1.93  0.73      1.09   3.80
+  10  2008-09-29     -1.64      2.59   70.0    3.90    1.64  1.92  0.31      2.59   4.11
+  15  2008-10-06     -0.82     -1.23   53.3   -1.05    5.30  0.84  0.27     -1.23  -1.08
+  20  2008-10-13      2.95     -2.14   45.0   -1.21    8.86  0.82  0.32     -2.14  -1.25
+  25  2008-10-20     -0.44     -1.85   48.0   -0.92    8.86  0.86  0.29     -1.85  -0.94
+  30  2008-10-27      0.50     -3.18   43.3   -1.48    8.86  0.78  0.28     -3.18  -1.50
+  35  2008-11-03      0.24     -0.51   48.6   -0.13    8.86  0.98  0.22     -0.51  -0.14
+  40  2008-11-10     -0.71     -1.31   45.0   -0.44    8.86  0.93  0.21     -1.31  -0.44
+  45  2008-11-17     -0.19     -3.23   42.2   -1.09    8.86  0.83  0.20     -3.23  -1.10
+  50  2008-11-24      1.30     -3.68   42.0   -1.14    8.86  0.82  0.18     -3.68  -1.15
+  55  2008-12-02      0.85     -3.19   43.6   -0.92    8.86  0.85  0.17     -3.19  -0.93
+  60  2008-12-09     -1.45     -3.25   43.3   -0.83    8.86  0.87  0.15     -3.25  -0.84
+  65  2008-12-16     -1.09     -3.40   43.1   -0.79    8.86  0.88  0.13     -3.40  -0.79
+  70  2008-12-23     -0.17     -3.23   42.9   -0.71    8.86  0.89  0.13     -3.23  -0.72
+  75  2009-01-05     -0.30     -1.96   44.0   -0.38    8.86  0.94  0.12     -1.96  -0.38
+  80  2009-01-12      0.26     -4.41   43.8   -0.90    8.86  0.86  0.11     -4.41  -0.90
+  85  2009-01-20     -1.18     -4.28   43.5   -0.80    8.86  0.88  0.11     -4.28  -0.81
+  90  2009-01-27     -0.38     -8.70   42.2   -1.60   12.46  0.76  0.10     -8.70  -1.61
+  95  2009-02-03      2.64     -8.21   43.2   -1.34   14.25  0.80  0.09     -8.21  -1.34
+ 100  2009-02-10      0.89    -11.91   44.0   -1.80   16.65  0.73  0.09    -11.91  -1.80
+ 105  2009-02-18      0.36    -18.85   42.9   -2.68   22.47  0.63  0.09    -18.85  -2.69
+ 110  2009-02-25      1.68    -21.07   42.7   -2.81   25.99  0.61  0.08    -21.07  -2.83
+ 115  2009-03-04      3.03    -15.66   44.3   -1.84   25.99  0.73  0.07    -15.66  -1.84
+ 117  2009-03-06      1.45    -13.76   45.3   -1.55   25.99  0.77  0.07    -13.76  -1.56
+----------------------------------------------------------------------------------------------------
+  EARLY-STOP: KILL after 117 periods | win_rate 45.3% < 50.0%, sharpe -1.55 < 0.0
+====================================================================================================
+<<< Stage: AttributionStage complete. (18.8s)
+
+>>> Stage: ReportingStage
+
+=====================================================================================
+v3.2 RELAXED BETA — FUNNEL CONVERSION ATTRIBUTION
+=====================================================================================
+  Funnel Tier / Portfolio Stage          | Ann. Return [%]    | Sortino Ratio     
+-------------------------------------------------------------------------------------
+  Ghost Portfolio (Raw Universe)         |              3.22% |             0.3711
+  Promoted Portfolio (Parametric Gated)  |            -58.28% |            -0.7477
+  Live Portfolio (SLSQP Optimized)       |            -26.73% |            -1.4464
+-------------------------------------------------------------------------------------
+  --> Parametric Selection Delta         |            -61.50% |            -1.1188
+  --> Optimizer Allocation Delta         |            +31.55% |            -0.6987
+=====================================================================================
+
+=====================================================================================
+MARKET NEUTRALITY DIAGNOSTIC (RELAXED: 5% BETA CAP)
+=====================================================================================
+                    Metric   Value Threshold Status
+          Annualized Alpha -18.21%       N/A   INFO
+         Market Beta (β_m)  0.1039  < |0.05|   FAIL
+              Beta p-value  0.0003   >= 0.05   FAIL
+          Beta t-statistic  3.6855  < |1.96|   FAIL
+   Variance Explained (R²)  10.32%    < 0.5%   FAIL
+Bull Market Beta (R_m > 0)  0.1303  < |0.05|   FAIL
+Bear Market Beta (R_m < 0)  0.0483  < |0.05|   PASS
+-------------------------------------------------------------------------------------
+  VERDICT: Market Neutral = FALSE | Failures: Market Beta (β_m), Beta p-value, Beta t-statistic, Variance Explained (R²), Bull Market Beta (R_m > 0)
+=====================================================================================
+
+=====================================================================================
+RISK-FREE (SOFR) BENCHMARK — MARKET-NEUTRAL INTERPRETATION
+=====================================================================================
+  Metric                                  Value
+-------------------------------------------------------------------------------------
+  Benchmark Return [%]                    0.000
+  Excess Return vs SOFR [%]             -13.765
+  Annualised Excess [%]                 -29.272
+  Information Ratio                      -1.536
+=====================================================================================
+
+=====================================================================================
+INVESTMENT COMMITTEE PAIR REVIEW TEARSHEET (ATTRIBUTED BY REGIME)
+=====================================================================================
+Strategy_Origin   Pair_Legs  Total_Return_[%]  Sharpe_Ratio  Sortino_Ratio  Max_DD_[%]  Win_Rate_[%]  Total_Trades
+           BASE  ODFL / UPS          2.142761      1.061717       0.268533    0.226752     50.000000             2
+           BASE    C / HBAN          0.671707      1.050266       0.547964    0.022043     50.000000             2
+           BASE   JPM / TFC          2.160000      0.938045       0.274739    0.279884     75.000000             4
+           BASE    CB / HIG          0.762166      0.862254       0.612000    0.042039    100.000000             2
+           BASE   KIM / PLD          0.449798      0.837380       5.532889    0.001480     66.666667             6
+           BASE   FCX / MLM          1.154776      0.792965       0.248141    0.214734     50.000000             4
+           BASE   ALL / HIG          0.190563      0.760223       8.622881    0.000326    100.000000             4
+           BASE   LII / LMT          0.079883      0.721547       0.068558    0.022142    100.000000             2
+           BASE AAPL / LRCX          0.417259      0.693025       0.406121    0.035323     66.666667             6
+           BASE  HPQ / LRCX          0.528298      0.690563       0.173596    0.080784     66.666667             6
+           BASE  NVDA / STX          1.678649      0.674292       7.201815    0.003119     50.000000             2
+           BASE   MTB / WFC          0.051711      0.659914       1.118513    0.000621     50.000000             2
+           BASE   ROP / CRM          0.718200      0.634971       0.353081    0.084006    100.000000             2
+           BASE  CPT / CBRE          0.041340      0.630246       0.376803    0.001475     50.000000             2
+           BASE   TYL / CRM          0.091464      0.628677       0.794465    0.001547    100.000000             2
+           BASE     EMR / J          0.154706      0.622523       0.341315    0.010521     50.000000             4
+           BASE   MSI / STX          2.011913      0.616330       0.414864    0.143898    100.000000             2
+           BASE   HIG / WFC          0.725989      0.614199      14.410932    0.000676     50.000000             2
+           BASE   HIG / MET          0.784354      0.611795      12.659716    0.000831     50.000000             2
+           BASE  ALGN / WST          0.281586      0.608742       0.283148    0.019234    100.000000             2
+           BASE    DE / NOC          0.988880      0.605518       0.182702    0.151138     50.000000             6
+           BASE  AME / PCAR          0.274609      0.582921       3.722862    0.001337     75.000000             4
+           BASE  LNT / EVRG          0.158771      0.581820       0.074996    0.049992     50.000000             4
+           BASE  DHI / WYNN          2.934991      0.579096       0.087269    0.836594     75.000000             4
+           BASE  AEP / EVRG          0.178807      0.577650       0.215985    0.020802    100.000000             2
+           BASE      HD / F          0.253643      0.556492       0.133690    0.036680    100.000000             2
+           BASE   AFL / AJG          1.875191      0.555425       0.078804    0.451045     50.000000             2
+           BASE   BKR / VLO          0.620714      0.554896       0.158206    0.152349     50.000000             6
+           BASE   AON / PFG          0.085833      0.546573       2.092159    0.000551     50.000000             2
+           BASE  IDXX / SYK          0.186868      0.542574       0.186338    0.019056     50.000000             2
+           BASE    DE / EMR          0.113619      0.533271       1.669660    0.000915     50.000000             2
+           BASE FLEX / KLAC          0.327381      0.530210       0.493565    0.022311     66.666667             6
+           BASE  CBRE / VTR          1.071115      0.525595       0.074883    0.613574     50.000000             4
+           BASE   BLK / MET          0.375697      0.517161       0.111935    0.100142     66.666667             6
+           BASE   TRV / WRB          0.172476      0.501004       0.129120    0.056194     66.666667             6
+           BASE   PHM / NVR          0.034389      0.497476       2.214038    0.000209    100.000000             2
+           BASE     ALL / L          0.292361      0.497436       2.051099    0.001916    100.000000             2
+           BASE  AMAT / MSI          0.717756      0.494683       0.194077    0.110764     50.000000             2
+           BASE   CB / NDAQ          0.031875      0.494453       0.461656    0.000928     50.000000             2
+           BASE  CVS / ISRG          0.385577      0.490766       0.266851    0.027442     50.000000             2
+           BASE   LOW / WSM          0.041645      0.488381       0.152189    0.006952     50.000000             4
+           BASE  DOC / WELL          0.170983      0.482089       1.702446    0.001350     50.000000             2
+           BASE    CVS / LH          0.259887      0.478274       0.416931    0.011810     50.000000             2
+           BASE   SLB / TPL          1.140712      0.477599       0.048273    0.593670     50.000000             2
+           BASE   CMI / TXT          0.178589      0.473302       0.790666    0.005461     50.000000             4
+           BASE   CAT / MAS          1.636409      0.469047       5.288736    0.005057    100.000000             2
+           BASE  AMD / KLAC          0.559547      0.467319       0.076293    0.331417     50.000000             4
+           BASE   AIG / AJG          0.579117      0.461666      23.629152    0.000329     50.000000             2
+           BASE   AIZ / PRU          0.185696      0.461422       0.038779    0.112325     50.000000             4
+           BASE HBAN / NTRS          0.352921      0.461189       8.393165    0.000565    100.000000             2
+           BASE    AXP / MS          0.589340      0.461039       6.974094    0.001136     50.000000             2
+           BASE   BNY / MTB          0.171779      0.461009       6.745047    0.000342     50.000000             2
+           BASE    CB / PFG          0.289057      0.460997       0.044379    0.124342     75.000000             4
+           BASE    RF / PNC          0.525057      0.460943       6.292855    0.001122     50.000000             2
+           BASE   ALL / WFC          0.149747      0.460914       6.117274    0.000329     50.000000             2
+           BASE   BEN / PNC          0.099216      0.460729       5.171299    0.000258    100.000000             2
+           BASE FAST / ODFL          0.434131      0.460700       5.050812    0.001155    100.000000             2
+           BASE    BA / CMI          0.095899      0.460370       3.980226    0.000324     50.000000             2
+           BASE  AMT / SBAC          0.132908      0.460341       3.905432    0.000457     50.000000             2
+           BASE   PSA / PLD          0.158820      0.460287       3.777456    0.000565    100.000000             2
+           BASE   AMD / MSI          0.542184      0.460284       3.771548    0.001932    100.000000             2
+           BASE     BG / CL          0.124613      0.460273       3.745481    0.000447     50.000000             2
+           BASE  AMD / CDNS          0.652435      0.460195       3.576777    0.002452     50.000000             2
+           BASE    DE / TXT          0.181722      0.460193       3.572730    0.000684    100.000000             2
+           BASE     BA / DE          0.086699      0.460121       3.429975    0.000340     50.000000             2
+           BASE    BA / PWR          0.081813      0.460104       3.397685    0.000324     50.000000             2
+           BASE  GILD / WST          0.086084      0.460090       3.371361    0.000343     50.000000             2
+           BASE   CMI / UNP          0.093199      0.460067       3.329905    0.000376     50.000000             2
+           BASE  WSM / WYNN          0.560394      0.460013       3.236161    0.002328     50.000000             2
+           BASE   PWR / TXT          0.096616      0.459972       3.168406    0.000410     50.000000             2
+           BASE  CCI / WELL          0.077022      0.459950       3.133027    0.000330     50.000000             2
+           BASE   AES / SRE          0.091629      0.459865       3.003421    0.000410     50.000000             2
+           BASE    GLW / MU          0.124979      0.459849       2.980036    0.000564    100.000000             2
+           BASE AKAM / LRCX          0.181731      0.459827       1.883141    0.001297     50.000000             2
+           BASE    BA / CAT          0.081697      0.459806       2.920000    0.000376     50.000000             2
+           BASE    DE / LII          0.125106      0.459725       2.812636    0.000598     50.000000             2
+           BASE   DOC / PLD          0.100143      0.459591       2.651185    0.000508    100.000000             2
+           BASE HSIC / REGN          0.137783      0.459535       2.588979    0.000715     50.000000             2
+           BASE   PFG / WTW          0.119558      0.459530       2.583914    0.000622     50.000000             2
+           BASE   PWR / UNP          0.079136      0.459478       2.528987    0.000421     50.000000             2
+           BASE   ESS / PLD          0.095087      0.459348       2.400756    0.000532    100.000000             2
+           BASE   CCI / SPG          0.050004      0.459317       2.371886    0.000283     50.000000             2
+           BASE    GD / RSG          0.050104      0.459277       2.336008    0.000288     50.000000             2
+           BASE  CSX / PCAR          0.068437      0.459120       2.205189    0.000417     50.000000             2
+           BASE  AMD / LRCX          0.489719      0.458892       2.039476    0.003228     50.000000             2
+           BASE  ESS / WELL          0.255484      0.458809       1.984854    0.001730    100.000000             2
+           BASE   PHM / WSM          0.976902      0.458750       0.099052    0.609443     50.000000            10
+           BASE     ESS / O          0.267956      0.458650       1.888551    0.001907     50.000000             2
+           BASE  SCHW / IVZ          0.050213      0.458613       1.867433    0.000361     50.000000             2
+           BASE   CAT / ROK          0.245130      0.458375       1.741577    0.001892    100.000000             2
+           BASE   ESS / KIM          0.043923      0.458278       1.695103    0.000348    100.000000             2
+           BASE  BKNG / NKE          0.075056      0.458105       1.618304    0.000623     50.000000             2
+           BASE    BA / CSX          0.075883      0.457641       1.442360    0.000707     50.000000             2
+           BASE   XOM / SLB          0.034041      0.457614       1.433226    0.000319     50.000000             2
+           BASE   HAL / VLO          0.061563      0.457573       1.419596    0.000583     50.000000             2
+           BASE   MLM / VMC          0.054213      0.457538       1.408400    0.000517     50.000000             2
+           BASE   CAT / ITW          0.196309      0.457368       1.355661    0.001946    100.000000             2
+           BASE  SNPS / STX          0.303592      0.457112       1.283143    0.003180     50.000000             2
+           BASE   BXP / KIM          0.032183      0.456691       1.179573    0.000367    100.000000             2
+           BASE    CB / MET          0.029021      0.456488       1.135241    0.000344     50.000000             2
+           BASE   GL / HBAN          0.052387      0.456464       1.130320    0.000623     50.000000             2
+           BASE ADSK / FICO          0.098137      0.456456       1.128505    0.001169    100.000000             2
+           BASE  CRM / TRMB          0.034157      0.456278       1.092717    0.000420     50.000000             2
+           BASE FICO / NTAP          0.145031      0.455948       2.045262    0.001052     50.000000             2
+           BASE   CDNS / MU          0.311414      0.455586       0.080454    0.073561     50.000000             2
+           BASE   MCK / RMD          0.074556      0.455235       0.921495    0.001088    100.000000             2
+           BASE  GLW / CDNS          0.044483      0.454961       0.884880    0.000676     50.000000             2
+           BASE   TER / STX          0.121409      0.454728       0.856057    0.001906     50.000000             2
+           BASE   AMT / PLD          0.028377      0.454101       0.786992    0.000485     50.000000             2
+           BASE   BAC / STT          2.618480      0.454056       0.401050    0.126538     50.000000             2
+           BASE   GLW / JBL          0.035028      0.453970       0.773849    0.000608     50.000000             2
+           BASE  CSGP / KIM          0.164809      0.453616       0.740574    0.002991     50.000000             2
+           BASE    AON / CB          0.065717      0.452892       0.680731    0.001298     50.000000             2
+           BASE  BLK / SCHW          0.014334      0.452282       0.637221    0.000302     50.000000             2
+           BASE   PWR / GWW          0.121704      0.452144       0.628127    0.002604     50.000000             2
+           BASE   AEP / PPL          0.057417      0.452060       0.622740    0.001239     50.000000             2
+           BASE   BSX / LLY          0.016784      0.451381       0.582205    0.000388     50.000000             2
+           BASE   LEN / PHM          0.084634      0.451203       0.572406    0.001987     50.000000             2
+           BASE  CCI / EQIX          0.034506      0.451185       0.571408    0.000812     50.000000             2
+           BASE   JPM / USB          0.046113      0.451102       0.566984    0.001093     50.000000             2
+           BASE    HD / WSM          0.008795      0.450967       0.559908    0.000211     50.000000             2
+           BASE  MCK / IDXX          0.011398      0.450803       0.551579    0.000278     50.000000             2
+           BASE  CAT / HUBB          0.071992      0.450508       0.537113    0.001802     50.000000             2
+           BASE     T / TKO          0.034907      0.450507       0.537092    0.000874    100.000000             2
+           BASE   AON / IVZ          0.020314      0.448969       0.472486    0.000578     50.000000             2
+           BASE   CAT / HON          0.025401      0.444737       0.354363    0.000964     50.000000             2
+           BASE  PWR / ODFL          0.080024      0.440922       0.288637    0.003727     50.000000             2
+           BASE  ACN / NVDA          0.126187      0.439636       0.072477    0.041421     75.000000             4
+           BASE    GD / TXT          0.125180      0.438821       0.068841    0.045948    100.000000             2
+           BASE  BNY / TROW          0.006810      0.438192       0.254566    0.000360     50.000000             2
+           BASE  BEN / NDAQ          0.007492      0.438069       0.253211    0.000398     50.000000             2
+           BASE    ON / STX          1.891108      0.433363       0.128133    0.998445     50.000000             6
+           BASE   CINF / RF          0.008513      0.432278       0.202228    0.000566     50.000000             2
+           BASE SBAC / WELL          0.093846      0.430333       0.282826    0.006296     50.000000             2
+           BASE  ERIE / TFC          0.222258      0.428027       0.082631    0.121108     50.000000             2
+           BASE SCHW / NTRS          0.025697      0.427943       0.175412    0.001969     50.000000             2
+           BASE   ATO / CNP          0.005510      0.423707       0.155066    0.000478     50.000000             2
+           BASE    ALL / GL          0.742303      0.421402       0.076659    0.372404     62.500000             8
+           BASE   CPT / REG          0.102791      0.421352       0.137341    0.018082     50.000000             4
+           BASE  CNP / EVRG          0.226063      0.419386       0.202484    0.021213    100.000000             2
+           BASE  PFG / TROW          0.083591      0.412970       0.174794    0.009460     50.000000             2
+           BASE   NSC / TXT          0.300007      0.410391       0.050234    0.265507    100.000000             2
+           BASE   BNY / TFC          0.204003      0.408625       0.096916    0.055865     50.000000             4
+           BASE   BXP / VTR          0.300785      0.405906       0.119696    0.078005     50.000000             6
+           BASE   BEN / IVZ          0.103699      0.405347       0.154269    0.012738     50.000000             2
+           BASE   KIM / UDR          0.696269      0.394503       0.057767    0.381212     50.000000             6
+           BASE  AMAT / AMD          0.568659      0.391345       0.110622    0.170658     25.000000             4
+           BASE  PWR / PCAR          0.190406      0.390645       0.055492    0.164302     50.000000             2
+           BASE    GL / PNC          0.336289      0.388629       0.142168    0.058822     50.000000             2
+           BASE  CDNS / STX          0.345975      0.382022       0.046771    0.187794     50.000000             4
+           BASE  AON / SCHW          0.002677      0.375745       0.063718    0.000565     50.000000             2
+           BASE    KO / HRL          0.397763      0.373457       0.076656    0.098739     50.000000             2
+           BASE   BNY / STT          0.561032      0.370239       0.050812    0.366736     50.000000             2
+           BASE   LEN / WSM          1.405712      0.369797       0.074084    0.847935     66.666667             6
+           BASE   BA / PCAR          0.237922      0.365656       0.061363    0.102662    100.000000             2
+           BASE  CHRW / TXT          0.098281      0.364787       0.083956    0.024153     50.000000             2
+           BASE   BNY / WFC          0.024382      0.364088       0.081049    0.006014     50.000000             2
+           BASE  SBUX / WSM          0.324876      0.359011       0.052825    0.132727     50.000000             2
+           BASE CSCO / LRCX          0.102420      0.355288       0.039626    0.056894     50.000000             6
+           BASE   AME / TXT          0.174471      0.352980       0.074922    0.092643     75.000000             4
+           BASE     EG / GL          0.770952      0.342642       0.087238    0.486372    100.000000             2
+           BASE   ESS / SPG          0.121425      0.331842       0.058171    0.049156     50.000000             4
+           BASE  NVDA / ROP          0.234092      0.330142       0.070308    0.128407     50.000000             4
+           BASE   EME / TXT          0.158237      0.325845       0.025692    0.117684    100.000000             2
+           BASE   OXY / TPL          0.184441      0.320303       0.080929    0.074952    100.000000             2
+           BASE   EME / RSG          0.419712      0.315196       0.046964    0.272354    100.000000             2
+           BASE   KIM / PSA          0.048022      0.315145       0.032621    0.030072     50.000000             2
+           BASE    DHI / HD          1.112265      0.315002       0.050616    0.969885     50.000000             4
+           BASE   AFL / TFC          0.239734      0.313005       0.035702    0.127824    100.000000             2
+           BASE  ODFL / WAB          0.202346      0.303333       0.040282    0.156010    100.000000             2
+           BASE  ADSK / TER          0.393972      0.302693       0.031094    0.241465    100.000000             2
+           BASE  NSC / ODFL          0.530677      0.299949       0.049589    0.390048     75.000000             4
+           BASE  PSA / VMRK          0.118658      0.292443       0.039302    0.070275     50.000000             2
+           BASE   GD / PCAR          0.030953      0.286945       0.037276    0.015780     50.000000             2
+           BASE  KEY / HBAN          0.151866      0.283663       0.035784    0.081944     50.000000             2
+           BASE  STX / ZBRA          0.051079      0.278538       0.026983    0.046142     25.000000             4
+           BASE   AIG / HIG          0.417583      0.277550       0.037912    0.298390     75.000000             4
+           BASE   ATO / WEC          0.153311      0.273773       0.058785    0.094719     50.000000             2
+           BASE  CSX / ODFL          0.071782      0.267922       0.019510    0.071407     50.000000             2
+           BASE    BG / CHD          0.312640      0.259644       0.030313    0.621342     50.000000             8
+           BASE   STT / WFC          0.582839      0.243470       0.046315    0.472657     50.000000             4
+           BASE     BXP / O          0.011934      0.237191       0.027461    0.011001     50.000000             4
+           BASE    MS / USB          0.311211      0.236262       0.037852    0.347610     50.000000             8
+           BASE CDNS / KLAC          0.744457      0.234380       0.027451    0.702661     50.000000             2
+           BASE   PWR / WAB          0.121165      0.233501       0.035621    0.127304     50.000000             2
+           BASE    CI / WST          0.110526      0.225739       0.024970    0.141191     75.000000             4
+           BASE   ESS / MAA          0.055049      0.223615       0.016945    0.076302     50.000000             4
+           BASE    EME / GD          0.189662      0.222455       0.037085    0.212910     50.000000            10
+           BASE   RTX / NOC          0.103371      0.218356       0.024587    0.163510    100.000000             2
+           BASE  KIM / WELL          0.012713      0.217423       0.020259    0.016717     50.000000             4
+           BASE     F / LEN          0.385430      0.214657       0.054159    0.388825     40.000000            10
+           BASE    MTB / MS          0.049781      0.210748       0.015008    0.063109     50.000000             2
+           BASE  APD / STLD          0.011952      0.205592       0.020699    0.010846     50.000000             2
+           BASE   TGT / WMT          0.169877      0.201274       0.018986    0.304052     50.000000             4
+           BASE   AEP / LNT          0.010839      0.183301       0.013831    0.014897     50.000000             2
+           BASE   EQT / VLO          0.036448      0.181457       0.015509    0.044716     50.000000             2
+           BASE   PGR / USB          0.098706      0.175153       0.020716    0.176218     50.000000             2
+           BASE FLEX / LRCX          0.530377      0.171953       0.021850    0.826993    100.000000             2
+           BASE  ACN / TRMB          0.012092      0.167525       0.014280    0.016070     50.000000             2
+           BASE    BA / NOC          0.047476      0.154287       0.017269    0.079520     50.000000             2
+           BASE   TXT / UNP          0.123097      0.153687       0.014424    0.210612    100.000000             2
+           BASE   COF / MCO          0.072437      0.147600       0.011979    0.204242     50.000000             6
+           BASE ADSK / AKAM          0.187465      0.146435       0.016797    0.240581    100.000000             2
+           BASE   GLW / CRM          0.037988      0.144226       0.010763    0.067871     50.000000             2
+           BASE ADSK / ZBRA          0.180005      0.141463       0.015818    0.204431     50.000000             2
+           BASE  BNY / NDAQ          0.058575      0.130421       0.011254    0.155922     25.000000             4
+           BASE   ETR / PPL          0.038110      0.127756       0.013331    0.081781     50.000000             2
+           BASE    GE / TXT          0.318924      0.126613       0.007384    0.840156     50.000000             2
+           BASE   PHM / RCL          0.132775      0.126016       0.015389    0.372708     50.000000             2
+           BASE   BAC / AJG          0.042000      0.123992       0.016368    0.098172     50.000000             4
+           BASE     F / PHM          0.088557      0.123610       0.015127    0.255672     25.000000             4
+           BASE    CB / TRV          0.076344      0.121359       0.009520    0.235069     50.000000             4
+           BASE   GLW / HPQ          0.038176      0.100740       0.005689    0.128781     50.000000             2
+           BASE     FRT / O          0.019262      0.080499       0.010863    0.075969     50.000000             6
+           BASE    EG / WRB          0.054381      0.071362       0.004058    0.257622     50.000000             2
+           BASE   BLK / BEN          0.013643      0.071188       0.005534    0.062504     50.000000             4
+           BASE   AXP / COF          0.033089      0.070174       0.005681    0.137439     50.000000             4
+           BASE   HON / UNP          0.020765      0.069001       0.006121    0.087028    100.000000             2
+           BASE ADSK / MRVL          0.083544      0.053267       0.004674    0.416392     50.000000             2
+           BASE   PRU / WRB          0.116495      0.048993       0.004224    0.682526     50.000000             4
+           BASE   BLK / PFG          0.046434      0.042837       0.004430    0.339082     50.000000             6
+           BASE     IVZ / L          0.079627      0.037347       0.004943    0.744120     25.000000             4
+           BASE ADSK / MCHP          0.036869      0.031303       0.002501    0.355562     50.000000             2
+           BASE  SPG / SBAC          0.025362      0.030468       0.005563    0.413104     50.000000             2
+           BASE   EIX / PPL          0.007354      0.028922       0.002152    0.081026     50.000000             4
+           BASE   AIZ / TRV          0.023479      0.024030       0.002398    0.426446     50.000000             2
+           BASE   ALL / TRV          0.030159      0.017171       0.003340    0.811872     25.000000             4
+           BASE   BSX / COO          0.007501      0.008411       0.001491    0.422266     50.000000             8
+           BASE    DE / HON          0.000194      0.001173       0.000085    0.067336     50.000000             4
+           BASE    DD / TXT          0.000000      0.000000       0.000000    0.000000      0.000000             0
+           BASE    DD / HON          0.000000      0.000000       0.000000    0.000000      0.000000             0
+           BASE    DD / NOC          0.000000      0.000000       0.000000    0.000000      0.000000             0
+           BASE  SPG / VMRK          0.000000      0.000000       0.000000    0.000000      0.000000             0
+           BASE  RJF / TROW          0.000000      0.000000       0.000000    0.000000      0.000000             0
+           BASE   KIM / REG         -0.006068     -0.007880      -0.000887    0.277687     50.000000             4
+           BASE LRCX / KLAC         -0.002038     -0.014548      -0.001129    0.044969     50.000000             4
+           BASE   IVZ / MET         -0.015408     -0.019513      -0.001985    0.312849     50.000000             4
+           BASE  FLEX / STX         -0.181411     -0.019667      -0.002336    2.497734     75.000000             4
+           BASE  LRCX / TER         -0.002151     -0.021037      -0.001208    0.034875     50.000000             2
+           BASE  AAPL / STX         -0.050286     -0.026255      -0.002360    0.752641     50.000000             2
+           BASE     BA / PH         -0.000756     -0.026914      -0.001535    0.009346     50.000000             2
+           BASE  SCHW / BEN         -0.034845     -0.031109      -0.004661    0.501967     50.000000             4
+           BASE   CMI / PWR         -0.019411     -0.033255      -0.003956    0.227760     50.000000             2
+           BASE  BXP / SBAC         -0.041174     -0.034174      -0.004710    0.371881     25.000000             4
+           BASE    DE / LMT         -0.009619     -0.034553      -0.002444    0.091265     50.000000             2
+           BASE   TPL / VLO         -0.154469     -0.048046      -0.004981    0.964089     50.000000             2
+           BASE   PGR / WFC         -0.011777     -0.049277      -0.003052    0.101605     50.000000             2
+           BASE   LMT / RTX         -0.057156     -0.060781      -0.010476    0.414448      0.000000             2
+           BASE  MOS / STLD         -0.028005     -0.062118      -0.005909    0.237030     50.000000             2
+           BASE    BNY / MS         -0.046205     -0.081230      -0.005663    0.184762     50.000000             2
+           BASE    DE / RTX         -0.046479     -0.082265      -0.006083    0.257234     75.000000             4
+           BASE   FCX / NUE         -0.057360     -0.088586      -0.008140    0.410595     25.000000             4
+           BASE  TECH / DVA         -0.030657     -0.089891      -0.004663    0.125978     50.000000             2
+           BASE    KEY / RF         -0.538925     -0.093322      -0.016236    3.264829     40.000000            10
+           BASE  AMZN / HAS         -0.316943     -0.097323      -0.013101    0.979665     50.000000             2
+           BASE  APH / LRCX         -0.153569     -0.107491      -0.011600    0.558989     50.000000             4
+           BASE     AXP / C         -0.099621     -0.115924      -0.005813    0.323808     50.000000             2
+           BASE CDNS / LRCX         -0.123120     -0.126902      -0.008923    0.283010     50.000000             2
+           BASE   HIG / PNC         -0.124940     -0.127585      -0.013423    0.425573     25.000000             4
+           BASE   BG / MNST         -0.104684     -0.151299      -0.010598    0.350660     50.000000             2
+           BASE     KO / KR         -0.003634     -0.163510      -0.007904    0.009012     50.000000             2
+           BASE    GL / PFG         -0.116098     -0.168303      -0.011699    0.297876     66.666667             6
+           BASE  CPT / CSGP         -0.409253     -0.170346      -0.010813    0.979674     50.000000             2
+           BASE  ADSK / ADI         -0.180101     -0.170801      -0.011473    0.315051     50.000000             2
+           BASE  COF / FITB         -0.230880     -0.171497      -0.014564    0.677211     50.000000             2
+           BASE    BA / EMR         -0.017057     -0.175717      -0.014238    0.048201     50.000000             2
+           BASE    HIG / GL         -0.448985     -0.179221      -0.008445    0.999404     50.000000             2
+           BASE   CSX / TXT         -0.052888     -0.193602      -0.009019    0.111795     50.000000             2
+           BASE CDNS / FLEX         -0.656024     -0.197985      -0.022696    1.319657     50.000000             2
+           BASE  BAC / HBAN         -0.314836     -0.199599      -0.017759    0.775613     50.000000             2
+           BASE  PLD / VMRK         -0.147287     -0.199765      -0.016255    0.383493      0.000000             2
+           BASE  CBRE / FRT         -0.136101     -0.200741      -0.021893    0.429697     25.000000             4
+           BASE   BSX / ZBH         -0.171021     -0.203322      -0.011466    0.346573     50.000000             2
+           BASE   IT / NVDA         -0.213188     -0.212815      -0.013850    0.391478     50.000000             4
+           BASE   RTX / TXT         -0.041560     -0.218496      -0.010042    0.078592      0.000000             2
+           BASE     DHI / F         -1.194472     -0.232515      -0.025907    2.349433     50.000000             6
+           BASE  CBRE / KIM         -0.824184     -0.238997      -0.024318    1.853179     25.000000             4
+           BASE    ATO / NI         -0.303448     -0.243301      -0.045873    0.677208      0.000000             2
+           BASE  ESS / SBAC         -0.170401     -0.248504      -0.028785    0.279266     50.000000             4
+           BASE    CB / WRB         -0.232919     -0.255399      -0.020828    0.495820     25.000000             4
+           BASE  CBRE / REG         -0.310633     -0.259813      -0.011376    0.519780     50.000000             2
+           BASE   LMT / TXT         -0.007539     -0.259953      -0.011608    0.012729     50.000000             2
+           BASE   FIX / UNP         -0.271168     -0.260749      -0.045386    0.730296     50.000000             2
+           BASE   AIZ / MET         -0.047504     -0.264881      -0.014106    0.078745     75.000000             4
+           BASE  PHM / TSCO         -0.793423     -0.272260      -0.017188    1.314849     50.000000             2
+           BASE   CCL / RCL         -0.009891     -0.272309      -0.012090    0.015538     50.000000             2
+           BASE     F / WSM         -0.405683     -0.272968      -0.020270    0.729507     50.000000             6
+           BASE  TECH / BAX         -0.109987     -0.282053      -0.012341    0.170895      0.000000             2
+           BASE AMAT / LRCX         -0.270562     -0.284233      -0.034162    0.534973     50.000000            10
+           BASE   ALL / USB         -0.445468     -0.286476      -0.050559    0.881424     50.000000             4
+           BASE   HPQ / STX         -0.213481     -0.286797      -0.028123    0.314720     50.000000             6
+           BASE   USB / STT         -0.427670     -0.287293      -0.017593    0.649559     50.000000             4
+           BASE   FRT / KIM         -0.005583     -0.288842      -0.012883    0.008196     50.000000             2
+           BASE   AMT / SPG         -0.019842     -0.290603      -0.012679    0.029739     50.000000             2
+           BASE   EME / WAB         -0.170358     -0.293158      -0.023637    0.352752     50.000000             2
+           BASE   CCI / VTR         -0.495870     -0.293888      -0.038263    1.193878     75.000000             4
+           BASE    J / PCAR         -0.523353     -0.294103      -0.041443    0.745663     62.500000             8
+           BASE   BLK / IVZ         -0.065479     -0.304370      -0.016127    0.095710     75.000000             4
+           BASE   AME / CSX         -0.093607     -0.304946      -0.033189    0.183784     25.000000             4
+           BASE   LRCX / MU         -0.409503     -0.305445      -0.026225    0.582741     25.000000             4
+           BASE  LRCX / CRM         -0.407104     -0.318670      -0.027653    0.565679     50.000000             4
+           BASE  NTRS / WFC         -0.517278     -0.319592      -0.019513    0.792440     25.000000             4
+           BASE  GLW / LRCX         -0.878305     -0.326498      -0.035641    1.881013     37.500000             8
+           BASE  DHI / DECK         -0.314054     -0.327949      -0.013996    0.425871     50.000000             2
+           BASE CTAS / ODFL         -0.234596     -0.329764      -0.028655    0.293511      0.000000             2
+           BASE   JPM / WRB         -0.612805     -0.344104      -0.034299    0.729748     16.666667             6
+           BASE    MS / WFC         -0.589352     -0.346658      -0.045417    1.007435     50.000000             6
+           BASE    COF / MS         -0.946706     -0.357412      -0.034713    1.099373     50.000000             8
+           BASE MCHP / NVDA         -0.079352     -0.366175      -0.019250    0.098171      0.000000             2
+           BASE  MET / NDAQ         -0.360742     -0.378074      -0.015788    0.434884     50.000000             2
+           BASE  RCL / SBUX         -0.412896     -0.383696      -0.019595    0.490975     50.000000             4
+           BASE   AFL / MET         -0.478764     -0.386522      -0.019715    0.565199     50.000000             4
+           BASE  KIM / SBAC         -0.412969     -0.390184      -0.051396    0.528746      0.000000             2
+           BASE   MAS / URI         -0.642360     -0.390904      -0.026667    0.952957     75.000000             4
+           BASE  AFL / HBAN         -0.970673     -0.393076      -0.030946    1.086240     50.000000             2
+           BASE  TECH / ABT         -0.142784     -0.396921      -0.016502    0.166221      0.000000             2
+           BASE   MTB / USB         -0.082100     -0.397270      -0.016522    0.095817     50.000000             2
+           BASE   NOC / UNP         -0.014310     -0.404829      -0.016783    0.016208     50.000000             2
+           BASE   PSA / VTR         -0.004972     -0.406213      -0.016973    0.005949     50.000000             2
+           BASE  EME / ODFL         -0.075375     -0.406681      -0.028667    0.105542     50.000000             4
+           BASE   DHI / PHM         -1.490504     -0.412772      -0.059520    2.247113     50.000000             2
+           BASE   CMI / RSG         -0.768759     -0.418140      -0.043189    0.768759     33.333333             6
+           BASE  CINF / PFG         -0.625370     -0.424845      -0.036039    0.989755      0.000000             2
+           BASE    GLW / ON         -0.343103     -0.425504      -0.040295    0.343103     50.000000             4
+           BASE   AFL / PRU         -0.595760     -0.425775      -0.031263    0.618848     50.000000             6
+           BASE   AFL / TRV         -1.054221     -0.428042      -0.021607    1.135771     50.000000             4
+           BASE   ARE / KIM         -0.151793     -0.435026      -0.017943    0.162973     50.000000             2
+           BASE   PRU / WTW         -0.788350     -0.446152      -0.026642    0.964751     25.000000             4
+           BASE   MMM / JCI         -0.039957     -0.451544      -0.023492    0.050089      0.000000             2
+           BASE   RCL / TPR         -0.449281     -0.452197      -0.018614    0.459414     50.000000             2
+           BASE   CMI / WAB         -0.822906     -0.455466      -0.058991    1.155237     50.000000             2
+           BASE    AIG / MS         -0.379667     -0.463045      -0.019055    0.379667      0.000000             2
+           BASE LRCX / ORCL         -0.423801     -0.463198      -0.019061    0.423801     50.000000             2
+           BASE   FCX / NEM         -0.245577     -0.463278      -0.019065    0.245577     50.000000             2
+           BASE  SCHW / GPN         -0.534619     -0.463285      -0.019065    0.534619      0.000000             2
+           BASE  ARE / SBAC         -0.078721     -0.463395      -0.019070    0.078721      0.000000             2
+           BASE   ALL / WTW         -0.602976     -0.463527      -0.019075    0.602976     50.000000             2
+           BASE  AJG / CINF         -0.440492     -0.463578      -0.019077    0.440492      0.000000             2
+           BASE    CSX / WM         -0.169539     -0.463604      -0.019078    0.169539      0.000000             2
+           BASE   FCX / LIN         -0.197714     -0.463628      -0.019079    0.197714     50.000000             2
+           BASE   FCX / ECL         -0.212500     -0.463630      -0.019079    0.212500     50.000000             2
+           BASE   ARE / AMT         -0.067316     -0.463770      -0.019085    0.067316      0.000000             2
+           BASE  APH / ORCL         -0.061318     -0.463981      -0.019094    0.061318      0.000000             2
+           BASE  AJG / ERIE         -0.365395     -0.463996      -0.019094    0.365395      0.000000             2
+           BASE ALGN / IDXX         -0.075103     -0.464099      -0.019098    0.075103     50.000000             2
+           BASE    GD / PWR         -0.019386     -0.464276      -0.019106    0.019386     50.000000             2
+           BASE   BXP / CCI         -0.054972     -0.464417      -0.019112    0.054972     50.000000             2
+           BASE   PNC / STT         -0.291452     -0.464523      -0.019116    0.291452     50.000000             2
+           BASE    MU / STX         -0.564245     -0.464525      -0.019116    0.564245      0.000000             2
+           BASE   BRO / AJG         -0.355347     -0.464604      -0.019119    0.355347      0.000000             2
+           BASE   KIM / VTR         -0.063678     -0.464688      -0.019123    0.063678     50.000000             2
+           BASE   HIG / TRV         -0.059317     -0.464698      -0.019123    0.059317     50.000000             2
+           BASE LRCX / NTAP         -0.273037     -0.464747      -0.019125    0.273037      0.000000             2
+           BASE  APH / AAPL         -0.217856     -0.464899      -0.019131    0.217856      0.000000             2
+           BASE  AJG / HBAN         -0.036002     -0.464919      -0.019132    0.036002      0.000000             2
+           BASE  ODFL / ROL         -0.223670     -0.465254      -0.019146    0.223670     50.000000             2
+           BASE    EG / PRU         -0.297439     -0.465603      -0.019160    0.297439     50.000000             2
+           BASE   MMM / MAS         -0.048507     -0.465668      -0.019163    0.048507      0.000000             2
+           BASE  AIZ / SCHW         -0.028008     -0.465913      -0.019173    0.028008      0.000000             2
+           BASE  ODFL / SNA         -0.213673     -0.466029      -0.019178    0.213673      0.000000             2
+           BASE  ETN / PCAR         -0.046730     -0.466080      -0.019180    0.046730     50.000000             2
+           BASE   CPT / PLD         -0.043093     -0.466243      -0.019187    0.043093     50.000000             2
+           BASE  CDNS / TXN         -0.281101     -0.466517      -0.019198    0.281101      0.000000             2
+           BASE   ARE / DOC         -0.028294     -0.466565      -0.019200    0.028294     50.000000             2
+           BASE   CAT / NOC         -0.080096     -0.466760      -0.019208    0.080096     50.000000             2
+           BASE    GL / MET         -0.698500     -0.466811      -0.053951    0.868226     50.000000             6
+           BASE   AES / AEE         -0.375690     -0.466828      -0.019211    0.375690     50.000000             2
+           BASE CDNS / ZBRA         -0.167000     -0.466836      -0.019211    0.167000      0.000000             2
+           BASE   BEN / FDS         -0.033214     -0.466878      -0.019213    0.033214     50.000000             2
+           BASE JBHT / ODFL         -0.125695     -0.466913      -0.019214    0.125695      0.000000             2
+           BASE   FCX / MOS         -0.020119     -0.466937      -0.019215    0.020119      0.000000             2
+           BASE  ADI / ZBRA         -0.021966     -0.467382      -0.019233    0.021966      0.000000             2
+           BASE  FCX / STLD         -0.090470     -0.467599      -0.019242    0.090470     50.000000             2
+           BASE     C / COF         -1.739377     -0.467932      -0.043349    2.604323     50.000000             4
+           BASE  CAT / PCAR         -0.145844     -0.468250      -0.019269    0.145844     50.000000             2
+           BASE   JPM / STT         -0.106999     -0.468431      -0.019277    0.106999     50.000000             2
+           BASE   AON / FDS         -0.035952     -0.468472      -0.019278    0.035952     50.000000             2
+           BASE   AME / FIX         -0.043260     -0.468763      -0.019290    0.043260     50.000000             2
+           BASE   MAR / TPR         -0.035813     -0.470014      -0.019342    0.035813     50.000000             2
+           BASE     EG / MS         -0.126638     -0.470149      -0.019347    0.126638     50.000000             2
+           BASE   CPT / KIM         -0.296729     -0.470448      -0.038759    0.384553     50.000000             2
+           BASE   ALL / AXP         -0.323574     -0.471039      -0.047580    0.542572      0.000000             4
+           BASE ADSK / KLAC         -0.101956     -0.472864      -0.019459    0.101956     50.000000             2
+           BASE  NOC / PCAR         -0.015528     -0.473326      -0.019478    0.015528      0.000000             2
+           BASE   SRE / WEC         -0.020825     -0.474962      -0.019545    0.020825     50.000000             2
+           BASE   APH / STX         -0.260803     -0.475055      -0.037360    0.363760     50.000000             4
+           BASE   ATO / SRE         -0.009657     -0.475521      -0.019568    0.009657     50.000000             2
+           BASE   TFC / STT         -0.063678     -0.476768      -0.019619    0.063678     50.000000             2
+           BASE  BXP / WELL         -0.013599     -0.478730      -0.019700    0.013599     50.000000             2
+           BASE   MCO / TFC         -0.006651     -0.478935      -0.019708    0.006651      0.000000             2
+           BASE   MS / NTRS         -0.016479     -0.478948      -0.019709    0.016479     50.000000             2
+           BASE    CB / PRU         -0.041711     -0.478993      -0.019711    0.041711     50.000000             2
+           BASE ADSK / LRCX         -0.049302     -0.479125      -0.019716    0.049302     50.000000             2
+           BASE    SCHW / L         -0.008696     -0.479645      -0.019738    0.008696     50.000000             2
+           BASE  ADI / MRVL         -0.007224     -0.479780      -0.019743    0.007224     50.000000             2
+           BASE    IT / TDY         -0.081075     -0.482136      -0.024299    0.081075     50.000000             2
+           BASE   MAA / PLD         -0.083103     -0.483421      -0.024364    0.083103     50.000000             2
+           BASE   MTB / PNC         -0.229338     -0.485093      -0.024448    0.229338     50.000000             2
+           BASE   ADI / STX         -0.030531     -0.486960      -0.020038    0.030531     50.000000             2
+           BASE   AON / TRV         -0.010033     -0.487085      -0.020044    0.010033     50.000000             2
+           BASE    CAT / TT         -0.041499     -0.487933      -0.020078    0.041499     50.000000             2
+           BASE  BXP / VMRK         -0.397235     -0.488659      -0.028464    0.413424     50.000000             4
+           BASE  LEN / WYNN         -0.327951     -0.489318      -0.024837    0.327951      0.000000             2
+           BASE   BXP / DOC         -0.137413     -0.498443      -0.025120    0.137413     50.000000             2
+           BASE   MGM / MAR         -1.284933     -0.503769      -0.046639    1.498179     50.000000             4
+           BASE   PGR / WRB         -0.231009     -0.505819      -0.030967    0.295548      0.000000             2
+           BASE   AON / BEN         -0.006718     -0.505833      -0.020814    0.006718     50.000000             2
+           BASE     O / PLD         -0.168495     -0.506950      -0.029501    0.168495     25.000000             4
+           BASE   DE / PCAR         -0.187545     -0.509919      -0.036900    0.192673     25.000000             4
+           BASE   DHI / WSM         -2.635516     -0.510990      -0.081299    2.725276     40.000000            10
+           BASE   MAA / VTR         -0.023641     -0.516002      -0.021232    0.023641     50.000000             2
+           BASE AKAM / NTAP         -0.065795     -0.534392      -0.026930    0.065795      0.000000             2
+           BASE ADSK / NVDA         -0.018459     -0.535343      -0.022027    0.018459      0.000000             2
+           BASE   USB / WFC         -0.518338     -0.558685      -0.028334    0.518338     50.000000             2
+           BASE   APA / OKE         -0.014006     -0.564557      -0.023228    0.014006     50.000000             2
+           BASE   AME / CMI         -0.002179     -0.582320      -0.023958    0.002179     50.000000             2
+           BASE FLEX / ZBRA         -0.289501     -0.582599      -0.046068    0.304605     50.000000             4
+           BASE    GS / PFG         -0.929545     -0.585072      -0.053207    1.001372     33.333333             6
+           BASE   CCI / ESS         -0.237225     -0.595348      -0.030029    0.245355     50.000000             2
+           BASE   CMI / GWW         -0.531971     -0.596992      -0.030080    0.531971     50.000000             2
+           BASE   COF / PNC         -0.110500     -0.597662      -0.030114    0.110500      0.000000             2
+           BASE    CMI / WM         -0.624557     -0.598900      -0.060024    0.624557     50.000000             6
+           BASE   MAS / TXT         -0.792588     -0.604323      -0.030449    0.792588     50.000000             2
+           BASE   AMT / KIM         -0.159437     -0.606244      -0.039678    0.159437     50.000000             4
+           BASE   CCL / PHM         -0.022271     -0.608002      -0.030634    0.022271      0.000000             2
+           BASE  JBL / LRCX         -0.474810     -0.612104      -0.039815    0.474810     50.000000             4
+           BASE   CAT / URI         -0.032385     -0.613361      -0.030904    0.032385     50.000000             2
+           BASE  MAS / ODFL         -0.234470     -0.613611      -0.041653    0.291510     25.000000             4
+           BASE  ACGL / PFG         -0.173629     -0.628270      -0.031654    0.173629     50.000000             2
+           BASE   JCI / TXT         -0.737362     -0.645000      -0.042086    0.777779      0.000000             2
+           BASE LRCX / MCHP         -0.826019     -0.648878      -0.050425    0.907255     33.333333             6
+           BASE   KO / MNST         -0.072709     -0.649646      -0.042253    0.072709     25.000000             4
+           BASE    AME / WM         -0.004063     -0.650286      -0.026749    0.004063     50.000000             2
+           BASE  LRCX / WDC         -0.335113     -0.653682      -0.053934    0.342904     50.000000             2
+           BASE   PLD / VTR         -0.616827     -0.677981      -0.065084    0.832027     50.000000             2
+           BASE    JPM / MS         -1.098929     -0.680180      -0.100402    1.220392     50.000000            10
+           BASE  CDNS / TER         -0.204308     -0.691269      -0.040209    0.204308     50.000000             2
+           BASE   BXP / PLD         -0.271511     -0.703903      -0.040971    0.277577     50.000000             2
+           BASE   STX / WDC         -0.616195     -0.704974      -0.053800    0.616195     50.000000             2
+           BASE LRCX / NVDA         -0.928420     -0.713698      -0.059513    1.024474     50.000000             6
+           BASE    MS / TFC         -0.452886     -0.716252      -0.041790    0.452886     50.000000             2
+           BASE   NVR / WSM         -0.607640     -0.729774      -0.078149    0.651254     62.500000             8
+           BASE   BEN / MET         -0.410356     -0.733389      -0.047751    0.410356      0.000000             2
+           BASE KLAC / ZBRA         -0.167267     -0.736946      -0.052493    0.167267     25.000000             4
+           BASE    HIG / MS         -2.318736     -0.737451      -0.052556    2.364563     50.000000             2
+           BASE  LRCX / TXN         -0.792802     -0.752277      -0.057876    0.792802     25.000000             4
+           BASE   HST / PLD         -1.519515     -0.752782      -0.084819    1.739848     50.000000             4
+           BASE    MU / TXN         -1.903717     -0.769264      -0.063541    1.903717     33.333333             6
+           BASE   HIG / USB         -1.498662     -0.777078      -0.071752    1.498662     25.000000             4
+           BASE  PLD / SBAC         -0.616812     -0.781107      -0.055799    0.644933      0.000000             2
+           BASE  HPQ / NVDA         -0.389431     -0.784529      -0.055875    0.389431     50.000000             4
+           BASE     CCL / F         -0.608041     -0.810528      -0.085668    0.641023     50.000000             4
+           BASE  AIZ / NDAQ         -0.434249     -0.849760      -0.055236    0.434249     50.000000             2
+           BASE  CBRE / PLD         -1.841601     -0.888278      -0.073475    1.945279     25.000000             4
+           BASE  SCHW / RJF         -0.184664     -0.915685      -0.070424    0.186550     50.000000             2
+           BASE    DD / URI         -2.989752     -0.918669      -0.097349    3.112874     25.000000             4
+           BASE   AIG / MCO         -3.250266     -0.968103      -0.088956    3.250266     25.000000             4
+
+=====================================================================================
+WALK-FORWARD NET PORTFOLIO STATS (POST-FEES & EXECUTION LAG)
+=====================================================================================
+Start                               2008-09-15 00:00:00
+End                                 2009-03-06 00:00:00
+Period                                172 days 00:00:00
+Start Value                                   1000000.0
+End Value                                 862352.611783
+Total Return [%]                             -13.764739
+Max Gross Exposure [%]                       280.139887
+Total Fees Paid                            17687.543595
+Max Drawdown [%]                              25.994794
+Max Drawdown Duration                 150 days 00:00:00
+Total Trades                                       1005
+Total Closed Trades                                 965
+Total Open Trades                                    40
+Open Trade PnL                              8692.024832
+Win Rate [%]                                  49.637306
+Best Trade [%]                                27.823539
+Worst Trade [%]                              -40.798592
+Avg Winning Trade [%]                          5.564028
+Avg Losing Trade [%]                          -5.598208
+Avg Winning Trade Duration    5 days 07:06:53.361169102
+Avg Losing Trade Duration     5 days 07:18:31.111111111
+Profit Factor                                  0.902697
+Expectancy                                  -150.253242
+Sharpe Ratio                                  -1.535895
+Calmar Ratio                                  -1.028205
+Omega Ratio                                    0.765776
+Sortino Ratio                                 -1.446398
+Benchmark Return [%]                                0.0
+Excess Return vs SOFR [%]                    -13.764739
+Annualised Excess [%]                        -29.272074
+Information Ratio                             -1.535895
+
+=====================================================================================
+ACTIONABLE MARKET-ON-OPEN (MOO) ORDER BLOTTER FOR NEXT SESSION
+=====================================================================================
+Ticker Action Order_Type  Delta_Shares  Target_Shares  Current_Shares  Est_Order_USD  Target_Weight_%  ADV_Participation_%  Price_Ref
+   STT   SELL        MOO         12291         -12291               0      149513.18           -14.95                1.474      12.16
+  TROW   SELL        MOO         10219         -10219               0      119668.39           -11.97                1.500      11.71
+    HD    BUY        MOO          9551           9551               0      110566.70            11.06                1.453      11.58
+   SPG    BUY        MOO          8414           8414               0       98924.75             9.89                1.057      11.76
+   BNY    BUY        MOO          7099           7099               0       87806.62             8.78                0.884      12.37
+   PNC    BUY        MOO          7236           7236               0       83207.00             8.32                0.863      11.50
+   JPM    BUY        MOO          7995           7995               0       83203.69             8.32                1.107      10.41
+   CAT    BUY        MOO          5260           5260               0       78891.96             7.89                0.600      15.00
+   UPS    BUY        MOO          3255           3255               0       69699.59             6.97                0.282      21.41
+   ADI   SELL        MOO          5504          -5504               0       68174.74            -6.82                0.842      12.39
+   SPY   SELL        MOO          1260          -1260               0       63341.95            -6.33                0.045      50.27
+   HAS    BUY        MOO          4822           4822               0       60782.25             6.08                0.729      12.61
+    GE    BUY        MOO          2443           2443               0       58462.43             5.85                0.153      23.93
+  VMRK   SELL        MOO          6640          -6640               0       51457.98            -5.15                1.500       7.75
+    DD   SELL        MOO          5979          -5979               0       47855.22            -4.79                1.272       8.00
+   APA   SELL        MOO          1145          -1145               0       43834.68            -4.38                0.050      38.28
+   AJG    BUY        MOO          4359           4359               0       42911.60             4.29                0.833       9.84
+   CPT   SELL        MOO          4625          -4625               0       40498.89            -4.05                0.901       8.76
+   HON    BUY        MOO          2551           2551               0       38479.59             3.85                0.277      15.08
+   RJF    BUY        MOO          6395           6395               0       37641.81             3.76                1.500       5.89
+   NOC    BUY        MOO          1656           1656               0       35856.38             3.59                0.127      21.65
+   WFC    BUY        MOO          6441           6441               0       35788.83             3.58                1.500       5.56
+  ADSK    BUY        MOO          2456           2456               0       29521.12             2.95                0.327      12.02
+   DHI   SELL        MOO          5082          -5082               0       29032.85            -2.90                1.500       5.71
+   AME   SELL        MOO          1988          -1988               0       21536.22            -2.15                0.346      10.83
+   AFL   SELL        MOO          4373          -4373               0       19210.12            -1.92                1.500       4.39
+  HUBB    BUY        MOO          1122           1122               0       17983.16             1.80                0.120      16.03
+  AMAT    BUY        MOO          2322           2322               0       15300.61             1.53                0.668       6.59
+   TXT   SELL        MOO          4195          -4195               0       15105.71            -1.51                1.500       3.60
+    WM    BUY        MOO           900            900               0       13456.41             1.35                0.103      14.95
+   UDR   SELL        MOO          3393          -3393               0       12563.23            -1.26                1.500       3.70
+   OKE    BUY        MOO          3137           3137               0       10342.23             1.03                1.500       3.30
+   TER   SELL        MOO          2999          -2999               0        9650.46            -0.97                1.500       3.22
+   KIM    BUY        MOO          3131           3131               0        9390.84             0.94                1.500       3.00
+  AMZN   SELL        MOO          2383          -2383               0        7350.36            -0.74                1.500       3.08
+   MAS   SELL        MOO          2839          -2839               0        7155.22            -0.72                1.499       2.52
+  ODFL   SELL        MOO          2489          -2489               0        6753.28            -0.68                1.500       2.71
+   AMD   SELL        MOO          1640          -1640               0        3509.60            -0.35                1.499       2.14
+   STX    BUY        MOO          1581           1581               0        2540.42             0.25                1.500       1.61
+  LRCX   SELL        MOO          1271          -1271               0        2080.06            -0.21                1.500       1.64
+  KLAC    BUY        MOO           740            740               0         641.89             0.06                1.499       0.87
+
+[Reporting] Saving experiment to: 'results/22/distress/9/'
+  Saved config -> results/22/distress/9/config.json
+  Saved metrics -> results/22/distress/9/csv/metrics.csv
+  Saved tearsheets -> results/22/distress/9/csv/committee_report.csv
+  Saved blotter -> results/22/distress/9/csv/moo_blotter.csv
+  Saved progressive metrics -> results/22/distress/9/csv/progressive_metrics.csv
+  Saved trade records -> results/22/distress/9/csv/trade_records.csv
+  Saved portfolio stats -> results/22/distress/9/csv/portfolio_stats.csv
+  Saved plot -> results/22/distress/9/imgs/funnel_sizing.png
+  Saved plot -> results/22/distress/9/imgs/cumulative_performance.png
+[Reporting] Runtime log -> results/22/distress/9/logs.txt
+[ReportingStage] Complete.

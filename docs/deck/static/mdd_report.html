@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimum Disclosure Document — StatArb v3.2</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<style>
+  :root { --burgundy: #9E1B32; }
+  body { font-size: 11px; color: #222; }
+  .accent-bar { height: 4px; background: var(--burgundy); }
+  .hdr-band { background: var(--burgundy); color: #fff; padding: 8px 20px; }
+  .section-title { font-size: 11px; font-weight: 700; color: var(--burgundy); border-bottom: 1.5px solid var(--burgundy); padding-bottom: 3px; margin: 10px 0 5px; }
+  .strat-box { background: #FAFAFA; border-left: 3px solid var(--burgundy); padding: 8px 12px; margin-bottom: 8px; font-size: 10px; }
+  .strat-box strong { color: var(--burgundy); display: block; margin-bottom: 2px; font-size: 9.5px; }
+  .mdd-table th { background: #F2F2F2; border-bottom: 2px solid var(--burgundy); font-size: 9.5px; padding: 3px 5px; }
+  .mdd-table td { padding: 3px 5px; font-size: 10px; border-bottom: 1px solid #e8e8e8; }
+  .mdd-table .tot td { font-weight: 700; border-top: 2px solid #222; background: #F2F2F2; }
+  .ret-pos { color: #1a7a3a; } .ret-neg { color: #c0392b; }
+  .mdd-scatter { width: 100%; height: auto; max-width: 340px; display: block; margin: 0 auto; }
+  #tbl-monthly th, #tbl-monthly td { font-size: 8.5px; white-space: nowrap; padding: 1px 3px; }
+  .footer-bar { border-top: 2px solid var(--burgundy); padding: 8px 20px; font-size: 9px; color: #888; }
+  @media print { body { font-size: 10px; } .card { border: none !important; box-shadow: none !important; } .container { max-width: 100%; } }
+</style>
+</head>
+<body>
+<div class="container-fluid" style="max-width:1180px; margin:0 auto; padding:0 12px 20px;">
+
+<!-- HEADER -->
+<div class="accent-bar"></div>
+<div class="hdr-band d-flex justify-content-between align-items-center">
+  <span class="font-weight-bold" style="font-size:13px; letter-spacing:1.5px; text-transform:uppercase;">Quantitative Research Desk</span>
+  <span id="hdr-doctype" style="font-size:10px; opacity:.85;"></span>
+</div>
+<h5 class="mt-2 mb-0 font-weight-bold" id="hdr-title"></h5>
+<small class="text-muted" id="hdr-asof"></small>
+
+<!-- TWO-COLUMN BODY -->
+<div class="row mt-2">
+  <!-- ===== LEFT COLUMN (1/3) ===== -->
+  <div class="col-md-4 pr-3">
+
+    <div class="section-title">General Information</div>
+    <table class="table table-sm mdd-table mb-2" id="tbl-gen"></table>
+
+    <div class="section-title">Investment Objective &amp; Strategy</div>
+    <div class="strat-box"><strong>Objective</strong>Capital appreciation through systematic, market-neutral statistical arbitrage, targeting uncorrelated absolute returns regardless of broader equity market direction.</div>
+    <div class="strat-box"><strong>Strategy</strong>Sector-neutral pairs trading across US-listed equities. The model identifies temporary mispricings between correlated securities, entering mean-reversion trades while maintaining dollar-neutral and sector-neutral exposure. Risk is controlled via tight stop-losses, position limits, and continuous correlation monitoring.</div>
+    <div class="strat-box"><strong>Risk Profile</strong>Moderate — conservative allocation within a market-neutral mandate. Max drawdown since inception: <span id="risk-mdd"></span>.</div>
+
+    <div class="section-title">Risk–Return Profile</div>
+    <div id="scatter-wrap" class="text-center mb-2"></div>
+  </div>
+
+  <!-- ===== RIGHT COLUMN (2/3) ===== -->
+  <div class="col-md-8 pl-3">
+
+    <div class="section-title">Monthly Net Returns (%)</div>
+    <div>
+      <table class="table table-sm mdd-table mb-2" id="tbl-monthly"></table>
+    </div>
+
+    <div class="section-title">Equity Exposure Summary</div>
+    <table class="table table-sm mdd-table mb-2" id="tbl-exposure"></table>
+
+    <div class="section-title">Fund Performance (Net of Fees)</div>
+    <table class="table table-sm mdd-table mb-2" id="tbl-perf"></table>
+
+    <div class="section-title">Sector Allocation (%)</div>
+    <table class="table table-sm mdd-table mb-2" id="tbl-sector"></table>
+
+    <div class="section-title">Asset Allocation (%)</div>
+    <table class="table table-sm mdd-table mb-2" id="tbl-asset"></table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-bar d-flex justify-content-between flex-wrap" id="footer-bar"></div>
+</div>
+
+<script>
+const D = {
+  "general_info": {
+    "fund_name": "StatArb v3.2 Market Neutral Quantitative Fund",
+    "fund_class": "Class Q",
+    "as_of_date": "September 2026",
+    "document_type": "Minimum Disclosure Document (Algorithmic Quant Strategy)",
+    "unit_price": "9949.02 cpu",
+    "fund_size": "$994,902",
+    "benchmark": "Secured Overnight Financing Rate (SOFR)",
+    "strategy": "Multi-Factor Neutral Statistical Arbitrage (market+sector+momentum residual)",
+    "risk_profile": "Moderate",
+    "inception_date": "06 September 2018",
+    "total_trades": "1513",
+    "win_rate": "49.8%",
+    "profit_factor": "1.00",
+    "max_drawdown": "22.0%",
+    "total_fees": "$174,099",
+    "management_fee": "N/A (Proprietary)",
+    "performance_fee": "N/A (Proprietary)",
+    "liquidity": "T+1 (MOO)",
+    "contact": "Quantitative Research Desk",
+    "model_version": "v3.2 multifactor (src_tape)"
+  },
+  "monthly_returns": [
+    {
+      "year": 2018,
+      "month": 9,
+      "return_pct": 0.0
+    },
+    {
+      "year": 2018,
+      "month": 10,
+      "return_pct": -2.5
+    },
+    {
+      "year": 2018,
+      "month": 11,
+      "return_pct": -0.7
+    },
+    {
+      "year": 2018,
+      "month": 12,
+      "return_pct": -1.3
+    },
+    {
+      "year": 2019,
+      "month": 1,
+      "return_pct": 0.8
+    },
+    {
+      "year": 2019,
+      "month": 2,
+      "return_pct": -1.2
+    },
+    {
+      "year": 2019,
+      "month": 3,
+      "return_pct": 0.1
+    },
+    {
+      "year": 2019,
+      "month": 4,
+      "return_pct": -1.9
+    },
+    {
+      "year": 2019,
+      "month": 5,
+      "return_pct": 2.4
+    },
+    {
+      "year": 2019,
+      "month": 6,
+      "return_pct": -1.2
+    },
+    {
+      "year": 2019,
+      "month": 7,
+      "return_pct": 1.0
+    },
+    {
+      "year": 2019,
+      "month": 8,
+      "return_pct": -0.5
+    },
+    {
+      "year": 2019,
+      "month": 9,
+      "return_pct": 0.7
+    },
+    {
+      "year": 2019,
+      "month": 10,
+      "return_pct": 2.2
+    },
+    {
+      "year": 2019,
+      "month": 11,
+      "return_pct": 3.5
+    },
+    {
+      "year": 2019,
+      "month": 12,
+      "return_pct": 0.1
+    },
+    {
+      "year": 2020,
+      "month": 1,
+      "return_pct": 2.7
+    },
+    {
+      "year": 2020,
+      "month": 2,
+      "return_pct": 1.1
+    },
+    {
+      "year": 2020,
+      "month": 3,
+      "return_pct": 7.4
+    },
+    {
+      "year": 2020,
+      "month": 4,
+      "return_pct": -3.8
+    },
+    {
+      "year": 2020,
+      "month": 5,
+      "return_pct": 0.4
+    },
+    {
+      "year": 2020,
+      "month": 6,
+      "return_pct": 0.7
+    },
+    {
+      "year": 2020,
+      "month": 7,
+      "return_pct": 1.7
+    },
+    {
+      "year": 2020,
+      "month": 8,
+      "return_pct": 1.2
+    },
+    {
+      "year": 2020,
+      "month": 9,
+      "return_pct": -1.1
+    },
+    {
+      "year": 2020,
+      "month": 10,
+      "return_pct": 1.1
+    },
+    {
+      "year": 2020,
+      "month": 11,
+      "return_pct": 3.8
+    },
+    {
+      "year": 2020,
+      "month": 12,
+      "return_pct": 0.3
+    },
+    {
+      "year": 2021,
+      "month": 1,
+      "return_pct": 2.4
+    },
+    {
+      "year": 2021,
+      "month": 2,
+      "return_pct": -3.5
+    },
+    {
+      "year": 2021,
+      "month": 3,
+      "return_pct": -1.7
+    },
+    {
+      "year": 2021,
+      "month": 4,
+      "return_pct": 0.5
+    },
+    {
+      "year": 2021,
+      "month": 5,
+      "return_pct": -4.8
+    },
+    {
+      "year": 2021,
+      "month": 6,
+      "return_pct": 2.0
+    },
+    {
+      "year": 2021,
+      "month": 7,
+      "return_pct": -2.3
+    },
+    {
+      "year": 2021,
+      "month": 8,
+      "return_pct": 1.6
+    },
+    {
+      "year": 2021,
+      "month": 9,
+      "return_pct": -0.4
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "return_pct": -1.1
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "return_pct": 6.0
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "return_pct": 2.1
+    },
+    {
+      "year": 2022,
+      "month": 1,
+      "return_pct": -7.2
+    },
+    {
+      "year": 2022,
+      "month": 2,
+      "return_pct": -2.3
+    },
+    {
+      "year": 2022,
+      "month": 3,
+      "return_pct": 8.9
+    },
+    {
+      "year": 2022,
+      "month": 4,
+      "return_pct": 0.1
+    },
+    {
+      "year": 2022,
+      "month": 5,
+      "return_pct": -2.6
+    },
+    {
+      "year": 2022,
+      "month": 6,
+      "return_pct": 0.5
+    },
+    {
+      "year": 2022,
+      "month": 7,
+      "return_pct": -4.5
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "return_pct": -0.6
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "return_pct": 0.0
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "return_pct": 2.2
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "return_pct": -0.6
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "return_pct": -0.1
+    },
+    {
+      "year": 2023,
+      "month": 1,
+      "return_pct": 1.2
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "return_pct": 1.7
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "return_pct": -9.1
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "return_pct": 0.1
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "return_pct": 9.8
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "return_pct": 2.6
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "return_pct": -5.2
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "return_pct": -1.7
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "return_pct": -1.8
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "return_pct": 1.3
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "return_pct": 0.9
+    },
+    {
+      "year": 2023,
+      "month": 12,
+      "return_pct": 8.2
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "return_pct": -2.1
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "return_pct": -3.5
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "return_pct": 2.5
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "return_pct": 1.0
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "return_pct": -0.8
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "return_pct": -1.4
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "return_pct": 2.5
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "return_pct": -3.2
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "return_pct": -6.5
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "return_pct": -4.6
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "return_pct": 2.0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "return_pct": -0.8
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "return_pct": -2.0
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "return_pct": 1.4
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "return_pct": 3.2
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "return_pct": 2.1
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "return_pct": 0.1
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "return_pct": 0.0
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "return_pct": -1.4
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "return_pct": -0.2
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "return_pct": 0.0
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "return_pct": -1.6
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "return_pct": -0.8
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "return_pct": -2.8
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "return_pct": 7.9
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "return_pct": 2.2
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "return_pct": -0.8
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "return_pct": 0.5
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "return_pct": -3.0
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "return_pct": 0.4
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "return_pct": -7.1
+    },
+    {
+      "year": 2026,
+      "month": 8,
+      "return_pct": 3.0
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "return_pct": -1.0
+    }
+  ],
+  "fund_performance": [
+    {
+      "metric": "1 Year",
+      "benchmark": "3.5%",
+      "fund": "-3.9%"
+    },
+    {
+      "metric": "Annualised since inception",
+      "benchmark": "2.8%",
+      "fund": "-0.1%"
+    },
+    {
+      "metric": "Cumulative since inception",
+      "benchmark": "24.2%",
+      "fund": "-0.5%"
+    },
+    {
+      "metric": "Highest rolling 1-year",
+      "benchmark": "5.5%",
+      "fund": "19.1%"
+    },
+    {
+      "metric": "Lowest rolling 1-year",
+      "benchmark": "0.0%",
+      "fund": "-14.3%"
+    },
+    {
+      "metric": "Sharpe ratio",
+      "benchmark": "\u2014",
+      "fund": "0.06"
+    },
+    {
+      "metric": "Maximum drawdown",
+      "benchmark": "\u2014",
+      "fund": "-22.0%"
+    }
+  ],
+  "sector_allocation": [
+    {
+      "sector": "Consumer Staples",
+      "net": 0.8,
+      "long": 2.9,
+      "short": -2.1,
+      "trades": 57
+    },
+    {
+      "sector": "Real Estate",
+      "net": 0.6,
+      "long": 3.8,
+      "short": -3.1,
+      "trades": 89
+    },
+    {
+      "sector": "Materials",
+      "net": 0.2,
+      "long": 0.8,
+      "short": -0.7,
+      "trades": 14
+    },
+    {
+      "sector": "Communication Services",
+      "net": -0.0,
+      "long": 0.4,
+      "short": -0.4,
+      "trades": 17
+    },
+    {
+      "sector": "Health Care",
+      "net": -0.0,
+      "long": 2.5,
+      "short": -2.5,
+      "trades": 57
+    },
+    {
+      "sector": "Industrials",
+      "net": -0.1,
+      "long": 4.6,
+      "short": -4.7,
+      "trades": 102
+    },
+    {
+      "sector": "Energy",
+      "net": -0.3,
+      "long": 8.6,
+      "short": -8.9,
+      "trades": 168
+    },
+    {
+      "sector": "Consumer Discretionary",
+      "net": -0.4,
+      "long": 5.6,
+      "short": -6.0,
+      "trades": 129
+    },
+    {
+      "sector": "Information Technology",
+      "net": -0.4,
+      "long": 7.0,
+      "short": -7.4,
+      "trades": 189
+    },
+    {
+      "sector": "Other",
+      "net": -0.9,
+      "long": 15.3,
+      "short": -16.1,
+      "trades": 273
+    },
+    {
+      "sector": "Utilities",
+      "net": -1.0,
+      "long": 5.4,
+      "short": -6.4,
+      "trades": 113
+    },
+    {
+      "sector": "Financials",
+      "net": -1.4,
+      "long": 11.2,
+      "short": -12.7,
+      "trades": 305
+    },
+    {
+      "sector": "Total",
+      "net": -2.9,
+      "long": 68.0,
+      "short": -70.9,
+      "trades": 1513
+    }
+  ],
+  "asset_allocation": [
+    {
+      "asset": "Equity \u2014 Long",
+      "foreign": 0.0,
+      "domestic": 68.0,
+      "total": 68.0
+    },
+    {
+      "asset": "Equity \u2014 Short",
+      "foreign": 0.0,
+      "domestic": -70.9,
+      "total": -70.9
+    },
+    {
+      "asset": "Equity \u2014 Net",
+      "foreign": 0.0,
+      "domestic": -2.9,
+      "total": -2.9
+    },
+    {
+      "asset": "Cash & Margin",
+      "foreign": 0.0,
+      "domestic": 102.9,
+      "total": 102.9
+    },
+    {
+      "asset": "Net Total (Equity+Cash, excl. gross)",
+      "foreign": 0.0,
+      "domestic": 100.0,
+      "total": 100.0
+    }
+  ],
+  "exposure": {
+    "long": 68.0,
+    "short": 70.9
+  },
+  "scatter_data": [
+    {
+      "label": "StatArb v3.2",
+      "vol": 12.4,
+      "cagr": -0.1,
+      "marker": "diamond",
+      "color": "#9E1B32"
+    },
+    {
+      "label": "SOFR (cash)",
+      "vol": 0.1,
+      "cagr": 2.8,
+      "marker": "circle",
+      "color": "#222"
+    },
+    {
+      "label": "S&P 500",
+      "vol": 19.4,
+      "cagr": 14.9,
+      "marker": "triangle",
+      "color": "#777"
+    }
+  ]
+};
+
+(function(){
+  const g = D.general_info;
+  const M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  // Header
+  document.getElementById('hdr-doctype').textContent = g.document_type;
+  document.getElementById('hdr-title').textContent = g.fund_name + ' · ' + g.fund_class;
+  document.getElementById('hdr-asof').textContent = 'As of ' + g.as_of_date + '  |  Model ' + g.model_version;
+  document.getElementById('risk-mdd').textContent = g.max_drawdown;
+
+  // Helpers
+  const rc = v => v > 0 ? 'ret-pos' : v < 0 ? 'ret-neg' : '';
+  const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
+  function tbl(id, rows){ document.getElementById(id).innerHTML = rows; }
+
+  // General Info
+  const gf = [['Unit Price',g.unit_price],['Fund Size',g.fund_size],['Benchmark',g.benchmark],
+    ['Inception',g.inception_date],['Strategy',g.strategy],['Liquidity',g.liquidity],
+    ['Total Trades',g.total_trades],['Win Rate',g.win_rate],['Profit Factor',g.profit_factor],
+    ['Max Drawdown',g.max_drawdown],['Total Fees',g.total_fees],
+    ['Mgmt Fee',g.management_fee],['Perf Fee',g.performance_fee],['Contact',g.contact]];
+  tbl('tbl-gen', '<thead><tr><th style="width:38%">Field</th><th>Value</th></tr></thead><tbody>' +
+    gf.map((f,i) => '<tr'+(i%2?' class="bg-light"':'')+'><td class="font-weight-bold">'+f[0]+'</td><td>'+f[1]+'</td></tr>').join('') + '</tbody>');
+
+  // Monthly Returns — wide matrix
+  const ym = {};
+  D.monthly_returns.forEach(r => { if(!ym[r.year]) ym[r.year]={}; ym[r.year][r.month]=r.return_pct; });
+  const years = Object.keys(ym).map(Number).sort();
+  let mh = '<thead><tr><th>Year</th>' + M.map(m=>'<th class="text-center px-1">'+m+'</th>').join('') + '<th class="text-center font-weight-bold">YTD</th></tr></thead><tbody>';
+  years.forEach(y => {
+    let ytd = 0;
+    mh += '<tr><td class="font-weight-bold">'+y+'</td>';
+    for(let m=1; m<=12; m++){
+      const v = ym[y][m];
+      if(v !== undefined){ ytd += v; mh += '<td class="text-center '+rc(v)+'">'+fmt(v)+'</td>'; }
+      else mh += '<td class="text-center text-muted">—</td>';
+    }
+    mh += '<td class="text-center font-weight-bold '+rc(ytd)+'">'+fmt(ytd)+'</td></tr>';
+  });
+  mh += '</tbody>';
+  tbl('tbl-monthly', mh);
+
+  // Fund Performance
+  tbl('tbl-perf', '<thead><tr><th>Metric</th><th class="text-right">SOFR</th><th class="text-right">Fund</th></tr></thead><tbody>' +
+    D.fund_performance.map((r,i) => '<tr'+(i%2?' class="bg-light"':'')+'><td class="font-weight-bold">'+r.metric+'</td><td class="text-right">'+r.benchmark+'</td><td class="text-right font-weight-bold">'+r.fund+'</td></tr>').join('') + '</tbody>');
+
+  // Equity Exposure
+  const gl=D.exposure.long, gs=D.exposure.short;
+  tbl('tbl-exposure', '<thead><tr><th></th><th class="text-right">Long</th><th class="text-right">Short</th><th class="text-right">Gross</th><th class="text-right">Net</th></tr></thead><tbody><tr><td class="font-weight-bold">Average (period)</td><td class="text-right">'+gl+'%</td><td class="text-right">'+gs+'%</td><td class="text-right">'+(gl+gs).toFixed(1)+'%</td><td class="text-right font-weight-bold">'+(gl-gs).toFixed(1)+'%</td></tr></tbody>');
+
+  // Sector
+  tbl('tbl-sector', '<thead><tr><th>Sector</th><th class="text-right">Net</th><th class="text-right">Long</th><th class="text-right">Short</th><th class="text-right">#</th></tr></thead><tbody>' +
+    D.sector_allocation.map((r,i) => {
+      const tot = r.sector==='Total';
+      return '<tr'+(tot?' class="tot"':i%2?' class="bg-light"':'')+'><td'+(tot?' class="font-weight-bold"':'')+'>'+r.sector+'</td><td class="text-right">'+r.net.toFixed(1)+'</td><td class="text-right">'+r.long.toFixed(1)+'</td><td class="text-right">'+r.short.toFixed(1)+'</td><td class="text-right">'+r.trades+'</td></tr>';
+    }).join('') + '</tbody>');
+
+  // Asset
+  tbl('tbl-asset', '<thead><tr><th>Asset</th><th class="text-right">Foreign</th><th class="text-right">Domestic</th><th class="text-right">Total</th></tr></thead><tbody>' +
+    D.asset_allocation.map((r,i) => {
+      const tot = r.asset==='Total';
+      return '<tr'+(tot?' class="tot"':i%2?' class="bg-light"':'')+'><td'+(tot?' class="font-weight-bold"':'')+'>'+r.asset+'</td><td class="text-right">'+r.foreign.toFixed(1)+'</td><td class="text-right">'+r.domestic.toFixed(1)+'</td><td class="text-right font-weight-bold">'+r.total.toFixed(1)+'</td></tr>';
+    }).join('') + '</tbody>');
+
+  // Scatter SVG
+  const W=340,H=220,P={t:28,r:25,b:36,l:48},pw=W-P.l-P.r,ph=H-P.t-P.b,xM=20,yM=30;
+  const xs=v=>P.l+v/xM*pw, ys=v=>P.t+ph-v/yM*ph;
+  let s='<svg class="mdd-scatter" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" style="font-family:Arial,sans-serif">';
+  s+='<rect width="'+W+'" height="'+H+'" fill="#fff" rx="3"/>';
+  s+='<text x="'+W/2+'" y="14" text-anchor="middle" font-size="11" font-weight="700" fill="#222">Risk–Return Scatter</text>';
+  for(let v=0;v<=xM;v+=5){s+='<line x1="'+xs(v)+'" y1="'+P.t+'" x2="'+xs(v)+'" y2="'+(P.t+ph)+'" stroke="#e0e0e0" stroke-width=".5"/><text x="'+xs(v)+'" y="'+(P.t+ph+12)+'" text-anchor="middle" font-size="8" fill="#666">'+v+'%</text>';}
+  for(let v=0;v<=yM;v+=5){s+='<line x1="'+P.l+'" y1="'+ys(v)+'" x2="'+(P.l+pw)+'" y2="'+ys(v)+'" stroke="#e0e0e0" stroke-width=".5"/><text x="'+(P.l-5)+'" y="'+(ys(v)+3)+'" text-anchor="end" font-size="8" fill="#666">'+v+'%</text>';}
+  s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#222" stroke-width="1"/>';
+  s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#222" stroke-width="1"/>';
+  s+='<text x="'+(P.l+pw/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="9" font-weight="600" fill="#222">Standard Deviation</text>';
+  s+='<text x="10" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="9" font-weight="600" fill="#222" transform="rotate(-90,10,'+(P.t+ph/2)+')">CAGR</text>';
+  D.scatter_data.forEach(p=>{
+    const cx=xs(p.vol),cy=ys(p.cagr);
+    if(p.marker==='diamond') s+='<polygon points="'+cx+','+(cy-6)+' '+(cx+6)+','+cy+' '+cx+','+(cy+6)+' '+(cx-6)+','+cy+'" fill="'+p.color+'"/>';
+    else if(p.marker==='triangle') s+='<polygon points="'+cx+','+(cy-6)+' '+(cx+6)+','+(cy+5)+' '+(cx-6)+','+(cy+5)+'" fill="'+p.color+'"/>';
+    else s+='<circle cx="'+cx+'" cy="'+cy+'" r="5" fill="'+p.color+'"/>';
+    s+='<text x="'+(cx+8)+'" y="'+(p.label==='Cash (STeFi)'?cy+4:cy-6)+'" font-size="8" fill="#222" font-weight="600">'+p.label+' ('+p.cagr+'%)</text>';
+  });
+  s+='</svg>';
+  document.getElementById('scatter-wrap').innerHTML = s;
+
+  // Footer
+  document.getElementById('footer-bar').innerHTML =
+    '<span>Data source: Internal model (v3.2)</span><span>Issued '+new Date().toLocaleDateString('en-ZA')+'</span><span>Model: '+g.model_version+'</span>';
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{"run":"10","ts":"2026-06-01","config_sha":"dd8bd56f735d5510","universe":"data/distress_in/iran_oil_2026.csv+data/distress/iran_oil_2026.csv","n_tickers":502,"start_idx":1057,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2026-06-01","cause":"INITIAL_ENTRY","step":1,"progress_pct":2.3256,"ghost_size":1,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2026-06-01","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2026-06-01","targets":{"OMC":-1.0,"NWSA":0.6406525527864024},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2026-06-01","targets":{},"v":1}

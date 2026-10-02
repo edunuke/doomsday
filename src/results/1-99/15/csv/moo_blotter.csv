@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+LLY,SELL,MOO,177,-177,0,112474.25,-44.99,0.0,635.45
+SPY,SELL,MOO,148,-148,0,92547.54,-37.02,0.0,625.32
+VRTX,BUY,MOO,182,182,0,68364.66,27.35,0.001,375.63

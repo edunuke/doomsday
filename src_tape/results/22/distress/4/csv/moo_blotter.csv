@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+SPY,BUY,MOO,1451,1451,0,549780.17,54.98,0.007,378.9
+HD,BUY,MOO,1283,1283,0,345030.99,34.5,0.009,268.93
+CVNA,SELL,MOO,1718,-1718,0,3236.71,-0.32,1.5,1.88

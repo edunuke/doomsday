@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+AMT,BUY,MOO,2967,2967,0,599924.72,59.99,0.028,202.2
+VICI,SELL,MOO,13404,-13404,0,415562.5,-41.56,0.862,31.0
+SPY,BUY,MOO,100,100,0,62532.12,6.25,0.0,625.32

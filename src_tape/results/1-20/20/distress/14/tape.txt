@@ -1,0 +1,15 @@
+{"run":"14","ts":"2025-04-08","config_sha":"1f48b39498beaa60","universe":"data/distress_in/recovery_2025.csv+data/distress/recovery_2025.csv","n_tickers":499,"start_idx":1060,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2025-04-08","cause":"INITIAL_ENTRY","step":1,"progress_pct":1.1905,"ghost_size":1,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2025-04-08","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2025-04-08","targets":{"DLTR":1.0,"DG":-0.6176410111693967},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2025-04-08","targets":{},"v":1}
+{"type":"REBALANCE","ts":"2025-07-31","cause":"SIGNAL_ENTRY","step":79,"progress_pct":94.0476,"ghost_size":3,"promoted_size":1,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2025-07-31","targets":{"BIIB":-0.6,"BAX":0.2429320171315767,"SPY":0.2420929981113308},"spy_overlay":0.2420929981113308,"gross":1.0850250152,"n_pairs":1,"n_long":2,"n_short":1,"v":1}
+{"type":"GHOST_BOOK","ts":"2025-07-31","targets":{"BIIB":-0.3333333333333333,"BAX":0.13496223173976482,"INTC":0.3333333333333333,"WDC":-0.11674348316879647,"KIM":0.3333333333333333,"UDR":-0.262818245515186},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2025-07-31","targets":{"BIIB":-1.0,"BAX":0.4048866952192945},"v":1}
+{"type":"PAIR_BOOK","ts":"2025-07-31","pair":["BIIB","BAX"],"weights":{"BIIB":-0.6,"BAX":0.2429320171315767},"sleeve":0.6,"v":1}
+{"type":"ENTRY","ts":"2025-07-31","pair":["BIIB","BAX"],"legs":["BIIB","BAX"],"beta":0.4048866952192945,"entry_z":1.1811187183745262,"alpha":3.8584620889012164,"entry_type":"BASE","sleeve_w":0.6,"w_a":-0.6,"w_b":0.2429320171315767,"px_a":128.0,"px_b":21.56682777404785,"v":1}
+{"type":"EXIT","ts":"2025-08-06","pair":["BIIB","BAX"],"reason":"REVERTED","exit_z":0.046322211434835434,"days_held":4,"alpha":0.0,"entry_type":"BASE","px_a":129.33999633789062,"px_b":22.300256729125977,"v":1}
+{"type":"PAIR_BOOK","ts":"2025-08-06","pair":["BIIB","BAX"],"weights":{"BIIB":0.0,"BAX":0.0},"sleeve":0.0,"v":1}
+{"type":"REBALANCE","ts":"2025-08-06","cause":"SIGNAL_EXIT","step":83,"progress_pct":98.8095,"ghost_size":0,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2025-08-06","targets":{"SPY":0.2420929981113308},"spy_overlay":0.2420929981113308,"gross":0.2420929981,"n_pairs":0,"n_long":1,"n_short":0,"carry":true,"v":1}

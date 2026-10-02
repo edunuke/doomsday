@@ -1,0 +1,5 @@
+{"run":"2","ts":"2026-07-01","config_sha":"c255e499a7e1afa9","universe":"data/distress_in/ath_2026.csv+data/distress/ath_2026.csv","n_tickers":502,"start_idx":1058,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2026-07-01","cause":"INITIAL_ENTRY","step":1,"progress_pct":2.1739,"ghost_size":2,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2026-07-01","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2026-07-01","targets":{"ACGL":-0.5,"HIG":0.40715679547180206,"CRWD":0.5,"PANW":-0.4246409770922085},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2026-07-01","targets":{},"v":1}

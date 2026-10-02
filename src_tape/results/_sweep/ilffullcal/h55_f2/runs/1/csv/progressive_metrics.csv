@@ -1,0 +1,3 @@
+period,date,period_return_%,cum_return_%,win_rate_%,sharpe,sortino,max_dd_%,profit_factor,expectancy_%,best_period_%,worst_period_%,concentration,excess_vs_rf_%,information_ratio
+1,2023-10-25,0.0,0.0,0.0,0.0,,0.0,inf,0.0,0.0,0.0,,-9.773246215137865,
+2,2023-11-01,0.5143224104164235,0.5143224104164235,50.0,4.242640687119286,,0.0,inf,0.25716120520821173,0.5143224104164235,0.0,1.0,-9.374844498472745,-5.518298712551507

@@ -1,0 +1,29 @@
+,group
+Start,2001-06-01 00:00:00
+End,2002-05-31 00:00:00
+Period,248 days 00:00:00
+Start Value,250000.0
+End Value,259972.92641810028
+Total Return [%],3.989170567240112
+Benchmark Return [%],6.964291487950369
+Max Gross Exposure [%],165.45960447227625
+Total Fees Paid,2677.841739103873
+Max Drawdown [%],13.248226723580526
+Max Drawdown Duration,133 days 00:00:00
+Total Trades,208
+Total Closed Trades,208
+Total Open Trades,0
+Open Trade PnL,0.0
+Win Rate [%],50.480769230769226
+Best Trade [%],18.80102045042871
+Worst Trade [%],-18.57117630555363
+Avg Winning Trade [%],2.836772270091328
+Avg Losing Trade [%],-2.772911783614082
+Avg Winning Trade Duration,3 days 21:42:51.428571428
+Avg Losing Trade Duration,3 days 10:15:08.737864077
+Profit Factor,1.0754576518649233
+Expectancy,47.94676162548228
+Sharpe Ratio,0.4671154245570117
+Calmar Ratio,0.44730690391303796
+Omega Ratio,1.1054574309899967
+Sortino Ratio,0.5996673798115026

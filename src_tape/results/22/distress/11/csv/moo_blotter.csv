@@ -1,0 +1,4 @@
+Ticker,Action,Order_Type,Delta_Shares,Target_Shares,Current_Shares,Est_Order_USD,Target_Weight_%,ADV_Participation_%,Price_Ref
+AMD,SELL,MOO,9750,-9750,0,179984.99,-18.0,1.008,18.46
+SPY,BUY,MOO,594,594,0,132802.56,13.28,0.005,223.57
+ANET,BUY,MOO,9046,9046,0,119124.51,11.91,1.334,13.17

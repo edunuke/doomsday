@@ -1,0 +1,9 @@
+{
+  "name": "statarb-deck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zero-dependency static file server for the StatArb deck (Node.js built-ins only, no npm packages)",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

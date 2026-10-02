@@ -1,0 +1,303 @@
+=====================================================================================
+STAT-ARB v3.2 — RELAXED BETA NEUTRALITY
+Pipeline flow: DownloadDataStage → DataLoaderStage → ResidualizerStageV3 → AlphaCubeStageV5 → SelectionStage → WalkForwardStage → AttributionStage → ReportingStage
+Verbose      : NO
+Results dir  : /Users/edunuke/Desktop/statarb-prival/src_tape/results/21/distress/3
+=====================================================================================
+  price_csv                           : data/distress_in/aug_vol_2025.csv
+  oos_price_csv                       : data/distress/aug_vol_2025.csv
+  constituents_path                   : data/constituents.csv
+  lookback_days                       : 1058
+  min_history_days                    : 100
+  weight_drift_threshold              : 0.04
+  screening_freq_days                 : 20
+  quarantine_days                     : 30
+  kalman_delta                        : 0.001
+  kalman_obs_noise                    : 0.001
+  max_hurst_exponent                  : 0.43
+  max_slope_tstat                     : 1.96
+  min_correlation                     : 0.25
+  p_value_threshold                   : 0.04
+  min_half_life                       : 4.0
+  max_half_life                       : 25.0
+  tau_hl_penalty                      : 5.0
+  exit_z_spread                       : 0.2
+  stop_loss_z                         : 2.2
+  min_holding_days                    : 2
+  max_holding_days                    : 60
+  promote_top_n                       : 35
+  max_pair_spy_beta                   : 1.2
+  max_adv_participation               : 0.015
+  initial_capital                     : 1000000.0
+  exec_fee                            : 0.00015
+  borrow_bps                          : 50.0
+  entry_ecdf_percentile               : 0.8
+  min_override_z                      : 0.5
+  friction_clearance_multiplier       : 8.0
+  ghost_truncation_quantile           : 0.15
+  low_density_threshold               : 3
+  max_sleeve_weight_low_density       : 0.6
+  max_sleeve_weight                   : 0.45
+  max_single_stock_gross              : 0.65
+  max_gross_exposure                  : 2.8
+  max_net_dollar_exposure             : 0.08
+  max_net_beta_exposure               : 0.05
+  max_sector_exposure                 : 0.12
+  max_spy_overlay_weight              : 0.55
+  entry_z_base                        : 0.75
+  kalman_f_smooth_window              : 21
+  kalman_f_smooth_min_periods         : 5
+  ecdf_window                         : 63
+  half_life_window                    : 126
+  half_life_fillna                    : 20.0
+  hurst_window                        : 126
+  hurst_max_lag                       : 20
+  hurst_fillna                        : 0.5
+  slope_window                        : 20
+  spy_beta_ewm_span                   : 30
+  covariance_lookback_days            : 63
+  cov_jitter                          : 1e-05
+  min_gross_floor                     : 0.3
+  min_gross_frac                      : 0.5
+  alpha_ub_clip_low                   : 0.2
+  alpha_ub_clip_high                  : 1.0
+  min_weight_cutoff                   : 0.01
+  turnover_extra_bps                  : 0.0005
+  stale_days                          : 8
+  stale_alpha                         : 0.35
+  neutrality_max_r2                   : 0.005
+  neutrality_min_regime_obs           : 10
+  moo_min_order_usd                   : 500.0
+  adv_window_days                     : 20
+  adv_shares_mult                     : 50000
+  adv_fill_value                      : 1000000
+  retrain_freq_days                   : 90
+  train_lookback_days                 : 504
+  screen_lookback_days                : 252
+  early_stop_enabled                  : False
+  early_stop_rebal_days               : 5
+  early_stop_min_periods              : 5
+  early_stop_max_drawdown             : 8.0
+  early_stop_max_period_loss          : 3.0
+  early_stop_max_loss_streak          : 6
+  early_stop_signal_window            : 20
+  early_stop_signal_min_periods       : 15
+  early_stop_cum_sigma_k              : 2.0
+  early_stop_min_sharpe               : -1.0
+  early_stop_min_sortino              : -1.0
+  early_stop_min_win_rate             : None
+  max_holding_buffer                  : 1.5
+  ensemble_window                     : 21
+  ensemble_weight                     : 0.5
+  vr_max                              : 0.95
+  vr_horizon                          : 5
+  components                          : {'residualizer': 'v3', 'alphacube': 'v5', 'selection': 'v1', 'walkforward': 'v1', 'allocator': 'v2', 'regime': 'v3', 'sizing': 'v1', 'screener': 'v2'}
+  download                            : False
+  verbose                             : False
+  circuit_breaker_enabled             : False
+  circuit_breaker_max_dd              : 10.0
+  circuit_breaker_max_period_loss     : 6.0
+  circuit_breaker_max_loss_streak     : 8
+  circuit_breaker_min_periods         : 1
+  enable_override                     : False
+  enable_promotion                    : True
+  factor_beta_window                  : 126
+  factor_vol_window                   : 63
+  factor_mom_window                   : 252
+  factor_mom_skip                     : 21
+  factor_beta_shrink                  : 0.2
+  regime_vol_window                   : 63
+  regime_vol_lookback                 : 252
+  regime_vol_percentile               : 75
+  regime_exposure_scale               : 0.3
+  trailing_dd_lookback                : 126
+  trailing_dd_threshold               : -0.08
+  trailing_dd_scale                   : 0.3
+  selection_enabled                   : True
+  selection_window_days               : 378
+  selection_max_pairs                 : 300
+  alpha_v5_enabled                    : True
+  alpha_v5_ou_tau                     : 5.0
+  alpha_v5_dispersion_tilt            : 0.25
+  dispersion_lookback                 : 252
+  dispersion_window                   : 21
+  sizing_target_vol                   : 0.1
+  sizing_max_leverage                 : 1.5
+  sizing_mode                         : derisk
+  sizing_vol_window                   : 126
+  run_distress                        : False
+  screen_min_pairs                    : 8
+  distress_out_dir                    : results/21/distress
+  results_dir                         : results/21/distress
+  distress_only                       : None
+=====================================================================================
+
+=====================================================================================
+STARTING STAT-ARB ENGINE v3.2
+=====================================================================================
+
+>>> Stage: DownloadDataStage
+[DownloadDataStage] Skipped (--download not set).
+<<< Stage: DownloadDataStage complete. (0.0s)
+
+>>> Stage: DataLoaderStage
+[DataLoader] 'SPY' detected. Using real SPY series.
+[DataLoader] Loaded 1104 days x 498 tickers.
+<<< Stage: DataLoaderStage complete. (0.1s)
+
+>>> Stage: ResidualizerStageV3
+[Residualizer] 4631 sector-matched residual pairs.
+[ResidualizerV3] regime-conditional VR screen (high-dispersion days=524, 5d, VR<=0.95): 4631 -> 2622 pairs
+<<< Stage: ResidualizerStageV3 complete. (0.3s)
+
+>>> Stage: AlphaCubeStageV5
+[AlphaCube] Built alpha cube: 2622 pairs.
+[AlphaV5] orthogonal sources added (dispersion tilt=0.25, ou_tau=5.0); pairs=2622
+<<< Stage: AlphaCubeStageV5 complete. (9.4s)
+
+>>> Stage: SelectionStage
+[Selection] walk-forward schedule: 0 re-selections (window=378d, grid=6)
+<<< Stage: SelectionStage complete. (0.0s)
+
+>>> Stage: WalkForwardStage
+[Screener] v2
+[Factors] factor 'growth': no fundamentals file — factor DROPPED (a true growth factor needs fundamentals; not faked with momentum)
+[Regime] v3: stressed=255/1104 days (14 transitions)
+[WalkForward] Decision tape -> results/21/distress/3/tape.txt
+[WalkForward] Rolling retrain every 90d (train window 504d).
+[WalkForward] Min alpha floor = 0.35%
+[Screen] 2025-07-28: 2622 candidates -> 293 pass (v2) -> 293 live
+
+[Rebalance @ 2025-07-28 | Progress:   2.2% (1/46)] Cause: INITIAL_ENTRY
+
+[Rebalance @ 2025-07-31 | Progress:   8.7% (4/46)] Cause: SIGNAL_ENTRY
+  --> CUMULATIVE: cumRet=+0.00% | DD=0.00% | win=0.0% | Sharpe=0.00 | Sortino=inf | streak=0 | conc=0.00 | periods=1
+  --> Ghost=2 | Promoted=1 | Live=1
+  --> Eff Gross=0.84 | Port Vol=0.0991 | SPY Overlay=23.5%
+      [BASE] BIIB/BAX | W_A: -60.0% | W_B: 24.9% | Inno Z: 1.21 | ECDF: 1.00 | Alpha: 4.2305
+------------------------------------------------------------
+  [EXIT] BIIB/BAX | reason=REVERTED | Z=+0.05 | days=4 | alpha=0.0000 | entry_type=BASE
+
+[Rebalance @ 2025-08-06 | Progress:  17.4% (8/46)] Cause: SIGNAL_EXIT
+  --> CUMULATIVE: cumRet=+0.17% | DD=0.00% | win=50.0% | Sharpe=7.10 | Sortino=inf | streak=0 | conc=1.00 | periods=2
+  --> Ghost=1 | Promoted=0 | Live=0
+------------------------------------------------------------
+[Screen] 2025-08-25: 2622 candidates -> 166 pass (v2) -> 166 live
+[Screen] 2025-09-23: 2622 candidates -> 145 pass (v2) -> 145 live
+<<< Stage: WalkForwardStage complete. (5.5s)
+
+>>> Stage: AttributionStage
+[Attribution] Replaying decision tape: results/21/distress/3/tape.txt
+
+====================================================================================================
+PROGRESSIVE (PER-REBALANCE) DIAGNOSTICS — PAIRWISE ENGINE
+====================================================================================================
+ per        date   perRet%   cumRet%   win%  Sharpe  maxDD%    PF  conc  excSOFR%     IR
+----------------------------------------------------------------------------------------------------
+   2  2025-08-06      2.20      2.20   50.0    4.58    0.00   inf  1.00      2.08   6.17
+----------------------------------------------------------------------------------------------------
+  EARLY-STOP: TOO_EARLY after 2 periods
+====================================================================================================
+<<< Stage: AttributionStage complete. (0.1s)
+
+>>> Stage: ReportingStage
+
+=====================================================================================
+v3.2 RELAXED BETA — FUNNEL CONVERSION ATTRIBUTION
+=====================================================================================
+  Funnel Tier / Portfolio Stage          | Ann. Return [%]    | Sortino Ratio     
+-------------------------------------------------------------------------------------
+  Ghost Portfolio (Raw Universe)         |              9.75% |             0.5577
+  Promoted Portfolio (Parametric Gated)  |             38.47% |             0.0000
+  Live Portfolio (SLSQP Optimized)       |             24.60% |             0.0000
+-------------------------------------------------------------------------------------
+  --> Parametric Selection Delta         |            +28.73% |            -0.5577
+  --> Optimizer Allocation Delta         |            -13.87% |            +0.0000
+=====================================================================================
+
+=====================================================================================
+MARKET NEUTRALITY DIAGNOSTIC (RELAXED: 5% BETA CAP)
+=====================================================================================
+                    Metric  Value Threshold Status
+          Annualized Alpha 19.32%       N/A   INFO
+         Market Beta (β_m) 0.1077  < |0.05|   FAIL
+              Beta p-value 0.2299   >= 0.05   PASS
+          Beta t-statistic 1.2174  < |1.96|   PASS
+   Variance Explained (R²)  3.26%    < 0.5%   FAIL
+Bull Market Beta (R_m > 0) 0.3082  < |0.05|   FAIL
+Bear Market Beta (R_m < 0) 0.2093  < |0.05|   FAIL
+-------------------------------------------------------------------------------------
+  VERDICT: Market Neutral = FALSE | Failures: Market Beta (β_m), Variance Explained (R²), Bull Market Beta (R_m > 0), Bear Market Beta (R_m < 0)
+=====================================================================================
+
+=====================================================================================
+RISK-FREE (SOFR) BENCHMARK — MARKET-NEUTRAL INTERPRETATION
+=====================================================================================
+  Metric                                  Value
+-------------------------------------------------------------------------------------
+  Benchmark Return [%]                    0.793
+  Excess Return vs SOFR [%]               3.305
+  Annualised Excess [%]                  17.836
+  Information Ratio                       3.159
+=====================================================================================
+
+=====================================================================================
+INVESTMENT COMMITTEE PAIR REVIEW TEARSHEET (ATTRIBUTED BY REGIME)
+=====================================================================================
+Strategy_Origin  Pair_Legs  Total_Return_[%]  Sharpe_Ratio  Sortino_Ratio  Max_DD_[%]  Win_Rate_[%]  Total_Trades
+           BASE BIIB / BAX          3.693857      0.763451       3.774412     0.01393         100.0             2
+
+=====================================================================================
+WALK-FORWARD NET PORTFOLIO STATS (POST-FEES & EXECUTION LAG)
+=====================================================================================
+Start                         2025-07-28 00:00:00
+End                           2025-09-30 00:00:00
+Period                           64 days 00:00:00
+Start Value                             1000000.0
+End Value                           1040970.41547
+Total Return [%]                         4.097042
+Max Gross Exposure [%]                 108.496063
+Total Fees Paid                        337.281055
+Max Drawdown [%]                         0.017462
+Max Drawdown Duration             4 days 00:00:00
+Total Trades                                    3
+Total Closed Trades                             3
+Total Open Trades                               0
+Open Trade PnL                                0.0
+Win Rate [%]                                100.0
+Best Trade [%]                            6.97029
+Worst Trade [%]                          1.645559
+Avg Winning Trade [%]                    3.891513
+Avg Losing Trade [%]                          0.0
+Avg Winning Trade Duration        6 days 00:00:00
+Avg Losing Trade Duration         0 days 00:00:00
+Profit Factor                                 inf
+Expectancy                           13672.827301
+Sharpe Ratio                              3.92535
+Calmar Ratio                          1408.999674
+Omega Ratio                            232.659902
+Sortino Ratio                           79.945368
+Benchmark Return [%]                      0.79254
+Excess Return vs SOFR [%]                3.304501
+Annualised Excess [%]                   17.835964
+Information Ratio                        3.159422
+
+=====================================================================================
+ACTIONABLE MARKET-ON-OPEN (MOO) ORDER BLOTTER FOR NEXT SESSION
+=====================================================================================
+Empty DataFrame
+Columns: [Ticker, Action, Order_Type, Delta_Shares, Target_Shares, Current_Shares, Est_Order_USD, Target_Weight_%, ADV_Participation_%, Price_Ref]
+Index: []
+
+[Reporting] Saving experiment to: 'results/21/distress/3/'
+  Saved config -> results/21/distress/3/config.json
+  Saved metrics -> results/21/distress/3/csv/metrics.csv
+  Saved tearsheets -> results/21/distress/3/csv/committee_report.csv
+  Saved blotter -> results/21/distress/3/csv/moo_blotter.csv
+  Saved progressive metrics -> results/21/distress/3/csv/progressive_metrics.csv
+  Saved trade records -> results/21/distress/3/csv/trade_records.csv
+  Saved portfolio stats -> results/21/distress/3/csv/portfolio_stats.csv
+  Saved plot -> results/21/distress/3/imgs/funnel_sizing.png
+  Saved plot -> results/21/distress/3/imgs/cumulative_performance.png
+[Reporting] Runtime log -> results/21/distress/3/logs.txt
+[ReportingStage] Complete.

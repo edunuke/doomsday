@@ -1,0 +1,5 @@
+{"run":"18","ts":"2024-07-16","config_sha":"a2c36afe029b71e9","universe":"data/distress_in/yen_carry_2024.csv+data/distress/yen_carry_2024.csv","n_tickers":498,"start_idx":1061,"initial_capital":1000000.0,"exec":"T+1","fill":"MOO","fees":{"exec_fee":0.00015,"borrow_bps":50.0},"type":"HEADER","v":1}
+{"type":"REBALANCE","ts":"2024-07-16","cause":"INITIAL_ENTRY","step":1,"progress_pct":2.3256,"ghost_size":1,"promoted_size":0,"live_size":0,"v":1}
+{"type":"BOOK","ts":"2024-07-16","targets":{},"spy_overlay":0.0,"gross":0.0,"n_pairs":0,"n_long":0,"n_short":0,"v":1}
+{"type":"GHOST_BOOK","ts":"2024-07-16","targets":{"MTB":1.0,"STT":-0.7939260036646695},"v":1}
+{"type":"PROMOTED_BOOK","ts":"2024-07-16","targets":{},"v":1}
