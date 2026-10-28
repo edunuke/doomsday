@@ -21,6 +21,7 @@ import os, sys
 import numpy as np, pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from modules.core.run_paths import run_file  # noqa: E402
 from modules.execution.portfolio_engine import run_target_weights  # noqa: E402
 from modules.execution.stats import compute_stats  # noqa: E402
 from modules.validation.gate import window_stats, format_stats  # noqa: E402
@@ -31,7 +32,7 @@ GROSS = 1.0
 import argparse
 _ap = argparse.ArgumentParser()
 _ap.add_argument("--panel", default="data/ILF_survivorship.csv")
-_ap.add_argument("--base", default="results/61/csv/metrics.csv")
+_ap.add_argument("--base", default=run_file(61, "csv", "metrics.csv"))
 _ap.add_argument("--volume", default=None)
 _args, _ = _ap.parse_known_args()
 px = pd.read_csv(_args.panel, index_col=0, parse_dates=True)
@@ -168,7 +169,7 @@ def basis_t_c(flipped=False):
     return r
 
 
-p0 = pd.read_csv("results/61/csv/metrics.csv", index_col=0, parse_dates=True)
+p0 = pd.read_csv(run_file(61, "csv", "metrics.csv"), index_col=0, parse_dates=True)
 p0_r = p0["Live_Realized_Return"].astype(float)
 
 results = {}

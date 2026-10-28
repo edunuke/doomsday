@@ -2,7 +2,7 @@
 # ==============================================================================
 # StatArb (src_tape) — Market Distress batch runner
 #
-# Runs the SAME config that produced results/19 across historical stress
+# Runs the SAME config that produced run 19 across historical stress
 # windows in data/distress/ (two-file mode: distress_in warmup + distress OOS,
 # lookback_days = warmup length so the loop trades only the OOS window).
 #
@@ -10,7 +10,8 @@
 # a temp config with run_distress=true and calls main.py once; the batch loop
 # and per-window results live in modules/validation/distress.py.
 #
-# Output: results/19/distress/{N}/ (+ manifest.json mapping run -> window).
+# Output: <run 19>/distress/{N}/ (+ manifest.json mapping run -> window),
+# resolved through the results/ banding (results/1-20/19 by default).
 #
 # Usage:
 #     ./scripts/run_distress_tests.sh                  # all windows
@@ -25,7 +26,9 @@ cd "$ROOT"
 
 PYTHON="/Users/edunuke/anaconda3/envs/portoptv1/bin/python"
 BASE_CONFIG="${BASE_CONFIG:-configs/config_v3_2y_screener2.json}"
-OUT_DIR="${OUT_DIR:-results/19/distress}"
+if [ -z "${OUT_DIR:-}" ]; then
+    OUT_DIR="$("$PYTHON" -c 'from modules.core.run_paths import run_file; print(run_file(19, "distress"))' 2>/dev/null         || echo "results/19/distress")"
+fi
 
 TARGET="all"; VERBOSE=""
 for a in "$@"; do

@@ -24,6 +24,7 @@ import os, sys
 import numpy as np, pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from modules.core.run_paths import run_file  # noqa: E402
 from modules.execution.portfolio_engine import run_target_weights  # noqa: E402
 from modules.regime import REGIMES  # noqa: E402
 from modules.validation.gate import window_stats, format_stats  # noqa: E402
@@ -35,7 +36,7 @@ px = px[~px.index.duplicated()].sort_index().ffill()
 POOL = [c for c in px.columns if c != "ILF"]
 
 # ---- orthogonal set: names never traded in the P0 pair book -----------------
-tr = pd.read_csv("results/61/csv/trade_records.csv")
+tr = pd.read_csv(run_file(61, "csv", "trade_records.csv"))
 pair_names = set(tr[~tr.Asset.str.startswith(("SYN", "ILF"))]["Asset"].unique())
 REAL = [c for c in POOL if not c.startswith("SYN")]  # synthetics NEVER tradeable
 ORTHO = [c for c in REAL if c not in pair_names]
@@ -50,7 +51,7 @@ states = det.states(mret).fillna(0.0)          # 0 calm, 1 stressed
 calm = (states == 0)
 
 # ---- P0 live returns (baseline for blending) --------------------------------
-p0 = pd.read_csv("results/61/csv/metrics.csv", index_col=0, parse_dates=True)
+p0 = pd.read_csv(run_file(61, "csv", "metrics.csv"), index_col=0, parse_dates=True)
 p0_r = p0["Live_Realized_Return"].astype(float)
 
 

@@ -22,6 +22,7 @@ import numpy as np, pandas as pd
 import yfinance as yf
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from modules.core.run_paths import run_file  # noqa: E402
 from modules.risk.benchmark import sofr_daily_returns  # noqa: E402
 
 EXEC_FEE = 0.00015
@@ -175,7 +176,7 @@ r_ctrl_vt = sim_rule(adr_ret.where(adr_z >= 1.5, 0.0), "sniper ADR-own VT")
 r_always_vt = sim_rule(np.sign(loc_sig).reindex(columns=adr_ret.columns).fillna(0.0), "always-in VT")
 
 # ---------------------------------------------------------------- 3. blend
-P0 = pd.read_csv("results/61/csv/metrics.csv", index_col=0, parse_dates=True)[
+P0 = pd.read_csv(run_file(61, "csv", "metrics.csv"), index_col=0, parse_dates=True)[
     "Live_Realized_Return"].astype(float)
 print("\n=== blend with P0 (bar: combined Sharpe > 0.83) ===")
 for label, r in [("always-in VT", r_always_vt), ("sniper local VT", r_snip_vt),

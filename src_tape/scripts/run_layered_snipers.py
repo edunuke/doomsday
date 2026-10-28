@@ -25,13 +25,14 @@ import os, sys
 import numpy as np, pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from modules.core.run_paths import run_file  # noqa: E402
 from modules.risk.benchmark import sofr_daily_returns  # noqa: E402
 from modules.regime import REGIMES  # noqa: E402
 
 import argparse
 _ap = argparse.ArgumentParser()
 _ap.add_argument("--panel", default="data/ILF_survivorship.csv")
-_ap.add_argument("--base", default="results/61/csv/metrics.csv")
+_ap.add_argument("--base", default=run_file(61, "csv", "metrics.csv"))
 _args, _ = _ap.parse_known_args()
 _PANEL = _args.panel
 px = pd.read_csv(_PANEL, index_col=0, parse_dates=True)

@@ -21,6 +21,9 @@ statarb-prival/
     modules/                # pipeline stages
     scripts/                # data prep, sweeps, audits, survivorship, factors
     results/<N>/            # per-run outputs (csv/, imgs/, logs.txt, tape.txt)
+    results/1-20/<N>/       # archived runs, banded by number
+    results/21-67/<N>/
+    results/69-86/<N>/
     results/_sweep/         # parameter sweeps
     data/ -> ../src/data    # SYMLINK: the real data directory
   src/data/                 # price/constituent/factor CSVs (actual files)
@@ -112,7 +115,11 @@ $PY main.py --config <path> --use-survivorship-model   # force synthetic panel
 $PY main.py --config <path> --from-tape results/<N>/tape.txt  # replay a run
 ```
 
-Outputs land in `results/<N>/` where `<N>` is the next integer.
+Outputs land in `results/<N>/` where `<N>` is the next integer. Numbering is
+global across flat and banded layouts (`results/1-20/…`, `results/69-86/…`), so
+new runs never reuse an archived id. Code that needs an archived run should use
+`modules.core.run_paths.run_dir(N)` / `run_file(N, ...)` (or
+`python scripts/mix_report.py <N>`) instead of hard-coding a path.
 
 ---
 

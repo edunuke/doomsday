@@ -83,7 +83,9 @@ crisis-slippage reserve.
 
 - Every configuration above is a JSON file in `configs/`; every run lands in
   `results/<N>/` with `run_environment.json` + `requirements.txt` (interpreter
-  and package pins), config hash, and code-tree hash.
+  and package pins), config hash, and code-tree hash. Archived runs are banded
+  (`results/1-20/<N>`, `results/21-67/<N>`, `results/69-86/<N>`); resolve them
+  with `modules.core.run_paths.run_dir(N)` rather than a literal path.
 - Environment: uv-managed, locked (`uv.lock`, `.python-version` = 3.11.5).
   Results are reproducible **within** an interpreter; archived results
   reproduce exactly under the 3.11.5 stack (verified).

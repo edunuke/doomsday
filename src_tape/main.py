@@ -195,6 +195,15 @@ def run_from_tape(tape_path: str, config_path: str) -> int:
     return 0
 
 
+def _default_distress_dir():
+    """Distress outputs live next to run 19, wherever runs are banded."""
+    try:
+        from modules.core.run_paths import run_file
+        return run_file(19, "distress")
+    except Exception:
+        return "results/19/distress"
+
+
 def main():
     config_path, do_download, verbose, overrides, from_tape, use_synth = parse_cli_args()
 
@@ -328,7 +337,7 @@ def main():
         from modules.validation.distress import run_distress_batch
         return run_distress_batch(
             config_path, overrides,
-            cfg.get("distress_out_dir", "results/19/distress"),
+            cfg.get("distress_out_dir") or _default_distress_dir(),
             build_flow, cfg.get("distress_only"), verbose)
 
     # Build the flow from the config's component versions (swap without code
